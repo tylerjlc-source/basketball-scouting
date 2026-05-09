@@ -43,14 +43,9 @@ def get_player_row(rows, player_id):
     return None
 
 
-def safe_get(row, key, default=None):
-    """Safely get a value from a row dict."""
-    if row is None:
-        return default
-    val = row.get(key, default)
-    if val is None:
-        return default
-    return val
+# safe_get lives in shared_math; the canonical version is more permissive
+# (handles row[key] for non-dict-like rows) but identical for dict-like rows.
+from shared_math import safe_get
 
 
 def pull_advanced_stats(season):
