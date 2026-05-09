@@ -67,33 +67,38 @@ def stat_block(cur_val, pri_val, cur_vol=None, pri_vol=None, is_rate=False,
                w_cur=W_CURRENT_DEFAULT, w_pri=W_PRIOR_DEFAULT):
     """
     Build a 3-value stat block: current, prior, weighted.
-    When `is_rate` is True, prior is weighted via simple_weighted.
-    Otherwise, if cur_vol/pri_vol supplied, weighted via volume_weighted_pct.
+
+    Mode A (is_rate=True): prior weighted via simple_weighted.
+    Mode B (cur_vol + pri_vol supplied, is_rate=False): cur_val/pri_val are
+        percentages; multiply by volume to recover made/att and volume-weight.
+    Mode C (no volumes, no is_rate): fall back to simple_weighted.
     """
     if _is_missing(pri_val):
-        if cur_vol is not None:
-            return {
-                "current": cur_val, "prior": "N/A", "weighted": cur_val,
-                "current_volume": cur_vol, "prior_volume": "N/A",
-                "total_volume": cur_vol,
-            }
-        return {"current": cur_val, "prior": "N/A", "weighted": cur_val}
-
-    if is_rate:
-        weighted = simple_weighted(cur_val, pri_val, w_cur=w_cur, w_pri=w_pri)
-    elif cur_vol is not None and pri_vol is not None:
-        weighted = volume_weighted_pct(cur_val, cur_vol, pri_val, pri_vol,
-                                       w_cur=w_cur, w_pri=w_pri)
+        pri_display = "N/A"
+        weighted = cur_val
     else:
-        weighted = simple_weighted(cur_val, pri_val, w_cur=w_cur, w_pri=w_pri)
+        pri_display = pri_val
+        if is_rate:
+            weighted = simple_weighted(cur_val, pri_val, w_cur=w_cur, w_pri=w_pri)
+        elif cur_vol is not None and pri_vol is not None:
+            cur_made = cur_val * cur_vol if cur_vol and cur_vol > 0 else 0
+            pri_made = pri_val * pri_vol if pri_vol and pri_vol > 0 else 0
+            weighted = volume_weighted_pct(
+                cur_made, cur_vol or 0, pri_made, pri_vol or 0,
+                w_cur=w_cur, w_pri=w_pri,
+            )
+        else:
+            weighted = simple_weighted(cur_val, pri_val, w_cur=w_cur, w_pri=w_pri)
 
-    block = {"current": cur_val, "prior": pri_val, "weighted": weighted}
-    if cur_vol is not None and pri_vol is not None:
-        block.update({
-            "current_volume": cur_vol,
-            "prior_volume": pri_vol,
-            "total_volume": cur_vol + pri_vol,
-        })
+    block = {"current": cur_val, "prior": pri_display, "weighted": weighted}
+    if cur_vol is not None:
+        block["current_volume"] = cur_vol
+        block["prior_volume"] = pri_vol if pri_vol is not None else "N/A"
+        block["total_volume"] = (
+            (cur_vol or 0) + (pri_vol or 0)
+            if pri_vol not in (None, "N/A")
+            else cur_vol
+        )
     return block
 
 
