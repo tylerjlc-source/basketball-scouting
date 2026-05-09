@@ -17,21 +17,20 @@ Loads execute as a single parallel batch in Phase A — see P8.
 
 Always load:
 1. **This file (SKILL.md)** — publish workflow, pull policy reference, QC checklist
-2. **docs/PUBLIC-LANGUAGE-GUIDE.md** — transform spec (pull policy, strip rules, §5.1 structural template, §5.3 operational rules, §5.4 calibration sample, §8 QC). Full load.
-3. **docs/validation/PUBLIC-VOICE-CALIBRATION.md** — voice spec (writer exemplars §§1–7, patterns §8, pitfalls §9, ranked recommendation §10). Full load. Single source of truth for sentence-level voice and judgment register.
-4. **docs/DOMAIN-SCALE_v1.md** — domain band scale. Loaded for the Step 1.5 recompute gate (universal, runs every invocation).
-5. **docs/DOMAIN-SCORE-ROLE-RELEVANCE.md** — archetype SZ tables for the recompute gate.
-6. **docs/SIGNATURES.md** — Signature roster, tiers, descriptions, and assignment rules. Loaded for Step 3 sub-domain Signature column derivation (universal, runs every invocation).
+2. **docs/PUBLIC-LANGUAGE-GUIDE.md** — transform spec. Surgical read — load §§1–§4, §5.1, §5.2, §5.3, §6, §7, §8, §9 (everything except §5.4 calibration sample). The §5.4 calibration sample is deferred to the reviewer sub-agent (Step 3-C / Subagent V) and loaded on-demand by Step 3-T only if the draft surfaces a voice question that the truncated guide cannot answer.
+3. **docs/validation/PUBLIC-VOICE-CALIBRATION.md** — voice spec. Surgical read — load **only** §8 (Patterns Across the Best of Them), §9 (Pitfalls to Avoid), §10 (Ranked Voice Recommendation). The writer-exemplar excerpts §§1–7 are heavy and load only inside the reviewer sub-agent's context (it gets the calibration evidence; the writer gets the codified rules and pitfalls).
+4. **docs/SIGNATURES.md** — Signature roster, tiers, descriptions, and assignment rules. Loaded for Step 3 sub-domain Signature column derivation (universal, runs every invocation).
 
 Inputs required (must already exist):
-7. **output/[Player_Name]/[YYYY-MM-DD]_profile.md** — the canonical Skill 5 deliverable. Locate the latest by listing the directory and taking the lexicographically last filename. Read fully.
+5. **output/[Player_Name]/[YYYY-MM-DD]_profile.md** — the canonical Skill 5 deliverable. Locate the latest by listing the directory and taking the lexicographically last filename. Read fully.
 
 **NOT loaded** (P1 enforcement):
 - `docs/SCORING-RULES.md` — scores pass through byte-equal; rules unused at publish time
 - `docs/SUB-DOMAINS_v3.md` — names byte-equal from profile; definitions unused
 - `docs/POSITION_SCALE_*.md` — scoring scales unused at publish time
-- `docs/ANCHOR-LIBRARY.md` — anchor names pass through; library not consulted
+- `docs/ANCHOR-LIBRARY.md` + `docs/anchors/Tier_*.md` — anchor names pass through; library not consulted
 - `docs/ARCHETYPE-WEIGHTS-*.md` — archetype name byte-equal from profile
+- `docs/DOMAIN-SCALE_v1.md` and `docs/DOMAIN-SCORE-ROLE-RELEVANCE.md` — only consumed by the Step 1.5 recompute-gate **sub-agent**; main Skill 7 context never loads them. See Step 1.5 below.
 
 If the profile is missing, stop and flag — do not synthesize from memory.
 
@@ -43,7 +42,7 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 | Phase | Steps | Turn shape |
 |---|---|---|
-| A | 1–3.6 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, reviewer subagent, revise) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each), Step 1.5 recompute gate (if marker absent), validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.5 → 3.6 (Claude-only path). Structured fields are always Claude-assembled regardless of narrative path. |
+| A | 1–3.6 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, reviewer subagent, revise) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.5 → 3.6 (Claude-only path). Structured fields are always Claude-assembled regardless of narrative path. |
 | B | 4 (Diff manifest preview) | One turn, no tools — present manifest to Tyler. |
 | — | (Approval gate) | Tyler confirms. |
 | C | 5–7 (Write, QC, confirmation) | One turn — single Write call + QC analysis + confirmation in same response. |
@@ -56,7 +55,7 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 ### Step 1 — Locate and load (Phase A entry)
 
-**This step initiates Phase A — issue all loads from LOADING INSTRUCTIONS items 1–4 in parallel within a single response.**
+**This step initiates Phase A — issue all loads from LOADING INSTRUCTIONS items 1–5 in parallel within a single response.** (DOMAIN-SCALE_v1 / DOMAIN-SCORE-ROLE-RELEVANCE are NOT in this batch; they live only in the Step 1.5 sub-agent's context if it fires.)
 
 Confirm via Phase A reads:
 - `output/[Player_Name]/` directory exists with at least one dated profile (`[YYYY-MM-DD]_profile.md`).
@@ -67,29 +66,65 @@ Confirm via Phase A reads:
 
 **Universal — every publish invocation runs this gate.** The band-match mechanic (DOMAIN-SCALE_v1.md, shipped 2026-05-07) replaced arithmetic-mean domain derivation. Profiles built before that date use arithmetic means in §5; the public layer cannot ship arithmetic-mean domains alongside band-matched composites without breaking score-coherence.
 
-**Marker check.** Scan the source `_profile.md` for the line:
+**Marker pre-check (in-line, no extra load).** Skill 7 already loaded the profile in Step 1. Scan it for the line:
 `Domain-mechanic recompute: arithmetic mean → band-match per DOMAIN-SCALE_v1.md`
 appearing in any dated footer entry.
 
-- **Marker present →** skip the gate. Profile already on band-match. Proceed to Step 2.
-- **Marker absent →** execute the gate.
+- **Marker present →** skip the gate entirely. Profile already on band-match. No sub-agent fires; no DOMAIN-SCALE_v1 / DOMAIN-SCORE-ROLE-RELEVANCE load happens. Proceed to Step 2.
+- **Marker absent →** spawn the recompute-gate sub-agent (below). The two reference docs load only inside the sub-agent's isolated context window; the main Skill 7 turn never carries them.
 
-**Gate execution (re-run Skill 3 Step 3 against the existing matrix):**
+**Sub-agent: recompute-gate.** Spawn via the Task tool with the prompt below. Inputs handed to the sub-agent: the absolute path to the source `_profile.md`. The sub-agent reads profile + DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE, edits the profile in place, and returns a confirmation summary; the main turn resumes once the sub-agent terminates.
 
-1. Read profile §1 (archetype) — determines position-group selection per DOMAIN-SCALE_v1.md preamble (archetype positional group, not listed position). Domain 8 always uses the Universal table.
-2. Read profile §4 sub-domain scores. Apply DOMAIN-SCORE-ROLE-RELEVANCE.md to identify SZ exclusions for the archetype.
-3. For each of D1–D8: rank player against position peer group on the integrated capability; band-match against the relevant row in DOMAIN-SCALE_v1.md; dial within band per R14. Write a synthesis sentence naming anchor subs + constraining sub.
-4. **Edit-in-place** §5 Domain Scores table: replace existing scores + synthesis with band-matched values. Preserve `Included` / `Excluded (SZ)` columns where present. Numeric values are the only structural change to upstream score data; archetype, sub-domain scores, composite, tier, gates, projection block, and comp are all preserved byte-equal.
-5. **Append footer line** (new dated entry at end of file):
-   `*[YYYY-MM-DD] — Domain-mechanic recompute: arithmetic mean → band-match per DOMAIN-SCALE_v1.md.*`
-   Date is today's date (the publish session date). Italics consistent with existing footer-entry style.
-6. **Re-read** the post-edit profile so Step 2+ operate on the corrected state.
+```
+You are the Skill-7 recompute-gate sub-agent. Profile path: {ABSOLUTE_PATH_TO_PROFILE_MD}.
 
-**Credentialed-star carve-out (per `feedback_credentialed_star_carve_out`).** When the recompute produces a profile where composite ≥ 8.30 but max domain band-matches below composite (Tier 4-5 anchor-credentialed stars without 9.0+ domain peaks), this is a legitimate pattern — do NOT push domain scores ceiling-ward past honest peer-rank to force alignment, do NOT reopen composite, do NOT propose a new arithmetic. Surface the divergence in the Phase B manifest as informational; resolution is methodology copy on the public site, not a scoring-engine change.
+Goal: re-run Skill 3 Step 3 (band-match domain derivation) against the
+existing sub-domain matrix and edit §5 in place so the public layer never
+ships arithmetic-mean domains alongside band-matched composites.
+
+Steps:
+1. Read the profile in full.
+2. Read docs/DOMAIN-SCALE_v1.md (full file).
+3. Read docs/DOMAIN-SCORE-ROLE-RELEVANCE.md (full file).
+4. From profile §1 (archetype) determine position-group selection per
+   DOMAIN-SCALE_v1.md preamble (archetype positional group, not listed
+   position). Domain 8 always uses the Universal table.
+5. From profile §4 sub-domain scores, apply DOMAIN-SCORE-ROLE-RELEVANCE
+   to identify SZ exclusions for the archetype.
+6. For each of D1–D8: rank player against position peer group on the
+   integrated capability; band-match against the relevant row in
+   DOMAIN-SCALE_v1; dial within band per R14. Write a synthesis sentence
+   naming anchor subs + constraining sub.
+7. Edit-in-place §5 Domain Scores table: replace existing scores +
+   synthesis with band-matched values. Preserve Included / Excluded (SZ)
+   columns where present. Numeric values are the only structural change
+   to upstream score data — archetype, sub-domain scores, composite,
+   tier, gates, projection block, and comp are all preserved byte-equal.
+8. Append a new dated footer entry to the profile:
+   *[YYYY-MM-DD] — Domain-mechanic recompute: arithmetic mean → band-match per DOMAIN-SCALE_v1.md.*
+   Date is today's date. Italics consistent with existing footer-entry style.
+
+Credentialed-star carve-out (per feedback_credentialed_star_carve_out):
+when the recompute produces a profile where composite ≥ 8.30 but max
+domain band-matches below composite (Tier 4–5 anchor-credentialed stars
+without 9.0+ domain peaks), this is a legitimate pattern — do NOT push
+domain scores ceiling-ward past honest peer-rank to force alignment, do
+NOT reopen composite, do NOT propose a new arithmetic. Note the
+divergence in your return summary so the main turn can flag it in the
+Phase B manifest.
+
+Return a short summary (~10 lines) listing:
+- domain → old score → new band-matched score (8 rows)
+- whether credentialed-star carve-out applied (yes/no + brief why)
+- footer line written (verbatim)
+Do not paraphrase the methodology — just report what changed.
+```
+
+**After the sub-agent returns**, the main turn re-reads the profile (one cheap read of the now-corrected file) so subsequent steps operate on the post-recompute state. The sub-agent's summary is folded into the Phase B manifest preview as informational context.
 
 **Calibration-correction scope (per `feedback_branch_layout_scope`):** This is a calibration correction — same dated `_profile.md`, no new file spawned. Mirrors the §1/§8 composite-correction precedent already accepted by Step 2 carve-out below.
 
-**P1 enforcement note:** DOMAIN-SCALE_v1.md and DOMAIN-SCORE-ROLE-RELEVANCE.md are always-loaded for Skill 7 because the recompute gate is universal. They are NOT in the "NOT loaded" P1 exclusion list — the gate consumes them on every invocation, even when the marker is present (Phase A parallel batch is single-turn; conditional loading would require a separate turn and break P8).
+**P1 enforcement note (post-decomposition):** DOMAIN-SCALE_v1.md and DOMAIN-SCORE-ROLE-RELEVANCE.md are explicitly **NOT** loaded in the main Skill 7 context. They live only inside the recompute-gate sub-agent's window, and only when the marker pre-check determines the gate must fire. On marker-present publishes (the steady-state case once a profile has been touched once), neither file loads at all. This is a deliberate inversion of the prior "always-loaded" policy: the per-publish savings (~3–5K tokens) materially relieve the Phase A budget without changing the gate's correctness guarantee.
 
 ---
 
