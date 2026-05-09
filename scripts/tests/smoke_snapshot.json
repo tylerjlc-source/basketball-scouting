@@ -1,0 +1,17 @@
+{
+  "player": "Myles Turner",
+  "fingerprints": {
+    "finishing_output.json::subdomain_1_at_basket_finishing.rim_fg_pct": 0.656,
+    "finishing_output.json::subdomain_2_contact_finishing.ftr": 0.274,
+    "finishing_output.json::subdomain_3_post_offense.post_ppp": 0.8,
+    "shooting_output.json::subdomain_4_cas_3pt": 0.393,
+    "shooting_output.json::subdomain_7_ft": 0.74,
+    "ball_skills_output.json::subdomain_8_handling_creation": 1.063,
+    "playmaking_output.json::subdomain_11_court_vision": 2.2,
+    "playmaking_output.json::subdomain_12_decision_making": 1.25,
+    "defense_output.json::subdomain_15_on_ball_pressure": 0.485,
+    "defense_output.json::subdomain_17_rim_protection": null,
+    "rebounding_output.json::weighted": 1.18,
+    "iq_motor_output.json::evaluation_window.mode": null
+  }
+}

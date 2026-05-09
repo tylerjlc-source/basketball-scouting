@@ -1,6 +1,6 @@
-# run_eval.ps1 — single-command data-collection layer for scout-research (Skill 1).
+# run_eval.ps1 -- single-command data-collection layer for scout-research (Skill 1).
 #
-# Runs the seven NBA domain scripts (1, 2, 3, 4, 5, 6, 8 — Domain 7 has no script)
+# Runs the seven NBA domain scripts (1, 2, 3, 4, 5, 6, 8 -- Domain 7 has no script)
 # against a single player, then reports which JSON outputs were written and
 # surfaces any failures so Skill 1 can decide whether to retry, fall back to
 # manual lookup, or proceed with partial data.
@@ -12,7 +12,7 @@
 #   .\scripts\run_eval.ps1 "Player Name" -Comp -Playoff  # run everything
 #
 # This script is the data-collection layer ONLY. It does not interpret output,
-# score sub-domains, or write to raw/ — that's Skill 1's job downstream.
+# score sub-domains, or write to raw/ -- that's Skill 1's job downstream.
 #
 # Exit code 0 = all required scripts produced fresh JSON.
 # Exit code 1 = at least one script failed or produced no output.
@@ -32,13 +32,13 @@ $startTime = Get-Date
 
 # (script-file, output-json) pairs. The seven domain scripts always run.
 $domainJobs = @(
-    @{ Script = 'Domain_1_Finishing__Stats.py';  Output = 'finishing_output.json'   ; Label = 'Domain 1 — Finishing' },
-    @{ Script = 'Domain_2_Shooting__Stats.py';   Output = 'shooting_output.json'    ; Label = 'Domain 2 — Shooting' },
-    @{ Script = 'Domain_3_Ball_Skills__Stats.py';Output = 'ball_skills_output.json' ; Label = 'Domain 3 — Ball Skills' },
-    @{ Script = 'Domain_4_Playmaking__Stats.py'; Output = 'playmaking_output.json'  ; Label = 'Domain 4 — Playmaking' },
-    @{ Script = 'Domain_5_Defense__Stats.py';    Output = 'defense_output.json'     ; Label = 'Domain 5 — Defense' },
-    @{ Script = 'Domain_6_Rebounding__Stats.py'; Output = 'rebounding_output.json'  ; Label = 'Domain 6 — Rebounding' },
-    @{ Script = 'Domain_8_IQ_Motor__Stats.py';   Output = 'iq_motor_output.json'    ; Label = 'Domain 8 — IQ / Motor' }
+    @{ Script = 'Domain_1_Finishing__Stats.py';  Output = 'finishing_output.json'   ; Label = 'Domain 1 - Finishing' },
+    @{ Script = 'Domain_2_Shooting__Stats.py';   Output = 'shooting_output.json'    ; Label = 'Domain 2 - Shooting' },
+    @{ Script = 'Domain_3_Ball_Skills__Stats.py';Output = 'ball_skills_output.json' ; Label = 'Domain 3 - Ball Skills' },
+    @{ Script = 'Domain_4_Playmaking__Stats.py'; Output = 'playmaking_output.json'  ; Label = 'Domain 4 - Playmaking' },
+    @{ Script = 'Domain_5_Defense__Stats.py';    Output = 'defense_output.json'     ; Label = 'Domain 5 - Defense' },
+    @{ Script = 'Domain_6_Rebounding__Stats.py'; Output = 'rebounding_output.json'  ; Label = 'Domain 6 - Rebounding' },
+    @{ Script = 'Domain_8_IQ_Motor__Stats.py';   Output = 'iq_motor_output.json'    ; Label = 'Domain 8 - IQ / Motor' }
 )
 
 if ($Playoff) {
@@ -50,7 +50,7 @@ if ($Comp) {
 
 Write-Host ""
 Write-Host "=================================================================="
-Write-Host " run_eval.ps1 — $Player"
+Write-Host " run_eval.ps1 -- $Player"
 Write-Host " started $($startTime.ToString('yyyy-MM-dd HH:mm:ss'))"
 Write-Host "=================================================================="
 Write-Host ""
@@ -64,7 +64,7 @@ foreach ($job in $domainJobs) {
     $scriptPath = Join-Path $scriptDir $job.Script
     $outputPath = Join-Path $scriptDir $job.Output
 
-    Write-Host "[$jobIndex/$totalJobs] $($job.Label) — running $($job.Script) ..."
+    Write-Host "[$jobIndex/$totalJobs] $($job.Label) -- running $($job.Script) ..."
 
     if (-not (Test-Path $scriptPath)) {
         Write-Host "  ERROR: script not found at $scriptPath" -ForegroundColor Red
@@ -128,7 +128,7 @@ $okCount   = ($results | Where-Object { $_.Status -eq 'ok' }).Count
 $failCount = $totalJobs - $okCount
 
 Write-Host "=================================================================="
-Write-Host " SUMMARY — $okCount/$totalJobs ok, $failCount failed"
+Write-Host " SUMMARY -- $okCount/$totalJobs ok, $failCount failed"
 Write-Host " elapsed $([math]::Round($elapsed.TotalSeconds, 1))s"
 Write-Host "=================================================================="
 $results | Format-Table -AutoSize
