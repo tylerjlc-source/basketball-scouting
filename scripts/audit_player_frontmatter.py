@@ -21,6 +21,8 @@ Read-only. Run from project root:
 import sys
 from pathlib import Path
 
+from config import WIKI_DIR
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -147,8 +149,7 @@ def audit_file(path):
 
 
 def main():
-    repo_root = Path(__file__).resolve().parent.parent
-    players_dir = repo_root / "wiki" / "players"
+    players_dir = WIKI_DIR / "players"
     if not players_dir.is_dir():
         print(f"ERROR: {players_dir} not found", file=sys.stderr)
         sys.exit(2)

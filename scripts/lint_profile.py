@@ -31,8 +31,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "output"
+from config import PROJECT_ROOT, OUTPUT_DIR
 
 POSITION_RE = re.compile(r"^(PG|SG|SF|PF|C)(/(PG|SG|SF|PF|C))?$")
 TIER_RE = re.compile(r"^(\d+)\s*[—-]\s*(.+)$")

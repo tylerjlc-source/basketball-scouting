@@ -25,6 +25,8 @@ import re
 import sys
 from pathlib import Path
 
+from config import PROJECT_ROOT, WIKI_DIR
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -125,8 +127,7 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Preview without writing")
     args = parser.parse_args()
 
-    repo_root = Path(__file__).resolve().parent.parent
-    path = repo_root / "wiki" / "index.md"
+    path = WIKI_DIR / "index.md"
 
     if not path.is_file():
         print(f"ERROR: {path} not found", file=sys.stderr)
@@ -140,7 +141,7 @@ def main():
     print(bar)
     print(f"INDEX GROUPS MIGRATION{mode}")
     print(bar)
-    print(f"File:    {path.relative_to(repo_root)}")
+    print(f"File:    {path.relative_to(PROJECT_ROOT)}")
     print(f"Status:  {status}")
 
     if status == "migrated":

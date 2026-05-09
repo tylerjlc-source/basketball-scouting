@@ -40,6 +40,7 @@ from nba_api.stats.endpoints import (
 # ──────────────────────────────────────────────────────────────────────
 
 from eval_window import determine_evaluation_window, format_window
+from config import SCRIPTS_DIR
 
 CURRENT_SEASON = None
 PRIOR_SEASON = None  # None triggers single-season path (R12_ANCHOR, OVERRIDE, ROOKIE)
@@ -623,10 +624,7 @@ if __name__ == "__main__":
     if profiles:
         print_comparison(profiles)
 
-    save_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "finishing_output.json",
-    )
+    save_path = SCRIPTS_DIR / "finishing_output.json"
     with open(save_path, "w") as f:
         json.dump(profiles, f, indent=2, default=str)
     print(f"\nRaw data saved to {save_path}")

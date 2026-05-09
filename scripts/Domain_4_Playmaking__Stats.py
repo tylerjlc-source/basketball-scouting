@@ -25,6 +25,7 @@ from nba_api.stats.static import players
 # --- CONFIG ---
 # Evaluation window + player ID set at module load via eval_window.determine_evaluation_window
 from eval_window import determine_evaluation_window, format_window
+from config import SCRIPTS_DIR
 
 import argparse
 _parser = argparse.ArgumentParser()
@@ -554,10 +555,7 @@ for name, pid in PLAYERS.items():
     }
     profiles.append(profile)
 
-save_path = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "playmaking_output.json",
-)
+save_path = SCRIPTS_DIR / "playmaking_output.json"
 with open(save_path, "w") as f:
     json.dump(profiles, f, indent=2, default=str)
 print(f"\nRaw data saved to {save_path}")

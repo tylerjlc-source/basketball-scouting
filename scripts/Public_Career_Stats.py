@@ -38,6 +38,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 from nba_api.stats.static import players as nba_players
 from nba_api.stats.endpoints import playercareerstats
 
+from config import SCRIPTS_DIR
+
 DELAY = 1.0
 
 
@@ -239,10 +241,7 @@ def main():
         print(render_markdown_table(po_rows))
 
     # ── file: structured JSON for export pipeline ──
-    save_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "public_career_stats_output.json",
-    )
+    save_path = SCRIPTS_DIR / "public_career_stats_output.json"
     with open(save_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, default=str)
     print(f"\nStructured payload saved to {save_path}", file=sys.stderr)

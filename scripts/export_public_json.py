@@ -42,13 +42,16 @@ from jsonschema import Draft202012Validator
 # CONSTANTS
 # ============================================================================
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "output"
-RAW_DIR = PROJECT_ROOT / "raw"
-WIKI_DIR = PROJECT_ROOT / "wiki"
-DOCS_DIR = PROJECT_ROOT / "docs"
-PUBLISHED_DIR = PROJECT_ROOT / "published"
-AUDITS_DIR = PUBLISHED_DIR / "audits"
+from config import (
+    PROJECT_ROOT,
+    OUTPUT_DIR,
+    RAW_DIR,
+    WIKI_DIR,
+    DOCS_DIR,
+    PUBLISHED_DIR,
+    AUDITS_DIR,
+)
+
 SCHEMA_PATH = DOCS_DIR / "schema" / "public-profile.schema.json"
 ANCHOR_LIBRARY_PATH = DOCS_DIR / "ANCHOR-LIBRARY.md"
 SIGNATURES_DOC_PATH = DOCS_DIR / "SIGNATURES.md"

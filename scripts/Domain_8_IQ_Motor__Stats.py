@@ -31,6 +31,7 @@ from nba_api.stats.static import players as nba_players
 
 # Evaluation window + player ID set by main() via eval_window.determine_evaluation_window
 from eval_window import determine_evaluation_window, format_window
+from config import SCRIPTS_DIR
 
 PLAYERS = {}  # populated by main() from argparse
 SEASONS = {}  # populated by main() from window: {season: weight}
@@ -453,10 +454,7 @@ def main():
         print(f"{name:<18} {dist:<10.2f} {avg_spd:<10.2f} {off_spd:<10.2f} {def_spd:<10.2f} {off_dist:<10.2f} {def_dist:<10.2f}")
 
     # === SAVE JSON ===
-    save_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "iq_motor_output.json",
-    )
+    save_path = SCRIPTS_DIR / "iq_motor_output.json"
     with open(save_path, "w") as f:
         json.dump(all_results, f, indent=2, default=str)
     print(f"\nRaw data saved to {save_path}")

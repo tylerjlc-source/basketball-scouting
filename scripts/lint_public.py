@@ -33,8 +33,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "output"
+from config import PROJECT_ROOT, OUTPUT_DIR
 
 # Percentage forms appearing in narrative / sub-domain rationales:
 #   "40.7%"  "78%"  ".468"  ".346"

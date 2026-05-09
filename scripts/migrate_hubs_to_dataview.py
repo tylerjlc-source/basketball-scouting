@@ -20,6 +20,8 @@ import re
 import sys
 from pathlib import Path
 
+from config import PROJECT_ROOT, WIKI_DIR
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -86,11 +88,10 @@ def main():
     parser.add_argument("--target", help="Specific glob (default: wiki/archetypes/*.md)")
     args = parser.parse_args()
 
-    repo_root = Path(__file__).resolve().parent.parent
     if args.target:
-        files = sorted(repo_root.glob(args.target))
+        files = sorted(PROJECT_ROOT.glob(args.target))
     else:
-        files = sorted((repo_root / "wiki" / "archetypes").glob("*.md"))
+        files = sorted((WIKI_DIR / "archetypes").glob("*.md"))
 
     counts = {"migrated": 0, "already": 0, "no_section": 0, "errors": 0}
     actions = []

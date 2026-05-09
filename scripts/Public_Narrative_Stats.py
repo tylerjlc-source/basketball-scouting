@@ -59,9 +59,7 @@ from typing import Optional
 sys.stdout.reconfigure(encoding="utf-8")
 
 from eval_window import determine_evaluation_window, format_window  # noqa: E402
-
-
-SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+from config import SCRIPTS_DIR  # noqa: E402
 
 
 # ──────────────────────────────────────────────────────────────────────

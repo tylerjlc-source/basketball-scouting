@@ -34,11 +34,13 @@ from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 from firecrawl import FirecrawlApp
 
+from config import RAW_DIR, require_firecrawl_key
+
 PLAYER = sys.argv[1] if len(sys.argv) > 1 else "Myles Turner"
 SLUG = PLAYER.replace(" ", "_")
 TODAY = date.today().isoformat()
 
-OUT_DIR = Path(__file__).resolve().parent.parent / "raw" / SLUG / "scraped" / TODAY
+OUT_DIR = RAW_DIR / SLUG / "scraped" / TODAY
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Focused queries mirror the scouting-language hunts scout-research does in Step 3.
@@ -78,7 +80,7 @@ ALLOWED_DOMAINS = (
     "basketballnews.com",
 )
 
-app = FirecrawlApp(api_key=os.environ["FIRECRAWL_API_KEY"])
+app = FirecrawlApp(api_key=require_firecrawl_key())
 
 
 def domain_of(url: str) -> str:

@@ -29,6 +29,8 @@ from nba_api.stats.endpoints import (
     playercareerstats,
 )
 
+from config import SCRIPTS_DIR
+
 DELAY = 1.5  # seconds between API calls
 
 
@@ -287,10 +289,7 @@ if __name__ == "__main__":
     print_profile(profile)
 
     # Save JSON
-    save_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "comp_stats_output.json",
-    )
+    save_path = SCRIPTS_DIR / "comp_stats_output.json"
     with open(save_path, "w") as f:
         json.dump(profile, f, indent=2, default=str)
     print(f"\nRaw data saved to {save_path}")

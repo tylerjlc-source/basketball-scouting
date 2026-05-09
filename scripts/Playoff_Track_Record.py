@@ -42,6 +42,8 @@ from datetime import date
 from nba_api.stats.static import players as nba_players
 from nba_api.stats.endpoints import playercareerstats
 
+from config import SCRIPTS_DIR
+
 DELAY = 1.5
 
 
@@ -165,10 +167,7 @@ def fmt_signed(val):
 # -- Output --------------------------------------------------------------
 
 def save_output(output):
-    save_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "playoff_track_record_output.json",
-    )
+    save_path = SCRIPTS_DIR / "playoff_track_record_output.json"
     with open(save_path, "w") as f:
         json.dump(output, f, indent=2, default=str)
     print(f"\nRaw data saved to {save_path}")
