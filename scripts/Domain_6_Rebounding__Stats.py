@@ -29,6 +29,7 @@ from nba_api.stats.static import players as nba_players
 # Evaluation window + player ID set by main() via eval_window.determine_evaluation_window
 from eval_window import determine_evaluation_window, format_window
 from config import SCRIPTS_DIR
+from _league_cache import cached_call
 
 PLAYERS = {}  # populated by main() from argparse
 SEASONS = []  # populated by main() from window
@@ -52,53 +53,53 @@ from shared_math import safe_get
 def pull_advanced_stats(season):
     """Pull OREB_PCT, DREB_PCT, REB_PCT from LeagueDashPlayerStats (Advanced)."""
     print(f"  Pulling Advanced stats for {season}...")
-    resp = leaguedashplayerstats.LeagueDashPlayerStats(
+    data = cached_call(
+        leaguedashplayerstats.LeagueDashPlayerStats,
         season=season,
         measure_type_detailed_defense="Advanced",
         per_mode_detailed="PerGame",
         season_type_all_star="Regular Season",
     )
-    time.sleep(DELAY)
-    return resp.get_normalized_dict()["LeagueDashPlayerStats"]
+    return data["LeagueDashPlayerStats"]
 
 
 def pull_base_stats(season):
     """Pull raw OREB, DREB, REB, GP, MIN from LeagueDashPlayerStats (Base)."""
     print(f"  Pulling Base stats for {season}...")
-    resp = leaguedashplayerstats.LeagueDashPlayerStats(
+    data = cached_call(
+        leaguedashplayerstats.LeagueDashPlayerStats,
         season=season,
         measure_type_detailed_defense="Base",
         per_mode_detailed="PerGame",
         season_type_all_star="Regular Season",
     )
-    time.sleep(DELAY)
-    return resp.get_normalized_dict()["LeagueDashPlayerStats"]
+    return data["LeagueDashPlayerStats"]
 
 
 def pull_tracking_rebounding(season):
     """Pull contested/uncontested splits and rebound chances from LeagueDashPtStats (Rebounding)."""
     print(f"  Pulling Tracking Rebounding for {season}...")
-    resp = leaguedashptstats.LeagueDashPtStats(
+    data = cached_call(
+        leaguedashptstats.LeagueDashPtStats,
         season=season,
         pt_measure_type="Rebounding",
         per_mode_simple="PerGame",
         player_or_team="Player",
         season_type_all_star="Regular Season",
     )
-    time.sleep(DELAY)
-    return resp.get_normalized_dict()["LeagueDashPtStats"]
+    return data["LeagueDashPtStats"]
 
 
 def pull_hustle_stats(season):
     """Pull box-out data from LeagueHustleStatsPlayer."""
     print(f"  Pulling Hustle stats for {season}...")
-    resp = leaguehustlestatsplayer.LeagueHustleStatsPlayer(
+    data = cached_call(
+        leaguehustlestatsplayer.LeagueHustleStatsPlayer,
         season=season,
         per_mode_time="PerGame",
         season_type_all_star="Regular Season",
     )
-    time.sleep(DELAY)
-    return resp.get_normalized_dict()["HustleStatsPlayer"]
+    return data["HustleStatsPlayer"]
 
 
 def main():

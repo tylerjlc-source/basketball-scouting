@@ -29,6 +29,7 @@ from nba_api.stats.endpoints import (
     shotchartdetail,
     synergyplaytypes,
 )
+from _league_cache import cached_call_df
 
 # ──────────────────────────────────────────────────────────────────────
 # Evaluation window — set by main() via eval_window.determine_evaluation_window
@@ -86,52 +87,48 @@ def find_player_id(player_name: str) -> dict:
 # ──────────────────────────────────────────────────────────────────────
 
 def get_league_cas(season: str) -> dict:
-    time.sleep(0.6)
     try:
-        s = leaguedashptstats.LeagueDashPtStats(
+        return {"df": cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             pt_measure_type="CatchShoot", season=season,
             per_mode_simple="Totals", player_or_team="Player",
             season_type_all_star="Regular Season",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
 
 def get_league_pullup(season: str) -> dict:
-    time.sleep(0.6)
     try:
-        s = leaguedashptstats.LeagueDashPtStats(
+        return {"df": cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             pt_measure_type="PullUpShot", season=season,
             per_mode_simple="Totals", player_or_team="Player",
             season_type_all_star="Regular Season",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
 
 def get_league_locs(season: str) -> dict:
-    time.sleep(0.6)
     try:
-        l = leaguedashplayershotlocations.LeagueDashPlayerShotLocations(
+        return {"df": cached_call_df(
+            leaguedashplayershotlocations.LeagueDashPlayerShotLocations,
             season=season, per_mode_detailed="Totals",
             season_type_all_star="Regular Season",
-        )
-        return {"df": l.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
 
 def get_league_iso(season: str) -> dict:
-    time.sleep(0.6)
     try:
-        s = synergyplaytypes.SynergyPlayTypes(
+        return {"df": cached_call_df(
+            synergyplaytypes.SynergyPlayTypes,
             play_type_nullable="Isolation", per_mode_simple="Totals",
             season=season, season_type_all_star="Regular Season",
             player_or_team_abbreviation="P", type_grouping_nullable="offensive",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
@@ -145,14 +142,13 @@ def get_league_dd(season: str) -> dict:
     }
     result = {}
     for key, label in buckets.items():
-        time.sleep(0.6)
         try:
-            shots = leaguedashplayerptshot.LeagueDashPlayerPtShot(
+            result[key] = cached_call_df(
+                leaguedashplayerptshot.LeagueDashPlayerPtShot,
                 season=season, per_mode_simple="Totals",
                 season_type_all_star="Regular Season",
                 close_def_dist_range_nullable=label,
             )
-            result[key] = shots.get_data_frames()[0]
         except Exception as e:
             result[key] = {"error": str(e)}
     return result

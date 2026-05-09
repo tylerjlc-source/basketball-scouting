@@ -34,6 +34,7 @@ from nba_api.stats.endpoints import (
     leaguedashplayerstats,
     playercareerstats,
 )
+from _league_cache import cached_call
 
 from config import SCRIPTS_DIR
 
@@ -81,20 +82,15 @@ def find_rookie_season(player_id):
 
 def pull_advanced_stats(player_id, season):
     """Pull Advanced stats from LeagueDashPlayerStats for one season."""
-    time.sleep(DELAY)
-    resp = leaguedashplayerstats.LeagueDashPlayerStats(
+    data = cached_call(
+        leaguedashplayerstats.LeagueDashPlayerStats,
         season=season,
         measure_type_detailed_defense="Advanced",
         per_mode_detailed="PerGame",
     )
-    rows = resp.get_dict()["resultSets"][0]
-    headers = rows["headers"]
-    data = rows["rowSet"]
-
-    for row in data:
-        row_dict = dict(zip(headers, row))
-        if row_dict.get("PLAYER_ID") == player_id:
-            return row_dict
+    for row in data["LeagueDashPlayerStats"]:
+        if row.get("PLAYER_ID") == player_id:
+            return row
     return None
 
 
@@ -102,20 +98,15 @@ def pull_advanced_stats(player_id, season):
 
 def pull_base_stats(player_id, season):
     """Pull Base stats for PPG fallback."""
-    time.sleep(DELAY)
-    resp = leaguedashplayerstats.LeagueDashPlayerStats(
+    data = cached_call(
+        leaguedashplayerstats.LeagueDashPlayerStats,
         season=season,
         measure_type_detailed_defense="Base",
         per_mode_detailed="PerGame",
     )
-    rows = resp.get_dict()["resultSets"][0]
-    headers = rows["headers"]
-    data = rows["rowSet"]
-
-    for row in data:
-        row_dict = dict(zip(headers, row))
-        if row_dict.get("PLAYER_ID") == player_id:
-            return row_dict
+    for row in data["LeagueDashPlayerStats"]:
+        if row.get("PLAYER_ID") == player_id:
+            return row
     return None
 
 
@@ -123,20 +114,15 @@ def pull_base_stats(player_id, season):
 
 def pull_per100_stats(player_id, season):
     """Pull Base/Per100Possessions for STL/100 and BLK/100 (B4 fix)."""
-    time.sleep(DELAY)
-    resp = leaguedashplayerstats.LeagueDashPlayerStats(
+    data = cached_call(
+        leaguedashplayerstats.LeagueDashPlayerStats,
         season=season,
         measure_type_detailed_defense="Base",
         per_mode_detailed="Per100Possessions",
     )
-    rows = resp.get_dict()["resultSets"][0]
-    headers = rows["headers"]
-    data = rows["rowSet"]
-
-    for row in data:
-        row_dict = dict(zip(headers, row))
-        if row_dict.get("PLAYER_ID") == player_id:
-            return row_dict
+    for row in data["LeagueDashPlayerStats"]:
+        if row.get("PLAYER_ID") == player_id:
+            return row
     return None
 
 

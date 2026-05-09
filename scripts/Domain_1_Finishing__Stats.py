@@ -41,6 +41,7 @@ from nba_api.stats.endpoints import (
     leaguedashplayerptshot,
     synergyplaytypes,
 )
+from _league_cache import cached_call_df
 
 # ──────────────────────────────────────────────────────────────────────
 # Evaluation window — set by main() via eval_window.determine_evaluation_window
@@ -223,14 +224,13 @@ def get_career_totals(player_id: int, season: str) -> dict:
 # ──────────────────────────────────────────────────────────────────────
 
 def get_league_drives(season: str) -> dict:
-    time.sleep(0.6)
     try:
-        stats = leaguedashptstats.LeagueDashPtStats(
+        return {"df": cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             pt_measure_type="Drives", season=season,
             per_mode_simple="PerGame", player_or_team="Player",
             season_type_all_star="Regular Season",
-        )
-        return {"df": stats.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
@@ -239,9 +239,11 @@ def get_league_postup(season: str, retries: int = 3) -> dict:
     """SynergyPlayTypes Postup (offensive) — primary signal for sub-domain #3.
     Mirrors Domain 3's Synergy pull pattern (retry with backoff)."""
     for attempt in range(retries):
-        time.sleep(0.6 + attempt * 1.0)
+        if attempt > 0:
+            time.sleep(attempt * 1.0)  # backoff between retries; cache provides initial delay
         try:
-            s = synergyplaytypes.SynergyPlayTypes(
+            df = cached_call_df(
+                synergyplaytypes.SynergyPlayTypes,
                 play_type_nullable="Postup",
                 per_mode_simple="Totals",
                 season=season,
@@ -249,7 +251,6 @@ def get_league_postup(season: str, retries: int = 3) -> dict:
                 player_or_team_abbreviation="P",
                 type_grouping_nullable="offensive",
             )
-            df = s.get_data_frames()[0]
             if not df.empty:
                 return {"df": df}
         except Exception as e:
@@ -268,14 +269,13 @@ def get_league_defender_distance(season: str) -> dict:
     }
     result = {}
     for key, label in buckets.items():
-        time.sleep(0.6)
         try:
-            shots = leaguedashplayerptshot.LeagueDashPlayerPtShot(
+            result[key] = cached_call_df(
+                leaguedashplayerptshot.LeagueDashPlayerPtShot,
                 season=season, per_mode_simple="Totals",
                 season_type_all_star="Regular Season",
                 close_def_dist_range_nullable=label,
             )
-            result[key] = shots.get_data_frames()[0]
         except Exception as e:
             result[key] = {"error": str(e)}
     return result

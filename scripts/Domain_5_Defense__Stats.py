@@ -27,6 +27,7 @@ from nba_api.stats.endpoints import (
 # ── Evaluation window — set by main() via eval_window.determine_evaluation_window ──
 from eval_window import determine_evaluation_window, format_window
 from config import SCRIPTS_DIR
+from _league_cache import cached_call_df
 
 CURRENT_SEASON = None
 PRIOR_SEASON = None  # None triggers single-season path (R12_ANCHOR, OVERRIDE, ROOKIE)
@@ -91,15 +92,14 @@ def pull_pt_defend(season, defense_category="Overall"):
     Categories: Overall, 3 Pointers, 2 Pointers, Less Than 6Ft, Less Than 10Ft, Greater Than 15Ft
     Returns dict keyed by player_id.
     """
-    time.sleep(DELAY)
     try:
-        data = leaguedashptdefend.LeagueDashPtDefend(
+        df = cached_call_df(
+            leaguedashptdefend.LeagueDashPtDefend,
             season=season,
             season_type_all_star="Regular Season",
             defense_category=defense_category,
             per_mode_simple="PerGame",
         )
-        df = data.get_data_frames()[0]
         result = {}
         for _, row in df.iterrows():
             pid = row.get("CLOSE_DEF_PERSON_ID")
@@ -126,14 +126,13 @@ def pull_hustle_stats(season):
     loose balls, box-outs.
     Returns dict keyed by player_id.
     """
-    time.sleep(DELAY)
     try:
-        data = leaguehustlestatsplayer.LeagueHustleStatsPlayer(
+        df = cached_call_df(
+            leaguehustlestatsplayer.LeagueHustleStatsPlayer,
             season=season,
             season_type_all_star="Regular Season",
             per_mode_time="PerGame",
         )
-        df = data.get_data_frames()[0]
         result = {}
         for _, row in df.iterrows():
             pid = row.get("PLAYER_ID")
@@ -165,15 +164,14 @@ def pull_base_stats(season, measure_type="Base"):
     MeasureType: Base or Advanced.
     Returns dict keyed by player_id.
     """
-    time.sleep(DELAY)
     try:
-        data = leaguedashplayerstats.LeagueDashPlayerStats(
+        df = cached_call_df(
+            leaguedashplayerstats.LeagueDashPlayerStats,
             season=season,
             season_type_all_star="Regular Season",
             measure_type_detailed_defense=measure_type,
             per_mode_detailed="PerGame",
         )
-        df = data.get_data_frames()[0]
         result = {}
         for _, row in df.iterrows():
             pid = row.get("PLAYER_ID")
@@ -206,9 +204,9 @@ def pull_synergy_postup_defense(season):
     Pull SynergyPlayTypes for PostUp defense — opponent PPP when this player defends post-ups.
     Returns dict keyed by player_id.
     """
-    time.sleep(DELAY)
     try:
-        data = synergyplaytypes.SynergyPlayTypes(
+        df = cached_call_df(
+            synergyplaytypes.SynergyPlayTypes,
             season=season,
             season_type_all_star="Regular Season",
             play_type_nullable="Postup",
@@ -216,7 +214,6 @@ def pull_synergy_postup_defense(season):
             per_mode_simple="PerGame",
             player_or_team_abbreviation="P",
         )
-        df = data.get_data_frames()[0]
         result = {}
         for _, row in df.iterrows():
             pid = row.get("PLAYER_ID")
@@ -241,9 +238,11 @@ def pull_synergy_iso_defense(season):
     Pull SynergyPlayTypes for Isolation defense — opponent PPP in ISO situations.
     Returns dict keyed by player_id.
     """
-    time.sleep(DELAY + 1.0)  # Extra delay — Synergy defensive endpoints are slow
+    # Cache miss includes a polite delay (cached_call DELAY_SECONDS).
+    # Synergy defensive endpoints are slow — extra wait avoided on cache hit.
     try:
-        data = synergyplaytypes.SynergyPlayTypes(
+        df = cached_call_df(
+            synergyplaytypes.SynergyPlayTypes,
             season=season,
             season_type_all_star="Regular Season",
             play_type_nullable="Isolation",
@@ -251,7 +250,6 @@ def pull_synergy_iso_defense(season):
             per_mode_simple="PerGame",
             player_or_team_abbreviation="P",
         )
-        df = data.get_data_frames()[0]
         result = {}
         for _, row in df.iterrows():
             pid = row.get("PLAYER_ID")

@@ -21,6 +21,7 @@ from nba_api.stats.endpoints import (
     synergyplaytypes,
 )
 from nba_api.stats.static import players
+from _league_cache import cached_call_df
 
 # --- CONFIG ---
 # Evaluation window + player ID set at module load via eval_window.determine_evaluation_window
@@ -96,16 +97,15 @@ passing_data = {}
 
 for label, season in SEASONS.items():
     print(f"\nPulling passing data for {season} ({label})...")
-    time.sleep(1)
     try:
-        resp = leaguedashptstats.LeagueDashPtStats(
+        df = cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             season=season,
             per_mode_simple="PerGame",
             player_or_team="Player",
             pt_measure_type="Passing",
             season_type_all_star="Regular Season",
         )
-        df = resp.get_data_frames()[0]
         for name, pid in PLAYERS.items():
             row = df[df["PLAYER_ID"] == pid]
             if row.empty:
@@ -161,14 +161,13 @@ tov_data = {}
 
 for label, season in SEASONS.items():
     print(f"\nPulling turnover breakdown for {season} ({label})...")
-    time.sleep(1)
     try:
-        resp = leaguedashplayerstats.LeagueDashPlayerStats(
+        df = cached_call_df(
+            leaguedashplayerstats.LeagueDashPlayerStats,
             season=season,
             per_mode_detailed="PerGame",
             season_type_all_star="Regular Season",
         )
-        df = resp.get_data_frames()[0]
         for name, pid in PLAYERS.items():
             row = df[df["PLAYER_ID"] == pid]
             if row.empty:
@@ -193,16 +192,15 @@ for label, season in SEASONS.items():
 print("\nAttempting turnover type breakdown via alternate method...")
 # Try pulling from the general stats with MeasureType='Advanced' or specific endpoint
 for label, season in SEASONS.items():
-    time.sleep(1)
     try:
         # Some versions of nba_api expose this through different measure types
-        resp = leaguedashplayerstats.LeagueDashPlayerStats(
+        df = cached_call_df(
+            leaguedashplayerstats.LeagueDashPlayerStats,
             season=season,
             per_mode_detailed="Totals",
             season_type_all_star="Regular Season",
             measure_type_detailed_defense="Base",
         )
-        df = resp.get_data_frames()[0]
         cols = list(df.columns)
         # Check if turnover breakdown columns exist
         tov_cols = [c for c in cols if "TOV" in c.upper() or "PASS" in c.upper() or "LOST" in c.upper()]
@@ -250,16 +248,15 @@ synergy_data = {}
 for play_type, pt_name in synergy_types.items():
     for label, season in SEASONS.items():
         print(f"\nPulling Synergy {play_type} for {season} ({label})...")
-        time.sleep(1.5)
         try:
-            resp = synergyplaytypes.SynergyPlayTypes(
+            df = cached_call_df(
+                synergyplaytypes.SynergyPlayTypes,
                 season=season,
                 play_type_nullable=pt_name,
                 player_or_team_abbreviation="P",
                 season_type_all_star="Regular Season",
                 type_grouping_nullable="offensive",
             )
-            df = resp.get_data_frames()[0]
             for name, pid in PLAYERS.items():
                 row = df[df["PLAYER_ID"] == pid]
                 if row.empty:
@@ -310,16 +307,15 @@ speed_data = {}
 
 for label, season in SEASONS.items():
     print(f"\nPulling speed/distance data for {season} ({label})...")
-    time.sleep(1)
     try:
-        resp = leaguedashptstats.LeagueDashPtStats(
+        df = cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             season=season,
             per_mode_simple="PerGame",
             player_or_team="Player",
             pt_measure_type="SpeedDistance",
             season_type_all_star="Regular Season",
         )
-        df = resp.get_data_frames()[0]
         for name, pid in PLAYERS.items():
             row = df[df["PLAYER_ID"] == pid]
             if row.empty:

@@ -27,6 +27,7 @@ from nba_api.stats.endpoints import (
     leaguedashplayerstats,
     synergyplaytypes,
 )
+from _league_cache import cached_call_df
 
 # ──────────────────────────────────────────────────────────────────────
 # Evaluation window — set by main() via eval_window.determine_evaluation_window
@@ -111,9 +112,11 @@ def find_player_id(name: str) -> dict:
 def get_synergy_play_type(play_type: str, season: str, retries: int = 3) -> dict:
     """Pull a Synergy play type for all players. Retry on failure."""
     for attempt in range(retries):
-        time.sleep(DELAY + attempt * 1.0)  # Increasing backoff
+        if attempt > 0:
+            time.sleep(attempt * 1.0)  # Increasing backoff between retries (cache provides initial delay)
         try:
-            s = synergyplaytypes.SynergyPlayTypes(
+            df = cached_call_df(
+                synergyplaytypes.SynergyPlayTypes,
                 play_type_nullable=play_type,
                 per_mode_simple="Totals",
                 season=season,
@@ -121,7 +124,6 @@ def get_synergy_play_type(play_type: str, season: str, retries: int = 3) -> dict
                 player_or_team_abbreviation="P",
                 type_grouping_nullable="offensive",
             )
-            df = s.get_data_frames()[0]
             if not df.empty:
                 return {"df": df}
         except Exception as e:
@@ -154,16 +156,15 @@ def extract_synergy(result: dict, pid: int) -> dict:
 # ──────────────────────────────────────────────────────────────────────
 
 def get_league_possessions(season: str) -> dict:
-    time.sleep(DELAY)
     try:
-        s = leaguedashptstats.LeagueDashPtStats(
+        return {"df": cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             pt_measure_type="Possessions",
             season=season,
             per_mode_simple="PerGame",
             player_or_team="Player",
             season_type_all_star="Regular Season",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
@@ -193,16 +194,15 @@ def extract_possessions(result: dict, pid: int) -> dict:
 # ──────────────────────────────────────────────────────────────────────
 
 def get_league_drives(season: str) -> dict:
-    time.sleep(DELAY)
     try:
-        s = leaguedashptstats.LeagueDashPtStats(
+        return {"df": cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             pt_measure_type="Drives",
             season=season,
             per_mode_simple="PerGame",
             player_or_team="Player",
             season_type_all_star="Regular Season",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
@@ -281,28 +281,26 @@ def get_floater_data(player_id: int, season: str) -> dict:
 # ──────────────────────────────────────────────────────────────────────
 
 def get_league_advanced(season: str) -> dict:
-    time.sleep(DELAY)
     try:
-        s = leaguedashplayerstats.LeagueDashPlayerStats(
+        return {"df": cached_call_df(
+            leaguedashplayerstats.LeagueDashPlayerStats,
             season=season,
             per_mode_detailed="Totals",
             measure_type_detailed_defense="Advanced",
             season_type_all_star="Regular Season",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 
 
 def get_league_base(season: str) -> dict:
-    time.sleep(DELAY)
     try:
-        s = leaguedashplayerstats.LeagueDashPlayerStats(
+        return {"df": cached_call_df(
+            leaguedashplayerstats.LeagueDashPlayerStats,
             season=season,
             per_mode_detailed="Totals",
             season_type_all_star="Regular Season",
-        )
-        return {"df": s.get_data_frames()[0]}
+        )}
     except Exception as e:
         return {"error": str(e)}
 

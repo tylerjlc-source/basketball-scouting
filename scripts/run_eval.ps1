@@ -10,6 +10,7 @@
 #   .\scripts\run_eval.ps1 "Player Name" -Comp           # also run NBA_Comp_Stats
 #   .\scripts\run_eval.ps1 "Player Name" -Playoff        # also run Playoff_Track_Record
 #   .\scripts\run_eval.ps1 "Player Name" -Comp -Playoff  # run everything
+#   .\scripts\run_eval.ps1 "Player Name" -NoCache        # bypass the league-stats cache
 #
 # This script is the data-collection layer ONLY. It does not interpret output,
 # score sub-domains, or write to raw/ -- that's Skill 1's job downstream.
@@ -23,12 +24,18 @@ param(
     [string]$Player,
 
     [switch]$Comp,
-    [switch]$Playoff
+    [switch]$Playoff,
+    [switch]$NoCache
 )
 
 $ErrorActionPreference = 'Continue'
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $startTime = Get-Date
+
+if ($NoCache) {
+    $env:BBSCOUT_NO_CACHE = '1'
+    Write-Host "  (BBSCOUT_NO_CACHE=1 -- bypassing league-stats cache for this run)" -ForegroundColor Yellow
+}
 
 # (script-file, output-json) pairs. The seven domain scripts always run.
 $domainJobs = @(

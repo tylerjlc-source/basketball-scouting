@@ -26,6 +26,7 @@ from nba_api.stats.endpoints import (
     leaguedashptstats,
 )
 from nba_api.stats.static import players as nba_players
+from _league_cache import cached_call_df
 
 # === CONFIGURATION ===
 
@@ -91,15 +92,14 @@ def weighted_avg(current, prior, stat_key):
 def pull_defender_distance_league(season, band):
     """Pull LeagueDashPlayerPtShot for one defender band / one season.
     Returns full dataframe for all players."""
-    time.sleep(SLEEP)
     try:
-        resp = leaguedashplayerptshot.LeagueDashPlayerPtShot(
+        return cached_call_df(
+            leaguedashplayerptshot.LeagueDashPlayerPtShot,
             season=season,
             season_type_all_star="Regular Season",
             per_mode_simple="Totals",
             close_def_dist_range_nullable=band,
         )
-        return resp.get_data_frames()[0]
     except Exception as e:
         print(f"    ERROR pulling defender distance {band} for {season}: {e}")
         return None
@@ -129,15 +129,16 @@ def extract_dd_player(df, player_id):
 
 def pull_shot_clock_league(season, sc_range):
     """Pull LeagueDashPlayerPtShot for one shot clock range / one season."""
-    time.sleep(SLEEP + 2.0)  # Extra delay — shot clock queries are slow
+    # Cache miss includes a polite delay; shot clock queries are slow but
+    # cache hits skip the wait entirely.
     try:
-        resp = leaguedashplayerptshot.LeagueDashPlayerPtShot(
+        return cached_call_df(
+            leaguedashplayerptshot.LeagueDashPlayerPtShot,
             season=season,
             season_type_all_star="Regular Season",
             per_mode_simple="Totals",
             shot_clock_range_nullable=sc_range,
         )
-        return resp.get_data_frames()[0]
     except Exception as e:
         print(f"    ERROR pulling shot clock {sc_range} for {season}: {e}")
         return None
@@ -164,9 +165,9 @@ def extract_sc_player(df, player_id):
 
 def pull_clutch_stats(season):
     """Pull clutch stats (last 5 min, within 5 pts) for all players."""
-    time.sleep(SLEEP)
     try:
-        resp = leaguedashplayerclutch.LeagueDashPlayerClutch(
+        df = cached_call_df(
+            leaguedashplayerclutch.LeagueDashPlayerClutch,
             season=season,
             season_type_all_star="Regular Season",
             per_mode_detailed="PerGame",
@@ -174,7 +175,6 @@ def pull_clutch_stats(season):
             ahead_behind="Ahead or Behind",
             point_diff=5,
         )
-        df = resp.get_data_frames()[0]
         results = {}
         for _, row in df.iterrows():
             pid = row.get("PLAYER_ID")
@@ -208,16 +208,15 @@ def pull_clutch_stats(season):
 
 def pull_speed_distance(season):
     """Pull speed and distance data for all players."""
-    time.sleep(SLEEP)
     try:
-        resp = leaguedashptstats.LeagueDashPtStats(
+        df = cached_call_df(
+            leaguedashptstats.LeagueDashPtStats,
             season=season,
             season_type_all_star="Regular Season",
             per_mode_simple="PerGame",
             pt_measure_type="SpeedDistance",
             player_or_team="Player",
         )
-        df = resp.get_data_frames()[0]
         results = {}
         for _, row in df.iterrows():
             pid = row.get("PLAYER_ID")
