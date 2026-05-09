@@ -30,8 +30,13 @@ W_PRIOR_DEFAULT = 0.40
 # ──────────────────────────────────────────────────────────────────────
 
 def _is_missing(value):
-    """True if `value` represents 'no prior-season data' for weighting purposes."""
-    return value is None or value == "N/A" or value == 0
+    """
+    True if `value` represents 'no prior-season data' for weighting purposes.
+    Matches the strictest existing convention (Domain_1): only None and the
+    literal string "N/A" are treated as missing. A numeric 0 is real data —
+    the volume-weighting math handles it correctly without a sentinel branch.
+    """
+    return value is None or value == "N/A"
 
 
 # ──────────────────────────────────────────────────────────────────────
