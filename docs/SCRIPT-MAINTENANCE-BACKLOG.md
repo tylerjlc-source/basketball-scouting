@@ -36,24 +36,6 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ---
 
-### B10 — Domain 1 #3 Post Offense unimplemented despite SCRIPT-REGISTRY and SUB-DOMAIN-SOURCE-MAP coverage claims
-**Script:** `scripts/Domain_1_Finishing__Stats.py`
-**Symptom:** Domain 1 script never queries SynergyPlayTypes; output JSON contains only `subdomain_1_at_basket_finishing` and `subdomain_2_contact_finishing`; `print_comparison` renders #1 and #2 only. Two reference docs originally claimed automated coverage:
-- SCRIPT-REGISTRY.md Domain 1 row listed "#3 Post offense" with "post-up PPP (SynergyPlayTypes)" as a key endpoint (corrected S117 — row trimmed to #1 + #2; web-search-only note added under domain script table).
-- SUB-DOMAIN-SOURCE-MAP_v1.md #3 Block A line 199 listed NBA post-up PPP "🟢 Automated" via nba_api; Block B Priority 1 line 212 listed post touch frequency "🟢 NBA" via nba_api Player Tracking; Block E line 246 confidence ladder listed "Post-up PPP from nba_api" as a High-tier requirement (corrected S117 — line 199 → manual public-web lookup; line 212 → manual public-web lookup; line 246 kept aspirational with parenthetical pointer to this entry).
-**Trigger:** Persistent — affected every Domain 1 run since the script existed.
-**Tell:** grep `Domain_1_Finishing__Stats.py` for "SynergyPlayTypes" or "post" — no matches. Output JSON missing `subdomain_3_post_offense` key.
-**Workaround:** #3 sourced via web search at all competition levels (NBA included — NBA.com Play Type pages, Synergy data cited in scouting reports, EvanMiya role/assist signals at college). Same workflow path as Domain 7 athleticism.
-**Applications:** Persistent across all NBA evaluations since the Domain 1 script existed. No realized scoring friction observed (qualitative web search has covered the gap), but documentation drift gave scorers a false sense of automated coverage across two reference docs.
-**Residual drift retained S117:** SUB-DOMAIN-SOURCE-MAP_v1.md line 213 ("Assist rate in half-court settings | EvanMiya assist rate + role metric (college) / nba_api (NBA) | 🟢 NBA / 🟡 College manual") was retained as defensible — NBA assist rate IS captured by Domain 4, though the "half-court settings" qualifier is not script-scoped. Logged here for future review when this entry is revisited.
-**Fix priority:** Medium (S117 promotion — doc-fidelity drift propagated across two reference docs constitutes a P3-flavored architectural concern; runtime impact remains low because qualitative workaround is reliable).
-**Remediation paths:**
-- **Option A — Documentation patches (applied S117):** SCRIPT-REGISTRY + SUB-DOMAIN-SOURCE-MAP corrected. Doc-vs-implementation alignment restored.
-- **Option B — Script implementation (deferred):** Add SynergyPlayTypes post-up PPP query as third sub-domain block in `Domain_1_Finishing__Stats.py`. Pattern established (Domain 3 already uses SynergyPlayTypes for ISO PPP). Effort: medium.
-**Status:** Open (Option A complete S117; Option B pending).
-
----
-
 ### B2 — `eval_window.py` fragment-mislabel variant
 **Script:** `scripts/eval_window.py`
 **Symptom:** Healthy 70+ GP seasons labeled "fragment" despite clearly meeting R12 ≥58-GP eligibility floor.
@@ -104,6 +86,15 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## RESOLVED
 
+### B10 — Domain 1 #3 Post Offense unimplemented (resolved 2026-05-09)
+**Script:** `scripts/Domain_1_Finishing__Stats.py`
+**Original symptom:** Domain 1 had only sub-domains #1 and #2; no SynergyPlayTypes Postup query existed. Two reference docs had originally claimed automated coverage; S117 walked the docs back to web-search-only as Option A. Option B (script implementation) was deferred.
+**Fix (Option B):** Added `get_league_postup(season)` (SynergyPlayTypes Postup, offensive, 3-retry backoff mirroring Domain 3) and `extract_postup(result, pid)` extractor. Wired both into `pull_finishing_profile_2season` and the `__main__` orchestration. Profile dict now includes `subdomain_3_post_offense` with weighted post-up PPP, possessions, FG%, and percentile. `print_comparison` renders the new sub-domain. `synergyplaytypes` added to imports.
+**Doc updates:**
+- `SCRIPT-REGISTRY.md` Domain 1 row now lists #3; the "Note on Sub-Domain #3" reverted from web-search-only to "NBA automated; college / HS still manual."
+- `SUB-DOMAIN-SOURCE-MAP_v1.md` §3 Block A line 199 (NBA PPP) and Block B Priority 1 (post touch freq) flipped to 🟢 Automated; Block E High-confidence row dropped the "aspirational" parenthetical.
+**Verification:** Live run on Jokić 2024-25 produced post-up PPP weighted = 1.108 — matches the documented 1.09 anchor in `SUB-DOMAIN-SOURCE-MAP_v1.md` line 257 (Jokić, "1.09 PPP on post-ups"). Possessions = 436 weighted, FG% = 59.1%, percentile = 77.7%.
+
 ### B1 — `eval_window.py` GP aggregation TOT-row double-count (resolved 2026-05-09)
 **Script:** `scripts/eval_window.py`
 **Original symptom:** Reported inflated GP counts (108, 122, 128, 100) for traded-player seasons due to summing per-team rows AND the season-aggregate TOT row.
@@ -132,6 +123,7 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## CHANGE LOG
 
+- **2026-05-09** — B10 Option B resolved. Domain 1 now pulls SynergyPlayTypes Postup (offensive) league-wide per season and renders sub-domain #3 (post-up PPP / poss / FG% / percentile) in both the JSON profile and the print_comparison summary. SCRIPT-REGISTRY.md and SUB-DOMAIN-SOURCE-MAP_v1.md flipped from manual / aspirational to automated for NBA-level coverage. College/HS coverage stays web-search-only. Live-verified on Jokić 2024-25 (post-up PPP weighted 1.108, matching the documented 1.09 career anchor).
 - **2026-05-09** — B1 resolved. `eval_window.py fetch_career_seasons` now prefers the TOT row (when traded mid-season) and falls back to the single team row otherwise — same pattern as Playoff_Track_Record's S95-F07 fix. Eliminates the per-team + TOT double-count that produced 100/122/128 GP totals. All 5 R12 validation cases still pass; live-verified on Doncic 2024-25 (50 GP, was 100).
 - **2026-05-09** — B9 resolved. `Domain_8_IQ_Motor__Stats.py weighted_avg` now falls back to current-only when prior is empty/missing, matching Domain 1's `stat_block` behavior. Eliminates silent ~60%-of-truth miscalibration on prior-season endpoint timeouts. Verified via 6-case synthetic-input test.
 - **2026-05-09** — B4 resolved. `NBA_Comp_Stats.py` switched STL/BLK source from missing Advanced columns to `Base/Per100Possessions`; switched TOV source to `E_TOV_PCT` (also missing as `TOV_PCT`). Output fields renamed `stl_pct`/`blk_pct` → `stl_per_100`/`blk_per_100`. `NBA-COMP-METHODOLOGY.md` §A.2 tolerance-band table updated to match (±0.5 STL/100, ±1.0 BLK/100; per-100 and STL%/BLK% are >0.9 correlated, so the substitution is cosmetic). Live-verified on Wemby 2024-25.

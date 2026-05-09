@@ -196,7 +196,7 @@ Practical note: Any college prospect with Hoop-Math FTR + Basketball-Reference F
 
 | Level | Stat | Source | Access |
 |---|---|---|---|
-| NBA | Points per post-up possession (PPP) | NBA.com Play Type page (Synergy) / scouting reports | 🟡 Manual — public web lookup. Domain 1 script does not currently capture this; see [SCRIPT-MAINTENANCE-BACKLOG.md](SCRIPT-MAINTENANCE-BACKLOG.md) B10. |
+| NBA | Points per post-up possession (PPP) | SynergyPlayTypes Postup (offensive) via nba_api | 🟢 Automated — Domain 1 captures this as `subdomain_3_post_offense.post_ppp` (B10 Option B, 2026-05-09). |
 | College | Post-up PPP / post-up percentile | Synergy data cited in scouting reports | 🟡 Manual — capture from published prospect write-ups during web search |
 | College (fallback) | Usage profile + assist rate from non-guard | EvanMiya (role metric, assist rate) | 🟡 Manual lookup |
 | International | Post touch frequency from FIBA PBP where available | FIBA box scores via web search | 🟡 Manual per player |
@@ -209,7 +209,7 @@ Practical note: Any college prospect with Hoop-Math FTR + Basketball-Reference F
 
 | Priority | Stat | Source | Access | What it adds |
 |---|---|---|---|---|
-| 1 | Post touch frequency | NBA.com Play Type page (Synergy) — post-up possessions | 🟡 NBA manual / 🔴 College | Establishes whether the player has a post role at all. Without touches, efficiency is meaningless. Domain 1 script does not currently capture this — public-web lookup until script implementation lands (see [SCRIPT-MAINTENANCE-BACKLOG.md](SCRIPT-MAINTENANCE-BACKLOG.md) B10). At college, inferred from scouting language and role description. |
+| 1 | Post touch frequency | SynergyPlayTypes Postup possessions via nba_api | 🟢 NBA automated / 🔴 College | Establishes whether the player has a post role at all. Without touches, efficiency is meaningless. Domain 1 captures NBA post-up possessions as `subdomain_3_post_offense.post_poss` (B10 Option B, 2026-05-09). At college, still inferred from scouting language and role description. |
 | 2 | Assist rate in half-court settings | EvanMiya assist rate + role metric (college) / nba_api (NBA) | 🟢 NBA / 🟡 College manual | High assist rate from a non-guard in half-court settings is a proxy for post playmaking — the Jokić/Draymond dimension. EvanMiya's role metric (1-5 creator/receiver scale) helps calibrate this. |
 | 3 | EvanMiya BPR / OBPR | EvanMiya | 🟡 Manual lookup | Overall offensive value as cross-validation. A player with high OBPR and no documented post role is contributing from somewhere other than the post — helps confirm baseline score. |
 | 4 | Footwork variety / counter usage | Scouting reports only | 🟢 Web search | How many distinct post moves does the player show? Drop step, up-and-under, jump hook, spin — each counter expands the scoring envelope. No stat captures this. Always qualitative. |
@@ -243,7 +243,7 @@ N/A for NBA-level evaluation.
 
 | Confidence | Required inputs | R4 interval |
 |---|---|---|
-| High | Post-up PPP from nba_api (aspirational — once Domain 1 implements SynergyPlayTypes post-up; see [SCRIPT-MAINTENANCE-BACKLOG.md](SCRIPT-MAINTENANCE-BACKLOG.md) B10) OR Synergy percentile from published source + post touch frequency + at least one of: assist rate from post, footwork variety from qualitative | ±0.5 |
+| High | Post-up PPP from nba_api (Domain 1 `subdomain_3_post_offense`, B10 Option B) OR Synergy percentile from published source + post touch frequency + at least one of: assist rate from post, footwork variety from qualitative | ±0.5 |
 | Medium | Synergy percentile from published report + one secondary OR EvanMiya role/assist data + converging qualitative sources | ±1.0 |
 | Low | Single qualitative source describing post role OR inferred from EvanMiya role metric only | ±1.5 |
 | Very Low | Inferred from physical profile only — no post usage documented at any level | ±2.0 |

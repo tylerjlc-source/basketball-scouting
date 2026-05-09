@@ -23,7 +23,7 @@
 
 | Script | Path | Sub-domains fed | Key endpoints (nba_api) |
 |---|---|---|---|
-| Domain_1_Finishing_Stats | /mnt/project/Domain_1_Finishing__Stats.py | #1 At-basket finishing, #2 Contact finishing / foul draw | Restricted area FG% (nba_api), FTR, drive data (LeagueDashPtStats) |
+| Domain_1_Finishing_Stats | /mnt/project/Domain_1_Finishing__Stats.py | #1 At-basket finishing, #2 Contact finishing / foul draw, #3 Post offense | Restricted area FG% (nba_api), FTR, drive data (LeagueDashPtStats), post-up PPP + possessions + FG% + percentile (SynergyPlayTypes Postup, offensive) |
 | Domain_2_Shooting_Stats | /mnt/project/Domain_2_Shooting__Stats.py | #4 CAS 3PT, #5 Off-dribble shooting, #6 Mid-range, #7 Free throw | CAS 3PT% (LeagueDashPtStats CatchShoot), pull-up splits (LeagueDashPtStats PullUpShot), ShotChartDetail zone splits, mid-range FG% (LeagueDashPlayerShotLocations), FT% career + current (PlayerCareerStats) |
 | Domain_3_Ball_Skills_Stats | /mnt/project/Domain_3_Ball_Skills__Stats.py | #8 Handling / creation, #9 Touch / feel, #10 Ball security | ISO PPP + PnR BH PPP (SynergyPlayTypes), drives/game (LeagueDashPtStats Drives), TOV/touch (LeagueDashPtStats Possessions), floater-range FG% (ShotChartDetail 4-14ft), non-dunk rim FG%, handoff PPP (SynergyPlayTypes) |
 | Domain_4_Playmaking_Stats | /mnt/project/Domain_4_Playmaking__Stats.py | #11 Court vision, #12 Decision-making, #13 Passing execution, #14 Off-ball movement | Potential assists + secondary assists + FT assists (LeagueDashPtStats Passing), bad pass TOV + lost ball TOV (LeagueDashPlayerStats), transition PPP (SynergyPlayTypes), cut + off-screen PPP (SynergyPlayTypes), avg offensive speed (LeagueDashPtStats SpeedDistance) |
@@ -31,7 +31,7 @@
 | Domain_6_Rebounding_Stats | /mnt/project/Domain_6_Rebounding__Stats.py | #19 Offensive rebounding, #20 Defensive rebounding | OREB% + DREB% (LeagueDashPlayerStats Advanced), contested/uncontested splits + chances + conversion % (LeagueDashPtStats Rebounding), box-outs off + def (LeagueHustleStatsPlayer) |
 | Domain_8_IQ_Motor_Stats | /mnt/project/Domain_8_IQ_Motor__Stats.py | #24 Shot selection, #25 Effort / motor, #26 Competitive character | Defender distance distribution (LeagueDashPtShots), shot zone distribution (ShotChartDetail), clutch stats (LeagueDashPlayerClutch), hustle stats full suite (LeagueHustleStatsPlayer) |
 
-**Note on Sub-Domain #3 Post Offense:** Not currently produced by any script. Sourced via web search at all competition levels (NBA.com Play Type pages, Synergy data cited in scouting reports, EvanMiya role/assist signals for college). Same workflow path as Domain 7 athleticism. Script implementation (a SynergyPlayTypes post-up PPP query in Domain 1) is tracked under [SCRIPT-MAINTENANCE-BACKLOG.md](SCRIPT-MAINTENANCE-BACKLOG.md) B10.
+**Note on Sub-Domain #3 Post Offense:** NBA-level coverage now produced by Domain 1's SynergyPlayTypes Postup query (B10 Option B, 2026-05-09). College / high-school coverage still web-search-only — Synergy data cited in scouting reports remains the best signal there. See SUB-DOMAIN-SOURCE-MAP_v1.md §3 for the full source map.
 
 ---
 

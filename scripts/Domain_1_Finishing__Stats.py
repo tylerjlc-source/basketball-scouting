@@ -18,6 +18,12 @@ Sub-Domain #2 — Contact Finishing / Foul Drawing:
   - FT% (secondary #1)
   - Drive data (secondary #2 — drives/game, drive FG%, drive PTS)
   - Paint (non-RA) FG% (secondary #3)
+
+Sub-Domain #3 — Post Offense (B10 fix):
+  - Post-up PPP (primary — SynergyPlayTypes Postup, offensive)
+  - Post-up possessions (volume / qualifying signal)
+  - Post-up FG% (secondary)
+  - Post-up percentile vs league (context)
 """
 
 import json
@@ -33,6 +39,7 @@ from nba_api.stats.endpoints import (
     playerdashboardbyshootingsplits,
     leaguedashptstats,
     leaguedashplayerptshot,
+    synergyplaytypes,
 )
 
 # ──────────────────────────────────────────────────────────────────────
@@ -228,6 +235,30 @@ def get_league_drives(season: str) -> dict:
         return {"error": str(e)}
 
 
+def get_league_postup(season: str, retries: int = 3) -> dict:
+    """SynergyPlayTypes Postup (offensive) — primary signal for sub-domain #3.
+    Mirrors Domain 3's Synergy pull pattern (retry with backoff)."""
+    for attempt in range(retries):
+        time.sleep(0.6 + attempt * 1.0)
+        try:
+            s = synergyplaytypes.SynergyPlayTypes(
+                play_type_nullable="Postup",
+                per_mode_simple="Totals",
+                season=season,
+                season_type_all_star="Regular Season",
+                player_or_team_abbreviation="P",
+                type_grouping_nullable="offensive",
+            )
+            df = s.get_data_frames()[0]
+            if not df.empty:
+                return {"df": df}
+        except Exception as e:
+            if attempt == retries - 1:
+                return {"error": str(e)}
+            print(f"    Synergy Postup {season} attempt {attempt+1} failed, retrying...")
+    return {"error": "Max retries exceeded"}
+
+
 def get_league_defender_distance(season: str) -> dict:
     buckets = {
         "very_tight_0_2": "0-2 Feet - Very Tight",
@@ -273,6 +304,27 @@ def extract_drives(drives_result: dict, player_id: int) -> dict:
     }
 
 
+def extract_postup(postup_result: dict, player_id: int) -> dict:
+    """Pull this player's row from a Synergy Postup result."""
+    if not postup_result or "error" in postup_result:
+        return None
+    df = postup_result.get("df")
+    if df is None:
+        return None
+    row = df[df["PLAYER_ID"] == player_id]
+    if row.empty:
+        return None
+    r = row.iloc[0]
+    poss = int(r.get("POSS", 0) or 0)
+    return {
+        "poss": poss,
+        "ppp": round(float(r.get("PPP", 0) or 0), 3),
+        "fg_pct": round(float(r.get("FG_PCT", 0) or 0), 3),
+        "percentile": round(float(r.get("PERCENTILE", 0) or 0), 3),
+        "poss_pct": round(float(r.get("POSS_PCT", 0) or 0), 3),
+    }
+
+
 def extract_defender(dd_result: dict, player_id: int) -> dict:
     output = {}
     for key, data in dd_result.items():
@@ -303,6 +355,7 @@ def pull_finishing_profile_2season(
     pri_season: str,
     drives_cur: dict, drives_pri: dict,
     dd_cur: dict, dd_pri: dict,
+    postup_cur: dict, postup_pri: dict,
 ) -> dict:
     print(f"\n{'='*60}")
     print(f"Pulling finishing data: {player_name}")
@@ -338,11 +391,13 @@ def pull_finishing_profile_2season(
         career_pri = get_career_totals(pid, pri_season)
 
     # ── League-wide extractions ──
-    print("  Extracting drive + defender data...")
+    print("  Extracting drive + defender + post-up data...")
     drv_cur = extract_drives(drives_cur, pid)
     drv_pri = extract_drives(drives_pri, pid)
     def_cur = extract_defender(dd_cur, pid)
     def_pri = extract_defender(dd_pri, pid)
+    pup_cur = extract_postup(postup_cur, pid)
+    pup_pri = extract_postup(postup_pri, pid)
 
     # ── Helper to safely get nested values ──
     def _g(d, *keys, default=0):
@@ -492,6 +547,28 @@ def pull_finishing_profile_2season(
             },
             "paint_non_ra_fg_pct": paint_fg,
         },
+        "subdomain_3_post_offense": {
+            "post_ppp": stat_block(
+                _g(pup_cur, "ppp") or 0,
+                _g(pup_pri, "ppp"),
+                is_rate=True,
+            ),
+            "post_poss": stat_block(
+                _g(pup_cur, "poss") or 0,
+                _g(pup_pri, "poss"),
+            ),
+            "post_fg_pct": stat_block(
+                _g(pup_cur, "fg_pct") or 0,
+                _g(pup_pri, "fg_pct"),
+                _g(pup_cur, "poss") or 0,
+                _g(pup_pri, "poss"),
+            ),
+            "post_percentile": stat_block(
+                _g(pup_cur, "percentile") or 0,
+                _g(pup_pri, "percentile"),
+                is_rate=True,
+            ),
+        },
     }
     return profile
 
@@ -556,6 +633,20 @@ def print_comparison(profiles: list):
     row("Drive PPP (weighted)", s2 + ["drives", "drive_ppp"], "weighted")
     row("Paint non-RA FG% (weighted)", s2 + ["paint_non_ra_fg_pct"], "weighted", True)
 
+    s3 = ["subdomain_3_post_offense"]
+    print(f"\n{'='*100}")
+    print("SUB-DOMAIN #3: POST OFFENSE (2-season 60/40)")
+    print(f"{'='*100}")
+    print(header)
+    print("-" * 100)
+
+    row("Post-up PPP (weighted)", s3 + ["post_ppp"], "weighted")
+    row("  current", s3 + ["post_ppp"], "current")
+    row("  prior", s3 + ["post_ppp"], "prior")
+    row("Post-up Poss (weighted)", s3 + ["post_poss"], "weighted")
+    row("Post-up FG% (weighted)", s3 + ["post_fg_pct"], "weighted", True)
+    row("Post-up Pctile (weighted)", s3 + ["post_percentile"], "weighted", True)
+
     print(f"\n{'='*100}")
 
 
@@ -595,21 +686,25 @@ if __name__ == "__main__":
     print(f"Pulling league-wide data for {CURRENT_SEASON}...")
     drives_cur = get_league_drives(CURRENT_SEASON)
     dd_cur = get_league_defender_distance(CURRENT_SEASON)
+    postup_cur = get_league_postup(CURRENT_SEASON)
 
     if PRIOR_SEASON:
         print(f"Pulling league-wide data for {PRIOR_SEASON}...")
         drives_pri = get_league_drives(PRIOR_SEASON)
         dd_pri = get_league_defender_distance(PRIOR_SEASON)
+        postup_pri = get_league_postup(PRIOR_SEASON)
     else:
         drives_pri = {"error": "single-season mode"}
         dd_pri = {k: {"error": "single-season mode"} for k in [
             "very_tight_0_2", "tight_2_4", "open_4_6", "wide_open_6plus"]}
+        postup_pri = {"error": "single-season mode"}
 
     profiles = []
     try:
         profile = pull_finishing_profile_2season(
             args.player, CURRENT_SEASON, PRIOR_SEASON,
             drives_cur, drives_pri, dd_cur, dd_pri,
+            postup_cur, postup_pri,
         )
         profile["evaluation_window"] = {
             "mode": window.mode,
