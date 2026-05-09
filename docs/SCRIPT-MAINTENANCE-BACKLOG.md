@@ -14,17 +14,6 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## OPEN BUGS
 
-### B3 — `Playoff_Track_Record.py` classification-hint mislabeling
-**Script:** `scripts/Playoff_Track_Record.py`
-**Symptom:** Classification hints for TS% delta produce wrong direction (Anderson −0.8 labeled "moderate statistical rise") or wrong magnitude without the R13 strong-vs-moderate AND-qualitative requirement (Mobley +0.5 labeled "moderate statistical rise" despite thin magnitude that should map to Neutral).
-**Trigger:** Script generates strong/moderate/rise/shrink/neutral hints from stat sign + magnitude alone, missing R13's qualitative AND-rule and convergence-gate logic.
-**Workaround:** When classification hint conflicts with stat sign, magnitude, or R13 AND-qualitative requirement, apply R13 classification manually per SCORING-RULES.md R13.
-**Applications:** 6 (Anderson S100 wrong direction; Mobley S102 thin magnitude assertive; Naz Reid S104 boundary too assertive; Turner S107; Tatum S108; Embiid S110 career delta −3.6 labeled "moderate statistical shrink").
-**Fix priority:** Medium (consistent mislabeling; fix would require encoding R13 AND-rule + convergence-gate logic in script — non-trivial; convergence-gate now explicit in SCORING-RULES.md R13 per S114 promotion).
-**Status:** Open.
-
----
-
 ### B7 — Domain 5/6/8 partial endpoint timeouts on 2025-26 single-season runs
 **Scripts:** `scripts/Domain_5_Defense__Stats.py`, `scripts/Domain_6_Rebounding__Stats.py`, `scripts/Domain_8_IQ_Motor__Stats.py`
 **Symptom:** Various endpoints return partial data or timeout on 2025-26 single-season runs (D5 LeagueDashPtDefend partial; D6 Tracking Rebounding 2025-26; D8 distance bands + shot clock 2025-26).
@@ -86,6 +75,16 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## RESOLVED
 
+### B3 — `Playoff_Track_Record.py` classification-hint mislabeling (resolved 2026-05-09)
+**Script:** `scripts/Playoff_Track_Record.py`
+**Original symptom:** `classify_delta` returned a single label asserted from stat sign + magnitude alone, missing R13's AND/OR-qualitative rules and the Stage 2 convergence-gate. Anderson −0.8 was labeled "moderate statistical rise" (wrong direction); Mobley +0.5 was labeled "moderate rise" despite a magnitude too thin for any Stage 2 modifier; Embiid career −3.6 was labeled "moderate shrink" without flagging the AND-rule.
+**Fix:** Rewrote `classify_delta` to return a `(label, modifier_eligibility)` tuple. Label now spells out direction (rise / shrink / neutral) + magnitude (near-baseline / moderate / strong) + the Stage 2 modifier the stat side could *enable* with qualitative convergence (e.g. moderate shrink −0.20 with qual OR-rule, strong shrink −0.40 with qual AND-rule). Near-baseline range (delta in (−1, +1)) explicitly flagged as "convergence-gate likely fails." Script never asserts a final R13 classification — that requires qualitative-side review the script can't see. New `stage2_modifier_eligibility` field added to JSON output.
+**Verification:** 11-case synthetic test covering all R13 thresholds plus the three documented backlog reproductions:
+  - Anderson −0.8 → "near-baseline shrink, magnitude too thin for Stage 2 modifier" (was: "moderate statistical rise")
+  - Mobley +0.5 → "near-baseline rise, magnitude too thin for Stage 2 modifier" (was: "moderate statistical rise")
+  - Embiid career delta → live run on Embiid produces "shrink (delta −4.1) — eligible for moderate shrink (−0.20) with qualitative convergence; strong shrink (−0.40) requires qualitative AND-rule"
+**Original applications count:** 6 (Anderson S100, Mobley S102, Naz Reid S104, Turner S107, Tatum S108, Embiid S110).
+
 ### B10 — Domain 1 #3 Post Offense unimplemented (resolved 2026-05-09)
 **Script:** `scripts/Domain_1_Finishing__Stats.py`
 **Original symptom:** Domain 1 had only sub-domains #1 and #2; no SynergyPlayTypes Postup query existed. Two reference docs had originally claimed automated coverage; S117 walked the docs back to web-search-only as Option A. Option B (script implementation) was deferred.
@@ -123,6 +122,7 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## CHANGE LOG
 
+- **2026-05-09** — B3 resolved. `Playoff_Track_Record.classify_delta` rewritten to return `(label, stage2_modifier_eligibility)` tuple. Eliminates the wrong-direction labels (e.g. Anderson −0.8 "moderate rise") and the asserted-strong-without-qualitative labels (e.g. Mobley +0.5 "moderate rise"). Near-baseline range explicitly flagged for likely convergence-gate fail. Output JSON gains `stage2_modifier_eligibility` field. Script never asserts a final R13 classification — qualitative-side review required per R13 Stage 2 AND/OR rules. 11-case synthetic test plus live run on Embiid (delta −4.1, "shrink, eligible for moderate shrink with qual OR-rule") verify the fix.
 - **2026-05-09** — B10 Option B resolved. Domain 1 now pulls SynergyPlayTypes Postup (offensive) league-wide per season and renders sub-domain #3 (post-up PPP / poss / FG% / percentile) in both the JSON profile and the print_comparison summary. SCRIPT-REGISTRY.md and SUB-DOMAIN-SOURCE-MAP_v1.md flipped from manual / aspirational to automated for NBA-level coverage. College/HS coverage stays web-search-only. Live-verified on Jokić 2024-25 (post-up PPP weighted 1.108, matching the documented 1.09 career anchor).
 - **2026-05-09** — B1 resolved. `eval_window.py fetch_career_seasons` now prefers the TOT row (when traded mid-season) and falls back to the single team row otherwise — same pattern as Playoff_Track_Record's S95-F07 fix. Eliminates the per-team + TOT double-count that produced 100/122/128 GP totals. All 5 R12 validation cases still pass; live-verified on Doncic 2024-25 (50 GP, was 100).
 - **2026-05-09** — B9 resolved. `Domain_8_IQ_Motor__Stats.py weighted_avg` now falls back to current-only when prior is empty/missing, matching Domain 1's `stat_block` behavior. Eliminates silent ~60%-of-truth miscalibration on prior-season endpoint timeouts. Verified via 6-case synthetic-input test.

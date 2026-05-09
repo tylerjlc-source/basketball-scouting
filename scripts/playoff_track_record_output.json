@@ -1,53 +1,59 @@
 {
-  "player": "Chet Holmgren",
-  "player_id": 1631096,
+  "player": "Joel Embiid",
+  "player_id": 203954,
   "sample_met": true,
-  "playoff_season_count": 3,
+  "playoff_season_count": 8,
   "playoff_seasons": [
+    "2017-18",
+    "2018-19",
+    "2019-20",
+    "2020-21",
+    "2021-22",
+    "2022-23",
     "2023-24",
-    "2024-25",
     "2025-26"
   ],
   "latest_playoff_season": "2025-26",
   "recency_state": "active",
   "recency_gap_years": 0,
   "career_delta": {
-    "playoff_ts_pct": 58.7,
-    "regular_ts_pct": 63.4,
-    "delta_ts_pct": -4.699999999999996,
-    "playoff_ppg": 15.7,
-    "regular_ppg": 16.5,
-    "delta_ppg": -0.8000000000000007,
-    "playoff_fga_per_game": 11.7,
-    "regular_fga_per_game": 11.3,
-    "playoff_games": 38,
-    "regular_games_matched": 183
+    "playoff_ts_pct": 57.4,
+    "regular_ts_pct": 61.5,
+    "delta_ts_pct": -4.100000000000001,
+    "playoff_ppg": 24.8,
+    "regular_ppg": 28.3,
+    "delta_ppg": -3.5,
+    "playoff_fga_per_game": 17.4,
+    "regular_fga_per_game": 18.6,
+    "playoff_games": 65,
+    "regular_games_matched": 440
   },
   "last_3_runs": [
     {
       "season": "2025-26",
-      "gp": 5,
-      "playoff_ts_pct": 68.8,
-      "regular_ts_pct": 65.3,
-      "delta_ts_pct": 3.5,
-      "playoff_ppg": 18.6
-    },
-    {
-      "season": "2024-25",
-      "gp": 23,
-      "playoff_ts_pct": 56.5,
-      "regular_ts_pct": 59.9,
-      "delta_ts_pct": -3.3999999999999986,
-      "playoff_ppg": 15.2
+      "gp": 6,
+      "playoff_ts_pct": 51.8,
+      "regular_ts_pct": 60.5,
+      "delta_ts_pct": -8.700000000000003,
+      "playoff_ppg": 24.0
     },
     {
       "season": "2023-24",
-      "gp": 10,
-      "playoff_ts_pct": 58.4,
-      "regular_ts_pct": 63.2,
-      "delta_ts_pct": -4.800000000000004,
-      "playoff_ppg": 15.6
+      "gp": 6,
+      "playoff_ts_pct": 59.2,
+      "regular_ts_pct": 64.4,
+      "delta_ts_pct": -5.200000000000003,
+      "playoff_ppg": 33.0
+    },
+    {
+      "season": "2022-23",
+      "gp": 9,
+      "playoff_ts_pct": 56.1,
+      "regular_ts_pct": 65.5,
+      "delta_ts_pct": -9.399999999999999,
+      "playoff_ppg": 23.7
     }
   ],
-  "classification_hint": "moderate statistical shrink"
+  "classification_hint": "shrink (delta -4.1) \u2014 eligible for moderate shrink (-0.20) with qualitative convergence; strong shrink (-0.40) requires qualitative AND-rule.",
+  "stage2_modifier_eligibility": "moderate_or_strong_shrink"
 }

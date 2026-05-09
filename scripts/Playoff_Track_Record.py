@@ -135,19 +135,70 @@ def compute_per_game(row, stat):
 
 def classify_delta(delta_ts):
     """R13 Stage 1 statistical signal classification from career matched TS% delta.
-    Thresholds are baseline-relative (playoff efficiency drops ~2 TS% from regular
-    season for star-level players -- validated S95 against Murray/Harden/Irving)."""
+
+    Returns a (label, modifier_eligibility) tuple — the label describes the
+    statistical signal in direction + magnitude terms; the eligibility hint
+    points to the Stage 2 modifier that *could* fire if qualitative evidence
+    converges per R13 Stage 2's AND/OR rules. The script never asserts a
+    final R13 classification — that requires qualitative-side review.
+
+    Thresholds are baseline-relative (star-level players show a ~−2 TS% drop
+    from regular season to playoffs; validated S95 against Murray/Harden/
+    Irving). Per SCORING-RULES.md R13 Stage 1:
+        ≥ +1     strong-rise band — eligible for moderate (+0.20, OR-qual)
+                                   or strong (+0.40, AND-qual) Stage 2.
+        (-1, +1) near-baseline    — too thin to fire Stage 2 modifier
+                                   even with qualitative convergence; the
+                                   convergence-gate likely fails (mixed /
+                                   neutral statistical signal).
+        [-3, -1] neutral          — within normal playoff efficiency drag;
+                                   no Stage 2 modifier from stat side alone.
+        (-5, -3] moderate-shrink  — eligible for moderate shrink (-0.20).
+        ≤ -5     strong-shrink    — eligible for strong shrink (-0.40, AND).
+
+    B3 fix replaces the prior single-string output that:
+      (a) labeled near-zero negative deltas as "moderate statistical rise"
+          (wrong direction), and
+      (b) asserted "strong" by stats alone, missing R13's AND-qualitative
+          requirement and Stage 2 convergence-gate.
+    """
     if delta_ts is None:
-        return "insufficient data"
+        return ("insufficient data", None)
+
     if delta_ts >= 1:
-        return "strong statistical rise"
+        return (
+            f"rise (delta {delta_ts:+.1f}) — eligible for moderate rise (+0.20) "
+            f"with qualitative convergence; strong rise (+0.40) requires "
+            f"qualitative AND-rule.",
+            "moderate_or_strong_rise",
+        )
     if delta_ts > -1:
-        return "moderate statistical rise"
+        direction = "rise" if delta_ts >= 0 else "shrink"
+        return (
+            f"near-baseline {direction} (delta {delta_ts:+.1f}) — magnitude too "
+            f"thin to support a Stage 2 modifier; convergence-gate likely fails.",
+            None,
+        )
     if delta_ts > -3:
-        return "neutral (normal playoff efficiency drag)"
+        return (
+            f"neutral (delta {delta_ts:+.1f}, within normal playoff efficiency "
+            f"drag of −2) — no Stage 2 modifier from stat side alone.",
+            None,
+        )
     if delta_ts > -5:
-        return "moderate statistical shrink"
-    return "strong statistical shrink"
+        return (
+            f"shrink (delta {delta_ts:+.1f}) — eligible for moderate shrink "
+            f"(-0.20) with qualitative convergence; strong shrink (-0.40) "
+            f"requires qualitative AND-rule.",
+            "moderate_or_strong_shrink",
+        )
+    return (
+        f"strong-magnitude shrink (delta {delta_ts:+.1f}) — eligible for "
+        f"strong shrink (-0.40) under R13 Stage 2 AND-qualitative rule; "
+        f"absent qualitative confirmation, fall back to moderate shrink "
+        f"(-0.20).",
+        "strong_shrink_with_qual",
+    )
 
 
 # -- Formatting ----------------------------------------------------------
@@ -294,12 +345,14 @@ def main():
         })
 
     # -- Classification hint --
-    hint = classify_delta(delta_ts)
-    print(f"\nCLASSIFICATION HINT (R13 Stage 1 -- manual confirmation required):")
-    print(f"  Career matched TS% delta: {fmt_signed(delta_ts)}  -->  {hint}")
+    hint, modifier_eligibility = classify_delta(delta_ts)
+    print(f"\nCLASSIFICATION HINT (R13 Stage 1 -- statistical signal only):")
+    print(f"  Career matched TS% delta: {fmt_signed(delta_ts)}")
+    print(f"  Statistical signal: {hint}")
     print(f"  Recency: {recency_state}")
-    print(f"  (Per R13: 'strong' requires statistical AND qualitative, 'moderate' requires either.)")
-    print(f"  (Combine with scouting language from research packet for final classification.)")
+    print(f"  Stage 2 modifier eligibility (per stats alone): {modifier_eligibility or 'none'}")
+    print(f"  (R13 Stage 2 convergence-gate: stat + qualitative must point same direction.")
+    print(f"   Apply AND/OR rules per SCORING-RULES.md R13; combine with qualitative from packet.)")
 
     print("\n" + "=" * 60)
 
@@ -326,6 +379,7 @@ def main():
         },
         "last_3_runs": season_breakdown,
         "classification_hint": hint,
+        "stage2_modifier_eligibility": modifier_eligibility,
     }
     save_output(output)
 
