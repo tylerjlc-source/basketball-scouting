@@ -1,5 +1,7 @@
 # Draft Class Generator — Project Roadmap & Task Checklist
-**Living Document — Updated through Session 67**
+**ARCHIVED 2026-05-09.** Last updated Session 67; project has since pivoted away from the "draft class generator" framing toward the basketball ratings database / scouting portal product. Current product roadmap and decision history live in `docs/PRODUCT_DESIGN_DECISIONS_v9.md`. Active foundation work is captured in `docs/SCRIPT-MAINTENANCE-BACKLOG.md`. Preserved here as historical project framing — do not treat as current direction.
+
+**Living Document — Updated through Session 67 (archived)**
 
 ---
 

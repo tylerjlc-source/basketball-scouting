@@ -1,5 +1,7 @@
 # COMPOSITE CALIBRATION DATA — Layer 1 Scouting Rubric — v5
 
+**ARCHIVED 2026-05-09.** Superseded by `docs/ANCHOR-LIBRARY.md` (current confirmed composite anchors) and `docs/COMPOSITE-SCALE-AND-TIERS.md` (current tier scale). Preserved as the historical calibration-set audit trail from the formula reverse-engineering phase. Do not consult for active scoring — anchors here are stale relative to the current rubric. Original "Load alongside" pointers below reference docs that have themselves been superseded; treat the file as read-only history.
+
 **Purpose:** Accumulating dataset of player builds for composite formula analysis and validation.
 **Load alongside:** COMPOSITE-SCALE-AND-TIERS.md, ARCHETYPE-WEIGHTS_v3.md, POSITION-WEIGHTS-AND-NONNEG.md
 
