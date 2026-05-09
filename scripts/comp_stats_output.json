@@ -1,36 +1,36 @@
 {
-  "player": "Carmelo Anthony",
-  "player_id": 2546,
-  "season": "2013-14",
-  "games_played": 77,
-  "minutes_per_game": 38.7,
-  "ts_pct": 56.1,
-  "usg_pct": 31.8,
-  "ast_pct": 15.6,
-  "tov_pct": null,
-  "oreb_pct": 4.9,
-  "dreb_pct": 17.1,
-  "reb_pct": 10.8,
-  "stl_pct": null,
-  "blk_pct": null,
-  "ppg": 27.4,
+  "player": "Victor Wembanyama",
+  "player_id": 1641705,
+  "season": "2024-25",
+  "games_played": 46,
+  "minutes_per_game": 33.2,
+  "ts_pct": 59.4,
+  "usg_pct": 30.0,
+  "ast_pct": 18.4,
+  "tov_pct": 11.9,
+  "oreb_pct": 5.4,
+  "dreb_pct": 25.5,
+  "reb_pct": 15.9,
+  "stl_per_100": 1.6,
+  "blk_per_100": 5.5,
+  "ppg": 24.3,
   "guard_stats": {
-    "primary": 56.1,
-    "usage": 31.8,
-    "ast_rate": 15.6,
-    "tov_rate": null
+    "primary": 59.4,
+    "usage": 30.0,
+    "ast_rate": 18.4,
+    "tov_rate": 11.9
   },
   "wing_stats": {
-    "primary": 56.1,
-    "usage": 31.8,
-    "reb_rate": 10.8,
-    "stl_rate": null
+    "primary": 59.4,
+    "usage": 30.0,
+    "reb_rate": 15.9,
+    "stl_per_100": 1.6
   },
   "big_stats": {
-    "primary": 56.1,
-    "usage": 31.8,
-    "reb_rate": 10.8,
-    "blk_rate": null
+    "primary": 59.4,
+    "usage": 30.0,
+    "reb_rate": 15.9,
+    "blk_per_100": 5.5
   },
   "tolerance_bands": {
     "ts_pct": 5.0,
@@ -39,7 +39,7 @@
     "ast_pct": 4.0,
     "tov_pct": 2.0,
     "reb_pct": 5.0,
-    "stl_pct": 1.5,
-    "blk_pct": 2.0
+    "stl_per_100": 0.5,
+    "blk_per_100": 1.0
   }
 }

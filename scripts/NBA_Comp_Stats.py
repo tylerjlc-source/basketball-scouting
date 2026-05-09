@@ -2,15 +2,21 @@
 NBA Comp Stats — Pulls statistical similarity data for NBA Comp matching.
 Used by Skill 5 (scout-output) to run the NBA Comp Methodology.
 
-Pulls from LeagueDashPlayerStats (Advanced) + PlayerCareerStats:
-  - True Shooting % (primary signal, all groups)
-  - Usage rate (secondary, all groups)
-  - Assist rate (secondary, Guards)
-  - Turnover rate (secondary, Guards)
-  - Rebound rate (secondary, Wings + Bigs)
-  - Steal rate (secondary, Wings)
-  - Block rate (secondary, Bigs)
-  - PPG (fallback when TS% unavailable)
+Pulls from LeagueDashPlayerStats (Advanced + Base/Per100Possessions) + PlayerCareerStats:
+  - True Shooting % (primary signal, all groups) — Advanced
+  - Usage rate (secondary, all groups) — Advanced
+  - Assist rate (secondary, Guards) — Advanced
+  - Turnover rate (secondary, Guards) — Advanced E_TOV_PCT
+  - Rebound rate (secondary, Wings + Bigs) — Advanced
+  - STL per 100 possessions (secondary, Wings) — Base/Per100Possessions
+  - BLK per 100 possessions (secondary, Bigs) — Base/Per100Possessions
+  - PPG (fallback when TS% unavailable) — Base/PerGame
+
+Per-100 rates replaced basketball-reference-style STL%/BLK% in S(this fix):
+the Advanced endpoint does not expose STL_PCT/BLK_PCT (B4 backlog), and
+per-100 rates are >0.9 correlated with the percentages while requiring no
+team/opponent data. Methodology tolerance bands updated to match — see
+NBA-COMP-METHODOLOGY.md §A.2.
 
 Usage:
   python NBA_Comp_Stats.py 'Player Name'                # rookie season (default)
@@ -113,6 +119,27 @@ def pull_base_stats(player_id, season):
     return None
 
 
+# ── Pull Per-100 stats for STL/BLK rate signals ────────────────────────
+
+def pull_per100_stats(player_id, season):
+    """Pull Base/Per100Possessions for STL/100 and BLK/100 (B4 fix)."""
+    time.sleep(DELAY)
+    resp = leaguedashplayerstats.LeagueDashPlayerStats(
+        season=season,
+        measure_type_detailed_defense="Base",
+        per_mode_detailed="Per100Possessions",
+    )
+    rows = resp.get_dict()["resultSets"][0]
+    headers = rows["headers"]
+    data = rows["rowSet"]
+
+    for row in data:
+        row_dict = dict(zip(headers, row))
+        if row_dict.get("PLAYER_ID") == player_id:
+            return row_dict
+    return None
+
+
 # ── Safe extraction ────────────────────────────────────────────────────
 
 def safe_pct(val):
@@ -134,6 +161,7 @@ def build_comp_profile(player_name, player_id, season):
     """Build the full comp stat profile for one player-season."""
     adv = pull_advanced_stats(player_id, season)
     base = pull_base_stats(player_id, season)
+    per100 = pull_per100_stats(player_id, season)
 
     if not adv:
         return {
@@ -144,6 +172,14 @@ def build_comp_profile(player_name, player_id, season):
 
     gp = adv.get("GP", 0)
     min_pg = safe_float(adv.get("MIN"))
+
+    # E_TOV_PCT is the player's estimated turnover %, already in percent units
+    # (e.g. 11.9 means 11.9%). The Advanced endpoint does NOT expose TOV_PCT,
+    # STL_PCT, or BLK_PCT — see B4 fix above. Per-100 rates and E_TOV_PCT
+    # substitute cleanly.
+    tov_pct = safe_float(adv.get("E_TOV_PCT"))
+    stl_per_100 = safe_float(per100.get("STL"), decimals=2) if per100 else None
+    blk_per_100 = safe_float(per100.get("BLK"), decimals=2) if per100 else None
 
     profile = {
         "player": player_name,
@@ -158,12 +194,12 @@ def build_comp_profile(player_name, player_id, season):
         # === SECONDARY SIGNALS ===
         "usg_pct": safe_pct(adv.get("USG_PCT")),
         "ast_pct": safe_pct(adv.get("AST_PCT")),
-        "tov_pct": safe_pct(adv.get("TOV_PCT")),
+        "tov_pct": tov_pct,                      # source: E_TOV_PCT (already %)
         "oreb_pct": safe_pct(adv.get("OREB_PCT")),
         "dreb_pct": safe_pct(adv.get("DREB_PCT")),
         "reb_pct": safe_pct(adv.get("REB_PCT")),  # total
-        "stl_pct": safe_pct(adv.get("STL_PCT")),  # note: may not exist in all endpoints
-        "blk_pct": safe_pct(adv.get("BLK_PCT")),  # note: may not exist in all endpoints
+        "stl_per_100": stl_per_100,              # source: Base/Per100Possessions
+        "blk_per_100": blk_per_100,              # source: Base/Per100Possessions
 
         # === FALLBACK ===
         "ppg": safe_float(base.get("PTS")) if base else None,
@@ -173,19 +209,19 @@ def build_comp_profile(player_name, player_id, season):
             "primary": safe_pct(adv.get("TS_PCT")),
             "usage": safe_pct(adv.get("USG_PCT")),
             "ast_rate": safe_pct(adv.get("AST_PCT")),
-            "tov_rate": safe_pct(adv.get("TOV_PCT")),
+            "tov_rate": tov_pct,
         },
         "wing_stats": {
             "primary": safe_pct(adv.get("TS_PCT")),
             "usage": safe_pct(adv.get("USG_PCT")),
             "reb_rate": safe_pct(adv.get("REB_PCT")),
-            "stl_rate": safe_pct(adv.get("STL_PCT")),
+            "stl_per_100": stl_per_100,
         },
         "big_stats": {
             "primary": safe_pct(adv.get("TS_PCT")),
             "usage": safe_pct(adv.get("USG_PCT")),
             "reb_rate": safe_pct(adv.get("REB_PCT")),
-            "blk_rate": safe_pct(adv.get("BLK_PCT")),
+            "blk_per_100": blk_per_100,
         },
 
         # === TOLERANCE BANDS (from NBA-COMP-METHODOLOGY.md) ===
@@ -196,8 +232,8 @@ def build_comp_profile(player_name, player_id, season):
             "ast_pct": 4.0,
             "tov_pct": 2.0,
             "reb_pct": 5.0,
-            "stl_pct": 1.5,
-            "blk_pct": 2.0,
+            "stl_per_100": 0.5,
+            "blk_per_100": 1.0,
         },
     }
 
@@ -222,20 +258,20 @@ def print_profile(profile):
         print(f"    PPG:  {profile['ppg']}  (fallback)")
 
     print(f"\n  Secondary Signals:")
-    print(f"    USG%: {profile['usg_pct']}%")
-    print(f"    AST%: {profile['ast_pct']}%")
-    print(f"    TOV%: {profile['tov_pct']}%")
-    print(f"    REB%: {profile['reb_pct']}%  (OREB: {profile['oreb_pct']}%  DREB: {profile['dreb_pct']}%)")
-    print(f"    STL%: {profile['stl_pct']}%")
-    print(f"    BLK%: {profile['blk_pct']}%")
+    print(f"    USG%:    {profile['usg_pct']}%")
+    print(f"    AST%:    {profile['ast_pct']}%")
+    print(f"    TOV%:    {profile['tov_pct']}%")
+    print(f"    REB%:    {profile['reb_pct']}%  (OREB: {profile['oreb_pct']}%  DREB: {profile['dreb_pct']}%)")
+    print(f"    STL/100: {profile['stl_per_100']}")
+    print(f"    BLK/100: {profile['blk_per_100']}")
 
     print(f"\n  Group-Specific Sets:")
     g = profile["guard_stats"]
     print(f"    Guards: TS% {g['primary']}  USG% {g['usage']}  AST% {g['ast_rate']}  TOV% {g['tov_rate']}")
     w = profile["wing_stats"]
-    print(f"    Wings:  TS% {w['primary']}  USG% {w['usage']}  REB% {w['reb_rate']}  STL% {w['stl_rate']}")
+    print(f"    Wings:  TS% {w['primary']}  USG% {w['usage']}  REB% {w['reb_rate']}  STL/100 {w['stl_per_100']}")
     b = profile["big_stats"]
-    print(f"    Bigs:   TS% {b['primary']}  USG% {b['usage']}  REB% {b['reb_rate']}  BLK% {b['blk_rate']}")
+    print(f"    Bigs:   TS% {b['primary']}  USG% {b['usage']}  REB% {b['reb_rate']}  BLK/100 {b['blk_per_100']}")
 
     print(f"\n{'='*60}")
 

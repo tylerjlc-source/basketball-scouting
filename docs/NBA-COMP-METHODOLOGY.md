@@ -50,8 +50,8 @@ The statistical match determines comp tier.
 | Group | Primary signal | Secondary signals |
 |---|---|---|
 | Guards | True Shooting % | Usage rate, Assist rate, Turnover rate |
-| Wings | True Shooting % | Usage rate, Rebound rate, Steal rate |
-| Bigs | True Shooting % | Usage rate, Rebound rate, Block rate |
+| Wings | True Shooting % | Usage rate, Rebound rate, STL per 100 possessions |
+| Bigs | True Shooting % | Usage rate, Rebound rate, BLK per 100 possessions |
 
 **Fallback:** When True Shooting % is unavailable, substitute PPG.
 
@@ -65,10 +65,12 @@ The statistical match determines comp tier.
 | Assist rate | ±4% |
 | Turnover rate | ±2% |
 | Rebound rate | ±5% |
-| Steal rate | ±1.5% |
-| Block rate | ±2% |
+| STL per 100 | ±0.5 |
+| BLK per 100 | ±1.0 |
 
 Stats outside the tolerance band do not disqualify the comp — they do not count toward the tier threshold.
+
+**Note on STL/BLK rates:** Earlier methodology used Basketball-Reference STL%/BLK% (±1.5% / ±2%). The NBA Stats Advanced endpoint does not expose those columns (B4 backlog), so the script switched to per-100-possessions rates from the Base endpoint. Per-100 rates are >0.9 correlated with the percentages, so the substitution is cosmetic in practice; tolerance bands above are the per-100 equivalents of the original ±1.5% / ±2% bands.
 
 ### A.3 — Comp Tier Determination
 

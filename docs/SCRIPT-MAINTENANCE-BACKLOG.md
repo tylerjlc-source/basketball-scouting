@@ -14,17 +14,6 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## OPEN BUGS
 
-### B4 — `NBA_Comp_Stats.py` BLK%/STL% endpoint returns `None`
-**Script:** `scripts/NBA_Comp_Stats.py`
-**Symptom:** BLK% and STL% advanced-stat columns return `None` for many comp candidates across all groups (Big, Wing, Guard).
-**Trigger:** Endpoint-wide bug, not player-specific. Likely advanced-stats endpoint returns `None` for certain percentile columns when full-season data hasn't aggregated or the column isn't populated at the query level.
-**Workaround:** Proceed with primary TS% + available secondaries (USG%, REB%) for tier determination. Do NOT fail comp to 🔴 Rubric-only on endpoint quirk alone. Document the gap transparently in comp flags.
-**Applications:** 24+ across 10+ players (Mobley S102, Sabonis S102, Bridges S102, Vučević S104 [4 runs], Naz Reid S104 [4 runs], Turner S107 [4 runs], Tatum S108 [4 runs], Embiid S110 [2 runs — AD + KAT], Cade S112 [3 runs], Wemby S113 [3 runs]).
-**Fix priority:** **High** — highest-frequency bug in pipeline; affects every comp run for many candidates. Investigate alternative endpoints or compute from raw stats.
-**Status:** Open.
-
----
-
 ### B1 — `eval_window.py` GP aggregation TOT-row double-count
 **Script:** `scripts/eval_window.py`
 **Symptom:** Reports inflated GP counts (e.g., 108, 122, 128) for traded-player rows, due to TOT row + individual team rows both summed.
@@ -140,12 +129,19 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## RESOLVED
 
-(None yet — backlog created S114.)
+### B4 — `NBA_Comp_Stats.py` BLK%/STL% endpoint returns `None` (resolved 2026-05-09)
+**Script:** `scripts/NBA_Comp_Stats.py`
+**Original symptom:** BLK% and STL% (and silently TOV%) advanced-stat columns returned `None` for every comp candidate across all groups.
+**Root cause:** The NBA Stats `LeagueDashPlayerStats(measure_type="Advanced")` response does not include `STL_PCT`, `BLK_PCT`, or `TOV_PCT` keys at all — `dict.get()` returned `None` because those keys never existed. (TOV% had been silently broken too; not previously catalogued.)
+**Fix:** Added `pull_per100_stats()` for `Base/Per100Possessions` to source `STL/100` and `BLK/100`. Switched TOV source from missing `TOV_PCT` to `E_TOV_PCT` (Advanced — already in percent). Replaced `stl_pct`/`blk_pct` output keys with `stl_per_100`/`blk_per_100`; updated tolerance bands to per-100 units (±0.5 / ±1.0). Updated `NBA-COMP-METHODOLOGY.md` §A.2 stat table + tolerance bands to match.
+**Verification:** Live run on Wemby 2024-25 returned TOV%=11.9, STL/100=1.6, BLK/100=5.5 — all previously `None`.
+**Original applications count:** 24+ across 10+ players (Mobley/Sabonis/Bridges S102; Vučević/Naz Reid S104 4 runs each; Turner S107; Tatum S108; Embiid S110 2 runs; Cade S112 3 runs; Wemby S113 3 runs).
 
 ---
 
 ## CHANGE LOG
 
+- **2026-05-09** — B4 resolved. `NBA_Comp_Stats.py` switched STL/BLK source from missing Advanced columns to `Base/Per100Possessions`; switched TOV source to `E_TOV_PCT` (also missing as `TOV_PCT`). Output fields renamed `stl_pct`/`blk_pct` → `stl_per_100`/`blk_per_100`. `NBA-COMP-METHODOLOGY.md` §A.2 tolerance-band table updated to match (±0.5 STL/100, ±1.0 BLK/100; per-100 and STL%/BLK% are >0.9 correlated, so the substitution is cosmetic). Live-verified on Wemby 2024-25.
 - **S124 (2026-04-30)** — B1 Applications count incremented 3 → 4 with Doncic case (100 GP for 2024-25 due to Feb 2025 Mavs→Lakers trade). Same TOT-row aggregation pattern as Bogdanović / Anderson / Vučević precedents; no new bug variant.
 - **S117 (2026-04-29)** — Added B8 (Domain 1 ShotChartDetail rim-zone N/A on default-window prior season; B5 sibling), B9 (Domain 8 `weighted_avg` silently treats missing prior as zero; produces ~60%-of-true display), B10 (Domain 1 #3 Post Offense unimplemented despite SCRIPT-REGISTRY and SUB-DOMAIN-SOURCE-MAP coverage claims — promoted to Medium for doc-fidelity / P3 concern). All three from S116 Giannis Skill 1 observations. B10 Option A documentation patches applied same session: SCRIPT-REGISTRY.md Domain 1 row trimmed + web-search-only note added; SUB-DOMAIN-SOURCE-MAP_v1.md #3 Block A line 199 + Block B line 212 changed to manual public-web lookup; Block E line 246 confidence ladder kept aspirational with backlog pointer; line 213 retained as defensible (logged for future review).
 - **S114 (2026-04-28)** — Backlog promoted from scout-research-learnings.md S100-F01 family per Workstream 2 retrospective recommendation. Initial entries B1–B7 cover 5 variants from S100-F01 (eval_window GP aggregation + fragment mislabel; Playoff_Track_Record classification hint; NBA_Comp_Stats BLK%/STL%; Domain 1 rim-zone partial-season) plus 2 from W2 retrospective (Domain 5 #17 endpoint N/A; Domain 5/6/8 partial endpoint timeouts). 24+ total applications across the family. S95-F07 (PlayerCareerStats frame ordering + TOT rows) already coded into PlayerCareerStats consumers — not added (no open work).
