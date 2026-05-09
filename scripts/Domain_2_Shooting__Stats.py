@@ -43,69 +43,32 @@ W_PRIOR = 0.40
 
 
 # ──────────────────────────────────────────────────────────────────────
-# Helpers
+# Helpers — math lives in shared_math; thin local delegations preserve
+# the runtime-mutated W_CURRENT / W_PRIOR module globals as the per-call
+# weight source.
 # ──────────────────────────────────────────────────────────────────────
 
-def _si(v):
-    """Safe int."""
-    try:
-        if v is None or v != v:
-            return 0
-        return int(v)
-    except (ValueError, TypeError):
-        return 0
-
-
-def _sr(v, d=3):
-    """Safe round."""
-    try:
-        if v is None or v != v:
-            return 0
-        return round(float(v), d)
-    except (ValueError, TypeError):
-        return 0
+from shared_math import (
+    safe_int as _si,
+    safe_round as _sr,
+    volume_weighted_pct as _shared_volume_weighted_pct,
+    simple_weighted as _shared_simple_weighted,
+    stat_block as _shared_stat_block,
+)
 
 
 def vol_wt_pct(cur_m, cur_a, pri_m, pri_a):
-    """Volume-weighted percentage (S83 rule 5)."""
-    if pri_a is None or pri_a == 0:
-        return round(cur_m / cur_a, 3) if cur_a > 0 else 0
-    wm = cur_m * W_CURRENT + pri_m * W_PRIOR
-    wa = cur_a * W_CURRENT + pri_a * W_PRIOR
-    return round(wm / wa, 3) if wa > 0 else 0
+    return _shared_volume_weighted_pct(cur_m, cur_a, pri_m, pri_a,
+                                       w_cur=W_CURRENT, w_pri=W_PRIOR)
 
 
 def simple_wt(cur, pri):
-    """Simple 60/40 weighted average for rate stats (S83 rule 6)."""
-    if pri is None:
-        return cur
-    return round(cur * W_CURRENT + pri * W_PRIOR, 3)
+    return _shared_simple_weighted(cur, pri, w_cur=W_CURRENT, w_pri=W_PRIOR)
 
 
 def sb(cur, pri, cur_vol=None, pri_vol=None, is_rate=False):
-    """Build a stat block: current / prior / weighted."""
-    if pri is None:
-        return {"current": cur, "prior": "N/A", "weighted": cur,
-                "current_volume": cur_vol, "prior_volume": "N/A",
-                "total_volume": cur_vol} if cur_vol is not None else \
-               {"current": cur, "prior": "N/A", "weighted": cur}
-
-    if is_rate:
-        w = simple_wt(cur, pri)
-    elif cur_vol is not None and pri_vol is not None:
-        w = vol_wt_pct(
-            cur * cur_vol if cur_vol > 0 else 0, cur_vol,
-            pri * pri_vol if pri_vol > 0 else 0, pri_vol,
-        )
-    else:
-        w = simple_wt(cur, pri)
-
-    block = {"current": cur, "prior": pri, "weighted": w}
-    if cur_vol is not None:
-        block["current_volume"] = cur_vol
-        block["prior_volume"] = pri_vol
-        block["total_volume"] = (cur_vol or 0) + (pri_vol or 0)
-    return block
+    return _shared_stat_block(cur, pri, cur_vol=cur_vol, pri_vol=pri_vol,
+                              is_rate=is_rate, w_cur=W_CURRENT, w_pri=W_PRIOR)
 
 
 def find_player_id(player_name: str) -> dict:
