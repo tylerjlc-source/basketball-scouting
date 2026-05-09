@@ -48,49 +48,36 @@ W_PRIOR = 0.40
 
 
 # ──────────────────────────────────────────────────────────────────────
-# Weighting helpers
+# Weighting helpers — math lives in shared_math; thin local delegations
+# preserve the runtime-mutated W_CURRENT / W_PRIOR module globals as
+# the per-call weight source. Behaviour is byte-identical to the prior
+# inline implementation.
 # ──────────────────────────────────────────────────────────────────────
 
+from shared_math import (
+    volume_weighted_pct as _shared_volume_weighted_pct,
+    simple_weighted as _shared_simple_weighted,
+    stat_block as _shared_stat_block,
+)
+
+
 def volume_weighted_pct(cur_made, cur_att, pri_made, pri_att):
-    """Volume-weighted percentage for shooting stats (S83 rule 5)."""
-    if pri_att is None or pri_att == "N/A":
-        return round(cur_made / cur_att, 3) if cur_att > 0 else 0
-    w_made = cur_made * W_CURRENT + pri_made * W_PRIOR
-    w_att = cur_att * W_CURRENT + pri_att * W_PRIOR
-    return round(w_made / w_att, 3) if w_att > 0 else 0
+    return _shared_volume_weighted_pct(
+        cur_made, cur_att, pri_made, pri_att,
+        w_cur=W_CURRENT, w_pri=W_PRIOR,
+    )
 
 
 def simple_weighted(cur_val, pri_val):
-    """Simple 60/40 weighted average for rate stats (S83 rule 6)."""
-    if pri_val is None or pri_val == "N/A":
-        return cur_val
-    return round(cur_val * W_CURRENT + pri_val * W_PRIOR, 3)
+    return _shared_simple_weighted(cur_val, pri_val, w_cur=W_CURRENT, w_pri=W_PRIOR)
 
 
 def stat_block(cur_val, pri_val, cur_vol=None, pri_vol=None, is_rate=False):
-    """Build a 3-value stat block: current, prior, weighted."""
-    if pri_val is None or pri_val == "N/A":
-        weighted = cur_val
-        pri_display = "N/A"
-    else:
-        pri_display = pri_val
-        if is_rate:
-            weighted = simple_weighted(cur_val, pri_val)
-        elif cur_vol is not None and pri_vol is not None:
-            # Volume-weighted for percentages
-            weighted = volume_weighted_pct(
-                cur_val * cur_vol if cur_vol > 0 else 0, cur_vol or 0,
-                pri_val * pri_vol if pri_vol > 0 else 0, pri_vol or 0,
-            )
-        else:
-            weighted = simple_weighted(cur_val, pri_val)
-
-    block = {"current": cur_val, "prior": pri_display, "weighted": weighted}
-    if cur_vol is not None:
-        block["current_volume"] = cur_vol
-        block["prior_volume"] = pri_vol if pri_vol is not None else "N/A"
-        block["total_volume"] = (cur_vol or 0) + (pri_vol or 0) if pri_vol not in (None, "N/A") else cur_vol
-    return block
+    return _shared_stat_block(
+        cur_val, pri_val,
+        cur_vol=cur_vol, pri_vol=pri_vol, is_rate=is_rate,
+        w_cur=W_CURRENT, w_pri=W_PRIOR,
+    )
 
 
 # ──────────────────────────────────────────────────────────────────────
