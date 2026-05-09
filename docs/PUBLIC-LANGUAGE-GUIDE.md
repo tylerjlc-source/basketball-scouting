@@ -19,7 +19,7 @@ Editorial transform spec consumed by Skill 7 (`scout-publish`) to convert an `ou
 - §2 — Preserved (QC5 source-fidelity)
 - §3 — Stripped
 - §4 — Pull policy and per-element rewrites — §4-A pull policy / §4-B per-element rewrites
-- §5 — Structure and voice — §5.1 structural template / §5.2 voice register / §5.3 universal operational rules / §5.4 calibration targets (reviewer-only)
+- §5 — Structure and voice — §5.1 structural template / §5.2 voice register / §5.3 universal operational rules (incl. §5.3-P percentage syntax + §5.3-G acronym glossary) / §5.4 calibration targets (reviewer-only)
 - §6 — Anchor comp handling
 - §7 — One-line domain justification format
 - §8 — QC checklist (Skill 7 pre-write gate)
@@ -127,15 +127,47 @@ Skill 7 carries the system's internal posture to the public surface, not the sou
 - Factual claims must trace to source profile §1–§5 / §9 / §10. No extrapolation beyond the profile's stated framing. Cross-check before publish (PUBLIC-RUBRIC §8).
 - No overclaiming team state on individual action. Team success / standing / record is not attributed to a single player's named action ("Cleveland finished with the best record in the East with him running the pick-and-roll" overclaims).
 - One subject per paragraph. No bullet lists inside the published narrative; bullets belong in structured fields, not prose.
-- Acronyms and jargon translated inline at first use. Non-intuitive metric acronyms — DFGPOE, PPP, A:TO, FTR, OREB%, DREB%, TS%, USG, TOV/100 — render as plain language: "holds opponents X% below their expected field-goal percentage" (DFGPOE), "points per possession" (PPP), "assist-to-turnover ratio" (A:TO), "free throws per field-goal attempt" (FTR), "offensive/defensive rebound rate" (OREB%/DREB%), "true shooting" (TS%), "usage" (USG). Public-facing language carries no internal shorthand. First-use applies per structured-field group: sub-domain rationale tables, domain one-line tables, and comp tables that scan standalone re-expand at the first occurrence within the group, even when the narrative has already established the acronym upstream. Credential acronyms (DPOY, MVP, FMVP) follow the same rule in structured-field rows.
+- Acronyms and jargon translated inline at first use — see §5.3-G acronym glossary below for the pinned list and the first-mention expansion syntax. Public-facing language carries no internal shorthand.
 - Raw counts beat opaque rate units. When a stat's unit isn't named-and-recognizable (per-game, percentage, raw count), reach for the raw form first. "TOV/100 touches at 5.0" is opaque; "220 turnovers in 71 games" is not. The unit must communicate magnitude without the reader doing math.
-- Dormant-vet verdict-opener tense. When a player is currently injured or sidelined at publish time, the Projection-verdict opener frames him as he is today, with past-tense reference to season disruption ("Jackson is a recent-vintage All-Star Switchable Big who missed time due to knee injury during the 2025-26 season"). Avoid in-progress "currently out for [year]" framing; by publish time the regular season is past, not in-progress. Anchor today's reading state, not the upstream profile's snapshot moment. Applies to any R13-dormant or active-injury vet.
+- Dormant-vet verdict-opener tense. When a player is currently injured or sidelined at publish time, the Projection-verdict opener frames him as he is today, with past-tense reference to season disruption ("Jackson is a recent-vintage All-Star Switchable Big who missed time due to knee injury during the 2025-26 season"). Avoid in-progress "currently out for [year]" framing; by publish time the regular season is past, not in-progress. Anchor today's reading state, not the upstream profile's snapshot moment. Applies to any R13-dormant or active-injury vet. **Authoring discipline:** the writer reads the source profile §9 `Tense:` token (see [skills/scout-output.md](../skills/scout-output.md) §9 NBA-vet template) before drafting Identity / Strength / Weakness / Projection-verdict. `Tense: past` ⇒ dormant-window claims (the season the player missed) read past tense; today-state opener still reads present ("Jackson is …"). `Tense: mixed` ⇒ recovering / returning / partial-season — past tense for the dormant window, present tense for the active claim, no in-progress "currently out" framing. `Tense: present` ⇒ default healthy-vet / active-prospect register. Codifies S176-F02 dormant-vet finding as syntax, not reviewer-dependent catch.
 - **Reconcilable temporal frame on every narrative number.** Every percentage and granular split in narrative + sub-domain rationale carries a temporal frame the reader can reconstruct against visible data. Three legitimate forms:
   - **Single named season** — "40.7% on 343 attempts in 2025-26". Reconciles to a row in the `## Career stats` appendix (per-season row) or to `current_season` / `prior_season` in the Step 1.8 payload (granular splits the appendix doesn't show).
   - **Two-season raw aggregate** — "251 of 623 since 2024-25". Sum/sum across both seasons (the `two_season_aggregate` view in Step 1.8). Must include raw count and explicit "since [year]" boundary so the reader can mentally check by adding the two season rows.
   - **Career-aggregate row** — "career 39.4%". Reconciles to the bolded **Career** row in the `## Career stats` appendix. Basic per-game stats only (PPG, REB, AST, FG%, 3P%, FT%); granular career aggregates (career CAS 3PT%) are not surfaced and should not be cited.
   - **Forbidden** — the 60/40 weighted blend cited as a flat number with no temporal frame ("40.7%" with no season label, no raw count, no "since" frame). The weighted blend is the scoring substrate (S83, locked) and stays internal; the public surface anchors to single seasons or raw aggregates. Aggregate ≈ weighted within ~0.5% in typical cases — well inside R14 dial tolerance — so the reader sees a defensible reconcilable number that matches what the score is calibrated against.
   Default emphasis: most-recent season. Two-season aggregate is preferred for advanced/sample-sensitive stats (DFGPOE, drives, contested-shot splits) where current-season alone is too thin. Career framing is for trajectory-spanning claims where the appendix career row is the source.
+
+#### §5.3-P — Citation-required percentage syntax
+
+Authoring discipline that hardens the temporal-frame rule above into a syntactic check. Every percentage in narrative + sub-domain rationale must author into one of the three legitimate citation patterns; bare percentages are a fail.
+
+| Pattern | Form | Example |
+|---|---|---|
+| **Season-anchor** | `[value]% in [season]` or `[value]% on [N] attempts in [season]` | "40.7% in 2025-26"; "40.7% on 343 attempts in 2025-26" |
+| **Since-aggregate** | `[value]% on [made] of [N] (since [year])` or `[N] of [M] since [year]` | "251 of 623 since 2024-25"; "39.6% on 251 of 623 (since 2024-25)" |
+| **Career-row** | `career [value]%` | "career 39.4%" — must reconcile to the bolded Career row in §9 |
+
+**Forbidden form:** `[value]%` with no adjacent season token (`20YY-YY` | `since 20YY` | `[season] season`) and no paren-count anchor (`(N attempts`, `N of M`) within ~60 chars. Each forbidden hit blocks publish at the lint pre-flight ([scripts/lint_public.py](../scripts/lint_public.py)) before the Step 3.5 reviewer fires. Codifies the Brown / Jackson §3 narrative-stat-without-frame failures as a mechanical gate.
+
+#### §5.3-G — Acronym glossary (pinned)
+
+Pinned glossary for first-mention expansion. The writer expands inline at first use within each scan-standalone group (4-paragraph narrative; sub-domain rationale table; domain one-line table; comp similarity column; Career stats appendix is exempt — column headers carry their own convention). Subsequent mentions inside the same group may use the bare acronym.
+
+| Acronym | First-mention expansion (inline) |
+|---|---|
+| **DFGPOE** | "holds opponents N% below their expected field-goal percentage" — never the bare acronym at first use |
+| **PPP** | "points per possession" |
+| **A:TO** | "assist-to-turnover ratio" |
+| **FTR** | "free throws per field-goal attempt" |
+| **OREB% / DREB%** | "offensive rebound rate" / "defensive rebound rate" |
+| **TS%** | "true shooting" |
+| **USG** | "usage rate" |
+| **TOV/100** | "turnovers per 100 possessions" — paired with raw counts when possible per the raw-counts-beat-opaque-rate-units rule |
+| **CAS 3PT%** | "catch-and-shoot 3-point percentage" |
+| **PnR / DHO / ISO** | "pick-and-roll" / "dribble handoff" / "isolation" |
+| **DPOY / MVP / FMVP / 6MOTY** | "Defensive Player of the Year" / "Most Valuable Player" / "Finals MVP" / "Sixth Man of the Year" — credential acronyms follow the same rule in structured-field rows |
+
+Add to this glossary as new acronyms surface in evaluation; do not silently drop. Pull-policy applies per scan-standalone group: the sub-domain rationale table and the domain one-line table re-expand at first occurrence within the group even when the narrative has already established the acronym upstream — the reader may scan the table without reading the prose.
 
 ### §5.4 — Calibration targets: Mitchell (healthy-vet) and Jackson (dormant-vet) samples
 

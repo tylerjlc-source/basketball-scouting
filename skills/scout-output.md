@@ -150,7 +150,13 @@ Built fresh from the routed projection doc (loading instruction 2). Not a transf
 
 Follow the routed doc exactly. Do not improvise percentages or POT values.
 
-**Format spec.** Fenced code block with `KEY: VALUE` lines. Required keys (case-insensitive): `POT`, `MIN`, `MAX`, `CONFIDENCE` ∈ {tight, moderate, wide}. Prospect track (States 1–3) adds `BUST`, `AVG`, `BOOM` (each as `NN%`). Numeric values one- or two-decimal precision, ≤ 9.99 for POT.
+**Format spec.** Fenced code block with `KEY: VALUE` lines. Required keys (case-insensitive): `POT`, `MIN`, `MAX`, `CONFIDENCE` ∈ {tight, moderate, wide}. NBA-vet track also requires `TENSE` ∈ {past, present, mixed}. Prospect track (States 1–3) adds `BUST`, `AVG`, `BOOM` (each as `NN%`); prospect tense defaults to present and the field is omitted. Numeric values one- or two-decimal precision, ≤ 9.99 for POT.
+
+**Tense token rule (NBA-vet only).** Encoded so Skill 7 (`scout-publish`) reads it without re-deriving from injury notes. Codifies the JJJ dormant-vet finding (S176-F02) as a structured field, not reviewer-dependent catch.
+
+- **`Tense: present`** — default. Healthy active vet evaluated on a complete current season. Most evals.
+- **`Tense: past`** — R13-dormant or active-injury-out vet whose 2-year window is dominated by missed time (e.g., a season largely missed to surgery / IL / structural injury). Dormant-window claims (the season the player missed) read past tense at publish; today-state opener still reads present per [PUBLIC-LANGUAGE-GUIDE §5.3](../docs/PUBLIC-LANGUAGE-GUIDE.md) dormant-vet rule.
+- **`Tense: mixed`** — transitional. Returning from injury mid-cycle, partial-season returnee, recovery arc with an active component. Dormant-window in past tense; active claims in present tense. No in-progress "currently out" framing.
 
 **NBA-vet template:**
 
@@ -158,6 +164,7 @@ Follow the routed doc exactly. Do not improvise percentages or POT values.
 --- NBA PROJECTION OUTPUT BLOCK ---
 CAREER STAGE:           [stage]
 TRAJECTORY:             [Plateau / Ascending / Recovering / etc.]
+TENSE:                  [past / present / mixed]
 DEMONSTRATED PEAK:      [d.dd]
 CEILING ANCHORS:        [anchor citations]
 SKILL-GAP CAPS:         [caps]
