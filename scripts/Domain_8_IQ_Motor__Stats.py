@@ -67,10 +67,23 @@ def safe_div(num, den):
 
 
 def weighted_avg(current, prior, stat_key):
-    """Weighted average using runtime W_CURRENT/W_PRIOR (set by main from eval_window)."""
-    c = current.get(stat_key, 0) or 0
-    p = prior.get(stat_key, 0) or 0
-    return round(c * W_CURRENT + p * W_PRIOR, 3)
+    """Weighted average using runtime W_CURRENT/W_PRIOR (set by main from eval_window).
+
+    B9 fix: when prior is empty (endpoint timeout) or lacks `stat_key`, fall
+    back to current-only weighting instead of silently treating missing as 0
+    — which previously produced ~60%-of-truth display values when the prior
+    pull failed (e.g. Giannis S116 speed/distance).
+    """
+    c_val = current.get(stat_key) if current else None
+    p_val = prior.get(stat_key) if prior else None
+
+    if c_val is None and p_val is None:
+        return 0.0
+    if p_val is None:  # missing prior — current-only fallback
+        return round(c_val, 3)
+    if c_val is None:  # missing current — prior-only fallback
+        return round(p_val, 3)
+    return round(c_val * W_CURRENT + p_val * W_PRIOR, 3)
 
 
 # === SECTION 1: CLOSEST DEFENDER DISTANCE ===

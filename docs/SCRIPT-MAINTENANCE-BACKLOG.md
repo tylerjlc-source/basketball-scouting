@@ -48,19 +48,6 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ---
 
-### B9 — `Domain_8_IQ_Motor__Stats.py` `weighted_avg` silently treats missing prior season as zero
-**Script:** `scripts/Domain_8_IQ_Motor__Stats.py`
-**Symptom:** Speed/distance and clutch summary tables display values ~60% of true magnitude when prior-season pull times out or returns empty dict. Distance, avg speed, off speed, def speed all silently downward-biased; values look valid (no N/A markers) but are wrong.
-**Trigger:** Prior-season `pull_speed_distance` or `pull_clutch_stats` endpoint fails → returns `{}`. `weighted_avg` (lines 68–72) reads missing `stat_key` as 0 then computes `current * 0.60 + 0 * 0.40` rather than falling back to current-only weighting like Domain 1's `stat_block` does.
-**Tell:** Avg speed display ~2.5 mph (NBA league average ~4.0–4.5 mph) or distance ~1.5 mi/g for an active high-mobility player. JSON output (per-season raw blocks) is correct; bug is summary-table-only.
-**Workaround:** Trust raw per-season JSON values in `iq_motor_output.json`. Substitute Domain 4 `LeagueDashPtStats SpeedDistance` capture (same endpoint, captured under Domain 4 with correct missing-prior fallback). Ignore the Domain 8 summary-table speed/distance and clutch rows when prior-season failed.
-**Applications:** 1 (Giannis S116 — prior-season speed/distance timeout produced understated weighted display; D4 captured same data correctly).
-**Root cause family:** B7 sibling (B7 = endpoint-timeout trigger; B9 = Domain 8's weighting-code response to that condition). B9 alone is a script logic bug independent of endpoint behavior. Same flaw also present in clutch summary table (lines 423–435).
-**Fix priority:** Medium (silent miscalibration is worse than visible N/A — affects #21 Burst/explosion and #25 Effort/motor sub-domain inputs without obvious tells).
-**Status:** Open.
-
----
-
 ### B10 — Domain 1 #3 Post Offense unimplemented despite SCRIPT-REGISTRY and SUB-DOMAIN-SOURCE-MAP coverage claims
 **Script:** `scripts/Domain_1_Finishing__Stats.py`
 **Symptom:** Domain 1 script never queries SynergyPlayTypes; output JSON contains only `subdomain_1_at_basket_finishing` and `subdomain_2_contact_finishing`; `print_comparison` renders #1 and #2 only. Two reference docs originally claimed automated coverage:
@@ -129,6 +116,14 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## RESOLVED
 
+### B9 — `Domain_8_IQ_Motor__Stats.py` `weighted_avg` silently treats missing prior season as zero (resolved 2026-05-09)
+**Script:** `scripts/Domain_8_IQ_Motor__Stats.py`
+**Original symptom:** Speed/distance and clutch summary tables displayed values at ~60% of true magnitude when prior-season pull timed out or returned an empty dict — silent miscalibration with no N/A tell.
+**Root cause:** `weighted_avg(c, p, key)` resolved a missing `prior[key]` to 0 (via `prior.get(key, 0) or 0`), then computed `c * 0.60 + 0 * 0.40` rather than falling back to current-only when prior was unavailable.
+**Fix:** Rewrote `weighted_avg` to detect missing prior (`p_val is None` or empty dict) and return current-only `round(c_val, 3)` in that case. Mirrors Domain 1's `stat_block` fallback. Also handles missing-current and both-missing cases.
+**Verification:** Synthetic-input test suite (6 cases including the Giannis-style reproduction): empty prior with current=4.2 now returns 4.2 (was 2.52); other cases unchanged.
+**Original applications count:** 1 (Giannis S116). Fix is preventive — silent miscalibration that produced no visible tell, so true frequency may have been higher than catalogued.
+
 ### B4 — `NBA_Comp_Stats.py` BLK%/STL% endpoint returns `None` (resolved 2026-05-09)
 **Script:** `scripts/NBA_Comp_Stats.py`
 **Original symptom:** BLK% and STL% (and silently TOV%) advanced-stat columns returned `None` for every comp candidate across all groups.
@@ -141,6 +136,7 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## CHANGE LOG
 
+- **2026-05-09** — B9 resolved. `Domain_8_IQ_Motor__Stats.py weighted_avg` now falls back to current-only when prior is empty/missing, matching Domain 1's `stat_block` behavior. Eliminates silent ~60%-of-truth miscalibration on prior-season endpoint timeouts. Verified via 6-case synthetic-input test.
 - **2026-05-09** — B4 resolved. `NBA_Comp_Stats.py` switched STL/BLK source from missing Advanced columns to `Base/Per100Possessions`; switched TOV source to `E_TOV_PCT` (also missing as `TOV_PCT`). Output fields renamed `stl_pct`/`blk_pct` → `stl_per_100`/`blk_per_100`. `NBA-COMP-METHODOLOGY.md` §A.2 tolerance-band table updated to match (±0.5 STL/100, ±1.0 BLK/100; per-100 and STL%/BLK% are >0.9 correlated, so the substitution is cosmetic). Live-verified on Wemby 2024-25.
 - **S124 (2026-04-30)** — B1 Applications count incremented 3 → 4 with Doncic case (100 GP for 2024-25 due to Feb 2025 Mavs→Lakers trade). Same TOT-row aggregation pattern as Bogdanović / Anderson / Vučević precedents; no new bug variant.
 - **S117 (2026-04-29)** — Added B8 (Domain 1 ShotChartDetail rim-zone N/A on default-window prior season; B5 sibling), B9 (Domain 8 `weighted_avg` silently treats missing prior as zero; produces ~60%-of-true display), B10 (Domain 1 #3 Post Offense unimplemented despite SCRIPT-REGISTRY and SUB-DOMAIN-SOURCE-MAP coverage claims — promoted to Medium for doc-fidelity / P3 concern). All three from S116 Giannis Skill 1 observations. B10 Option A documentation patches applied same session: SCRIPT-REGISTRY.md Domain 1 row trimmed + web-search-only note added; SUB-DOMAIN-SOURCE-MAP_v1.md #3 Block A line 199 + Block B line 212 changed to manual public-web lookup; Block E line 246 confidence ladder kept aspirational with backlog pointer; line 213 retained as defensible (logged for future review).
