@@ -36,8 +36,8 @@ from eval_window import determine_evaluation_window, format_window
 
 CURRENT_SEASON = None
 PRIOR_SEASON = None  # None triggers single-season path (R12_ANCHOR, OVERRIDE, ROOKIE)
-W_CUR = 0.60
-W_PRI = 0.40
+W_CURRENT = 0.60
+W_PRIOR = 0.40
 DELAY = 1.0  # seconds between API calls
 
 
@@ -45,47 +45,27 @@ DELAY = 1.0  # seconds between API calls
 # Helpers
 # ──────────────────────────────────────────────────────────────────────
 
-def _si(v):
-    try:
-        if v is None or v != v:
-            return 0
-        return int(v)
-    except (ValueError, TypeError):
-        return 0
+# Math lives in shared_math; thin local delegations preserve the
+# runtime-mutated W_CURRENT / W_PRIOR module globals as the per-call
+# weight source. `sb` stays local because Domain_3 omits total_volume
+# from its output dicts (shared_math.stat_block always emits it).
 
-
-def _sf(v):
-    try:
-        if v is None or v != v:
-            return 0.0
-        return float(v)
-    except (ValueError, TypeError):
-        return 0.0
-
-
-def _sr(v, d=3):
-    try:
-        if v is None or v != v:
-            return 0
-        return round(float(v), d)
-    except (ValueError, TypeError):
-        return 0
+from shared_math import (
+    safe_int as _si,
+    safe_float as _sf,
+    safe_round as _sr,
+    volume_weighted_pct as _shared_volume_weighted_pct,
+    simple_weighted as _shared_simple_weighted,
+)
 
 
 def vol_wt(cur_m, cur_a, pri_m, pri_a):
-    """Volume-weighted percentage."""
-    if pri_a is None or pri_a == 0:
-        return round(cur_m / cur_a, 3) if cur_a > 0 else 0
-    wm = cur_m * W_CUR + pri_m * W_PRI
-    wa = cur_a * W_CUR + pri_a * W_PRI
-    return round(wm / wa, 3) if wa > 0 else 0
+    return _shared_volume_weighted_pct(cur_m, cur_a, pri_m, pri_a,
+                                       w_cur=W_CURRENT, w_pri=W_PRIOR)
 
 
 def sw(cur, pri):
-    """Simple weighted average."""
-    if pri is None:
-        return cur
-    return round(cur * W_CUR + pri * W_PRI, 3)
+    return _shared_simple_weighted(cur, pri, w_cur=W_CURRENT, w_pri=W_PRIOR)
 
 
 def sb(cur, pri, cur_vol=None, pri_vol=None, is_rate=False):
@@ -409,7 +389,7 @@ def build_profile(
     print(f"\n{'='*60}")
     print(f"Building profile: {player_name}")
     if PRIOR_SEASON:
-        print(f"  Window: {CURRENT_SEASON} ({int(W_CUR*100)}%) + {PRIOR_SEASON} ({int(W_PRI*100)}%)")
+        print(f"  Window: {CURRENT_SEASON} ({int(W_CURRENT*100)}%) + {PRIOR_SEASON} ({int(W_PRIOR*100)}%)")
     else:
         print(f"  Window: {CURRENT_SEASON} (single-season)")
     print(f"{'='*60}")
@@ -739,12 +719,12 @@ if __name__ == "__main__":
 
     if len(window.seasons_used) == 1:
         CURRENT_SEASON = window.seasons_used[0][0]
-        W_CUR = window.seasons_used[0][1]
+        W_CURRENT = window.seasons_used[0][1]
         PRIOR_SEASON = None
-        W_PRI = 0.0
+        W_PRIOR = 0.0
     else:
-        CURRENT_SEASON, W_CUR = window.seasons_used[0]
-        PRIOR_SEASON, W_PRI = window.seasons_used[1]
+        CURRENT_SEASON, W_CURRENT = window.seasons_used[0]
+        PRIOR_SEASON, W_PRIOR = window.seasons_used[1]
 
     target_player = args.player
 
