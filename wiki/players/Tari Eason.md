@@ -1,0 +1,32 @@
+---
+player: Tari Eason
+group: Wing
+archetype: 3-and-D Wing
+composite: 7.58
+tier: 8
+tier_band: 7.50–7.89
+status: Active
+competition_level: NBA
+has_profile: false
+profile_path: null
+scored_session: null
+last_updated_session: null
+rubric_version: unknown
+pot: null
+---
+
+# Tari Eason
+
+**[[3-and-D Wing]]** Wing — composite **7.58** (Tier 8).
+
+## Anchors in context
+- **Tier neighbors** (7.50–7.89 band): [[Anfernee Simons]] (7.58), [[Scoot Henderson]] (7.58), [[Kyle Anderson]] (7.61)
+- **Archetype peers** ([[3-and-D Wing]]): [[OG Anunoby]], [[Mikal Bridges]]
+
+## Library history
+No update history recorded.
+
+## Sources
+- Full profile: legacy anchor — no full profile
+- Research packets: none
+- Anchor library: [docs/ANCHOR-LIBRARY.md](../../docs/ANCHOR-LIBRARY.md)

@@ -1,0 +1,160 @@
+[
+  {
+    "player": "Stephen Curry",
+    "evaluation_window": {
+      "mode": "DEFAULT",
+      "seasons_used": [
+        {
+          "season": "2025-26",
+          "weight": 0.6
+        },
+        {
+          "season": "2024-25",
+          "weight": 0.4
+        }
+      ],
+      "flag_template": "(none required)",
+      "age_concern": false
+    },
+    "subdomain_15_on_ball_pressure": {
+      "opp_fg_pct_overall": {
+        "current_fg_pct": 0.49,
+        "prior_fg_pct": 0.451,
+        "weighted_fg_pct": 0.475,
+        "current_fga": 9.63,
+        "prior_fga": 9.41
+      },
+      "dfgpoe_overall": {
+        "current": 0.03,
+        "prior": -0.009,
+        "weighted": 0.014
+      },
+      "opp_fg_pct_3pt": {
+        "current_fg_pct": "N/A",
+        "prior_fg_pct": "N/A",
+        "weighted_fg_pct": "N/A",
+        "current_fga": null,
+        "prior_fga": null
+      },
+      "dfgpoe_3pt": {
+        "current": null,
+        "prior": "N/A",
+        "weighted": null
+      },
+      "opp_fg_pct_perimeter": {
+        "current_fg_pct": "N/A",
+        "prior_fg_pct": "N/A",
+        "weighted_fg_pct": "N/A",
+        "current_fga": null,
+        "prior_fga": null
+      },
+      "dfgpoe_perimeter": {
+        "current": null,
+        "prior": "N/A",
+        "weighted": null
+      },
+      "deflections_pg": {
+        "current": 2.42,
+        "prior": 2.27,
+        "weighted": 2.36
+      },
+      "stl_pg": {
+        "current": 1.1,
+        "prior": 1.1,
+        "weighted": 1.1
+      },
+      "contested_shots_pg": {
+        "current": 2.77,
+        "prior": 3.23,
+        "weighted": 2.954
+      },
+      "contested_3pt_pg": {
+        "current": 1.4,
+        "prior": 1.77,
+        "weighted": 1.548
+      },
+      "contested_2pt_pg": {
+        "current": 1.37,
+        "prior": 1.46,
+        "weighted": 1.406
+      },
+      "pf_pg": {
+        "current": 1.7,
+        "prior": 1.4,
+        "weighted": 1.58
+      },
+      "iso_defense": {
+        "ppp": {
+          "current": 0.778,
+          "prior": 0.652,
+          "weighted": 0.728
+        },
+        "poss_total": 2.4,
+        "current_poss": 1.4,
+        "prior_poss": 1.0,
+        "current_percentile": 0.817,
+        "prior_percentile": 0.909
+      }
+    },
+    "subdomain_16_help_defense": {
+      "def_rating": {
+        "current": 114.8,
+        "prior": 112.7,
+        "weighted": 113.96
+      },
+      "charges_drawn_pg": {
+        "current": 0.07,
+        "prior": 0.09,
+        "weighted": 0.078
+      },
+      "def_loose_balls_pg": {
+        "current": 0.42,
+        "prior": 0.34,
+        "weighted": 0.388
+      },
+      "def_boxouts_pg": {
+        "current": 0.23,
+        "prior": 0.3,
+        "weighted": 0.258
+      },
+      "blk_pg": {
+        "current": 0.4,
+        "prior": 0.4,
+        "weighted": 0.4
+      }
+    },
+    "subdomain_17_rim_protection": {
+      "opp_fg_pct_rim": {
+        "current_fg_pct": "N/A",
+        "prior_fg_pct": "N/A",
+        "weighted_fg_pct": "N/A",
+        "current_fga": null,
+        "prior_fga": null
+      },
+      "dfgpoe_rim": {
+        "current": null,
+        "prior": "N/A",
+        "weighted": null
+      }
+    },
+    "subdomain_18_post_defense": {
+      "postup_defense": {
+        "ppp": {
+          "current": 1.273,
+          "prior": 0.852,
+          "weighted": 1.105
+        },
+        "poss_total": 1.0,
+        "current_poss": 0.6,
+        "prior_poss": 0.4,
+        "current_percentile": 0.135,
+        "prior_percentile": 0.771
+      },
+      "dreb_pg": {
+        "current": 3.2,
+        "prior": 3.9,
+        "weighted": 3.48
+      }
+    }
+  }
+]

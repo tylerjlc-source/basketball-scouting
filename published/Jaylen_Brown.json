@@ -1,0 +1,660 @@
+{
+  "schema_version": "1.1",
+  "rules_version": "R1-R15 / S151",
+  "player": "Jaylen Brown",
+  "group": "Wing",
+  "position": "SG/SF",
+  "career_status": "Active",
+  "draft_class": null,
+  "archetype": "Score-First Wing (no migration)",
+  "evaluation_date": "2026-04-23",
+  "composite_label": "Composite",
+  "composite_score": 8.83,
+  "tier": 5,
+  "tier_label": "Perennial All-Star / legitimate star",
+  "narrative": {
+    "identity": "Jaylen Brown is a Score-First Wing in his 10th NBA season, a 7-time All-Star with a 2024 Finals MVP and championship to his name. At 6'6\", 223 lbs, with a 6'11.75\" wingspan, he combines elite wing strength with the length to defend across multiple positions. With Jayson Tatum out for most of 2025-26 recovering from injury, Brown has carried Boston's offensive load at a career-high level. He averaged 29.3 points per game at the All-Star break, up from 22.2 the prior year, and earned All-Star starter honors for the second straight year.",
+    "strength": "Brown is a driver-first scorer. He gets to the rim 16.5 times per game, converting 52.8% from inside the arc on those drives, and finishes 68.3% at the basket on legitimate volume. His 13% dunk rate reflects real above-rim finishing for a wing his size. Off the bounce he is comfortable creating his own shot from mid-range (41.0% on 284 attempts) and the pull-up zone, and his playmaking has improved alongside the scoring expansion: 17.3% adjusted assist rate and 4.9 assists per game. Defensively he remains a functional wing stopper. He holds opponents 2.6% below their expected field-goal percentage, contests 4.5 shots a game, and his combination of strength and lateral quickness lets him switch from point guards to power forwards.",
+    "weakness": "The perimeter shooting is the softest part of the profile. His catch-and-shoot 3-point conversion has dropped to 34.1%, well off the 38-39% peaks he held during the 2022-24 title-contending years, and his pull-up 3 sits at 32.9%. Ball security is a real cost of the higher usage. He turned the ball over 220 times in 71 games, with an assist-to-turnover ratio of 1.52 that is weak for a player operating as a primary handler. Defensively he is functional but not at an All-Defensive level. The team defense around him has slipped, and his individual ceiling on that end has settled at very-good rather than elite.",
+    "projection_verdict": "Brown is a perennial All-Star whose level sits below the league's MVP candidates and above the back end of All-Star rotations. The ceiling is a first All-NBA selection and another deep playoff run, in the territory of Kawhi Leonard at his peak, if Tatum returns healthy and Boston's roster regenerates around the pair. The floor is an age-decline arc, where his shooting recovery never comes and his defensive role contracts. What he is, year over year, is a winning Score-First Wing with championship credentials and the physical tools to keep producing into his 30s. What he is not, and is unlikely to become, is the lead engine of an offense or an All-Defensive selection."
+  },
+  "domains": [
+    {
+      "id": 1,
+      "name": "Finishing",
+      "score": 8.7,
+      "one_line": "8.7. Elite rim finishing on volume, with post game functional as a mismatch tool but not a primary option."
+    },
+    {
+      "id": 2,
+      "name": "Shooting",
+      "score": 7.1,
+      "one_line": "7.1. Three-level shooter showing a catch-and-shoot dip this season, with volume outpacing efficiency at the perimeter."
+    },
+    {
+      "id": 3,
+      "name": "Ball Skills",
+      "score": 7.8,
+      "one_line": "7.8. Strong handle and touch around the rim, but ball security at high usage is the real gap."
+    },
+    {
+      "id": 4,
+      "name": "Playmaking",
+      "score": 7.2,
+      "one_line": "7.2. Functional playmaking for a Score-First role, with decision-making the lever for any further ceiling."
+    },
+    {
+      "id": 5,
+      "name": "Defense",
+      "score": 7.4,
+      "one_line": "7.4. Functional wing stopper across positions, not at an All-Defensive level but well above liability."
+    },
+    {
+      "id": 6,
+      "name": "Rebounding",
+      "score": 7.2,
+      "one_line": "7.2. Physical wing rebounder on both glasses."
+    },
+    {
+      "id": 7,
+      "name": "Athleticism",
+      "score": 8.5,
+      "one_line": "8.5. Elite wing physicality combining first-step burst, strength, and lateral quickness."
+    },
+    {
+      "id": 8,
+      "name": "IQ / Motor",
+      "score": 7.9,
+      "one_line": "7.9. Finals MVP credential and high motor sit at the high end, while shot selection follows a Score-First volume profile rather than efficiency-first."
+    }
+  ],
+  "sub_domains": [
+    {
+      "id": 1,
+      "name": "At-basket finishing",
+      "score": 8.5,
+      "rationale_public": "Finishes 68.3% at the rim on 330 attempts and 52.8% on drives, with a 13% dunk rate.",
+      "signature": {
+        "name": "Rim Finisher",
+        "tier": "Elite",
+        "description": "Conversion at the basket through any means: rim finishes, touch finishes, floaters, fingerrolls, off-hand layups, and above-rim plays."
+      }
+    },
+    {
+      "id": 2,
+      "name": "Contact finishing / foul draw",
+      "score": 7.8,
+      "rationale_public": "Draws 0.323 free throws per field-goal attempt and converts 78.6% from the line, with 0.657 points per drive possession.",
+      "signature": null
+    },
+    {
+      "id": 3,
+      "name": "Post offense",
+      "score": 6.5,
+      "rationale_public": "Functional post-up against smaller defenders; usable as a mismatch tool, not a primary option.",
+      "signature": null
+    },
+    {
+      "id": 4,
+      "name": "Catch-and-shoot 3PT",
+      "score": 7.0,
+      "rationale_public": "Catch-and-shoot 3-point at 34.1% on 386 attempts, with a 40.8% corner clip salvaging the dip.",
+      "signature": null
+    },
+    {
+      "id": 5,
+      "name": "Off-dribble shooting",
+      "score": 7.5,
+      "rationale_public": "Pull-up 3 at 32.9% and pull-up mid-range 43.5%, with isolation creation in the 69th percentile.",
+      "signature": null
+    },
+    {
+      "id": 6,
+      "name": "Mid-range",
+      "score": 7.0,
+      "rationale_public": "41.0% on 284 mid-range attempts; functional but not a weapon.",
+      "signature": null
+    },
+    {
+      "id": 7,
+      "name": "Free throw",
+      "score": 7.0,
+      "rationale_public": "78.6% from the line on the season; clutch free throws drop to 68.2%.",
+      "signature": null
+    },
+    {
+      "id": 8,
+      "name": "Handling / creation",
+      "score": 7.8,
+      "rationale_public": "Isolation 69th percentile, pick-and-roll handler 62.6th percentile, 16.5 drives per game at 52.8%.",
+      "signature": null
+    },
+    {
+      "id": 9,
+      "name": "Touch / feel",
+      "score": 7.5,
+      "rationale_public": "Floater 45.5% on 442 attempts and 66.1% on non-dunk rim attempts; solid touch for a power wing.",
+      "signature": null
+    },
+    {
+      "id": 10,
+      "name": "Ball security",
+      "score": 5.9,
+      "rationale_public": "Assist-to-turnover ratio 1.52 and 220 turnovers in 71 games; a real gap for a primary handler.",
+      "signature": null
+    },
+    {
+      "id": 11,
+      "name": "Court vision",
+      "score": 7.0,
+      "rationale_public": "17.3% adjusted assist rate and 8.9 potential assists per game; solid vision, not weapons-grade.",
+      "signature": null
+    },
+    {
+      "id": 12,
+      "name": "Decision-making",
+      "score": 7.4,
+      "rationale_public": "Plays at a championship level when healthy with positive clutch impact across 52 games; turnover rate at high usage is the cost.",
+      "signature": null
+    },
+    {
+      "id": 13,
+      "name": "Passing execution",
+      "score": 7.0,
+      "rationale_public": "Assists convert at 54.6%; adequate delivery for the role.",
+      "signature": null
+    },
+    {
+      "id": 14,
+      "name": "Off-ball movement",
+      "score": 7.0,
+      "rationale_public": "1.146 points per possession on cuts and 1.131 in transition; functional off-ball mover.",
+      "signature": null
+    },
+    {
+      "id": 15,
+      "name": "On-ball pressure",
+      "score": 7.5,
+      "rationale_public": "Suppresses opponent field-goal percentage by 2.6% versus expected, contesting 4.5 shots per game; functional wing stopper.",
+      "signature": null
+    },
+    {
+      "id": 16,
+      "name": "Help defense",
+      "score": 7.0,
+      "rationale_public": "1.8 deflections per game; adequate help defense in a weakened team scheme.",
+      "signature": null
+    },
+    {
+      "id": 17,
+      "name": "Rim protection",
+      "score": 3.5,
+      "rationale_public": "Wing baseline rim protection.",
+      "signature": null
+    },
+    {
+      "id": 18,
+      "name": "Post defense",
+      "score": 5.0,
+      "rationale_public": "Holds post-ups to 1.044 points per possession; competent for a wing.",
+      "signature": null
+    },
+    {
+      "id": 19,
+      "name": "Offensive rebounding",
+      "score": 6.5,
+      "rationale_public": "Offensive rebound rate 3.4% and 1.18 per game; above-average wing crashing.",
+      "signature": null
+    },
+    {
+      "id": 20,
+      "name": "Defensive rebounding",
+      "score": 7.5,
+      "rationale_public": "Defensive rebound rate 14.3% and 5.28 per game; strong for a wing.",
+      "signature": null
+    },
+    {
+      "id": 21,
+      "name": "Burst / explosion",
+      "score": 8.3,
+      "rationale_public": "16.5 drives per game at 52.8%, 13% dunk rate, 1.131 points per transition possession.",
+      "signature": {
+        "name": "Athlete",
+        "tier": "Proven",
+        "description": "Burst and lateral quickness as one athletic profile. First-step explosion, vertical leap, hip mobility, and change of direction in space."
+      }
+    },
+    {
+      "id": 22,
+      "name": "Lateral quickness",
+      "score": 7.8,
+      "rationale_public": "Stays with most wings on the perimeter, suppressing field-goal percentage by 2.6% versus expected.",
+      "signature": null
+    },
+    {
+      "id": 23,
+      "name": "Strength",
+      "score": 8.0,
+      "rationale_public": "223 lbs on a 6'6\" frame; absorbs contact on drives and switches up to power forward.",
+      "signature": {
+        "name": "Bruiser",
+        "tier": "Proven",
+        "description": "Functional basketball strength. Holds position, absorbs and initiates contact, sets displacing screens, and finishes through physicality at the rim."
+      }
+    },
+    {
+      "id": 24,
+      "name": "Shot selection",
+      "score": 7.0,
+      "rationale_public": "True shooting 56.6% at 32% usage; functional for a scoring wing with a high late-clock share.",
+      "signature": null
+    },
+    {
+      "id": 25,
+      "name": "Effort / motor",
+      "score": 8.0,
+      "rationale_public": "134 games played across the last two seasons with career-high usage in 2025-26 through Tatum's absence.",
+      "signature": {
+        "name": "Hustle",
+        "tier": "Proven",
+        "description": "Relentless pursuit. Loose balls, transition sprints, deflections, and the second-effort plays that don't appear in the box score but change games."
+      }
+    },
+    {
+      "id": 26,
+      "name": "Competitive character",
+      "score": 8.5,
+      "rationale_public": "2024 Finals MVP and champion, with career-high scoring volume in 2025-26 and a playoff true-shooting rise of 0.7 points above his career mark.",
+      "signature": {
+        "name": "Competitor",
+        "tier": "Elite",
+        "description": "Physicality and intensity when the game is hard. Performance holds in close games, rivalry matchups, and elimination scenarios. Withstands adversity without withdrawing."
+      }
+    }
+  ],
+  "projection": {
+    "pot": 8.95,
+    "min": 8.38,
+    "max": 9.05,
+    "confidence": "tight",
+    "spread_note_public": "Realistic peak (POT) of 8.95 with a tight confidence band, Min 8.38 to Max 9.05. Plateau trajectory at his current Score-First Wing level, with first-All-NBA upside if Tatum returns and Boston's roster regenerates."
+  },
+  "comps": [
+    {
+      "comp_player": "Jimmy Butler",
+      "comp_tier": "Lineage",
+      "similarity_public": "Both elite physical wings whose careers center on playoff-takeover scoring, sharing the high-strength frame at 6'6\"-6'7\"/220-230. Butler accumulated five All-NBA and five All-Defensive selections across two Finals losses; Brown accumulated fewer regular-season honors but won the 2024 Finals MVP and championship Butler chased."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-04-23",
+      "composite": 8.83,
+      "tier": 5,
+      "archetype": "Score-First Wing"
+    }
+  ],
+  "career_stats": {
+    "regular_season": [
+      {
+        "season_id": "2016-17",
+        "team": "BOS",
+        "gp": 78,
+        "gs": 20,
+        "min": 17.2,
+        "pts": 6.6,
+        "reb": 2.8,
+        "ast": 0.8,
+        "stl": 0.4,
+        "blk": 0.2,
+        "tov": 0.9,
+        "fg_pct": 0.455,
+        "fg3_pct": 0.343,
+        "ft_pct": 0.685,
+        "is_career": false
+      },
+      {
+        "season_id": "2017-18",
+        "team": "BOS",
+        "gp": 70,
+        "gs": 70,
+        "min": 30.7,
+        "pts": 14.5,
+        "reb": 4.9,
+        "ast": 1.6,
+        "stl": 1.0,
+        "blk": 0.4,
+        "tov": 1.8,
+        "fg_pct": 0.465,
+        "fg3_pct": 0.395,
+        "ft_pct": 0.644,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "BOS",
+        "gp": 74,
+        "gs": 25,
+        "min": 25.9,
+        "pts": 13.0,
+        "reb": 4.2,
+        "ast": 1.4,
+        "stl": 0.9,
+        "blk": 0.4,
+        "tov": 1.3,
+        "fg_pct": 0.465,
+        "fg3_pct": 0.344,
+        "ft_pct": 0.658,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "BOS",
+        "gp": 57,
+        "gs": 57,
+        "min": 33.9,
+        "pts": 20.3,
+        "reb": 6.4,
+        "ast": 2.1,
+        "stl": 1.1,
+        "blk": 0.4,
+        "tov": 2.2,
+        "fg_pct": 0.481,
+        "fg3_pct": 0.382,
+        "ft_pct": 0.724,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "BOS",
+        "gp": 58,
+        "gs": 58,
+        "min": 34.5,
+        "pts": 24.7,
+        "reb": 6.0,
+        "ast": 3.4,
+        "stl": 1.2,
+        "blk": 0.6,
+        "tov": 2.7,
+        "fg_pct": 0.484,
+        "fg3_pct": 0.397,
+        "ft_pct": 0.764,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "BOS",
+        "gp": 66,
+        "gs": 66,
+        "min": 33.6,
+        "pts": 23.6,
+        "reb": 6.1,
+        "ast": 3.5,
+        "stl": 1.1,
+        "blk": 0.3,
+        "tov": 2.7,
+        "fg_pct": 0.473,
+        "fg3_pct": 0.358,
+        "ft_pct": 0.758,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "BOS",
+        "gp": 67,
+        "gs": 67,
+        "min": 35.9,
+        "pts": 26.6,
+        "reb": 6.9,
+        "ast": 3.5,
+        "stl": 1.1,
+        "blk": 0.4,
+        "tov": 2.9,
+        "fg_pct": 0.491,
+        "fg3_pct": 0.335,
+        "ft_pct": 0.765,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "BOS",
+        "gp": 70,
+        "gs": 70,
+        "min": 33.5,
+        "pts": 23.0,
+        "reb": 5.5,
+        "ast": 3.6,
+        "stl": 1.2,
+        "blk": 0.5,
+        "tov": 2.4,
+        "fg_pct": 0.499,
+        "fg3_pct": 0.354,
+        "ft_pct": 0.703,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "BOS",
+        "gp": 63,
+        "gs": 63,
+        "min": 34.3,
+        "pts": 22.2,
+        "reb": 5.8,
+        "ast": 4.5,
+        "stl": 1.2,
+        "blk": 0.3,
+        "tov": 2.6,
+        "fg_pct": 0.463,
+        "fg3_pct": 0.324,
+        "ft_pct": 0.764,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "BOS",
+        "gp": 71,
+        "gs": 71,
+        "min": 34.4,
+        "pts": 28.7,
+        "reb": 6.9,
+        "ast": 5.1,
+        "stl": 1.0,
+        "blk": 0.4,
+        "tov": 3.6,
+        "fg_pct": 0.477,
+        "fg3_pct": 0.347,
+        "ft_pct": 0.795,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 674,
+        "gs": 567,
+        "min": 31.0,
+        "pts": 20.0,
+        "reb": 5.5,
+        "ast": 2.9,
+        "stl": 1.0,
+        "blk": 0.4,
+        "tov": 2.3,
+        "fg_pct": 0.478,
+        "fg3_pct": 0.358,
+        "ft_pct": 0.739,
+        "is_career": true
+      }
+    ],
+    "playoffs": [
+      {
+        "season_id": "2016-17",
+        "team": "BOS",
+        "gp": 17,
+        "gs": 0,
+        "min": 12.6,
+        "pts": 5.0,
+        "reb": 2.1,
+        "ast": 0.8,
+        "stl": 0.4,
+        "blk": 0.1,
+        "tov": 0.8,
+        "fg_pct": 0.479,
+        "fg3_pct": 0.217,
+        "ft_pct": 0.667,
+        "is_career": false
+      },
+      {
+        "season_id": "2017-18",
+        "team": "BOS",
+        "gp": 18,
+        "gs": 15,
+        "min": 32.4,
+        "pts": 18.0,
+        "reb": 4.8,
+        "ast": 1.4,
+        "stl": 0.8,
+        "blk": 0.6,
+        "tov": 1.3,
+        "fg_pct": 0.466,
+        "fg3_pct": 0.393,
+        "ft_pct": 0.64,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "BOS",
+        "gp": 9,
+        "gs": 9,
+        "min": 30.4,
+        "pts": 13.9,
+        "reb": 5.8,
+        "ast": 1.1,
+        "stl": 0.7,
+        "blk": 0.2,
+        "tov": 1.8,
+        "fg_pct": 0.506,
+        "fg3_pct": 0.35,
+        "ft_pct": 0.767,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "BOS",
+        "gp": 17,
+        "gs": 17,
+        "min": 39.5,
+        "pts": 21.8,
+        "reb": 7.5,
+        "ast": 2.3,
+        "stl": 1.5,
+        "blk": 0.5,
+        "tov": 2.4,
+        "fg_pct": 0.476,
+        "fg3_pct": 0.358,
+        "ft_pct": 0.841,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "BOS",
+        "gp": 24,
+        "gs": 24,
+        "min": 38.3,
+        "pts": 23.1,
+        "reb": 6.9,
+        "ast": 3.5,
+        "stl": 1.1,
+        "blk": 0.4,
+        "tov": 3.1,
+        "fg_pct": 0.47,
+        "fg3_pct": 0.373,
+        "ft_pct": 0.763,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "BOS",
+        "gp": 20,
+        "gs": 20,
+        "min": 37.6,
+        "pts": 22.7,
+        "reb": 5.6,
+        "ast": 3.4,
+        "stl": 1.1,
+        "blk": 0.4,
+        "tov": 3.3,
+        "fg_pct": 0.496,
+        "fg3_pct": 0.354,
+        "ft_pct": 0.689,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "BOS",
+        "gp": 19,
+        "gs": 19,
+        "min": 37.2,
+        "pts": 23.9,
+        "reb": 5.9,
+        "ast": 3.3,
+        "stl": 1.2,
+        "blk": 0.6,
+        "tov": 2.7,
+        "fg_pct": 0.516,
+        "fg3_pct": 0.327,
+        "ft_pct": 0.66,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "BOS",
+        "gp": 11,
+        "gs": 11,
+        "min": 36.5,
+        "pts": 22.1,
+        "reb": 7.1,
+        "ast": 3.9,
+        "stl": 1.0,
+        "blk": 0.3,
+        "tov": 3.5,
+        "fg_pct": 0.441,
+        "fg3_pct": 0.333,
+        "ft_pct": 0.758,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "BOS",
+        "gp": 7,
+        "gs": 7,
+        "min": 35.6,
+        "pts": 25.7,
+        "reb": 5.7,
+        "ast": 3.3,
+        "stl": 0.9,
+        "blk": 1.1,
+        "tov": 3.6,
+        "fg_pct": 0.455,
+        "fg3_pct": 0.405,
+        "ft_pct": 0.717,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 142,
+        "gs": 122,
+        "min": 33.6,
+        "pts": 19.6,
+        "reb": 5.7,
+        "ast": 2.6,
+        "stl": 1.0,
+        "blk": 0.5,
+        "tov": 2.5,
+        "fg_pct": 0.48,
+        "fg3_pct": 0.357,
+        "ft_pct": 0.726,
+        "is_career": true
+      }
+    ]
+  }
+}

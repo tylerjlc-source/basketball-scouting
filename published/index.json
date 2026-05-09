@@ -1,0 +1,33 @@
+{
+  "count": 4,
+  "players": [
+    {
+      "player": "Donovan Mitchell",
+      "composite": 8.95,
+      "tier": 4,
+      "archetype": "Offensive Engine (no migration)",
+      "file": "Donovan_Mitchell.json"
+    },
+    {
+      "player": "Jayson Tatum",
+      "composite": 8.88,
+      "tier": 5,
+      "archetype": "All-Around Wing",
+      "file": "Jayson_Tatum.json"
+    },
+    {
+      "player": "Jaylen Brown",
+      "composite": 8.83,
+      "tier": 5,
+      "archetype": "Score-First Wing (no migration)",
+      "file": "Jaylen_Brown.json"
+    },
+    {
+      "player": "Jaren Jackson Jr.",
+      "composite": 8.52,
+      "tier": 6,
+      "archetype": "Switchable Big",
+      "file": "Jaren_Jackson_Jr.json"
+    }
+  ]
+}

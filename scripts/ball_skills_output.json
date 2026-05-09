@@ -1,0 +1,240 @@
+[
+  {
+    "player": "Stephen Curry",
+    "evaluation_window": {
+      "mode": "DEFAULT",
+      "seasons_used": [
+        {
+          "season": "2025-26",
+          "weight": 0.6
+        },
+        {
+          "season": "2024-25",
+          "weight": 0.4
+        }
+      ],
+      "flag_template": "(none required)",
+      "age_concern": false
+    },
+    "subdomain_8_handling_creation": {
+      "play_type_creation": {
+        "isolation": {
+          "ppp": {
+            "current": 1.088,
+            "prior": 0.87,
+            "weighted": 1.001
+          },
+          "poss": {
+            "current": 91,
+            "prior": 131,
+            "weighted": 107.0
+          },
+          "fg_pct": {
+            "current": 0.479,
+            "prior": 0.374,
+            "weighted": 0.437
+          },
+          "tov_pct": {
+            "current": 0.088,
+            "prior": 0.076,
+            "weighted": 0.083
+          },
+          "percentile": {
+            "current": 0.887,
+            "prior": 0.464,
+            "weighted": 0.718
+          }
+        },
+        "pnr_ball_handler": {
+          "ppp": {
+            "current": 0.974,
+            "prior": 0.855,
+            "weighted": 0.926
+          },
+          "poss": {
+            "current": 195,
+            "prior": 401,
+            "weighted": 277.4
+          },
+          "fg_pct": {
+            "current": 0.407,
+            "prior": 0.371,
+            "weighted": 0.393
+          },
+          "tov_pct": {
+            "current": 0.169,
+            "prior": 0.152,
+            "weighted": 0.162
+          },
+          "percentile": {
+            "current": 0.789,
+            "prior": 0.499,
+            "weighted": 0.673
+          }
+        },
+        "handoff": {
+          "ppp": {
+            "current": 1.607,
+            "prior": 1.1,
+            "weighted": 1.404
+          },
+          "poss": {
+            "current": 112,
+            "prior": 140,
+            "weighted": 123.2
+          },
+          "fg_pct": {
+            "current": 0.585,
+            "prior": 0.472,
+            "weighted": 0.54
+          },
+          "tov_pct": {
+            "current": 0.063,
+            "prior": 0.164,
+            "weighted": 0.103
+          }
+        }
+      },
+      "tracking_possessions": {
+        "touches_pg": {
+          "current": 65.4,
+          "prior": 68.1,
+          "weighted": 66.48
+        },
+        "time_of_poss": {
+          "current": 4.4,
+          "prior": 4.8,
+          "weighted": 4.56
+        },
+        "avg_drib_per_touch": {
+          "current": 3.97,
+          "prior": 4.25,
+          "weighted": 4.082
+        },
+        "pts_per_touch": {
+          "current": 0.406,
+          "prior": 0.361,
+          "weighted": 0.388
+        }
+      },
+      "drives": {
+        "drives_pg": {
+          "current": 7.8,
+          "prior": 8.7,
+          "weighted": 8.16
+        },
+        "drive_fg_pct": {
+          "current": 0.52,
+          "prior": 0.474,
+          "weighted": 0.502
+        },
+        "drive_pts_pg": {
+          "current": 5.0,
+          "prior": 4.4,
+          "weighted": 4.76
+        },
+        "drive_tov_pct": {
+          "current": 0.038,
+          "prior": 0.069,
+          "weighted": 0.05
+        },
+        "drive_ast_pg": {
+          "current": 0.5,
+          "prior": 0.8,
+          "weighted": 0.62
+        }
+      },
+      "context": {
+        "usg_pct": {
+          "current": 0.308,
+          "prior": 0.286,
+          "weighted": 0.299
+        }
+      }
+    },
+    "subdomain_9_touch_feel": {
+      "floater_range_4_14ft": {
+        "fg_pct": {
+          "current": 0.527,
+          "prior": 0.461,
+          "weighted": 0.491,
+          "current_volume": 129,
+          "prior_volume": 232
+        },
+        "fga": {
+          "current": 129,
+          "prior": 232,
+          "weighted": 170.2
+        },
+        "pct_of_total_fga": {
+          "current": 0.161,
+          "prior": 0.184,
+          "weighted": 0.17
+        }
+      },
+      "non_dunk_rim_fg_pct": {
+        "current": 0.694,
+        "prior": 0.64,
+        "weighted": 0.669,
+        "current_volume": 121,
+        "prior_volume": 161
+      },
+      "ft_pct": {
+        "current": 0.923,
+        "prior": 0.933,
+        "weighted": 0.928,
+        "current_volume": 221,
+        "prior_volume": 299
+      }
+    },
+    "subdomain_10_ball_security": {
+      "tov_per_100_touches": {
+        "current": 4.3,
+        "prior": 4.2,
+        "weighted": 4.26
+      },
+      "e_tov_pct": {
+        "current": 9.9,
+        "prior": 9.9,
+        "weighted": 9.9
+      },
+      "ast_to_ratio": {
+        "current": 1.68,
+        "prior": 2.1,
+        "weighted": 1.848
+      },
+      "touches_pg": {
+        "current": 65.4,
+        "prior": 68.1,
+        "weighted": 66.48
+      },
+      "raw_ast": {
+        "current": 203,
+        "prior": 421,
+        "weighted": 290.2
+      },
+      "raw_tov": {
+        "current": 121,
+        "prior": 200,
+        "weighted": 152.6
+      },
+      "clutch": {
+        "tov": {
+          "current": 8,
+          "prior": 9,
+          "weighted": 8.4
+        },
+        "min": {
+          "current": 61.0,
+          "prior": 110.5,
+          "weighted": 80.8
+        },
+        "ast": {
+          "current": 5,
+          "prior": 11,
+          "weighted": 7.4
+        }
+      }
+    }
+  }
+]

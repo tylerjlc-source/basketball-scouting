@@ -1,0 +1,89 @@
+{
+  "player": "Jaren Jackson Jr.",
+  "evaluation_date": "2026-05-02",
+  "checks": [
+    {
+      "claim": "Myles Turner",
+      "type": "player_name",
+      "source_checked": "ANCHOR-LIBRARY.md",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-Star",
+      "type": "accolade",
+      "source_checked": "research packet",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-NBA",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-Defensive",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "DPOY",
+      "type": "accolade",
+      "source_checked": "research packet",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "5.25",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "1.02",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "0.06",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "8.70",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "7.20",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "8.90",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    }
+  ],
+  "summary": {
+    "verified": 11,
+    "unverifiable": 0,
+    "mismatch": 0
+  },
+  "decision": "auto_approved"
+}

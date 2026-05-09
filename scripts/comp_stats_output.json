@@ -1,0 +1,45 @@
+{
+  "player": "Carmelo Anthony",
+  "player_id": 2546,
+  "season": "2013-14",
+  "games_played": 77,
+  "minutes_per_game": 38.7,
+  "ts_pct": 56.1,
+  "usg_pct": 31.8,
+  "ast_pct": 15.6,
+  "tov_pct": null,
+  "oreb_pct": 4.9,
+  "dreb_pct": 17.1,
+  "reb_pct": 10.8,
+  "stl_pct": null,
+  "blk_pct": null,
+  "ppg": 27.4,
+  "guard_stats": {
+    "primary": 56.1,
+    "usage": 31.8,
+    "ast_rate": 15.6,
+    "tov_rate": null
+  },
+  "wing_stats": {
+    "primary": 56.1,
+    "usage": 31.8,
+    "reb_rate": 10.8,
+    "stl_rate": null
+  },
+  "big_stats": {
+    "primary": 56.1,
+    "usage": 31.8,
+    "reb_rate": 10.8,
+    "blk_rate": null
+  },
+  "tolerance_bands": {
+    "ts_pct": 5.0,
+    "ppg": 4.0,
+    "usg_pct": 5.0,
+    "ast_pct": 4.0,
+    "tov_pct": 2.0,
+    "reb_pct": 5.0,
+    "stl_pct": 1.5,
+    "blk_pct": 2.0
+  }
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "player": "Stephen Curry",
+    "evaluation_window": {
+      "mode": "DEFAULT",
+      "seasons_used": [
+        {
+          "season": "2025-26",
+          "weight": 0.6
+        },
+        {
+          "season": "2024-25",
+          "weight": 0.4
+        }
+      ],
+      "flag_template": "(none required)",
+      "age_concern": false
+    },
+    "seasons": {
+      "2025-26": {
+        "base": {
+          "gp": 43,
+          "mpg": 30.9,
+          "oreb_pg": 0.4,
+          "dreb_pg": 3.2,
+          "reb_pg": 3.6
+        },
+        "advanced": {
+          "oreb_pct": 0.013,
+          "dreb_pct": 0.1,
+          "reb_pct": 0.057
+        },
+        "tracking": {
+          "AVG_DREB_DIST": 8.2,
+          "AVG_OREB_DIST": 13.5,
+          "AVG_REB_DIST": 8.8,
+          "DREB": 3.3,
+          "DREB_CHANCES": 5.6,
+          "DREB_CHANCE_DEFER": 0.5,
+          "DREB_CHANCE_PCT": 0.596,
+          "DREB_CHANCE_PCT_ADJ": 0.649,
+          "DREB_CONTEST": 0.7,
+          "DREB_CONTEST_PCT": 0.219,
+          "DREB_UNCONTEST": 2.6,
+          "OREB": 0.4,
+          "OREB_CHANCES": 1.5,
+          "OREB_CHANCE_DEFER": 0.0,
+          "OREB_CHANCE_PCT": 0.27,
+          "OREB_CHANCE_PCT_ADJ": 0.279,
+          "OREB_CONTEST": 0.1,
+          "OREB_CONTEST_PCT": 0.235,
+          "OREB_UNCONTEST": 0.3,
+          "REB": 3.8,
+          "REB_CHANCES": 7.1,
+          "REB_CHANCE_DEFER": 0.5,
+          "REB_CHANCE_PCT": 0.527,
+          "REB_CHANCE_PCT_ADJ": 0.568,
+          "REB_CONTEST": 0.8,
+          "REB_CONTEST_PCT": 0.221,
+          "REB_UNCONTEST": 2.9
+        },
+        "hustle": {
+          "BOX_OUTS": 0.28,
+          "BOX_OUT_PLAYER_REBS": 0.14,
+          "BOX_OUT_PLAYER_TEAM_REBS": 0.28,
+          "DEF_BOXOUTS": 0.23,
+          "OFF_BOXOUTS": 0.05,
+          "PCT_BOX_OUTS_DEF": 0.833,
+          "PCT_BOX_OUTS_OFF": 0.167,
+          "PCT_BOX_OUTS_REB": 0.5,
+          "PCT_BOX_OUTS_TEAM_REB": 1.0
+        }
+      },
+      "2024-25": {
+        "base": {
+          "gp": 70,
+          "mpg": 32.2,
+          "oreb_pg": 0.6,
+          "dreb_pg": 3.9,
+          "reb_pg": 4.4
+        },
+        "advanced": {
+          "oreb_pct": 0.017,
+          "dreb_pct": 0.118,
+          "reb_pct": 0.066
+        },
+        "tracking": {
+          "AVG_DREB_DIST": 8.0,
+          "AVG_OREB_DIST": 15.0,
+          "AVG_REB_DIST": 8.9,
+          "DREB": 3.9,
+          "DREB_CHANCES": 6.1,
+          "DREB_CHANCE_DEFER": 0.4,
+          "DREB_CHANCE_PCT": 0.632,
+          "DREB_CHANCE_PCT_ADJ": 0.673,
+          "DREB_CONTEST": 0.7,
+          "DREB_CONTEST_PCT": 0.193,
+          "DREB_UNCONTEST": 3.1,
+          "OREB": 0.6,
+          "OREB_CHANCES": 1.5,
+          "OREB_CHANCE_DEFER": 0.1,
+          "OREB_CHANCE_PCT": 0.385,
+          "OREB_CHANCE_PCT_ADJ": 0.412,
+          "OREB_CONTEST": 0.2,
+          "OREB_CONTEST_PCT": 0.3,
+          "OREB_UNCONTEST": 0.4,
+          "REB": 4.4,
+          "REB_CHANCES": 7.5,
+          "REB_CHANCE_DEFER": 0.5,
+          "REB_CHANCE_PCT": 0.588,
+          "REB_CHANCE_PCT_ADJ": 0.628,
+          "REB_CONTEST": 0.9,
+          "REB_CONTEST_PCT": 0.206,
+          "REB_UNCONTEST": 3.5
+        },
+        "hustle": {
+          "BOX_OUTS": 0.31,
+          "BOX_OUT_PLAYER_REBS": 0.11,
+          "BOX_OUT_PLAYER_TEAM_REBS": 0.27,
+          "DEF_BOXOUTS": 0.3,
+          "OFF_BOXOUTS": 0.01,
+          "PCT_BOX_OUTS_DEF": 0.955,
+          "PCT_BOX_OUTS_OFF": 0.045,
+          "PCT_BOX_OUTS_REB": 0.364,
+          "PCT_BOX_OUTS_TEAM_REB": 0.864
+        }
+      }
+    },
+    "weighted": {
+      "oreb_pg": 0.48,
+      "dreb_pg": 3.48,
+      "reb_pg": 3.92,
+      "oreb_pct": 0.015,
+      "dreb_pct": 0.107
+    }
+  }
+]

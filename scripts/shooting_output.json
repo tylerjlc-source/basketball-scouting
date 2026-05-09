@@ -1,0 +1,237 @@
+[
+  {
+    "player": "Stephen Curry",
+    "evaluation_window": {
+      "mode": "DEFAULT",
+      "seasons_used": [
+        {
+          "season": "2025-26",
+          "weight": 0.6
+        },
+        {
+          "season": "2024-25",
+          "weight": 0.4
+        }
+      ],
+      "flag_template": "(none required)",
+      "age_concern": false
+    },
+    "subdomain_4_cas_3pt": {
+      "cas_3pt_pct": {
+        "current": 0.377,
+        "prior": 0.433,
+        "weighted": 0.404,
+        "current_volume": 247,
+        "prior_volume": 356,
+        "total_volume": 603
+      },
+      "cas_3pa": {
+        "current": 247,
+        "prior": 356,
+        "weighted": 290.6
+      },
+      "corner_3_pct": {
+        "current": 0.545,
+        "prior": 0.482,
+        "weighted": 0.505,
+        "current_volume": 33,
+        "prior_volume": 85,
+        "total_volume": 118
+      },
+      "atb_3_pct": {
+        "current": 0.381,
+        "prior": 0.388,
+        "weighted": 0.385,
+        "current_volume": 451,
+        "prior_volume": 693,
+        "total_volume": 1144
+      },
+      "defender_distance_3pt": {
+        "wide_open_6plus": {
+          "current": 0.489,
+          "prior": 0.449,
+          "weighted": 0.469,
+          "current_volume": 131,
+          "prior_volume": 205,
+          "total_volume": 336
+        },
+        "open_4_6": {
+          "current": 0.368,
+          "prior": 0.386,
+          "weighted": 0.378,
+          "current_volume": 239,
+          "prior_volume": 420,
+          "total_volume": 659
+        },
+        "tight_2_4": {
+          "current": 0.337,
+          "prior": 0.355,
+          "weighted": 0.346,
+          "current_volume": 104,
+          "prior_volume": 152,
+          "total_volume": 256
+        },
+        "very_tight_0_2": {
+          "current": 0.3,
+          "prior": 0.5,
+          "weighted": 0.357,
+          "current_volume": 10,
+          "prior_volume": 6,
+          "total_volume": 16
+        }
+      },
+      "total_3pa": {
+        "current": 484,
+        "prior": 784,
+        "weighted": 604.0
+      }
+    },
+    "subdomain_5_off_dribble": {
+      "pullup_3pt_pct": {
+        "current": 0.407,
+        "prior": 0.366,
+        "weighted": 0.385,
+        "current_volume": 236,
+        "prior_volume": 424,
+        "total_volume": 660
+      },
+      "pullup_3pa": {
+        "current": 236,
+        "prior": 424,
+        "weighted": 311.2
+      },
+      "pullup_zone_3pt": {
+        "current": 0.413,
+        "prior": 0.379,
+        "weighted": 0.395,
+        "current_volume": 230,
+        "prior_volume": 401,
+        "total_volume": 631
+      },
+      "pullup_zone_midrange": {
+        "current": 0.521,
+        "prior": 0.583,
+        "weighted": 0.552,
+        "current_volume": 48,
+        "prior_volume": 72,
+        "total_volume": 120
+      },
+      "isolation": {
+        "ppp": {
+          "current": 1.088,
+          "prior": 0.87,
+          "weighted": 1.001
+        },
+        "poss": {
+          "current": 91,
+          "prior": 131,
+          "weighted": 107.0
+        },
+        "fg_pct": {
+          "current": 0.479,
+          "prior": 0.374,
+          "weighted": 0.437
+        },
+        "percentile": {
+          "current": 0.887,
+          "prior": 0.464,
+          "weighted": 0.718
+        }
+      }
+    },
+    "subdomain_6_midrange": {
+      "midrange_fg_pct": {
+        "current": 0.51,
+        "prior": 0.5,
+        "weighted": 0.505,
+        "current_volume": 96,
+        "prior_volume": 130,
+        "total_volume": 226
+      },
+      "midrange_fga": {
+        "current": 96,
+        "prior": 130,
+        "weighted": 109.6
+      },
+      "pullup_midrange": {
+        "current": 0.521,
+        "prior": 0.583,
+        "weighted": 0.552,
+        "current_volume": 48,
+        "prior_volume": 72,
+        "total_volume": 120
+      }
+    },
+    "subdomain_7_ft": {
+      "ft_pct": {
+        "current": 0.923,
+        "prior": 0.933,
+        "weighted": 0.928,
+        "current_volume": 221,
+        "prior_volume": 299,
+        "total_volume": 520
+      },
+      "ft_pct_career": 0.912,
+      "trend": [
+        {
+          "season": "2021-22",
+          "ft_pct": 0.923,
+          "fta": 298
+        },
+        {
+          "season": "2022-23",
+          "ft_pct": 0.915,
+          "fta": 281
+        },
+        {
+          "season": "2023-24",
+          "ft_pct": 0.923,
+          "fta": 324
+        },
+        {
+          "season": "2024-25",
+          "ft_pct": 0.933,
+          "fta": 299
+        },
+        {
+          "season": "2025-26",
+          "ft_pct": 0.923,
+          "fta": 221
+        }
+      ],
+      "clutch_ft": {
+        "current": 0.875,
+        "prior": 0.949,
+        "weighted": 0.921,
+        "current_volume": 16,
+        "prior_volume": 39,
+        "total_volume": 55
+      }
+    },
+    "overall_context": {
+      "ts_pct": {
+        "current": 0.637,
+        "prior": 0.618,
+        "weighted": 0.629
+      },
+      "efg_pct": {
+        "current": 0.587,
+        "prior": 0.572,
+        "weighted": 0.581
+      },
+      "three_pt_pct": {
+        "current": 0.393,
+        "prior": 0.397,
+        "weighted": 0.395,
+        "current_volume": 484,
+        "prior_volume": 784,
+        "total_volume": 1268
+      },
+      "total_fga": {
+        "current": 799,
+        "prior": 1258,
+        "weighted": 982.6
+      }
+    }
+  }
+]

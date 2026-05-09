@@ -1,0 +1,117 @@
+{
+  "player": "Jaylen Brown",
+  "evaluation_date": "2026-04-23",
+  "checks": [
+    {
+      "claim": "Jaylen Brown",
+      "type": "player_name",
+      "source_checked": "ANCHOR-LIBRARY.md",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "Kawhi Leonard",
+      "type": "player_name",
+      "source_checked": "ANCHOR-LIBRARY.md",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "Jimmy Butler",
+      "type": "player_name",
+      "source_checked": "ANCHOR-LIBRARY.md",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-Star",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-NBA",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-Defensive",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "MVP",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "Finals MVP",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "11.75",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "1.52",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "1.18",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "5.28",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "8.95",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "8.38",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "9.05",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    }
+  ],
+  "summary": {
+    "verified": 15,
+    "unverifiable": 0,
+    "mismatch": 0
+  },
+  "decision": "auto_approved"
+}

@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+
+# Environment / secrets — always ignore real .env files
+# (.env.example is checked in as a template)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Obsidian per-user / per-machine state (vault config itself stays tracked)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+
+# Claude per-user overrides (settings.json stays tracked, settings.local.json is per-user)
+.claude/settings.local.json
+
+# Editor / IDE caches
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and caches
+*.log
+.cache/

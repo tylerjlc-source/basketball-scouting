@@ -1,0 +1,249 @@
+{
+  "Stephen Curry": {
+    "player_name": "Stephen Curry",
+    "player_id": 201939,
+    "evaluation_window": {
+      "mode": "DEFAULT",
+      "seasons_used": [
+        {
+          "season": "2025-26",
+          "weight": 0.6
+        },
+        {
+          "season": "2024-25",
+          "weight": 0.4
+        }
+      ],
+      "flag_template": "(none required)",
+      "age_concern": false
+    },
+    "defender_distance": {
+      "2025-26": {
+        "0-2 Feet - Very Tight": {
+          "FGA": 43,
+          "FGA_FREQUENCY": 0.054,
+          "FGM": 20,
+          "FG_PCT": 0.465,
+          "FG3A": 10,
+          "FG3M": 3,
+          "FG3_PCT": 0.3,
+          "EFG_PCT": 0.5
+        },
+        "2-4 Feet - Tight": {
+          "FGA": 281,
+          "FGA_FREQUENCY": 0.352,
+          "FGM": 141,
+          "FG_PCT": 0.502,
+          "FG3A": 104,
+          "FG3M": 35,
+          "FG3_PCT": 0.337,
+          "EFG_PCT": 0.564
+        },
+        "4-6 Feet - Open": {
+          "FGA": 330,
+          "FGA_FREQUENCY": 0.413,
+          "FGM": 138,
+          "FG_PCT": 0.418,
+          "FG3A": 239,
+          "FG3M": 88,
+          "FG3_PCT": 0.368,
+          "EFG_PCT": 0.552
+        },
+        "6+ Feet - Wide Open": {
+          "FGA": 145,
+          "FGA_FREQUENCY": 0.181,
+          "FGM": 75,
+          "FG_PCT": 0.517,
+          "FG3A": 131,
+          "FG3M": 64,
+          "FG3_PCT": 0.489,
+          "EFG_PCT": 0.738
+        }
+      },
+      "2024-25": {
+        "0-2 Feet - Very Tight": {
+          "FGA": 57,
+          "FGA_FREQUENCY": 0.045,
+          "FGM": 29,
+          "FG_PCT": 0.509,
+          "FG3A": 6,
+          "FG3M": 3,
+          "FG3_PCT": 0.5,
+          "EFG_PCT": 0.535
+        },
+        "2-4 Feet - Tight": {
+          "FGA": 425,
+          "FGA_FREQUENCY": 0.338,
+          "FGM": 184,
+          "FG_PCT": 0.433,
+          "FG3A": 152,
+          "FG3M": 54,
+          "FG3_PCT": 0.355,
+          "EFG_PCT": 0.496
+        },
+        "4-6 Feet - Open": {
+          "FGA": 546,
+          "FGA_FREQUENCY": 0.434,
+          "FGM": 247,
+          "FG_PCT": 0.452,
+          "FG3A": 420,
+          "FG3M": 162,
+          "FG3_PCT": 0.386,
+          "EFG_PCT": 0.601
+        },
+        "6+ Feet - Wide Open": {
+          "FGA": 229,
+          "FGA_FREQUENCY": 0.182,
+          "FGM": 104,
+          "FG_PCT": 0.454,
+          "FG3A": 205,
+          "FG3M": 92,
+          "FG3_PCT": 0.449,
+          "EFG_PCT": 0.655
+        }
+      }
+    },
+    "shot_clock": {
+      "2025-26": {
+        "24-22": {
+          "FGA": 9,
+          "FGA_FREQUENCY": 0.011,
+          "FGM": 4,
+          "FG_PCT": 0.444,
+          "EFG_PCT": 0.556
+        },
+        "22-18 Very Early": {
+          "FGA": 99,
+          "FGA_FREQUENCY": 0.124,
+          "FGM": 43,
+          "FG_PCT": 0.434,
+          "EFG_PCT": 0.561
+        },
+        "18-15 Early": {
+          "FGA": 186,
+          "FGA_FREQUENCY": 0.233,
+          "FGM": 87,
+          "FG_PCT": 0.468,
+          "EFG_PCT": 0.586
+        },
+        "15-7 Average": null,
+        "7-4 Late": null,
+        "4-0 Very Late": {
+          "FGA": 35,
+          "FGA_FREQUENCY": 0.044,
+          "FGM": 8,
+          "FG_PCT": 0.229,
+          "EFG_PCT": 0.271
+        }
+      },
+      "2024-25": {
+        "24-22": {
+          "FGA": 10,
+          "FGA_FREQUENCY": 0.008,
+          "FGM": 4,
+          "FG_PCT": 0.4,
+          "EFG_PCT": 0.45
+        },
+        "22-18 Very Early": {
+          "FGA": 187,
+          "FGA_FREQUENCY": 0.149,
+          "FGM": 86,
+          "FG_PCT": 0.46,
+          "EFG_PCT": 0.578
+        },
+        "18-15 Early": {
+          "FGA": 279,
+          "FGA_FREQUENCY": 0.222,
+          "FGM": 116,
+          "FG_PCT": 0.416,
+          "EFG_PCT": 0.523
+        },
+        "15-7 Average": {
+          "FGA": 629,
+          "FGA_FREQUENCY": 0.5,
+          "FGM": 294,
+          "FG_PCT": 0.467,
+          "EFG_PCT": 0.6
+        },
+        "7-4 Late": {
+          "FGA": 81,
+          "FGA_FREQUENCY": 0.064,
+          "FGM": 40,
+          "FG_PCT": 0.494,
+          "EFG_PCT": 0.617
+        },
+        "4-0 Very Late": {
+          "FGA": 71,
+          "FGA_FREQUENCY": 0.056,
+          "FGM": 24,
+          "FG_PCT": 0.338,
+          "EFG_PCT": 0.472
+        }
+      }
+    },
+    "clutch": {
+      "2025-26": {
+        "GP": 17,
+        "W": 7,
+        "L": 10,
+        "MIN": 3.6,
+        "FGM": 1.4,
+        "FGA": 3.2,
+        "FG_PCT": 0.436,
+        "FG3M": 0.9,
+        "FG3A": 1.9,
+        "FG3_PCT": 0.455,
+        "FTM": 0.8,
+        "FTA": 0.9,
+        "FT_PCT": 0.875,
+        "PTS": 4.5,
+        "AST": 0.3,
+        "TOV": 0.5,
+        "STL": 0.2,
+        "PLUS_MINUS": -0.2
+      },
+      "2024-25": {
+        "GP": 35,
+        "W": 18,
+        "L": 17,
+        "MIN": 3.2,
+        "FGM": 1.0,
+        "FGA": 2.4,
+        "FG_PCT": 0.417,
+        "FG3M": 0.5,
+        "FG3A": 1.5,
+        "FG3_PCT": 0.373,
+        "FTM": 1.1,
+        "FTA": 1.1,
+        "FT_PCT": 0.949,
+        "PTS": 3.6,
+        "AST": 0.3,
+        "TOV": 0.3,
+        "STL": 0.0,
+        "PLUS_MINUS": 0.5
+      }
+    },
+    "speed_distance": {
+      "2025-26": {
+        "GP": 43,
+        "MIN": 30.9,
+        "DIST_MILES": 2.3,
+        "DIST_MILES_OFF": 1.3,
+        "DIST_MILES_DEF": 1.0,
+        "AVG_SPEED": 4.3,
+        "AVG_SPEED_OFF": 4.82,
+        "AVG_SPEED_DEF": 3.76
+      },
+      "2024-25": {
+        "GP": 70,
+        "MIN": 32.2,
+        "DIST_MILES": 2.4,
+        "DIST_MILES_OFF": 1.4,
+        "DIST_MILES_DEF": 1.1,
+        "AVG_SPEED": 4.26,
+        "AVG_SPEED_OFF": 4.83,
+        "AVG_SPEED_DEF": 3.7
+      }
+    }
+  }
+}

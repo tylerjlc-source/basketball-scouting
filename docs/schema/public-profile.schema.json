@@ -1,0 +1,394 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://basketball-scouting.local/schemas/public-profile/1.1",
+  "title": "Public Player Profile",
+  "description": "Per-player public-facing JSON artifact emitted by scripts/export_public_json.py. Consumed by the public ratings DB. Source documents: docs/SCHEMA-SPEC.md (Canonical v1.0), docs/PUBLIC-LANGUAGE-GUIDE.md §4-A (pull policy).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rules_version",
+    "player",
+    "group",
+    "position",
+    "career_status",
+    "draft_class",
+    "archetype",
+    "evaluation_date",
+    "composite_label",
+    "composite_score",
+    "tier",
+    "tier_label",
+    "narrative",
+    "domains",
+    "sub_domains",
+    "projection",
+    "comps",
+    "history"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1",
+      "description": "Pinned schema version. Bumped semver-style on contract changes per SCHEMA-SPEC §10-L. v1.1 (2026-05-08) added optional career_stats appendix; additive bump."
+    },
+    "rules_version": {
+      "type": "string",
+      "pattern": "^R\\d+(-R\\d+)? / S\\d+$",
+      "description": "Pinned SCORING-RULES.md state at evaluation time. Format: 'R{first}-R{last} / S{session}'. Example: 'R1-R15 / S151'."
+    },
+    "player": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical full name. Matches Player record per SCHEMA-SPEC §1."
+    },
+    "group": {
+      "type": "string",
+      "enum": ["Guard", "Wing", "Big"]
+    },
+    "position": {
+      "type": "string",
+      "pattern": "^(PG|SG|SF|PF|C)(/(PG|SG|SF|PF|C))?$",
+      "description": "Position code. Hyphenated combos allowed (e.g. 'SG/SF')."
+    },
+    "career_status": {
+      "type": "string",
+      "enum": ["Active", "Retired", "Draft prospect"]
+    },
+    "draft_class": {
+      "type": ["integer", "null"],
+      "minimum": 2000,
+      "maximum": 2099,
+      "description": "Draft year. Required (non-null) when career_status='Draft prospect'; null otherwise. See top-level if/then/else."
+    },
+    "archetype": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One of the active archetype names per ARCHETYPE-WEIGHTS-{Guards|Wings|Bigs}.md."
+    },
+    "evaluation_date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO date YYYY-MM-DD. Matches source profile filename date."
+    },
+    "composite_label": {
+      "type": "string",
+      "minLength": 1,
+      "default": "Composite",
+      "description": "Display label for the composite metric. Defaults to 'Composite' until the proprietary metric name is decided (PDD v9 §9). One-string change at brand-decision time, no schema migration."
+    },
+    "composite_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 9.99,
+      "description": "Two-decimal composite score per SCHEMA-SPEC §10-F. Hard ceiling 9.99 per OUTPUT STANDARD QC4."
+    },
+    "tier": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 13,
+      "description": "Tier 1–13 derived from composite per COMPOSITE-SCALE-AND-TIERS.md."
+    },
+    "tier_label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Tier display label (e.g. 'Quality starter / role-defining contributor')."
+    },
+    "narrative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "strength", "weakness", "projection_verdict"],
+      "description": "Vecenie 4-paragraph public narrative per PUBLIC-LANGUAGE-GUIDE §5.1. Each paragraph has a fixed structural role. Frontend renders paragraphs distinctly.",
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identity paragraph: what this player is. Archetype in plain language, physical profile, headline credentials."
+        },
+        "strength": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Strength evidence paragraph: value drivers, anchored to numbers and observed pattern."
+        },
+        "weakness": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Weakness evidence paragraph: gaps named directly, not buried."
+        },
+        "projection_verdict": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Projection-verdict paragraph: realistic floor, realistic ceiling, what they will and will not become."
+        }
+      }
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "description": "Eight domain band assignments per SCHEMA-SPEC §4. Order: id 1 through 8.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "score", "one_line"],
+        "properties": {
+          "id": {"type": "integer", "minimum": 1, "maximum": 8},
+          "name": {"type": "string", "minLength": 1},
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10,
+            "description": "Domain score, one-decimal precision per SCHEMA-SPEC §10-F."
+          },
+          "one_line": {
+            "type": "string",
+            "minLength": 1,
+            "description": "One-line domain justification per PUBLIC-LANGUAGE-GUIDE §7. Format: '{Domain}: {score} — \"{≤25-word justification}\"'."
+          }
+        }
+      }
+    },
+    "sub_domains": {
+      "type": "array",
+      "minItems": 26,
+      "maxItems": 26,
+      "description": "Twenty-six sub-domain scores per SCHEMA-SPEC §3. Order: id 1 through 26.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "score", "rationale_public", "signature"],
+        "properties": {
+          "id": {"type": "integer", "minimum": 1, "maximum": 26},
+          "name": {"type": "string", "minLength": 1},
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10,
+            "description": "Sub-domain score, one-decimal precision per SCHEMA-SPEC §10-F."
+          },
+          "rationale_public": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Rewritten public rationale per PUBLIC-LANGUAGE-GUIDE §4-B: ≤1 sentence, ≤30 words, numbers in word form."
+          },
+          "signature": {
+            "anyOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "tier", "description"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Signature name per docs/SIGNATURES.md §2 (e.g. 'Rim Finisher', 'Sniper'). Athleticism Signature 'Athlete' renders only on sub-domain #21; #22 is always null."
+                  },
+                  "tier": {
+                    "type": "string",
+                    "enum": ["Proven", "Elite", "Superstar", "Iconic", "Generational"],
+                    "description": "Tier label derived from sub-domain score per docs/SIGNATURES.md §3. Proven 8.0-8.4, Elite 8.5-8.9, Superstar 9.0-9.4, Iconic 9.5-9.9, Generational 10.0."
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "≤25-word public-facing description sourced from docs/SIGNATURES.md §2 verbatim. Static per Signature; identical across all players who earn it. Frontend renders on hover/expand."
+                  }
+                }
+              }
+            ],
+            "description": "Signature awarded when sub-domain score ≥ 8.0 per docs/SIGNATURES.md §3-§4. Null when: score < 8.0; sub-domain #7 (Free Throw, always null); sub-domain #22 (Lateral, always null since Athleticism Signature renders on #21). Field is always present; value is null when no Signature. Reconciled fail-loud at export Stage 2."
+          }
+        }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pot", "min", "max", "confidence", "spread_note_public"],
+      "description": "Projection block. Schema-uniform across NBA vet (§8b) and prospect (§8a) routes. Bust/avg/boom optional fields present only for prospects (States 1–3) per PUBLIC-LANGUAGE-GUIDE §4-A.",
+      "properties": {
+        "pot": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 9.99,
+          "description": "Central projection (POT). Capped at 9.99 per OUTPUT STANDARD QC4."
+        },
+        "min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Floor projection. Cross-check min ≤ pot enforced at pipeline stage 2 (not encodable in pure JSON Schema)."
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Ceiling projection. Cross-check pot ≤ max enforced at pipeline stage 2."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["tight", "moderate", "wide"]
+        },
+        "spread_note_public": {
+          "type": "string",
+          "minLength": 1,
+          "description": "≤2-sentence projection narrative per PUBLIC-LANGUAGE-GUIDE §4-B."
+        },
+        "bust_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Bust outcome probability. Prospects only (States 1–3). Cross-check bust+avg+boom=100 enforced at pipeline stage 2."
+        },
+        "avg_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Average outcome probability. Prospects only (States 1–3)."
+        },
+        "boom_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Boom outcome probability. Prospects only (States 1–3)."
+        }
+      },
+      "dependentRequired": {
+        "bust_pct": ["avg_pct", "boom_pct"],
+        "avg_pct": ["bust_pct", "boom_pct"],
+        "boom_pct": ["bust_pct", "avg_pct"]
+      }
+    },
+    "comps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "description": "One to three NBA comps per SCHEMA-SPEC §9.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["comp_player", "comp_tier", "similarity_public"],
+        "properties": {
+          "comp_player": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Comp player full name. Must resolve against ANCHOR-LIBRARY.md (Phase 4 stage 4 fact-extraction enforces)."
+          },
+          "comp_tier": {
+            "type": "string",
+            "enum": ["Full", "Partial", "None", "Lineage"],
+            "description": "Text storage form per SCHEMA-SPEC §10-K. Full/Partial/None for prospect multi-comp (NBA-COMP-METHODOLOGY § A); Lineage reserved for the single NBA-vet lineage callout (§ B.4 — qualitative-only, no glyph). Emoji rendered at presentation only."
+          },
+          "similarity_public": {
+            "type": "string",
+            "minLength": 1,
+            "description": "≤2-sentence similarity prose per PUBLIC-LANGUAGE-GUIDE §4-A."
+          }
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "minItems": 0,
+      "description": "Longitudinal evaluation history filtered from wiki/evaluations.jsonl. Empty array on first evaluation. Sorted ascending by date.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["date", "composite", "tier", "archetype"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "composite": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 9.99
+          },
+          "tier": {"type": "integer", "minimum": 1, "maximum": 13},
+          "archetype": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "career_stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional reference appendix per PUBLIC-LANGUAGE-GUIDE §9. Independently sourced at publish time (nba_api or college web-fallback); not byte-equal-checked against _profile.md. Field omitted entirely for HS profiles or when web-fallback fails. NBA-vet branch carries regular_season (required) and optional playoffs; college-prospect branch carries college_career (required) instead. Added in schema v1.1 (2026-05-08).",
+      "anyOf": [
+        {"required": ["regular_season"]},
+        {"required": ["college_career"]}
+      ],
+      "properties": {
+        "regular_season": {
+          "type": "array",
+          "minItems": 1,
+          "description": "NBA regular-season per-game rows + one career-aggregate row (is_career=true). Source: nba_api PlayerCareerStats (per_mode=PerGame), SeasonTotalsRegularSeason + CareerTotalsRegularSeason frames.",
+          "items": {"$ref": "#/$defs/career_stats_row"}
+        },
+        "playoffs": {
+          "type": "array",
+          "minItems": 1,
+          "description": "NBA playoffs per-game rows + one career-aggregate row. Omitted when CareerTotalsPostSeason is empty (player never made playoffs).",
+          "items": {"$ref": "#/$defs/career_stats_row"}
+        },
+        "college_career": {
+          "type": "array",
+          "minItems": 1,
+          "description": "College career per-game rows + one career-aggregate row. Source: Skill 1 sub-agent web-fallback (Sports-Reference). Team field carries the school name. Replaces regular_season + playoffs for college-prospect profiles.",
+          "items": {"$ref": "#/$defs/career_stats_row"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "career_stats_row": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "One row of the career-stats appendix. Per-game stats; percentages as decimal 0–1. Missing values are null. PUBLIC-LANGUAGE-GUIDE §9.3 governs display formatting.",
+      "required": [
+        "season_id", "team", "gp", "gs", "min", "pts", "reb", "ast",
+        "stl", "blk", "tov", "fg_pct", "fg3_pct", "ft_pct", "is_career"
+      ],
+      "properties": {
+        "season_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Season identifier ('2024-25') or 'Career' for the bolded aggregate row."
+        },
+        "team": {
+          "type": "string",
+          "description": "Team abbreviation ('LAL'), '/'-joined for traded seasons ('LAL/NOP'), or school name for college rows. Empty string for the career-aggregate row."
+        },
+        "gp": {"type": ["integer", "null"], "minimum": 0, "description": "Games played (count)."},
+        "gs": {"type": ["integer", "null"], "minimum": 0, "description": "Games started (count)."},
+        "min": {"type": ["number", "null"], "minimum": 0, "description": "Minutes per game."},
+        "pts": {"type": ["number", "null"], "minimum": 0, "description": "Points per game."},
+        "reb": {"type": ["number", "null"], "minimum": 0, "description": "Rebounds per game."},
+        "ast": {"type": ["number", "null"], "minimum": 0, "description": "Assists per game."},
+        "stl": {"type": ["number", "null"], "minimum": 0, "description": "Steals per game."},
+        "blk": {"type": ["number", "null"], "minimum": 0, "description": "Blocks per game."},
+        "tov": {"type": ["number", "null"], "minimum": 0, "description": "Turnovers per game."},
+        "fg_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Field-goal percentage as decimal 0–1."},
+        "fg3_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Three-point percentage as decimal 0–1."},
+        "ft_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Free-throw percentage as decimal 0–1."},
+        "is_career": {
+          "type": "boolean",
+          "description": "True for the bolded career-aggregate row; false for per-season rows."
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": {"career_status": {"const": "Draft prospect"}},
+    "required": ["career_status"]
+  },
+  "then": {
+    "properties": {"draft_class": {"type": "integer"}}
+  },
+  "else": {
+    "properties": {"draft_class": {"type": "null"}}
+  }
+}

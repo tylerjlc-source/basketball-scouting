@@ -1,0 +1,140 @@
+[
+  {
+    "player": "Stephen Curry",
+    "evaluation_window": {
+      "mode": "DEFAULT",
+      "seasons_used": [
+        {
+          "season": "2025-26",
+          "weight": 0.6
+        },
+        {
+          "season": "2024-25",
+          "weight": 0.4
+        }
+      ],
+      "flag_template": "(none required)",
+      "age_concern": false
+    },
+    "subdomain_1_at_basket_finishing": {
+      "rim_fg_pct": {
+        "current": 0.689,
+        "prior": 0.642,
+        "weighted": 0.667,
+        "current_volume": 122,
+        "prior_volume": 162,
+        "total_volume": 284
+      },
+      "rim_volume": {
+        "current": 122,
+        "prior": 162,
+        "weighted": 138.0
+      },
+      "pct_shots_at_rim": {
+        "current": 0.153,
+        "prior": 0.129,
+        "weighted": 0.143
+      },
+      "dunk_rate": {
+        "current": 0.008,
+        "prior": 0.006,
+        "weighted": 0.007
+      },
+      "non_dunk_rim_fg_pct": {
+        "current": 0.694,
+        "prior": 0.64,
+        "weighted": 0.669,
+        "current_volume": 121,
+        "prior_volume": 161,
+        "total_volume": 282
+      },
+      "ft_pct": {
+        "current": 0.923,
+        "prior": 0.933,
+        "weighted": 0.928,
+        "current_volume": 221,
+        "prior_volume": 299,
+        "total_volume": 520
+      },
+      "pct_assisted_overall": {
+        "current": 0.615,
+        "prior": "N/A",
+        "weighted": 0.615
+      },
+      "vs_tight_defense": {
+        "very_tight_0_2": {
+          "current": 0.465,
+          "prior": 0.509,
+          "weighted": 0.486,
+          "current_volume": 43,
+          "prior_volume": 57,
+          "total_volume": 100
+        },
+        "tight_2_4": {
+          "current": 0.502,
+          "prior": 0.433,
+          "weighted": 0.467,
+          "current_volume": 281,
+          "prior_volume": 425,
+          "total_volume": 706
+        },
+        "open_4_6": {
+          "current": 0.418,
+          "prior": 0.452,
+          "weighted": 0.436,
+          "current_volume": 330,
+          "prior_volume": 546,
+          "total_volume": 876
+        },
+        "wide_open_6plus": {
+          "current": 0.517,
+          "prior": 0.454,
+          "weighted": 0.485,
+          "current_volume": 145,
+          "prior_volume": 229,
+          "total_volume": 374
+        }
+      }
+    },
+    "subdomain_2_contact_finishing": {
+      "ftr": {
+        "current": 0.277,
+        "prior": 0.238,
+        "weighted": 0.261
+      },
+      "ft_pct": {
+        "current": 0.923,
+        "prior": 0.933,
+        "weighted": 0.928,
+        "current_volume": 221,
+        "prior_volume": 299,
+        "total_volume": 520
+      },
+      "drives": {
+        "drives_pg": {
+          "current": 7.8,
+          "prior": 8.7,
+          "weighted": 8.16
+        },
+        "drive_fg_pct": {
+          "current": 0.52,
+          "prior": 0.474,
+          "weighted": 0.502
+        },
+        "drive_ppp": {
+          "current": 0.641,
+          "prior": 0.506,
+          "weighted": 0.587
+        }
+      },
+      "paint_non_ra_fg_pct": {
+        "current": 0.526,
+        "prior": "N/A",
+        "weighted": 0.526,
+        "current_volume": 97,
+        "prior_volume": "N/A",
+        "total_volume": 97
+      }
+    }
+  }
+]

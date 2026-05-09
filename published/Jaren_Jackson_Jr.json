@@ -1,0 +1,541 @@
+{
+  "schema_version": "1.1",
+  "rules_version": "R1-R15 / S151",
+  "player": "Jaren Jackson Jr.",
+  "group": "Big",
+  "position": "PF/C",
+  "career_status": "Active",
+  "draft_class": null,
+  "archetype": "Switchable Big",
+  "evaluation_date": "2026-05-02",
+  "composite_label": "Composite",
+  "composite_score": 8.52,
+  "tier": 6,
+  "tier_label": "Genuine team star",
+  "narrative": {
+    "identity": "A switchable big with elite defense and offensive upside. Jackson is 6'11\" with a 7'5.25\" wingspan and a 40\" vertical, small-forward foot speed on a lean 240-pound frame that runs the floor more than it absorbs contact. The defensive identity is the value driver: 2022-23 Defensive Player of the Year at age 23, multi-year league leader in blocks, 2x All-Star, and an isolation defender who shifts seamlessly between hedging, switching, trapping, and dropping.",
+    "strength": "Offensively the profile is built around floor spacing and touch. The catch-and-shoot three is a real weapon at 38.6% on 437 attempts over the last 2 seasons, with credible range to both corners and above the break. The free throw stroke is genuinely elite for a big at 79% career. The floater is the league's most-used signature look at 448 attempts and 51% inside 14 feet. The rim conversion holds at 63%. Defensively the ceiling is genuine: on-ball pressure, help rotations, lateral switchability, and rim deterrence are at an All-Defensive level, with opponents shooting below 43% against his contests overall.",
+    "weakness": "What's not there offensively is creation. The pull-up jumper is unreliable, the handle is functional but not shifty in traffic, the post game has been quietly abandoned in favor of face-up drives, and the playmaking is secondary at best; the assist-to-turnover ratio runs below one at 26% usage. He scores in volume because the shot diet is healthy and the offense flows through his spacing, not because he creates advantages off the dribble. Defensively the structural gaps are persistent. The lean frame yields ground against stronger bigs, and the rebounding has plateaued well below big-position-anchor rates for seven straight seasons: fewer than one box-out per game, defensive rebounding chance percentage in the bottom third of starting bigs. The fouls compound the issue at 3.6 per game and a career-high 16% of minutes in foul trouble in 2025-26. What's missing is the physical anchor work that converts elite contests into closed possessions.",
+    "projection_verdict": "Jackson is a recent-vintage All-Star Switchable Big who missed time due to knee injury during the 2025-26 season. The character signals are durable: vocal locker-room leadership through the post-Bane Memphis era, USA Basketball commitments through team-level adversity. The projection waits on proof-of-return from the knee. The realistic ceiling is a return to the 2024-25 baseline: All-Star regular, All-Defensive Team defender on healthy minutes. Jackson is unlikely to become an All-NBA player; the lean frame and structural rebounding gap will need to find a solution for him to reach his upside potential."
+  },
+  "domains": [
+    {
+      "id": 1,
+      "name": "Finishing",
+      "score": 7.7,
+      "one_line": "7.7. Strong rim conversion and functional contact finishing dragged by an underdeveloped post game."
+    },
+    {
+      "id": 2,
+      "name": "Shooting",
+      "score": 8.0,
+      "one_line": "8.0. Elite stretch profile from catch-and-shoot threes and the line, but off-dribble and mid-range shooting are below average."
+    },
+    {
+      "id": 3,
+      "name": "Ball Skills",
+      "score": 7.2,
+      "one_line": "7.2. Real touch and functional secondary handle, dragged by elevated turnovers at high usage."
+    },
+    {
+      "id": 4,
+      "name": "Playmaking",
+      "score": 6.4,
+      "one_line": "6.4. Strong off-ball movement is the only standout; not a hub player, scores rather than initiates."
+    },
+    {
+      "id": 5,
+      "name": "Defense",
+      "score": 8.6,
+      "one_line": "8.6. Elite across on-ball, help, and rim protection, pulled down only by post defense."
+    },
+    {
+      "id": 6,
+      "name": "Rebounding",
+      "score": 5.0,
+      "one_line": "5.0. The structural weakness of the profile: minimal offensive crash and below-big defensive rebounding."
+    },
+    {
+      "id": 7,
+      "name": "Athleticism",
+      "score": 8.0,
+      "one_line": "8.0. Vertical-leaning burst and elite lateral mobility for size, dragged by below-position strength."
+    },
+    {
+      "id": 8,
+      "name": "IQ / Motor",
+      "score": 7.0,
+      "one_line": "7.0. Above-average shot selection and durable competitive character; effort is selective: strong on scheme defense, lighter on the glass."
+    }
+  ],
+  "sub_domains": [
+    {
+      "id": 1,
+      "name": "At-basket finishing",
+      "score": 8.1,
+      "rationale_public": "Touch-over-power interior scorer at 63.1% rim conversion and 50.8% floater on 448 attempts; low 12.5% dunk rate and 18.1% rim share keep him below the top finishing level.",
+      "signature": {
+        "name": "Rim Finisher",
+        "tier": "Proven",
+        "description": "Conversion at the basket through any means: rim finishes, touch finishes, floaters, fingerrolls, off-hand layups, and above-rim plays."
+      }
+    },
+    {
+      "id": 2,
+      "name": "Contact finishing / foul draw",
+      "score": 7.2,
+      "rationale_public": "Sustainable contact-rim attack: 79.4% free-throw shooting on 9.1 drives per game; finesse-driven rather than weaponized, with contact volume softening this season.",
+      "signature": null
+    },
+    {
+      "id": 3,
+      "name": "Post offense",
+      "score": 5.5,
+      "rationale_public": "No reliable post game; uses length and size in place of developed footwork or a go-to scoring move.",
+      "signature": null
+    },
+    {
+      "id": 4,
+      "name": "Catch-and-shoot 3PT",
+      "score": 8.5,
+      "rationale_public": "Real spacing weight at 38.6% on 437 catch-and-shoot threes over the last 2 seasons; high-volume conversion holds despite a 37.7% dip this season and recurring mechanical questions.",
+      "signature": {
+        "name": "Sniper",
+        "tier": "Elite",
+        "description": "Spot-up shooting off the catch from three. Footwork, release consistency, and range depth on attempts that arrive in rhythm."
+      }
+    },
+    {
+      "id": 5,
+      "name": "Off-dribble shooting",
+      "score": 5.0,
+      "rationale_public": "Not a threat off the dribble: 26.1% pull-up three-point shooting and 0.864 points per possession in isolation, with the pull-up dipping to 22.2% this season.",
+      "signature": null
+    },
+    {
+      "id": 6,
+      "name": "Mid-range",
+      "score": 5.7,
+      "rationale_public": "Mid-range conversion has slipped to 41.4% this season from 46.6% prior on a thin 64-attempt sample, dragging the 2-year aggregate to 43.8% and pulling below average for bigs.",
+      "signature": null
+    },
+    {
+      "id": 7,
+      "name": "Free throw",
+      "score": 8.7,
+      "rationale_public": "Genuinely elite for a big at 79.4% over 2 seasons, 79.3% career, 80.3% this season, and 77.2% in the clutch; multi-year consistency.",
+      "signature": null
+    },
+    {
+      "id": 8,
+      "name": "Handling / creation",
+      "score": 7.0,
+      "rationale_public": "Functional secondary handler: 9.1 drives per game, 52.7% drive conversion at 26.1% usage; not shifty in traffic, with iso and pick-and-roll ball-handler measures around the 40th percentile.",
+      "signature": null
+    },
+    {
+      "id": 9,
+      "name": "Touch / feel",
+      "score": 7.7,
+      "rationale_public": "Three converging touch signals: 50.8% on 448 floaters, 59.8% on non-dunk rim attempts, 79.4% from the line; hands are a recurring strength.",
+      "signature": null
+    },
+    {
+      "id": 10,
+      "name": "Ball security",
+      "score": 6.0,
+      "rationale_public": "Elevated for the role: 125 turnovers per season at 26.1% usage with assist-to-turnover ratio below one; hurried decision-making this season.",
+      "signature": null
+    },
+    {
+      "id": 11,
+      "name": "Court vision",
+      "score": 6.0,
+      "rationale_public": "Adequate for a catch-and-play role: 2.0 assists per game on an 8.6% assist rate and 49.8% conversion of potential assists; not a hub passer.",
+      "signature": null
+    },
+    {
+      "id": 12,
+      "name": "Decision-making",
+      "score": 5.7,
+      "rationale_public": "Hurried under pressure: assist-to-turnover ratio below one, 3.6 fouls per game, and a career-high 16% of minutes in foul trouble this season.",
+      "signature": null
+    },
+    {
+      "id": 13,
+      "name": "Passing execution",
+      "score": 6.5,
+      "rationale_public": "Clean delivery, no documented execution concerns; 49.8% conversion of 4.0 potential assists per game is functional for the role.",
+      "signature": null
+    },
+    {
+      "id": 14,
+      "name": "Off-ball movement",
+      "score": 7.5,
+      "rationale_public": "Strong off-ball mover at full health: 1.453 points per possession on cuts and 1.072 off screens during the 2024-25 healthy season; this year's percentile drop reads as injury-disruption.",
+      "signature": null
+    },
+    {
+      "id": 15,
+      "name": "On-ball pressure",
+      "score": 8.5,
+      "rationale_public": "Elite on-ball: holds opponents 5.8% below their expected field-goal percentage, allows 0.776 points per possession in isolation, with 2.5 deflections and 1.1 steals per game across schemes.",
+      "signature": {
+        "name": "Lockdown",
+        "tier": "Elite",
+        "description": "Guarding ball handlers with length, footwork, and intensity. Contests shots under control, stays attached through dribble moves, and forces difficult attempts."
+      }
+    },
+    {
+      "id": 16,
+      "name": "Help defense",
+      "score": 8.0,
+      "rationale_public": "2022-23 Defensive Player of the Year (DPOY) at 3.0 blocks per game; currently 1.4 blocks and 5.9 contested two-point shots per game with reliable scheme rotations.",
+      "signature": {
+        "name": "Help Defender",
+        "tier": "Proven",
+        "description": "Rotations, weak-side positioning, and switching range. Reads the play before it happens and arrives at the help spot in time."
+      }
+    },
+    {
+      "id": 17,
+      "name": "Rim protection",
+      "score": 7.7,
+      "rationale_public": "Real rim deterrence: 1.4 blocks per game and 5.8% below opponents' expected field-goal percentage, anchored by 7'5.25\" wingspan and 9'2\" standing reach; block rate halved from his DPOY year.",
+      "signature": null
+    },
+    {
+      "id": 18,
+      "name": "Post defense",
+      "score": 5.7,
+      "rationale_public": "Allows 0.948 points per possession on a thin post-up sample; lean frame yields ground to bigger bigs, and the possession isn't closed when the defensive rebound goes elsewhere.",
+      "signature": null
+    },
+    {
+      "id": 19,
+      "name": "Offensive rebounding",
+      "score": 4.5,
+      "rationale_public": "Doesn't crash the glass: 1.02 offensive rebounds per game on a 3.1% rate and essentially zero offensive box-outs (0.06 per game); a persistent multi-year weakness.",
+      "signature": null
+    },
+    {
+      "id": 20,
+      "name": "Defensive rebounding",
+      "score": 5.0,
+      "rationale_public": "Below big-anchor rates: 13.8% defensive rebound rate (median for bigs runs 17-20%) and never eclipsed 6 rebounds per game in his career.",
+      "signature": null
+    },
+    {
+      "id": 21,
+      "name": "Burst / explosion",
+      "score": 7.7,
+      "rationale_public": "Combine 40-inch max vertical and 9'2\" standing reach; fluid runner with quickness for his size, though vertical-leaning rather than power-explosive.",
+      "signature": {
+        "name": "Athlete",
+        "tier": "Proven",
+        "description": "Burst and lateral quickness as one athletic profile. First-step explosion, vertical leap, hip mobility, and change of direction in space."
+      }
+    },
+    {
+      "id": 22,
+      "name": "Lateral quickness",
+      "score": 8.5,
+      "rationale_public": "Small-forward feet at big size: mirrors ball handlers and switches schemes cleanly, with 0.776 points per possession allowed in isolation and 1.1 steals per game.",
+      "signature": null
+    },
+    {
+      "id": 23,
+      "name": "Strength",
+      "score": 5.5,
+      "rationale_public": "Lean for the position at 236-242 pounds at 6'11\" (NBA big median runs 250-plus), under one box-out per game; strength is the structural weakness.",
+      "signature": null
+    },
+    {
+      "id": 24,
+      "name": "Shot selection",
+      "score": 7.5,
+      "rationale_public": "Healthy shot diet: 58.2% true shooting at 26.1% usage, balanced contested-versus-open distribution, low mid-range volume, and shot-clock timing skewed to the natural flow of offense.",
+      "signature": null
+    },
+    {
+      "id": 25,
+      "name": "Effort / motor",
+      "score": 6.5,
+      "rationale_public": "Selective intensity: scheme-execution effort and 2.5 deflections per game on defense, but rebounding pursuit lags multi-year and a career-high 16% of minutes are spent in foul trouble.",
+      "signature": null
+    },
+    {
+      "id": 26,
+      "name": "Competitive character",
+      "score": 7.0,
+      "rationale_public": "2x All-Star, 2022-23 DPOY, multi-year USA Basketball commitments, and locker-room leadership through Memphis's lean seasons; postseason true-shooting drops 5.4 points below his regular-season mark.",
+      "signature": null
+    }
+  ],
+  "projection": {
+    "pot": 8.7,
+    "min": 7.2,
+    "max": 8.9,
+    "confidence": "moderate",
+    "spread_note_public": "Peak projection 8.70, floor 7.20, ceiling 8.90 at Moderate confidence. The floor accounts for injury-recovery risk; the ceiling holds at All-Star regular unless the lean frame and structural rebounding gap find a solution."
+  },
+  "comps": [
+    {
+      "comp_player": "Serge Ibaka",
+      "comp_tier": "Lineage",
+      "similarity_public": "A switchable rim-protecting big who paired DPOY-contention defense with developed corner-three floor spacing, hampered by a lean frame that limited rebounding and post anchor work. Shooting volume for his era plus defensive identity plus the persistent rebounding gap make Ibaka the cleanest historical analog; Myles Turner is the active-era functional parallel along the same archetypal axes."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-05-02",
+      "composite": 8.52,
+      "tier": 6,
+      "archetype": "Switchable Big"
+    }
+  ],
+  "career_stats": {
+    "regular_season": [
+      {
+        "season_id": "2018-19",
+        "team": "MEM",
+        "gp": 58,
+        "gs": 56,
+        "min": 26.1,
+        "pts": 13.8,
+        "reb": 4.7,
+        "ast": 1.1,
+        "stl": 0.9,
+        "blk": 1.4,
+        "tov": 1.7,
+        "fg_pct": 0.506,
+        "fg3_pct": 0.359,
+        "ft_pct": 0.766,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "MEM",
+        "gp": 57,
+        "gs": 57,
+        "min": 28.5,
+        "pts": 17.4,
+        "reb": 4.6,
+        "ast": 1.4,
+        "stl": 0.7,
+        "blk": 1.6,
+        "tov": 1.7,
+        "fg_pct": 0.469,
+        "fg3_pct": 0.394,
+        "ft_pct": 0.747,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "MEM",
+        "gp": 11,
+        "gs": 4,
+        "min": 23.5,
+        "pts": 14.4,
+        "reb": 5.6,
+        "ast": 1.1,
+        "stl": 1.1,
+        "blk": 1.6,
+        "tov": 1.4,
+        "fg_pct": 0.424,
+        "fg3_pct": 0.283,
+        "ft_pct": 0.833,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "MEM",
+        "gp": 78,
+        "gs": 78,
+        "min": 27.3,
+        "pts": 16.3,
+        "reb": 5.8,
+        "ast": 1.1,
+        "stl": 0.9,
+        "blk": 2.3,
+        "tov": 1.7,
+        "fg_pct": 0.415,
+        "fg3_pct": 0.319,
+        "ft_pct": 0.823,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "MEM",
+        "gp": 63,
+        "gs": 63,
+        "min": 28.4,
+        "pts": 18.6,
+        "reb": 6.8,
+        "ast": 1.0,
+        "stl": 1.0,
+        "blk": 3.0,
+        "tov": 1.7,
+        "fg_pct": 0.506,
+        "fg3_pct": 0.355,
+        "ft_pct": 0.788,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "MEM",
+        "gp": 66,
+        "gs": 66,
+        "min": 32.2,
+        "pts": 22.5,
+        "reb": 5.5,
+        "ast": 2.3,
+        "stl": 1.2,
+        "blk": 1.6,
+        "tov": 2.4,
+        "fg_pct": 0.444,
+        "fg3_pct": 0.32,
+        "ft_pct": 0.808,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "MEM",
+        "gp": 74,
+        "gs": 74,
+        "min": 29.8,
+        "pts": 22.2,
+        "reb": 5.6,
+        "ast": 2.0,
+        "stl": 1.2,
+        "blk": 1.5,
+        "tov": 2.1,
+        "fg_pct": 0.488,
+        "fg3_pct": 0.375,
+        "ft_pct": 0.781,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "MEM/UTA",
+        "gp": 48,
+        "gs": 48,
+        "min": 30.3,
+        "pts": 19.4,
+        "reb": 5.7,
+        "ast": 2.0,
+        "stl": 1.1,
+        "blk": 1.4,
+        "tov": 2.2,
+        "fg_pct": 0.476,
+        "fg3_pct": 0.357,
+        "ft_pct": 0.803,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 455,
+        "gs": 446,
+        "min": 28.8,
+        "pts": 18.6,
+        "reb": 5.6,
+        "ast": 1.5,
+        "stl": 1.0,
+        "blk": 1.9,
+        "tov": 1.9,
+        "fg_pct": 0.467,
+        "fg3_pct": 0.351,
+        "ft_pct": 0.793,
+        "is_career": true
+      }
+    ],
+    "playoffs": [
+      {
+        "season_id": "2020-21",
+        "team": "MEM",
+        "gp": 5,
+        "gs": 5,
+        "min": 27.4,
+        "pts": 13.6,
+        "reb": 5.6,
+        "ast": 1.0,
+        "stl": 1.0,
+        "blk": 1.2,
+        "tov": 0.8,
+        "fg_pct": 0.426,
+        "fg3_pct": 0.286,
+        "ft_pct": 0.875,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "MEM",
+        "gp": 12,
+        "gs": 12,
+        "min": 27.7,
+        "pts": 15.4,
+        "reb": 6.8,
+        "ast": 0.9,
+        "stl": 0.8,
+        "blk": 2.5,
+        "tov": 1.4,
+        "fg_pct": 0.378,
+        "fg3_pct": 0.375,
+        "ft_pct": 0.755,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "MEM",
+        "gp": 6,
+        "gs": 6,
+        "min": 36.7,
+        "pts": 18.0,
+        "reb": 7.8,
+        "ast": 1.5,
+        "stl": 1.0,
+        "blk": 2.0,
+        "tov": 3.0,
+        "fg_pct": 0.422,
+        "fg3_pct": 0.28,
+        "ft_pct": 0.861,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "MEM",
+        "gp": 4,
+        "gs": 4,
+        "min": 34.3,
+        "pts": 16.0,
+        "reb": 5.0,
+        "ast": 1.5,
+        "stl": 1.0,
+        "blk": 0.5,
+        "tov": 2.8,
+        "fg_pct": 0.379,
+        "fg3_pct": 0.273,
+        "ft_pct": 0.85,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 27,
+        "gs": 27,
+        "min": 30.6,
+        "pts": 15.7,
+        "reb": 6.5,
+        "ast": 1.1,
+        "stl": 0.9,
+        "blk": 1.9,
+        "tov": 1.9,
+        "fg_pct": 0.396,
+        "fg3_pct": 0.331,
+        "ft_pct": 0.816,
+        "is_career": true
+      }
+    ]
+  }
+}

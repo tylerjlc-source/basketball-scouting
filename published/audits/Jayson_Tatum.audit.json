@@ -1,0 +1,103 @@
+{
+  "player": "Jayson Tatum",
+  "evaluation_date": "2026-04-25",
+  "checks": [
+    {
+      "claim": "Jayson Tatum",
+      "type": "player_name",
+      "source_checked": "ANCHOR-LIBRARY.md",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "Kawhi Leonard",
+      "type": "player_name",
+      "source_checked": "ANCHOR-LIBRARY.md",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-Star",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "All-NBA First Team",
+      "type": "accolade",
+      "source_checked": "research packet",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "MVP",
+      "type": "accolade",
+      "source_checked": "research packet",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "Finals MVP",
+      "type": "accolade",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "2.13",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "0.30",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "2.15",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "0.58",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "8.95",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "8.30",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "claim": "9.20",
+      "type": "symbol_number",
+      "source_checked": "profile",
+      "status": "verified",
+      "note": ""
+    }
+  ],
+  "summary": {
+    "verified": 13,
+    "unverifiable": 0,
+    "mismatch": 0
+  },
+  "decision": "auto_approved"
+}

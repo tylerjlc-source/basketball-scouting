@@ -1,0 +1,659 @@
+{
+  "schema_version": "1.1",
+  "rules_version": "R1-R15 / S151",
+  "player": "Jayson Tatum",
+  "group": "Wing",
+  "position": "SF/PF",
+  "career_status": "Active",
+  "draft_class": null,
+  "archetype": "All-Around Wing",
+  "evaluation_date": "2026-04-25",
+  "composite_label": "Composite",
+  "composite_score": 8.88,
+  "tier": 5,
+  "tier_label": "Perennial All-Star — legitimate star (top of band)",
+  "narrative": {
+    "identity": "Jayson Tatum is one of the most distributed elite two-way wings in the league. A 4x All-NBA First Team selection (2022-2025, unanimous in 2025), a 6x All-Star, and the 2024 NBA Champion who led Boston in points, rebounds, and assists through the title run. At 6'8\" with a 6'11\" wingspan and a 210-pound filled-out frame, he carries the leverage to shoot over closeouts at any angle, switch onto bigs in the post, and stay in front of guards laterally. Not the most explosive wing in the league; instead, a player whose value is built through length, footwork, decision speed, and skill at every position on the floor.",
+    "strength": "Offensively, Tatum lives at every level. The catch-and-shoot three is his foundation skill: an elite 40.0% on 377 weighted attempts over the last 2 seasons, a weapon from both corners and above the break. Where he has genuinely leveled up is the passing: a career-high 6.0 assists per game in 2024-25 and 7.2 per game leading the 2024 Finals, capped by a 31-point, 11-assist Game 5 closeout to clinch the title. He sees second-level reads and protects the ball on primary-handler volume with a 2.13 assist-to-turnover ratio at 29.4% usage. Defensively, Tatum is genuinely switchable: opponents shoot 4.3% worse than expected against him on the season, he posts a career-high +1.8 defensive box plus-minus on the 2025-26 return, and the defensive glass is a real asset at a 27% defensive rebound rate during 2025-26, approaching big-position anchor rates.",
+    "weakness": "Where Tatum is not elite is in the self-creation pull-up game and at the rim defensively. The pull-up three sits at league-average around 32.9%, and isolation efficiency at 0.806 points per possession lands at the 39th percentile, well short of the elite handler tier. Tatum is not a primary rim defender either: he posts 0.3 blocks per game, below the wing rim-protection bar, and his defensive value comes from pressure, switchability, and rotations within Boston's elite scheme rather than basket deterrence. The third gap is offensive rebounding at a 1.6% rate, but that reflects the demands of his primary-scorer role rather than a skill weakness.",
+    "projection_verdict": "Tatum sits at the threshold between perennial All-Star and the league's MVP candidates, with the next healthy season the likely tipping point. The realistic ceiling is a return to the pre-Achilles form that had him climbing toward the MVP / Finals MVP conversation, with another deep playoff run as Boston's roster regenerates around him. The realistic floor is a partial-recovery skill-vet path, where intact size, skill, and feel continue to produce All-Star regular seasons but the pre-injury peak does not return. What he is, year over year, is a star wing with the physical tools to keep producing into his 30s. What he is not, yet, is the player who has cleared the MVP threshold; a full healthy season is what stands between him and that line."
+  },
+  "domains": [
+    {
+      "id": 1,
+      "name": "Finishing",
+      "score": 8.1,
+      "one_line": "8.1. Reliable rim and contact finisher with 71.9% rim conversion plus 81.6% free-throw shooting, dragged by a backup-only post game."
+    },
+    {
+      "id": 2,
+      "name": "Shooting",
+      "score": 8.5,
+      "one_line": "8.5. All-Star shooting identity built on elite catch-and-shoot at 40% on volume plus reliable mid-range and free throw, dragged by league-average off-dribble."
+    },
+    {
+      "id": 3,
+      "name": "Ball Skills",
+      "score": 8.5,
+      "one_line": "8.5. Primary-creator package: clean ball security on heavy usage, above-average pick-and-roll handle, with touch capped just below elite by the passing-execution mechanics."
+    },
+    {
+      "id": 4,
+      "name": "Playmaking",
+      "score": 8.1,
+      "one_line": "8.1. Career-high 6.0 assists in 2024-25 plus championship-run leadership, dragged by off-ball volume restricted by the on-ball-dominant role rather than skill."
+    },
+    {
+      "id": 5,
+      "name": "Defense",
+      "score": 7.8,
+      "one_line": "7.8. Strong on-ball pressure and help anchored by championship-team scheme execution, dragged by the rim-protection gap (0.3 blocks per game) below the wing rim bar."
+    },
+    {
+      "id": 6,
+      "name": "Rebounding",
+      "score": 7.7,
+      "one_line": "7.7. Big-like defensive glass at a 24.7% defensive rebound rate carrying the domain, dragged by primary-scorer role keeping him off the offensive crash."
+    },
+    {
+      "id": 7,
+      "name": "Athleticism",
+      "score": 7.4,
+      "one_line": "7.4. Solid integrated profile with above-average lateral and strength enabling switchability up to bigs, dragged by balanced rather than elite burst."
+    },
+    {
+      "id": 8,
+      "name": "IQ / Motor",
+      "score": 8.1,
+      "one_line": "8.1. Elite competitive character (4× All-NBA First Team, 2024 Champion, historic Achilles recovery pace), dragged by shot selection at the universal-population baseline."
+    }
+  ],
+  "sub_domains": [
+    {
+      "id": 1,
+      "name": "At-basket finishing",
+      "score": 8.0,
+      "rationale_public": "Strong rim conversion at 71.9% on healthy-anchor volume of 174 weighted attempts plus a 14.6% dunk rate; uses length and footwork rather than elite vertical explosion.",
+      "signature": {
+        "name": "Rim Finisher",
+        "tier": "Proven",
+        "description": "Conversion at the basket through any means: rim finishes, touch finishes, floaters, fingerrolls, off-hand layups, and above-rim plays."
+      }
+    },
+    {
+      "id": 2,
+      "name": "Contact finishing / foul draw",
+      "score": 7.0,
+      "rationale_public": "Functional foul-draw at 0.30 free throws per field-goal attempt with 81.6% free-throw conversion on 10.7 drives per game; not a primary contact-finishing weapon.",
+      "signature": null
+    },
+    {
+      "id": 3,
+      "name": "Post offense",
+      "score": 6.5,
+      "rationale_public": "Functional in switches against smaller defenders and a development project under Drew Hanlen; not a primary post weapon by volume or efficiency.",
+      "signature": null
+    },
+    {
+      "id": 4,
+      "name": "Catch-and-shoot 3PT",
+      "score": 8.5,
+      "rationale_public": "Elite catch-and-shoot weapon at 40.0% on healthy-anchor volume of 377 weighted three-point attempts; a foundation skill from both corners and above the break.",
+      "signature": {
+        "name": "Sniper",
+        "tier": "Elite",
+        "description": "Spot-up shooting off the catch from three. Footwork, release consistency, and range depth on attempts that arrive in rhythm."
+      }
+    },
+    {
+      "id": 5,
+      "name": "Off-dribble shooting",
+      "score": 7.0,
+      "rationale_public": "League-average pull-up three-point shooting at 32.9% with isolation production at 0.806 points per possession (39th percentile); multiple zones, no elite zone.",
+      "signature": null
+    },
+    {
+      "id": 6,
+      "name": "Mid-range",
+      "score": 7.5,
+      "rationale_public": "Above-average mid-range conversion at 39.6% on healthy-anchor volume; recalibrated shot selection through Drew Hanlen's footwork work has compressed long-twos and improved shot quality.",
+      "signature": null
+    },
+    {
+      "id": 7,
+      "name": "Free throw",
+      "score": 8.0,
+      "rationale_public": "Reliable free-throw shooter at 83.9% career and 81.6% on weighted volume; a clutch dip to 71.2% on small sample doesn't shift the band.",
+      "signature": null
+    },
+    {
+      "id": 8,
+      "name": "Handling / creation",
+      "score": 7.9,
+      "rationale_public": "Primary-creator handle on 29.4% usage with above-average pick-and-roll efficiency (75.9th percentile); isolation production at the 39th percentile sits below the elite-handle bar.",
+      "signature": null
+    },
+    {
+      "id": 9,
+      "name": "Touch / feel",
+      "score": 7.5,
+      "rationale_public": "Above-average wing touch from a 43.6% floater conversion on 130 weighted attempts plus 64.1% non-dunk rim plus 81.6% free-throw shooting; soft hands elevate plays.",
+      "signature": null
+    },
+    {
+      "id": 10,
+      "name": "Ball security",
+      "score": 8.0,
+      "rationale_public": "Clean security on primary-handler volume: a 2.13 assist-to-turnover ratio with roughly 3 turnovers per 100 touches at 29.4% usage.",
+      "signature": {
+        "name": "Sure-Handed",
+        "tier": "Proven",
+        "description": "Protecting possession in traffic. Two-hand securing, ball discipline on drives and in the post, and low live-ball turnover rate."
+      }
+    },
+    {
+      "id": 11,
+      "name": "Court vision",
+      "score": 8.0,
+      "rationale_public": "Career-high 6.0 assists per game in the 2024-25 healthy season and 7.2 per game leading the 2024 Finals; reads second-level coverages and anticipates.",
+      "signature": {
+        "name": "Floor General",
+        "tier": "Proven",
+        "description": "Reading the floor and seeing secondary options. Anticipates defensive rotations before they happen and identifies the pass that creates the open shot."
+      }
+    },
+    {
+      "id": 12,
+      "name": "Decision-making",
+      "score": 8.0,
+      "rationale_public": "Reliable judgment on heavy primary-creator load; 2.15 assist-to-turnover ratio at 29.4% usage with championship leadership in the 2024 Finals run as the supporting signal.",
+      "signature": {
+        "name": "High-IQ",
+        "tier": "Proven",
+        "description": "Executing the right play under pressure. Drive-kick timing, shot-versus-pass choice, late-clock decisions, and tempo management at game speed."
+      }
+    },
+    {
+      "id": 13,
+      "name": "Passing execution",
+      "score": 7.5,
+      "rationale_public": "Functional delivery at 54.4 passes per game and 52.1% potential-assist conversion; pinpoint passes over one or two defenders, with touch-driven accuracy rather than mechanical purity.",
+      "signature": null
+    },
+    {
+      "id": 14,
+      "name": "Off-ball movement",
+      "score": 7.0,
+      "rationale_public": "Strong cut conversion at 1.596 points per possession (94th percentile) on small sample; on-ball-dominant role caps total off-ball volume rather than the underlying skill.",
+      "signature": null
+    },
+    {
+      "id": 15,
+      "name": "On-ball pressure",
+      "score": 8.0,
+      "rationale_public": "Strong on-ball defender holding opponents 4.3% below their expected field-goal percentage; 1.3 steals and 2.1 deflections per game with isolation defense at 0.746 points per possession.",
+      "signature": {
+        "name": "Lockdown",
+        "tier": "Proven",
+        "description": "Guarding ball handlers with length, footwork, and intensity. Contests shots under control, stays attached through dribble moves, and forces difficult attempts."
+      }
+    },
+    {
+      "id": 16,
+      "name": "Help defense",
+      "score": 8.0,
+      "rationale_public": "Career-high +1.8 defensive box plus-minus on the 2025-26 return; rotates correctly within Boston's elite scheme, with 2.1 deflections per game backing the help anchor.",
+      "signature": {
+        "name": "Help Defender",
+        "tier": "Proven",
+        "description": "Rotations, weak-side positioning, and switching range. Reads the play before it happens and arrives at the help spot in time."
+      }
+    },
+    {
+      "id": 17,
+      "name": "Rim protection",
+      "score": 6.0,
+      "rationale_public": "Not a rim anchor at 0.3 blocks per game (well below the wing rim-protection bar); contests within rotations without measurable basket deterrence.",
+      "signature": null
+    },
+    {
+      "id": 18,
+      "name": "Post defense",
+      "score": 7.5,
+      "rationale_public": "Functional post defender on a thin sample at 0.750 points per possession allowed; the 6'11\" wingspan and frame strength let him switch up to bigs.",
+      "signature": null
+    },
+    {
+      "id": 19,
+      "name": "Offensive rebounding",
+      "score": 5.0,
+      "rationale_public": "Doesn't crash the glass: 0.58 offensive rebounds per game on a 1.6% offensive rebound rate; primary-scorer role keeps him out of crash positions.",
+      "signature": null
+    },
+    {
+      "id": 20,
+      "name": "Defensive rebounding",
+      "score": 9.0,
+      "rationale_public": "Big-like wing defensive glass at a 24.7% defensive rebound rate (career-high 27.4% in 2025-26) and 8.9 defensive rebounds per game; led the 2024 Finals at 7.8 rebounds per game.",
+      "signature": {
+        "name": "Glass Cleaner",
+        "tier": "Superstar",
+        "description": "Boxing out, securing the ball through contact, and ending opponent possessions. Locates the man before the ball and outlets cleanly."
+      }
+    },
+    {
+      "id": 21,
+      "name": "Burst / explosion",
+      "score": 7.0,
+      "rationale_public": "Balanced burst rather than elite, on a 32.5\" pre-draft vertical and 10.7 drives per game; creates separation against average defenders, not at the explosive-wing level.",
+      "signature": null
+    },
+    {
+      "id": 22,
+      "name": "Lateral quickness",
+      "score": 7.5,
+      "rationale_public": "Above-average wing lateral mobility with length and agility to stick with guards on the perimeter while switching up to bigs; a real two-way defensive asset.",
+      "signature": null
+    },
+    {
+      "id": 23,
+      "name": "Strength",
+      "score": 7.5,
+      "rationale_public": "Filled-out 6'8\" / 210-pound frame with the strength to switch onto bigs in the post and absorb wing contact; not at the top of the wing-strength range.",
+      "signature": null
+    },
+    {
+      "id": 24,
+      "name": "Shot selection",
+      "score": 7.0,
+      "rationale_public": "Solid universal shot selection at 51.9% contested rate on heavy primary-scorer load; recalibrated mid-range volume through Drew Hanlen's footwork work has improved shot quality.",
+      "signature": null
+    },
+    {
+      "id": 25,
+      "name": "Effort / motor",
+      "score": 7.5,
+      "rationale_public": "Above-average effort across hustle stats: 2.1 deflections, 1.3 steals, and 3.0 contested shots per game, plus the historic-pace Achilles recovery built on three-a-day work.",
+      "signature": null
+    },
+    {
+      "id": 26,
+      "name": "Competitive character",
+      "score": 8.5,
+      "rationale_public": "4× All-NBA First Team (2022-2025, unanimous in 2025), 2024 NBA Champion leading the team in points / rebounds / assists, and Twyman-Stokes Teammate of the Year finalist.",
+      "signature": {
+        "name": "Competitor",
+        "tier": "Elite",
+        "description": "Physicality and intensity when the game is hard. Performance holds in close games, rivalry matchups, and elimination scenarios. Withstands adversity without withdrawing."
+      }
+    }
+  ],
+  "projection": {
+    "pot": 8.95,
+    "min": 8.3,
+    "max": 9.2,
+    "confidence": "wide",
+    "spread_note_public": "Peak projection 8.95, floor 8.30, ceiling 9.20 at Wide confidence. The floor accounts for partial-recovery skill-vet risk on the Achilles; the ceiling reaches MVP / Finals MVP candidacy only if a full healthy season returns peak form."
+  },
+  "comps": [
+    {
+      "comp_player": "Kawhi Leonard",
+      "comp_tier": "Lineage",
+      "similarity_public": "Same All-Around Wing archetype with switchable defense plus primary-handler scoring and championship leadership at age 27. Leonard's 26.6 / 7.3 / 3.3 line on 60.6% true shooting at 30% usage with the 2019 Finals MVP mirrors Tatum's 2024-25 anchor (26.8 / 8.7 / 6.0 on 58.2% true shooting at 30.1% usage); the post-championship injury arc gives Kawhi the most informative long-term parallel for the post-Achilles Tatum projection."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-04-25",
+      "composite": 8.88,
+      "tier": 5,
+      "archetype": "All-Around Wing"
+    }
+  ],
+  "career_stats": {
+    "regular_season": [
+      {
+        "season_id": "2017-18",
+        "team": "BOS",
+        "gp": 80,
+        "gs": 80,
+        "min": 30.5,
+        "pts": 13.9,
+        "reb": 5.0,
+        "ast": 1.6,
+        "stl": 1.0,
+        "blk": 0.7,
+        "tov": 1.4,
+        "fg_pct": 0.475,
+        "fg3_pct": 0.434,
+        "ft_pct": 0.826,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "BOS",
+        "gp": 79,
+        "gs": 79,
+        "min": 31.1,
+        "pts": 15.7,
+        "reb": 6.0,
+        "ast": 2.1,
+        "stl": 1.1,
+        "blk": 0.7,
+        "tov": 1.5,
+        "fg_pct": 0.45,
+        "fg3_pct": 0.373,
+        "ft_pct": 0.855,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "BOS",
+        "gp": 66,
+        "gs": 66,
+        "min": 34.3,
+        "pts": 23.4,
+        "reb": 7.0,
+        "ast": 3.0,
+        "stl": 1.4,
+        "blk": 0.9,
+        "tov": 2.3,
+        "fg_pct": 0.45,
+        "fg3_pct": 0.403,
+        "ft_pct": 0.812,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "BOS",
+        "gp": 64,
+        "gs": 64,
+        "min": 35.8,
+        "pts": 26.4,
+        "reb": 7.4,
+        "ast": 4.3,
+        "stl": 1.2,
+        "blk": 0.5,
+        "tov": 2.7,
+        "fg_pct": 0.459,
+        "fg3_pct": 0.386,
+        "ft_pct": 0.868,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "BOS",
+        "gp": 76,
+        "gs": 76,
+        "min": 35.9,
+        "pts": 26.9,
+        "reb": 8.0,
+        "ast": 4.4,
+        "stl": 1.0,
+        "blk": 0.6,
+        "tov": 2.9,
+        "fg_pct": 0.453,
+        "fg3_pct": 0.353,
+        "ft_pct": 0.853,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "BOS",
+        "gp": 74,
+        "gs": 74,
+        "min": 36.9,
+        "pts": 30.1,
+        "reb": 8.8,
+        "ast": 4.6,
+        "stl": 1.1,
+        "blk": 0.7,
+        "tov": 2.9,
+        "fg_pct": 0.466,
+        "fg3_pct": 0.35,
+        "ft_pct": 0.854,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "BOS",
+        "gp": 74,
+        "gs": 74,
+        "min": 35.7,
+        "pts": 26.9,
+        "reb": 8.1,
+        "ast": 4.9,
+        "stl": 1.0,
+        "blk": 0.6,
+        "tov": 2.5,
+        "fg_pct": 0.471,
+        "fg3_pct": 0.376,
+        "ft_pct": 0.833,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "BOS",
+        "gp": 72,
+        "gs": 72,
+        "min": 36.4,
+        "pts": 26.8,
+        "reb": 8.7,
+        "ast": 6.0,
+        "stl": 1.1,
+        "blk": 0.5,
+        "tov": 2.9,
+        "fg_pct": 0.452,
+        "fg3_pct": 0.343,
+        "ft_pct": 0.814,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "BOS",
+        "gp": 16,
+        "gs": 16,
+        "min": 32.6,
+        "pts": 21.8,
+        "reb": 10.0,
+        "ast": 5.3,
+        "stl": 1.4,
+        "blk": 0.2,
+        "tov": 2.4,
+        "fg_pct": 0.411,
+        "fg3_pct": 0.329,
+        "ft_pct": 0.823,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 601,
+        "gs": 601,
+        "min": 34.5,
+        "pts": 23.5,
+        "reb": 7.4,
+        "ast": 3.9,
+        "stl": 1.1,
+        "blk": 0.6,
+        "tov": 2.4,
+        "fg_pct": 0.458,
+        "fg3_pct": 0.368,
+        "ft_pct": 0.839,
+        "is_career": true
+      }
+    ],
+    "playoffs": [
+      {
+        "season_id": "2017-18",
+        "team": "BOS",
+        "gp": 19,
+        "gs": 19,
+        "min": 35.9,
+        "pts": 18.5,
+        "reb": 4.4,
+        "ast": 2.7,
+        "stl": 1.2,
+        "blk": 0.5,
+        "tov": 2.2,
+        "fg_pct": 0.471,
+        "fg3_pct": 0.324,
+        "ft_pct": 0.845,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "BOS",
+        "gp": 9,
+        "gs": 9,
+        "min": 32.8,
+        "pts": 15.2,
+        "reb": 6.7,
+        "ast": 1.9,
+        "stl": 1.1,
+        "blk": 0.8,
+        "tov": 2.0,
+        "fg_pct": 0.438,
+        "fg3_pct": 0.323,
+        "ft_pct": 0.744,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "BOS",
+        "gp": 17,
+        "gs": 17,
+        "min": 40.6,
+        "pts": 25.7,
+        "reb": 10.0,
+        "ast": 5.0,
+        "stl": 1.0,
+        "blk": 1.2,
+        "tov": 2.8,
+        "fg_pct": 0.434,
+        "fg3_pct": 0.373,
+        "ft_pct": 0.813,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "BOS",
+        "gp": 5,
+        "gs": 5,
+        "min": 37.0,
+        "pts": 30.6,
+        "reb": 5.8,
+        "ast": 4.6,
+        "stl": 1.2,
+        "blk": 1.6,
+        "tov": 2.6,
+        "fg_pct": 0.423,
+        "fg3_pct": 0.389,
+        "ft_pct": 0.918,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "BOS",
+        "gp": 24,
+        "gs": 24,
+        "min": 41.0,
+        "pts": 25.6,
+        "reb": 6.7,
+        "ast": 6.2,
+        "stl": 1.2,
+        "blk": 0.9,
+        "tov": 4.2,
+        "fg_pct": 0.426,
+        "fg3_pct": 0.393,
+        "ft_pct": 0.8,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "BOS",
+        "gp": 20,
+        "gs": 20,
+        "min": 40.0,
+        "pts": 27.2,
+        "reb": 10.5,
+        "ast": 5.3,
+        "stl": 1.1,
+        "blk": 1.1,
+        "tov": 2.8,
+        "fg_pct": 0.458,
+        "fg3_pct": 0.323,
+        "ft_pct": 0.876,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "BOS",
+        "gp": 19,
+        "gs": 19,
+        "min": 40.4,
+        "pts": 25.0,
+        "reb": 9.7,
+        "ast": 6.3,
+        "stl": 1.1,
+        "blk": 0.7,
+        "tov": 2.6,
+        "fg_pct": 0.427,
+        "fg3_pct": 0.283,
+        "ft_pct": 0.861,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "BOS",
+        "gp": 8,
+        "gs": 8,
+        "min": 40.3,
+        "pts": 28.1,
+        "reb": 11.5,
+        "ast": 5.4,
+        "stl": 2.1,
+        "blk": 0.8,
+        "tov": 3.3,
+        "fg_pct": 0.423,
+        "fg3_pct": 0.372,
+        "ft_pct": 0.889,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "BOS",
+        "gp": 6,
+        "gs": 6,
+        "min": 36.3,
+        "pts": 23.3,
+        "reb": 10.7,
+        "ast": 6.8,
+        "stl": 1.2,
+        "blk": 0.0,
+        "tov": 2.8,
+        "fg_pct": 0.475,
+        "fg3_pct": 0.365,
+        "ft_pct": 0.781,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 127,
+        "gs": 127,
+        "min": 38.9,
+        "pts": 24.2,
+        "reb": 8.3,
+        "ast": 5.0,
+        "stl": 1.2,
+        "blk": 0.8,
+        "tov": 2.9,
+        "fg_pct": 0.44,
+        "fg3_pct": 0.349,
+        "ft_pct": 0.839,
+        "is_career": true
+      }
+    ]
+  }
+}

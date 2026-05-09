@@ -1,0 +1,667 @@
+{
+  "schema_version": "1.1",
+  "rules_version": "R1-R15 / S151",
+  "player": "Donovan Mitchell",
+  "group": "Guard",
+  "position": "SG",
+  "career_status": "Active",
+  "draft_class": null,
+  "archetype": "Offensive Engine (no migration)",
+  "evaluation_date": "2026-04-23",
+  "composite_label": "Composite",
+  "composite_score": 8.95,
+  "tier": 4,
+  "tier_label": "All-NBA caliber / clear franchise piece",
+  "narrative": {
+    "identity": "Donovan Mitchell is a player on the cusp of greatness. A 7x All-Star, a 1st Team All-NBA nod, and an elite offensive engine in both the regular season and playoffs. The question is whether or not he crosses the threshold. At 6'1\"/215lbs, Mitchell's length (6'10\" wingspan) sneaks up on defenses. His strength is underrated, leading to body control that allows him to score efficiently at the rim.",
+    "strength": "Offensively, Mitchell profiles as a 3-level, efficient scorer. His Catch-and-shoot 3PT at 40.7% on 623 attempts is elite volume-plus-conversion. This, combined with efficient mid range game and an above average conversion at the rim, showcase a player well within the top 10 offensive contributors league wide. A high usage pick and roll ball handler, with serviceable playmaking means Mitchell can act as a primary creator. He is a crafty, smooth athlete who has found a niche at the highest level of competition.",
+    "weakness": "Defensively, Mitchell is not elite but functional. Given his offensive contribution, his defense is more than serviceable. However, for Mitchell to reach his full potential, the defense needs to show up against elite level talent in later playoff rounds. A player with his length, frame, and athleticism possesses the capacity to defend the best guards in the league at a high level. That is his next step.",
+    "projection_verdict": "A perennial All-Star linked with Devin Booker as the top Shooting Guard in the league. The ceiling is multiple All-NBA calls and a fringe chance at an MVP season if everything falls just right. Mitchell is good enough to anchor a championship team and is at the point in his career where he needs to show it."
+  },
+  "domains": [
+    {
+      "id": 1,
+      "name": "Finishing",
+      "score": 8.0,
+      "one_line": "8.0. Above average rim and contact conversion at primary-creator volume."
+    },
+    {
+      "id": 2,
+      "name": "Shooting",
+      "score": 8.7,
+      "one_line": "8.7. Three-level shooter with elite catch-and-shoot volume and reliable mid-range."
+    },
+    {
+      "id": 3,
+      "name": "Ball Skills",
+      "score": 8.6,
+      "one_line": "8.6. Strong primary handle and rare guard touch; ball security solid for the usage."
+    },
+    {
+      "id": 4,
+      "name": "Playmaking",
+      "score": 7.9,
+      "one_line": "7.9. Above average orchestrator expanding under Cleveland's offense; not a pure point guard."
+    },
+    {
+      "id": 5,
+      "name": "Defense",
+      "score": 6.9,
+      "one_line": "6.9. Functional on-ball and team-context middle of pack; below average for a franchise anchor."
+    },
+    {
+      "id": 6,
+      "name": "Rebounding",
+      "score": 6.8,
+      "one_line": "6.8. Average defensive rebounding for the position; offensive rebounding negligible by archetype."
+    },
+    {
+      "id": 7,
+      "name": "Athleticism",
+      "score": 8.2,
+      "one_line": "8.2. Elite guard strength and burst combination; lateral quickness above average."
+    },
+    {
+      "id": 8,
+      "name": "IQ / Motor",
+      "score": 8.2,
+      "one_line": "8.2. Responsible shot selection at high usage and proven playoff scoring rise."
+    }
+  ],
+  "sub_domains": [
+    {
+      "id": 1,
+      "name": "At-basket finishing",
+      "score": 8.0,
+      "rationale_public": "63.9% at the rim on 287 attempts; above average finisher for a guard.",
+      "signature": {
+        "name": "Rim Finisher",
+        "tier": "Proven",
+        "description": "Conversion at the basket through any means: rim finishes, touch finishes, floaters, fingerrolls, off-hand layups, and above-rim plays."
+      }
+    },
+    {
+      "id": 2,
+      "name": "Contact finishing / foul draw",
+      "score": 7.8,
+      "rationale_public": "FT rate 0.293 with 85.0% conversion; draws fouls and converts at a solid clip.",
+      "signature": null
+    },
+    {
+      "id": 3,
+      "name": "Post offense",
+      "score": 3.0,
+      "rationale_public": "Does not post up.",
+      "signature": null
+    },
+    {
+      "id": 4,
+      "name": "Catch-and-shoot 3PT",
+      "score": 8.8,
+      "rationale_public": "40.7% on 623 catch-and-shoot 3PA; elite volume-plus-conversion.",
+      "signature": {
+        "name": "Sniper",
+        "tier": "Elite",
+        "description": "Spot-up shooting off the catch from three. Footwork, release consistency, and range depth on attempts that arrive in rhythm."
+      }
+    },
+    {
+      "id": 5,
+      "name": "Off-dribble shooting",
+      "score": 8.3,
+      "rationale_public": "Pull-up 3PT 33.9%, ISO 71.6th percentile; above average off-dribble creator.",
+      "signature": {
+        "name": "Pull-Up Shooter",
+        "tier": "Proven",
+        "description": "Creating own shot off the dribble. Pull-ups, step-backs, and self-generated separation moves with a clean release over a contest."
+      }
+    },
+    {
+      "id": 6,
+      "name": "Mid-range",
+      "score": 8.0,
+      "rationale_public": "46.4% on 181 mid-range attempts; reliable producer where most guards have abandoned the shot.",
+      "signature": {
+        "name": "Mid-Range Threat",
+        "tier": "Proven",
+        "description": "Pull-up and catch-and-shoot scoring from the elbow and baseline mid-range zones. A diminished but real weapon at the NBA level."
+      }
+    },
+    {
+      "id": 7,
+      "name": "Free throw",
+      "score": 8.3,
+      "rationale_public": "85.0% career-consistent, 85.2% clutch; above average guard FT shooter.",
+      "signature": null
+    },
+    {
+      "id": 8,
+      "name": "Handling / creation",
+      "score": 8.5,
+      "rationale_public": "PnR ball-handler 85.5th percentile, 13.3 drives/g at 56.4% finishing; strong primary creator.",
+      "signature": {
+        "name": "Shot Creator",
+        "tier": "Elite",
+        "description": "Dribble tightness, move variety, and live-dribble creation. Beats defenders with handle alone and generates scoring opportunities for self or teammates."
+      }
+    },
+    {
+      "id": 9,
+      "name": "Touch / feel",
+      "score": 8.3,
+      "rationale_public": "Floater 53.4% on 334 attempts plus 85% FT; rare guard touch.",
+      "signature": {
+        "name": "Soft Touch",
+        "tier": "Proven",
+        "description": "Fingertip control at the point of contact between hands and ball. Backboard finishes, fingerrolls, soft catches, and accurate pass delivery."
+      }
+    },
+    {
+      "id": 10,
+      "name": "Ball security",
+      "score": 7.5,
+      "rationale_public": "A:TO 2.15 at 30.6% usage; solid ball security for the load.",
+      "signature": null
+    },
+    {
+      "id": 11,
+      "name": "Court vision",
+      "score": 7.8,
+      "rationale_public": "17.8% adjusted assist rate, 10.3 potential assists/g; above average vision, still expanding under Cleveland's offense.",
+      "signature": null
+    },
+    {
+      "id": 12,
+      "name": "Decision-making",
+      "score": 8.0,
+      "rationale_public": "Solid clutch A:TO and positive plus-minus on a heavy clutch sample; reliable at volume.",
+      "signature": {
+        "name": "High-IQ",
+        "tier": "Proven",
+        "description": "Executing the right play under pressure. Drive-kick timing, shot-versus-pass choice, late-clock decisions, and tempo management at game speed."
+      }
+    },
+    {
+      "id": 13,
+      "name": "Passing execution",
+      "score": 7.5,
+      "rationale_public": "52.4% assist conversion; adequate delivery for the usage.",
+      "signature": null
+    },
+    {
+      "id": 14,
+      "name": "Off-ball movement",
+      "score": 7.8,
+      "rationale_public": "Cuts 91st percentile, transition 1.182 PPP; active off-ball despite a primary role.",
+      "signature": null
+    },
+    {
+      "id": 15,
+      "name": "On-ball pressure",
+      "score": 6.9,
+      "rationale_public": "Neutral DFGPOE, 1.4 steals/g; functional on-ball, not a weapon.",
+      "signature": null
+    },
+    {
+      "id": 16,
+      "name": "Help defense",
+      "score": 6.8,
+      "rationale_public": "2.7 deflections/g, 110.9 DRtg; adequate, below average for a franchise anchor.",
+      "signature": null
+    },
+    {
+      "id": 17,
+      "name": "Rim protection",
+      "score": 3.5,
+      "rationale_public": "0.3 blocks/g; guard baseline.",
+      "signature": null
+    },
+    {
+      "id": 18,
+      "name": "Post defense",
+      "score": 4.5,
+      "rationale_public": "Small post-defense sample; not a position-of-need skill.",
+      "signature": null
+    },
+    {
+      "id": 19,
+      "name": "Offensive rebounding",
+      "score": 4.0,
+      "rationale_public": "2.3% OREB rate; not part of his game.",
+      "signature": null
+    },
+    {
+      "id": 20,
+      "name": "Defensive rebounding",
+      "score": 6.8,
+      "rationale_public": "11.0% DREB rate, 3.76/g; average for the position.",
+      "signature": null
+    },
+    {
+      "id": 21,
+      "name": "Burst / explosion",
+      "score": 8.3,
+      "rationale_public": "13.3 drives/g at 56.4% finishing; still explosive at 29.",
+      "signature": null
+    },
+    {
+      "id": 22,
+      "name": "Lateral quickness",
+      "score": 7.5,
+      "rationale_public": "Stays in front of most guards on neutral shot deterrence; not All-Defensive level.",
+      "signature": null
+    },
+    {
+      "id": 23,
+      "name": "Strength",
+      "score": 8.0,
+      "rationale_public": "215 lbs at 6'1\"; elite guard strength that sustains volume scoring through contact.",
+      "signature": {
+        "name": "Bruiser",
+        "tier": "Proven",
+        "description": "Functional basketball strength. Holds position, absorbs and initiates contact, sets displacing screens, and finishes through physicality at the rim."
+      }
+    },
+    {
+      "id": 24,
+      "name": "Shot selection",
+      "score": 8.0,
+      "rationale_public": "TS% 59.8% at 30.6% usage; responsible shot quality at scale.",
+      "signature": {
+        "name": "Shot IQ",
+        "tier": "Proven",
+        "description": "Taking the right shots — reading defenses, knowing when to shoot, pass, or attack. High true shooting earned through shot quality, not volume."
+      }
+    },
+    {
+      "id": 25,
+      "name": "Effort / motor",
+      "score": 8.2,
+      "rationale_public": "140+ games healthy across both eval seasons; consistent MVP-vote-level output.",
+      "signature": {
+        "name": "Hustle",
+        "tier": "Proven",
+        "description": "Relentless pursuit. Loose balls, transition sprints, deflections, and the second-effort plays that don't appear in the box score but change games."
+      }
+    },
+    {
+      "id": 26,
+      "name": "Competitive character",
+      "score": 8.3,
+      "rationale_public": "Career playoff scoring rises across 9 postseasons; proven volume on the bigger stage, no Finals signature yet.",
+      "signature": {
+        "name": "Competitor",
+        "tier": "Proven",
+        "description": "Physicality and intensity when the game is hard. Performance holds in close games, rivalry matchups, and elimination scenarios. Withstands adversity without withdrawing."
+      }
+    }
+  ],
+  "projection": {
+    "pot": 9.02,
+    "min": 8.62,
+    "max": 9.06,
+    "confidence": "tight",
+    "spread_note_public": "Realistic peak (POT) of 9.02 with a tight confidence band, Min 8.62 to Max 9.06. Plateau trajectory at his current All-NBA First level; the credential leap is captured in the current grade rather than anticipated."
+  },
+  "comps": [
+    {
+      "comp_player": "Devin Booker",
+      "comp_tier": "Lineage",
+      "similarity_public": "Same Offensive Engine archetype with comparable usage and efficiency on conference-leading teams without a Finals breakthrough in the comp window. Mitchell carries deeper recent playoff volume; Booker has the 2021 Finals appearance Mitchell lacks."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-04-23",
+      "composite": 8.95,
+      "tier": 4,
+      "archetype": "Offensive Engine"
+    }
+  ],
+  "career_stats": {
+    "regular_season": [
+      {
+        "season_id": "2017-18",
+        "team": "UTA",
+        "gp": 79,
+        "gs": 71,
+        "min": 33.4,
+        "pts": 20.5,
+        "reb": 3.7,
+        "ast": 3.7,
+        "stl": 1.5,
+        "blk": 0.3,
+        "tov": 2.7,
+        "fg_pct": 0.437,
+        "fg3_pct": 0.34,
+        "ft_pct": 0.805,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "UTA",
+        "gp": 77,
+        "gs": 77,
+        "min": 33.7,
+        "pts": 23.8,
+        "reb": 4.1,
+        "ast": 4.2,
+        "stl": 1.4,
+        "blk": 0.4,
+        "tov": 2.8,
+        "fg_pct": 0.432,
+        "fg3_pct": 0.362,
+        "ft_pct": 0.806,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "UTA",
+        "gp": 69,
+        "gs": 69,
+        "min": 34.3,
+        "pts": 24.0,
+        "reb": 4.4,
+        "ast": 4.3,
+        "stl": 1.0,
+        "blk": 0.2,
+        "tov": 2.7,
+        "fg_pct": 0.449,
+        "fg3_pct": 0.366,
+        "ft_pct": 0.863,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "UTA",
+        "gp": 53,
+        "gs": 53,
+        "min": 33.4,
+        "pts": 26.4,
+        "reb": 4.4,
+        "ast": 5.2,
+        "stl": 1.0,
+        "blk": 0.3,
+        "tov": 2.8,
+        "fg_pct": 0.438,
+        "fg3_pct": 0.386,
+        "ft_pct": 0.845,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "UTA",
+        "gp": 67,
+        "gs": 67,
+        "min": 33.8,
+        "pts": 25.9,
+        "reb": 4.2,
+        "ast": 5.3,
+        "stl": 1.5,
+        "blk": 0.2,
+        "tov": 3.0,
+        "fg_pct": 0.448,
+        "fg3_pct": 0.355,
+        "ft_pct": 0.853,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "CLE",
+        "gp": 68,
+        "gs": 68,
+        "min": 35.8,
+        "pts": 28.3,
+        "reb": 4.3,
+        "ast": 4.4,
+        "stl": 1.5,
+        "blk": 0.4,
+        "tov": 2.6,
+        "fg_pct": 0.484,
+        "fg3_pct": 0.386,
+        "ft_pct": 0.867,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "CLE",
+        "gp": 55,
+        "gs": 55,
+        "min": 35.3,
+        "pts": 26.6,
+        "reb": 5.1,
+        "ast": 6.1,
+        "stl": 1.8,
+        "blk": 0.5,
+        "tov": 2.8,
+        "fg_pct": 0.462,
+        "fg3_pct": 0.368,
+        "ft_pct": 0.865,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "CLE",
+        "gp": 71,
+        "gs": 71,
+        "min": 31.4,
+        "pts": 24.0,
+        "reb": 4.5,
+        "ast": 5.0,
+        "stl": 1.3,
+        "blk": 0.2,
+        "tov": 2.1,
+        "fg_pct": 0.443,
+        "fg3_pct": 0.368,
+        "ft_pct": 0.823,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "CLE",
+        "gp": 70,
+        "gs": 70,
+        "min": 33.5,
+        "pts": 27.9,
+        "reb": 4.5,
+        "ast": 5.7,
+        "stl": 1.5,
+        "blk": 0.3,
+        "tov": 2.8,
+        "fg_pct": 0.483,
+        "fg3_pct": 0.364,
+        "ft_pct": 0.865,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 609,
+        "gs": 601,
+        "min": 33.8,
+        "pts": 25.1,
+        "reb": 4.3,
+        "ast": 4.8,
+        "stl": 1.4,
+        "blk": 0.3,
+        "tov": 2.7,
+        "fg_pct": 0.453,
+        "fg3_pct": 0.366,
+        "ft_pct": 0.844,
+        "is_career": true
+      }
+    ],
+    "playoffs": [
+      {
+        "season_id": "2017-18",
+        "team": "UTA",
+        "gp": 11,
+        "gs": 11,
+        "min": 37.4,
+        "pts": 24.4,
+        "reb": 5.9,
+        "ast": 4.2,
+        "stl": 1.5,
+        "blk": 0.4,
+        "tov": 2.9,
+        "fg_pct": 0.42,
+        "fg3_pct": 0.313,
+        "ft_pct": 0.907,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "UTA",
+        "gp": 5,
+        "gs": 5,
+        "min": 38.6,
+        "pts": 21.4,
+        "reb": 5.0,
+        "ast": 3.2,
+        "stl": 1.6,
+        "blk": 0.2,
+        "tov": 4.2,
+        "fg_pct": 0.321,
+        "fg3_pct": 0.256,
+        "ft_pct": 0.727,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "UTA",
+        "gp": 7,
+        "gs": 7,
+        "min": 37.7,
+        "pts": 36.3,
+        "reb": 5.0,
+        "ast": 4.9,
+        "stl": 1.0,
+        "blk": 0.3,
+        "tov": 4.1,
+        "fg_pct": 0.529,
+        "fg3_pct": 0.516,
+        "ft_pct": 0.948,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "UTA",
+        "gp": 10,
+        "gs": 10,
+        "min": 34.6,
+        "pts": 32.3,
+        "reb": 4.2,
+        "ast": 5.5,
+        "stl": 1.1,
+        "blk": 0.2,
+        "tov": 2.8,
+        "fg_pct": 0.447,
+        "fg3_pct": 0.435,
+        "ft_pct": 0.829,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "UTA",
+        "gp": 6,
+        "gs": 6,
+        "min": 38.3,
+        "pts": 25.5,
+        "reb": 4.3,
+        "ast": 5.7,
+        "stl": 0.7,
+        "blk": 0.5,
+        "tov": 2.7,
+        "fg_pct": 0.398,
+        "fg3_pct": 0.208,
+        "ft_pct": 0.881,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "CLE",
+        "gp": 5,
+        "gs": 5,
+        "min": 41.4,
+        "pts": 23.2,
+        "reb": 5.0,
+        "ast": 7.2,
+        "stl": 2.0,
+        "blk": 0.6,
+        "tov": 3.8,
+        "fg_pct": 0.433,
+        "fg3_pct": 0.289,
+        "ft_pct": 0.722,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "CLE",
+        "gp": 10,
+        "gs": 10,
+        "min": 38.2,
+        "pts": 29.6,
+        "reb": 5.4,
+        "ast": 4.7,
+        "stl": 1.3,
+        "blk": 0.3,
+        "tov": 2.8,
+        "fg_pct": 0.476,
+        "fg3_pct": 0.354,
+        "ft_pct": 0.815,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "CLE",
+        "gp": 9,
+        "gs": 9,
+        "min": 32.0,
+        "pts": 29.6,
+        "reb": 4.7,
+        "ast": 3.9,
+        "stl": 1.9,
+        "blk": 0.3,
+        "tov": 1.9,
+        "fg_pct": 0.443,
+        "fg3_pct": 0.333,
+        "ft_pct": 0.742,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "CLE",
+        "gp": 9,
+        "gs": 9,
+        "min": 35.3,
+        "pts": 24.0,
+        "reb": 4.9,
+        "ast": 2.9,
+        "stl": 0.9,
+        "blk": 0.2,
+        "tov": 2.7,
+        "fg_pct": 0.444,
+        "fg3_pct": 0.329,
+        "ft_pct": 0.815,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 72,
+        "gs": 72,
+        "min": 36.6,
+        "pts": 27.8,
+        "reb": 5.0,
+        "ast": 4.6,
+        "stl": 1.3,
+        "blk": 0.3,
+        "tov": 3.0,
+        "fg_pct": 0.44,
+        "fg3_pct": 0.352,
+        "ft_pct": 0.825,
+        "is_career": true
+      }
+    ]
+  }
+}
