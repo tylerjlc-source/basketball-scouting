@@ -20,10 +20,7 @@ Always load:
 
 Surgical reads from larger files:
 2. **wiki/WIKI-PROTOCOL.md** — read sections **PAGE TEMPLATES** and **RULES** only. Skip PURPOSE / FOLDER STRUCTURE / NON-GOALS (governance, not load-bearing for writes).
-3. **docs/ANCHOR-LIBRARY.md** — `Grep` for the player's name to locate their tier section, then `Read` only:
-   - The full tier table for their tier (used for tier-band neighbor reference and to pull the player's row + verbatim Notes)
-   - The SESSION HISTORY line for the session that produced this evaluation, if present
-   ~20–30 lines instead of 246. Never load full-file.
+3. **docs/anchors/Tier_{N}.md** — read the per-tier file matching the profile's tier (from profile §1). Each tier file is small (~10–80 lines) and self-contained — read it in full. Pull the player's row and verbatim Notes from the table; pull any matching `## Session history` entry below the table if present. The cross-tier index `docs/ANCHOR-LIBRARY.md` is not needed for ingest — only the tier file holds the row.
 4. **wiki/index.md** — `Read` only:
    - The `## Full-chain evaluated players` chronological list section — the only manually-maintained body section in the index. Skill 6 appends one line here per evaluation.
    ~20 lines instead of 235. Never load full-file. Group sections (GUARDS / WINGS / BIGS) and the `## Cross-references (by tier)` section are dataview-derived from player frontmatter (per W8 in WIKI-PROTOCOL) and need no read.
@@ -47,7 +44,7 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 | Phase | Steps | Turn shape |
 |---|---|---|
-| A | 1–3 (Locate, Format-validate, Branch) | One turn, ~4–5 parallel reads: profile, WIKI-PROTOCOL surgical, ANCHOR-LIBRARY surgical, index.md surgical (chronological list section), existing player page (if any). Steps 2–3 run as analysis after the reads return. |
+| A | 1–3 (Locate, Format-validate, Branch) | One turn, ~4–5 parallel reads: profile, WIKI-PROTOCOL surgical, the matching `docs/anchors/Tier_{N}.md` file, index.md surgical (chronological list section), existing player page (if any). Steps 2–3 run as analysis after the reads return. |
 | B | 4 (Diff preview) | One turn, no tools — assemble manifest, present to Tyler. |
 | — | (Approval gate) | Tyler confirms. |
 | C | 5–8 (Batch write, sanity check, ledger, log, confirmation) | One turn — all writes in parallel (~3–4 Edit/Write calls: player page, index chronological-list append, `evaluations.jsonl` append, `log.md` append). Sanity check runs as in-memory analysis. Confirmation output in the same response. |
@@ -67,7 +64,7 @@ Confirm via the Phase A reads:
 - `raw/[Player_Name]/` exists with at least one dated packet
 - Player name resolves consistently across folders per W5 (underscores in `output/` and `raw/`, spaces in `wiki/players/`)
 
-After all Phase A reads return, pull from the profile header (Section 1): full name, group, archetype, composite, tier. Pull from ANCHOR-LIBRARY.md tier sub-table: the player's row (added by Skill 5) and the verbatim Notes column.
+After all Phase A reads return, pull from the profile header (Section 1): full name, group, archetype, composite, tier. Pull from `docs/anchors/Tier_{N}.md` table: the player's row (added by Skill 5) and the verbatim Notes column.
 
 ### Step 2 — Format-validate the profile (fail-loud)
 
@@ -86,7 +83,7 @@ Check `wiki/players/[Player Name].md`:
 | State | Path |
 |---|---|
 | Page does not exist | **Create** — populate the player template fresh |
-| Exists with `has_profile: false` | **Upgrade legacy** — flip `has_profile` to true, set `profile_path`, set `scored_session` and `last_updated_session`, set `rubric_version: v3`, refresh frontmatter from new composite/archetype/tier, replace Library History with new ANCHOR-LIBRARY Notes verbatim, add raw/ packet path to Sources |
+| Exists with `has_profile: false` | **Upgrade legacy** — flip `has_profile` to true, set `profile_path`, set `scored_session` and `last_updated_session`, set `rubric_version: v3`, refresh frontmatter from new composite/archetype/tier, replace Library History with the verbatim Notes from the matching tier file (`docs/anchors/Tier_{N}.md`), add raw/ packet path to Sources |
 | Exists with `has_profile: true` | **Re-eval update** — update composite, tier, tier_band, last_updated_session in frontmatter; refresh Library History; append new raw/ packet path to Sources (do not remove prior packets) |
 
 The page body always uses the current player template from WIKI-PROTOCOL.md. No content sections beyond the template.
@@ -189,7 +186,7 @@ Open items: [list any lint-candidate findings, or "None"]
 
 **I1 — One player per invocation.** Skill 6 ingests exactly one evaluation. Catchup of multiple stale evals = multiple sequential invocations, each with its own approval gate.
 
-**I2 — Wiki-only writes.** Never modify `docs/`, `output/`, or `raw/`. Per W1, upstream is canonical; if the wiki disagrees with upstream, the wiki is wrong. Skill 5 owns ANCHOR-LIBRARY.md edits — Skill 6 reads from it.
+**I2 — Wiki-only writes.** Never modify `docs/`, `output/`, or `raw/`. Per W1, upstream is canonical; if the wiki disagrees with upstream, the wiki is wrong. Skill 5 owns the per-tier anchor files (`docs/anchors/Tier_*.md`) and the index (`docs/ANCHOR-LIBRARY.md`) — Skill 6 reads from them.
 
 **I3 — Format drift fails loud.** A malformed profile blocks ingest. Do not warn-and-proceed; the wiki is the wrong place to absorb upstream defects.
 
@@ -197,9 +194,9 @@ Open items: [list any lint-candidate findings, or "None"]
 
 **I5 — Wiki body content is dataview-derived, not authored.** Per WIKI-PROTOCOL W8, peer lists, archetype hub rosters, and index.md group/tier sections render live from frontmatter via dataviewjs blocks. Skill 6 edits frontmatter and the chronological-list section only — never authors peer content directly. Direct edits to dataview-rendered bodies revert on next render while leaving the source frontmatter stale.
 
-**I6 — Verbatim Library History.** Per W2, the player page's `## Library history` section reproduces the ANCHOR-LIBRARY Notes column verbatim. No summarization, no synthesis from memory.
+**I6 — Verbatim Library History.** Per W2, the player page's `## Library history` section reproduces the matching tier file's Notes column verbatim. No summarization, no synthesis from memory.
 
-**I7 — Surgical reads, not full-file loads.** WIKI-PROTOCOL.md, ANCHOR-LIBRARY.md, and wiki/index.md are all large and growing — full-file loads on every ingest are direct P1 violations. Always grep / section-read per the LOADING INSTRUCTIONS. If a future workflow change tempts you to "just load the whole file" or "just read all the player pages," fix the workflow instead.
+**I7 — Surgical reads, not full-file loads.** WIKI-PROTOCOL.md and wiki/index.md are large and growing — full-file loads on every ingest are direct P1 violations. The per-tier anchor files are small enough to read whole; the cross-tier index is read only when the workflow specifically needs it. Always grep / section-read per the LOADING INSTRUCTIONS. If a future workflow change tempts you to "just load the whole file" or "just read all the player pages," fix the workflow instead.
 
 **I8 — Phase-batched execution is mandatory.** Skill 6 runs in 3 turns: Phase A (parallel reads of all docs + profile + existing player page if any), Phase B (manifest preview, no tools), approval gate, Phase C (parallel writes + ledger append + log append + sanity check + confirmation). Sequential tool calls within a phase trigger quadratic session-usage cost — same mechanic as [[token-compounding]] applied at the tool-call layer. If you find yourself doing one Read, then a second Read, then a third Read across separate turns within a phase, halt and re-batch.
 

@@ -24,7 +24,7 @@ On every invocation, load:
    - **States 1–3 (prospect):** load `§ A — PROSPECT NBA COMP` plus header/footer.
    Defer this load until Section 9 has resolved the route.
 4. **SCRIPT-REGISTRY.md** — required for Section 10. Contains comp script location and usage.
-5. **docs/ANCHOR-LIBRARY.md** — load at Section 11. Required to insert the new anchor entry. Heavy file — do not load earlier.
+5. **docs/anchors/Tier_{N}.md** — load at Section 11 only, where `{N}` is the assigned tier from Skill 4. The anchor library is split per-tier; load only the player's own tier file for the insertion. The index at `docs/ANCHOR-LIBRARY.md` is not needed unless creating a new tier file (Tiers 11–13).
 6. **learnings/scout-output-learnings.md** — active calibration learnings for this skill. Apply before output assembly.
 
 Inputs required (produced by earlier skills):
@@ -233,7 +233,7 @@ No tier glyph (lineage is qualitative-only per § B.4; the schema's `comp_tier` 
 
 ## Section 11 — Anchor Library Entry
 
-Final step of Skill 5. After Sections 1–10 are complete and QC1–5 have passed, record the player in `docs/ANCHOR-LIBRARY.md` AND emit the same row inline in the profile §11. The inline row is the canonical fingerprint the linter and JSON pipeline cross-check against §1 Composite.
+Final step of Skill 5. After Sections 1–10 are complete and QC1–5 have passed, record the player in the matching per-tier anchor file (`docs/anchors/Tier_{N}.md`) AND emit the same row inline in the profile §11. The inline row is the canonical fingerprint the linter and JSON pipeline cross-check against §1 Composite.
 
 **Inline §11 template (mandatory on every evaluation):**
 
@@ -249,27 +249,27 @@ Final step of Skill 5. After Sections 1–10 are complete and QC1–5 have passe
 [Optional ≤2 sentences: prior-value note for revisions, tier-crossing rationale, or `(N words in Notes — within 10-word strict limit.)`]
 ````
 
-The inline row is byte-equal to the row written into `docs/ANCHOR-LIBRARY.md`. Composite must equal §1 Composite (linter cross-check). Do not omit §11 — the linter blocks delivery and Skill 7 publish on a missing or malformed §11.
+The inline row is byte-equal to the row written into `docs/anchors/Tier_{N}.md`. Composite must equal §1 Composite (linter cross-check). Do not omit §11 — the linter blocks delivery and Skill 7 publish on a missing or malformed §11.
 
 **Anchor library insertion process:**
 
-1. Load `docs/ANCHOR-LIBRARY.md`.
-2. Locate the tier sub-table matching the composite. Tier sections are H3 headings with format: `### Tier N — {band} — {label}` (e.g., `### Tier 8 — 7.50–7.89 — NBA starter / rotation player`).
-3. Insert the player row into that tier's sub-table, sorted by composite descending. In case of tie, insert after existing same-value entries.
-4. Row format (per-tier sub-tables — no Tier or band column; tier is in the section heading):
+1. Identify the target file: `docs/anchors/Tier_{N}.md` where `{N}` is the assigned tier from Skill 4. If the tier file does not exist (Tiers 11–13 currently), create it using the Tier_1.md template — header line, intro pointing back to the index, separator, the `### Tier N — {band} — {label}` heading, and an empty table with header row. Then update the corresponding row in `docs/ANCHOR-LIBRARY.md` (the index) to point at the new file and increment the per-tier count.
+2. Open the tier file. Its single H3 heading matches: `### Tier N — {band} — {label}` (e.g., `### Tier 8 — 7.50–7.89 — NBA starter / rotation player`).
+3. Insert the player row into that table, sorted by composite descending. In case of tie, insert after existing same-value entries.
+4. Row format:
    ```
    | {composite} | {Player Name} | {Status} | {Group} | {Archetype} | {Notes} |
    ```
    - **Status:** Active / Retired / `{Year} draft class`
    - **Group:** Guard / Wing / Big
    - **Archetype:** exact name from the relevant ARCHETYPE-WEIGHTS-{POS}.md
-   - **Notes:** strict 10-word maximum. Leave blank if no current state flag applies. The library is a fast-lookup reference scaling to hundreds of anchors — Notes column space is finite. Allowed content: active injury / surgery flags ("Injury flag", "Labrum surgery 2025-26", "Elbow UCL — out 2025-26"), rookie/draft-class status ("Rookie"), active non-negotiable caps ("C #17 cap active"), band markers ("Top of band", "Bottom of band"), durable credential shorthand ("1x All-Star; 6MOTY", "6MOTY 2023-24"). Forbidden content: session walkthroughs ("Updated Session N — was X"), methodology references (R13/R8/S96-F02/S100-F01/S96-F04 and similar IDs), comp tier details, profile shape descriptions, batch-sweep references, "first X anchor" library-history notes. Detailed history lives in SESSION HISTORY (bottom of file), per-player profile (output/[Player]_profile.md), and learnings files — never the Notes column.
+   - **Notes:** strict 10-word maximum. Leave blank if no current state flag applies. The library is a fast-lookup reference scaling to hundreds of anchors — Notes column space is finite. Allowed content: active injury / surgery flags ("Injury flag", "Labrum surgery 2025-26", "Elbow UCL — out 2025-26"), rookie/draft-class status ("Rookie"), active non-negotiable caps ("C #17 cap active"), band markers ("Top of band", "Bottom of band"), durable credential shorthand ("1x All-Star; 6MOTY", "6MOTY 2023-24"). Forbidden content: session walkthroughs ("Updated Session N — was X"), methodology references (R13/R8/S96-F02/S100-F01/S96-F04 and similar IDs), comp tier details, profile shape descriptions, batch-sweep references, "first X anchor" library-history notes. Detailed history lives in the per-tier file's optional `## Session history` section, per-player profile (output/[Player]/[date]_profile.md), and learnings files — never the Notes column.
 
-5. **Insertion ordering:** sort rows within a tier sub-table by composite descending; tied entries append. After insert/update, verify the row sits between its neighbors and re-sort if needed.
-6. **Tier crossing:** if a revision moves a composite across a tier band, move the row to the new tier sub-table at the correct sorted position.
-7. Update the anchor count line near the top of the file: increment by 1, update the "as of Session X" stamp.
+5. **Insertion ordering:** sort rows within the tier file's table by composite descending; tied entries append. After insert/update, verify the row sits between its neighbors and re-sort if needed.
+6. **Tier crossing:** if a revision moves a composite across a tier band, remove the row from the prior tier file and insert into the new tier file at the correct sorted position. Update the per-tier counts in the index.
+7. Update `docs/ANCHOR-LIBRARY.md` (the index): increment the relevant per-tier count, increment the total anchor count, refresh the "as of Session X" stamp.
 
-**Revisions (not new entries):** If the composite is a revision to an existing anchor, update the row in place. Do not duplicate. The detailed revision rationale (prior value, drift drivers, modifier applications) lives in SESSION HISTORY at the bottom of the file — NOT in the Notes column. The Notes column follows the same strict 10-word policy for revisions as for new entries.
+**Revisions (not new entries):** If the composite is a revision to an existing anchor and stays in the same tier, update the row in place in the same tier file. Do not duplicate. Detailed revision rationale (prior value, drift drivers, modifier applications) lives in the tier file's optional `## Session history` section — NOT in the Notes column. The Notes column follows the same strict 10-word policy for revisions as for new entries.
 
 **Source:** All required fields are present in Section 1 (header) and Section 8 (composite rationale). No additional research needed.
 

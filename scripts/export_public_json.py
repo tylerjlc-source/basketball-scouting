@@ -53,9 +53,26 @@ from config import (
 )
 
 SCHEMA_PATH = DOCS_DIR / "schema" / "public-profile.schema.json"
-ANCHOR_LIBRARY_PATH = DOCS_DIR / "ANCHOR-LIBRARY.md"
+ANCHORS_DIR = DOCS_DIR / "anchors"
 SIGNATURES_DOC_PATH = DOCS_DIR / "SIGNATURES.md"
 LEDGER_PATH = WIKI_DIR / "evaluations.jsonl"
+
+
+def load_anchor_library_text() -> str:
+    """Read all per-tier anchor files and concatenate into a single text blob.
+
+    The anchor library is split across `docs/anchors/Tier_*.md` (one file per
+    tier) for context-efficient JIT loading by skills. Tools that need the
+    whole library as one text blob — fact-checking, name lookup, status
+    derivation — concatenate the per-tier files at read time.
+    """
+    if not ANCHORS_DIR.is_dir():
+        return ""
+    parts: list[str] = []
+    for path in sorted(ANCHORS_DIR.glob("Tier_*.md"),
+                       key=lambda p: int(p.stem.split("_")[1])):
+        parts.append(path.read_text(encoding="utf-8"))
+    return "\n".join(parts)
 
 SCHEMA_VERSION = "1.1"
 RULES_VERSION = "R1-R15 / S151"
@@ -1306,7 +1323,7 @@ def main() -> int:
         parser.error("provide a player name or --all")
 
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
-    anchor_text = ANCHOR_LIBRARY_PATH.read_text(encoding="utf-8")
+    anchor_text = load_anchor_library_text()
     anchor_names = load_anchor_names(anchor_text)
     try:
         signature_roster = load_signature_roster()

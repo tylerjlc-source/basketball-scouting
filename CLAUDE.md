@@ -72,7 +72,7 @@ See `docs/SCRIPT-REGISTRY.md` for the script list, `pip install nba_api` setup, 
 - `docs/DOMAIN-SCORE-ROLE-RELEVANCE.md` — archetype structural-zero context for domain band-matching (Skill 3)
 - `docs/NON-NEGOTIABLES.md` — position gate thresholds (Skill 3)
 - `docs/COMPOSITE-SCALE-AND-TIERS.md` — tier table, assignment protocol (Skill 4)
-- `docs/ANCHOR-LIBRARY.md` — 96 confirmed anchor players (Skill 4)
+- `docs/ANCHOR-LIBRARY.md` + `docs/anchors/Tier_*.md` — 116 confirmed anchor players, split per-tier for JIT loading (Skill 4 reads candidate tier ±1 neighbor)
 - `docs/PROJECTION-OUTPUT-BLOCK.md` — prospect projection methodology, States 1–3 (Skill 5)
 - `docs/NBA-PROJECTION-OUTPUT-BLOCK.md` — NBA vet projection methodology, ≥25 NBA games (Skill 5)
 - `docs/NBA-COMP-METHODOLOGY.md` — comp assignment rules (Skill 5)

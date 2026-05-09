@@ -232,9 +232,9 @@ Per scout-output Section 11.
 | `qc4_projection_coherence` | bool | yes |
 | `qc5_source_fidelity` | bool | yes |
 
-### 11. Anchor library row (`docs/ANCHOR-LIBRARY.md`)
+### 11. Anchor library row (`docs/anchors/Tier_{N}.md`)
 
-Pipe-delimited table per tier. The canonical anchor record.
+The anchor library is split across per-tier files at `docs/anchors/Tier_{N}.md` (one pipe-delimited table per file, with the same row schema below). The cross-tier index `docs/ANCHOR-LIBRARY.md` carries the per-tier file index, loading policy, and maintenance rules — not row data. The canonical anchor record:
 
 | Column | Type | Required | Notes |
 |---|---|---|---|

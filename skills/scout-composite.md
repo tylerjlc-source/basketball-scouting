@@ -17,10 +17,10 @@ On every invocation, load:
 1. **This file (SKILL.md)** — composite assignment workflow and output format
 2. **BASKETBALL-BRAIN.md** — shapes how profile shape maps to tier placement
 3. **COMPOSITE-SCALE-AND-TIERS.md** — tier table, Tier Assignment Protocol (Steps 1–6), awards cross-check table, prospect gate, and draft slot calibration table.
-4. **ANCHOR-LIBRARY.md** — all confirmed anchor players with composite scores, tiers, archetypes. Required for anchor comparison in Step 4 and positioning in Step 5.
+4. **ANCHOR-LIBRARY.md** (index — ~50 lines) — purpose, per-tier file index, loading policy, maintenance rules. The per-tier anchor data is **NOT** loaded here. See Step 3.5 below for the JIT load.
 5. **learnings/scout-composite-learnings.md** — active calibration learnings for this skill. Apply before composite assignment.
 
-All five must be loaded before composite assignment begins.
+These five load upfront. The per-tier anchor data loads after Step 3 identifies the candidate band — see Step 3.5.
 
 **Input:** The player profile from Skill 3 provides archetype, gate results, domain scores, profile shape (strengths/liabilities/structural zeros, profile type), and flags. All scoring data traces back to Skill 2's score matrix.
 
@@ -67,6 +67,17 @@ Map the strength/liability balance to a starting band:
 | No transferable strengths at NBA level. | Tiers 11–13 (1.00–5.79) |
 
 Starting point only — anchor comparison in Step 4 confirms or adjusts.
+
+---
+
+### Step 3.5 — JIT load anchor tier data
+
+After Step 3 identifies the candidate band (Tier `N`), load the relevant tier files **before** Step 4 anchor comparison:
+- `docs/anchors/Tier_N.md` — the candidate band
+- `docs/anchors/Tier_(N-1).md` — neighbor above (skip if N=1)
+- `docs/anchors/Tier_(N+1).md` — neighbor below (skip if N=10 or higher; tiers 11–13 currently empty)
+
+Up to three files, ~10–80 lines each. The anchor library is the single load-bearing reference for Steps 4–5; do not load tiers outside the ±1 window unless Step 4 surfaces a clear cross-band comparison need (rare; flag if it happens).
 
 ---
 
