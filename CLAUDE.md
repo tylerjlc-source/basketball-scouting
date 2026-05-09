@@ -16,10 +16,12 @@ basketball-scouting/
 ├── CLAUDE.md              ← You are here.
 ├── docs/                  ← Project knowledge files (rubric, scales, anchors, rules)
 ├── scripts/               ← Python statistical pipeline (nba_api)
+│   └── experiments/       ← Research-tooling experiments — never production. Stays out of raw/.
 ├── skills/                ← 7-skill scouting chain (research → scoring → profile → composite → output → ingest → publish)
-├── raw/                   ← Per-player research packets, dated, immutable (Skill 1 persistence layer)
+├── raw/                   ← Per-player research packets, dated, immutable (Skill 1 persistence layer). Production only — experiments belong in scripts/experiments/.
 ├── output/                ← Finished player profiles, dated, immutable (Skill 5 persistence layer; per-player directories)
 ├── wiki/                  ← Derived graph layer: player pages, archetype hubs, evaluations.jsonl ledger (Skill 6)
+├── published/             ← Public JSON exports (Skill 7 destination; portal-ready)
 ```
 
 ## THE SCOUTING CHAIN
