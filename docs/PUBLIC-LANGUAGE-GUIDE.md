@@ -13,6 +13,22 @@ Editorial transform spec consumed by Skill 7 (`scout-publish`) to convert an `ou
 
 ---
 
+## Contents
+
+- §1 — Purpose
+- §2 — Preserved (QC5 source-fidelity)
+- §3 — Stripped
+- §4 — Pull policy and per-element rewrites — §4-A pull policy / §4-B per-element rewrites
+- §5 — Structure and voice — §5.1 structural template / §5.2 voice register / §5.3 universal operational rules / §5.4 calibration targets (reviewer-only)
+- §6 — Anchor comp handling
+- §7 — One-line domain justification format
+- §8 — QC checklist (Skill 7 pre-write gate)
+- §9 — Career stats appendix — §9.1–§9.5
+
+Skill 7 LOADING (per [skills/scout-publish.md](../skills/scout-publish.md)) reads §§1–§4 + §5.1 + §5.2 + §5.3 + §6 + §7 + §8 + §9 upfront. **§5.4 is reviewer-only** — load on demand if Step 3-T surfaces a voice-question the rules section cannot answer.
+
+---
+
 ## §1 — Purpose
 
 Every public profile is the same product: a structured 4-paragraph narrative plus byte-equal numeric scores. The internal profile contains scoring scaffolding (R-codes, cap notes, override sequences, session IDs) plus calibration sections (profile shape, non-negotiables gate, composite rationale, anchor library entry, QC) that must not reach the public surface. Per S174-F02, narrative prose authorship defaults to Tyler; Claude assembles structured fields (sub-domain rationales, domain one-lines, projection prose, comp prose) and pulls selectively per §4-A. Numeric scores pass through byte-equal.

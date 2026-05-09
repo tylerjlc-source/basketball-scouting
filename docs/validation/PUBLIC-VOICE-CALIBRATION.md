@@ -8,6 +8,23 @@
 
 ---
 
+## Contents
+
+- §1 — Zach Lowe (PRIMARY voice exemplar) — *reviewer-only excerpts*
+- §2 — Jonathan Tjarks (SECONDARY register; conversational pace) — *reviewer-only*
+- §3 — Howard Beck (FEATURE/MAGAZINE register) — *reviewer-only*
+- §4 — J. Kyle Mann (PROSPECT scouting register) — *reviewer-only*
+- §5 — Sam Vecenie (STRUCTURAL template) — *reviewer-only*
+- §6 — Jonathan Givony (TV-graphics scouting register) — *reviewer-only*
+- §7 — John Hollinger (DEADPAN-ANALYTICAL register) — *reviewer-only*
+- §8 — Patterns Across the Best of Them
+- §9 — Pitfalls to Avoid
+- §10 — Ranked Voice Recommendation (revised post-S174-F02)
+
+Skill 7 writer-side LOADING reads only §§8–§10 upfront. The writer-exemplar excerpts §§1–§7 are heavy and load only inside the reviewer sub-agent's context; the writer carries the codified rules and pitfalls, the reviewer carries the calibration evidence.
+
+---
+
 ## §1 — Zach Lowe (PRIMARY voice exemplar)
 
 **Outlet:** The Ringer (formerly ESPN, Grantland). League-wide pro NBA columnist; "Ten Things" weekly.
