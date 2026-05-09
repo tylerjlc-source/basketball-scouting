@@ -14,18 +14,6 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## OPEN BUGS
 
-### B1 — `eval_window.py` GP aggregation TOT-row double-count
-**Script:** `scripts/eval_window.py`
-**Symptom:** Reports inflated GP counts (e.g., 108, 122, 128) for traded-player rows, due to TOT row + individual team rows both summed.
-**Trigger:** Player was traded mid-season-in-eval-window; nba_api PlayerCareerStats returns multiple rows per season.
-**Workaround:** When eval_window GP exceeds plausible season total (~82 GP), trust domain-script GP values over eval_window summary.
-**Applications:** 4 (Bogdanović S100, Anderson S100 — three-team 86/122 split, Vučević S104 — 128 GP for 2025-26 due to Feb 2026 Bulls→Celtics trade, Doncic S124 — 100 GP for 2024-25 due to Feb 2025 Mavs→Lakers trade).
-**Root cause family:** Same family as S95-F07 — TOT-row aggregation mismatch in PlayerCareerStats consumers. S95-F07 was coded into Playoff_Track_Record.py; eval_window.py needs the same treatment.
-**Fix priority:** Medium (cosmetic; workaround reliable; affects display logic only).
-**Status:** Open.
-
----
-
 ### B3 — `Playoff_Track_Record.py` classification-hint mislabeling
 **Script:** `scripts/Playoff_Track_Record.py`
 **Symptom:** Classification hints for TS% delta produce wrong direction (Anderson −0.8 labeled "moderate statistical rise") or wrong magnitude without the R13 strong-vs-moderate AND-qualitative requirement (Mobley +0.5 labeled "moderate statistical rise" despite thin magnitude that should map to Neutral).
@@ -116,6 +104,14 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## RESOLVED
 
+### B1 — `eval_window.py` GP aggregation TOT-row double-count (resolved 2026-05-09)
+**Script:** `scripts/eval_window.py`
+**Original symptom:** Reported inflated GP counts (108, 122, 128, 100) for traded-player seasons due to summing per-team rows AND the season-aggregate TOT row.
+**Root cause:** `fetch_career_seasons` iterated every row of `PlayerCareerStats.SeasonTotalsRegularSeason`. The NBA API emits one row per team plus a TOT row (`TEAM_ABBREVIATION="TOT"`) for traded players, so the season was effectively counted twice.
+**Fix:** Refactored `fetch_career_seasons` to prefer the TOT row when present, falling back to the single team row otherwise — same trade-aware pattern as Playoff_Track_Record.py's S95-F07 fix. Removed unused `defaultdict` import.
+**Verification:** All 5 existing R12 validation cases still pass (`python scripts/eval_window.py --validate`). Live B1 reproduction on Doncic 2024-25 now correctly reports 50 GP (was 100 GP — 50 actual × 2 from TOT double-count).
+**Original applications count:** 4 (Bogdanović S100, Anderson S100, Vučević S104, Doncic S124).
+
 ### B9 — `Domain_8_IQ_Motor__Stats.py` `weighted_avg` silently treats missing prior season as zero (resolved 2026-05-09)
 **Script:** `scripts/Domain_8_IQ_Motor__Stats.py`
 **Original symptom:** Speed/distance and clutch summary tables displayed values at ~60% of true magnitude when prior-season pull timed out or returned an empty dict — silent miscalibration with no N/A tell.
@@ -136,6 +132,7 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## CHANGE LOG
 
+- **2026-05-09** — B1 resolved. `eval_window.py fetch_career_seasons` now prefers the TOT row (when traded mid-season) and falls back to the single team row otherwise — same pattern as Playoff_Track_Record's S95-F07 fix. Eliminates the per-team + TOT double-count that produced 100/122/128 GP totals. All 5 R12 validation cases still pass; live-verified on Doncic 2024-25 (50 GP, was 100).
 - **2026-05-09** — B9 resolved. `Domain_8_IQ_Motor__Stats.py weighted_avg` now falls back to current-only when prior is empty/missing, matching Domain 1's `stat_block` behavior. Eliminates silent ~60%-of-truth miscalibration on prior-season endpoint timeouts. Verified via 6-case synthetic-input test.
 - **2026-05-09** — B4 resolved. `NBA_Comp_Stats.py` switched STL/BLK source from missing Advanced columns to `Base/Per100Possessions`; switched TOV source to `E_TOV_PCT` (also missing as `TOV_PCT`). Output fields renamed `stl_pct`/`blk_pct` → `stl_per_100`/`blk_per_100`. `NBA-COMP-METHODOLOGY.md` §A.2 tolerance-band table updated to match (±0.5 STL/100, ±1.0 BLK/100; per-100 and STL%/BLK% are >0.9 correlated, so the substitution is cosmetic). Live-verified on Wemby 2024-25.
 - **S124 (2026-04-30)** — B1 Applications count incremented 3 → 4 with Doncic case (100 GP for 2024-25 due to Feb 2025 Mavs→Lakers trade). Same TOT-row aggregation pattern as Bogdanović / Anderson / Vučević precedents; no new bug variant.

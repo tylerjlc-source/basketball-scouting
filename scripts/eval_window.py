@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import argparse
 import sys
-from collections import defaultdict
 from dataclasses import dataclass
 from datetime import date
 from typing import Literal, Optional
@@ -94,20 +93,25 @@ def resolve_player_id(player_name: str) -> tuple[int, str]:
 
 
 def fetch_career_seasons(player_id: int) -> list[SeasonStat]:
+    """Build per-season GP/MPG records from PlayerCareerStats.
+
+    B1 fix: When a player is traded mid-season, the NBA API returns one row
+    per team plus a TOT (season-aggregate) row with TEAM_ABBREVIATION="TOT".
+    Earlier versions summed every row, which double-counted GP/MIN (Bogdanović
+    122 GP, Vučević 128 GP, Doncic 100 GP, etc.). We now prefer the TOT row
+    when present and fall back to the single team row otherwise — same
+    trade-aware pattern as Playoff_Track_Record.py's S95-F07 fix.
+    """
     career = playercareerstats.PlayerCareerStats(player_id=player_id)
     df = career.get_data_frames()[0]
-    by_season: dict[str, dict[str, float]] = defaultdict(
-        lambda: {"gp": 0, "min": 0.0}
-    )
-    for _, row in df.iterrows():
-        season = row["SEASON_ID"]
-        by_season[season]["gp"] += int(row["GP"])
-        by_season[season]["min"] += float(row["MIN"])
     seasons: list[SeasonStat] = []
-    for season, agg in by_season.items():
-        gp = int(agg["gp"])
-        mpg = round(agg["min"] / gp, 1) if gp > 0 else 0.0
-        seasons.append(SeasonStat(season=season, gp=gp, mpg=mpg))
+    for season_id in df["SEASON_ID"].unique():
+        season_rows = df[df["SEASON_ID"] == season_id]
+        tot_rows = season_rows[season_rows["TEAM_ABBREVIATION"] == "TOT"]
+        canonical = tot_rows.iloc[0] if not tot_rows.empty else season_rows.iloc[0]
+        gp = int(canonical["GP"])
+        mpg = round(float(canonical["MIN"]) / gp, 1) if gp > 0 else 0.0
+        seasons.append(SeasonStat(season=str(season_id), gp=gp, mpg=mpg))
     return seasons
 
 
