@@ -17,7 +17,7 @@ basketball-scouting/
 ├── docs/                  ← Project knowledge files (rubric, scales, anchors, rules)
 ├── scripts/               ← Python statistical pipeline (nba_api)
 │   └── experiments/       ← Research-tooling experiments — never production. Stays out of raw/.
-├── skills/                ← 7-skill scouting chain (research → scoring → profile → composite → output → ingest → publish)
+├── skills/                ← 7-skill scouting chain (research → scoring → profile → composite → output → ingest → publish) + scout-review sub-skill
 ├── raw/                   ← Per-player research packets, dated, immutable (Skill 1 persistence layer). Production only — experiments belong in scripts/experiments/.
 ├── output/                ← Finished player profiles, dated, immutable (Skill 5 persistence layer; per-player directories)
 ├── wiki/                  ← Derived graph layer: player pages, archetype hubs, evaluations.jsonl ledger (Skill 6)
@@ -37,6 +37,7 @@ Six sequential skills produce the canonical profile; one manual-trigger editoria
 | 5 | scout-output | skills/scout-output.md | Assemble final deliverable: narrative, scores, profile, projection, NBA comp. Save to output/. |
 | 6 | scout-ingest | skills/scout-ingest.md | Sync the wiki layer to the new evaluation. Auto-runs after Skill 5; manual fallback "ingest [Player]". |
 | 7 | scout-publish | skills/scout-publish.md | Editorial transform from internal profile to public artifact. Manual trigger only ("publish [Player]"). Output: `output/[Player]/[YYYY-MM-DD]_public.md`. Feeds the JSON export pipeline. |
+| 7.5 | scout-review | skills/scout-review.md | Sub-skill of scout-publish. Fresh-context review pass: spawns Subagent V (PUBLIC-RUBRIC, PASS gate) and Subagent F (FACT-CHECK-RUBRIC, shadow-mode) in parallel against the draft, then revises against V's critique. Returns revised draft + verdicts. Invoked by scout-publish at Step 3.5 via the Task tool — never user-invoked directly. |
 
 **Before running any skill:** Read the skill file and every document it lists under LOADING INSTRUCTIONS.
 
@@ -78,6 +79,10 @@ See `docs/SCRIPT-REGISTRY.md` for the script list, `pip install nba_api` setup, 
 - `docs/NBA-COMP-METHODOLOGY.md` — comp assignment rules (Skill 5)
 - `docs/SCRIPT-REGISTRY.md` — script-to-subdomain mapping (Skill 1)
 - `docs/PUBLIC-LANGUAGE-GUIDE.md` — public editorial transform spec (Skill 7 only)
+- `docs/PUBLIC_MD_TEMPLATE.md` — canonical `_public.md` output shape (Skill 7 emits; `scripts/export_public_json.py` echoes via the `PUBLIC_MD_TEMPLATE` Python constant)
+- `docs/PUBLIC-RUBRIC.md` — Subagent V's binary rubric (loaded inside scout-review's V subagent context only)
+- `docs/FACT-CHECK-RUBRIC.md` — Subagent F's binary rubric (loaded inside scout-review's F subagent context only; shadow-mode during the first 3 publishes after Phase B)
+- `docs/subagent-prompts/recompute-gate.md` — Step 1.5 recompute-gate sub-agent prompt (loaded by scout-publish only when the marker pre-check fires)
 - `docs/SIGNATURES.md` — sub-domain Signature roster, tiers, descriptions, and assignment rules (Skill 7 only; also consumed by `scripts/export_public_json.py` at JSON-export reconciliation)
 
 ### Reference (load when needed):

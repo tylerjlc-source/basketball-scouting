@@ -115,7 +115,12 @@ format in the skill file itself.
 
 **Reference implementation.** The six-skill scouting chain (scout-research,
 scout-scoring, scout-profile, scout-composite, scout-output, scout-ingest).
-First validated end-to-end on Anfernee Simons, Session 94.
+First validated end-to-end on Anfernee Simons, Session 94. Skill 7
+(scout-publish) and its sub-skill scout-review are paired by an explicit
+handoff contract — scout-publish writes + orchestrates, scout-review runs
+the V/F parallel reviewer pass and revises against V — illustrating the
+"split when one job grows two sub-responsibilities" pattern in practice
+(Phase B.5, 2026-05-09).
 
 ---
 
