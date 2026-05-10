@@ -14,6 +14,30 @@ Not loaded at Skill 1 runtime by default — most evaluations don't hit a script
 
 ## OPEN BUGS
 
+### B11 — `Public_Narrative_Stats.py` shared-output race condition on parallel runs
+**Script:** `scripts/Public_Narrative_Stats.py`
+**Symptom:** Concurrent invocations on different players race-condition on the shared payload file `scripts/public_narrative_stats_output.json`. The last writer wins; the markdown rendering at end of each run reads from the shared file, so multiple parallel runs report identical data (whichever player happened to write last). Tatum (solo) ran clean; subsequent parallel Mitchell + Brown + Kawhi all reported identical CAS / pull-up / isolation values.
+**Trigger:** Two or more `python scripts/Public_Narrative_Stats.py "<player>"` invocations running concurrently against the same working directory.
+**Tell:** Distinct players returning byte-identical per-season splits in their respective output files.
+**Workaround:** Run serially (one player at a time) until fix lands.
+**Fix direction:** Per-player payload filename (e.g., `public_narrative_stats__<player_slug>.json`) or run-scoped temp file with player-keyed output.
+**Applications:** 1 multi-player case (Wave-2 backfill QC7 retrofit sweep — Mitchell / Brown / Kawhi 2026-05-09).
+**Fix priority:** Medium (Wave-2 backfill needs the script; serial workaround is functional but slows the sweep 4×).
+**Status:** Open.
+
+### B12 — `Domain_4_Playmaking__Stats.py` TypeError on missing `pot_ast_p`
+**Script:** `scripts/Domain_4_Playmaking__Stats.py`
+**Symptom:** Crashes with `TypeError: unsupported operand type(s) for /: 'NoneType' and 'float'` at `tov_pot_p = round(tov_p / pot_ast_p, 2) if pot_ast_p and pot_ast_p > 0 else None`. The guard short-circuits on `pot_ast_p` being falsy, but `tov_p` (numerator) being None still reaches the divide.
+**Trigger:** Script run when `tov_p` returns None from upstream lookup.
+**Tell:** Script failure at the `tov_pot_p` line specifically; D4 returns no payload.
+**Workaround:** None at runtime; playmaking domain returns empty until script is patched.
+**Fix direction:** Reorder the guard to also check `tov_p is not None`.
+**Applications:** 3 (Tatum 2026-05-09, Mitchell 2026-05-09, Brown 2026-05-09 — all during QC7 retrofit sweep).
+**Fix priority:** Medium (D4 systematically fails; worth the small fix to unblock playmaking-anchor narrative pulls).
+**Status:** Open.
+
+---
+
 ### B7 — Domain 5/6/8 partial endpoint timeouts on 2025-26 single-season runs
 **Scripts:** `scripts/Domain_5_Defense__Stats.py`, `scripts/Domain_6_Rebounding__Stats.py`, `scripts/Domain_8_IQ_Motor__Stats.py`
 **Symptom:** Various endpoints return partial data or timeout on 2025-26 single-season runs (D5 LeagueDashPtDefend partial; D6 Tracking Rebounding 2025-26; D8 distance bands + shot clock 2025-26).
