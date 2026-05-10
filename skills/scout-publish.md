@@ -73,52 +73,7 @@ appearing in any dated footer entry.
 - **Marker present →** skip the gate entirely. Profile already on band-match. No sub-agent fires; no DOMAIN-SCALE_v1 / DOMAIN-SCORE-ROLE-RELEVANCE load happens. Proceed to Step 2.
 - **Marker absent →** spawn the recompute-gate sub-agent (below). The two reference docs load only inside the sub-agent's isolated context window; the main Skill 7 turn never carries them.
 
-**Sub-agent: recompute-gate.** Spawn via the Task tool with the prompt below. Inputs handed to the sub-agent: the absolute path to the source `_profile.md`. The sub-agent reads profile + DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE, edits the profile in place, and returns a confirmation summary; the main turn resumes once the sub-agent terminates.
-
-```
-You are the Skill-7 recompute-gate sub-agent. Profile path: {ABSOLUTE_PATH_TO_PROFILE_MD}.
-
-Goal: re-run Skill 3 Step 3 (band-match domain derivation) against the
-existing sub-domain matrix and edit §5 in place so the public layer never
-ships arithmetic-mean domains alongside band-matched composites.
-
-Steps:
-1. Read the profile in full.
-2. Read docs/DOMAIN-SCALE_v1.md (full file).
-3. Read docs/DOMAIN-SCORE-ROLE-RELEVANCE.md (full file).
-4. From profile §1 (archetype) determine position-group selection per
-   DOMAIN-SCALE_v1.md preamble (archetype positional group, not listed
-   position). Domain 8 always uses the Universal table.
-5. From profile §4 sub-domain scores, apply DOMAIN-SCORE-ROLE-RELEVANCE
-   to identify SZ exclusions for the archetype.
-6. For each of D1–D8: rank player against position peer group on the
-   integrated capability; band-match against the relevant row in
-   DOMAIN-SCALE_v1; dial within band per R14. Write a synthesis sentence
-   naming anchor subs + constraining sub.
-7. Edit-in-place §5 Domain Scores table: replace existing scores +
-   synthesis with band-matched values. Preserve Included / Excluded (SZ)
-   columns where present. Numeric values are the only structural change
-   to upstream score data — archetype, sub-domain scores, composite,
-   tier, gates, projection block, and comp are all preserved byte-equal.
-8. Append a new dated footer entry to the profile:
-   *[YYYY-MM-DD] — Domain-mechanic recompute: arithmetic mean → band-match per DOMAIN-SCALE_v1.md.*
-   Date is today's date. Italics consistent with existing footer-entry style.
-
-Credentialed-star carve-out (per feedback_credentialed_star_carve_out):
-when the recompute produces a profile where composite ≥ 8.30 but max
-domain band-matches below composite (Tier 4–5 anchor-credentialed stars
-without 9.0+ domain peaks), this is a legitimate pattern — do NOT push
-domain scores ceiling-ward past honest peer-rank to force alignment, do
-NOT reopen composite, do NOT propose a new arithmetic. Note the
-divergence in your return summary so the main turn can flag it in the
-Phase B manifest.
-
-Return a short summary (~10 lines) listing:
-- domain → old score → new band-matched score (8 rows)
-- whether credentialed-star carve-out applied (yes/no + brief why)
-- footer line written (verbatim)
-Do not paraphrase the methodology — just report what changed.
-```
+**Sub-agent: recompute-gate.** Spawn via the Task tool. Prompt lives at [docs/subagent-prompts/recompute-gate.md](../docs/subagent-prompts/recompute-gate.md) — load that file and pass its prompt block verbatim to the Task tool, substituting the absolute profile path into `{ABSOLUTE_PATH_TO_PROFILE_MD}`. Inputs handed to the sub-agent: the absolute path to the source `_profile.md`. The sub-agent reads profile + DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE, edits the profile in place, and returns a confirmation summary listing per-domain old → new scores, credentialed-star carve-out status, and the footer line written.
 
 **After the sub-agent returns**, the main turn re-reads the profile (one cheap read of the now-corrected file) so subsequent steps operate on the post-recompute state. The sub-agent's summary is folded into the Phase B manifest preview as informational context.
 
@@ -214,14 +169,9 @@ Phase B manifest shows the post-integration final draft with Tyler's edit pass m
 
 #### Step 3-C — Claude-only narrative path (FALLBACK)
 
-When Tyler does not engage the edit loop, Claude produces the final draft alone. Inputs same as Step 3-T step 1 (profile §3, Step 1.7 table, Step 1.8 payload). Apply in order:
-1. **Strip** per PUBLIC-LANGUAGE-GUIDE §3 — R-codes, session IDs, internal abbreviations, single-game refs (R15), tier vocabulary, weighted-blend numbers without temporal frame.
-2. **Rewrite** per §4-B — sub-domain rationales ≤30 words, domain syntheses ≤1 sentence, projection narrative ≤2 sentences. Numbers numerical per §5.3, anchored to Step 1.8 / Step 1.7 sources per §5.3 / §8 QC7.
-3. **Re-voice** per §5 — apply §5.1 structural template, §5.3 operational rules (no em dashes, no overclaiming, factual-trace, reconcilable temporal frame).
-4. **Anchor comps** per §6 — player names stay; cite-anchor language rewritten or stripped.
-5. **One-line domain justifications** per §7 — PDD v9 §9 template.
+When Tyler does not engage the edit loop, Claude produces the final draft alone. Inputs same as Step 3-T step 1 (profile §3, source profile §9 `TENSE` token, Step 1.7 table, Step 1.8 payload). Apply [PUBLIC-LANGUAGE-GUIDE](../docs/PUBLIC-LANGUAGE-GUIDE.md) in order: §3 (strip) → §4-B (rewrite) → §5 incl. §5.1 / §5.3-P / §5.3-G (re-voice + percentage syntax + acronym glossary) → §6 (anchor comps) → §7 (one-line domains).
 
-Calibration target: PUBLIC-LANGUAGE-GUIDE §5.4 Mitchell sample (Tyler-authored, S175). Upstream voice exemplars in PUBLIC-VOICE-CALIBRATION are reference inspiration only — match the §5.4 target, not the upstream writers (per S174-F02; Lowe-imitation by Claude failed across four iterations).
+Calibration target: [PUBLIC-LANGUAGE-GUIDE §5.4](../docs/PUBLIC-LANGUAGE-GUIDE.md) Mitchell sample (Tyler-authored, S175). Upstream voice exemplars in PUBLIC-VOICE-CALIBRATION are reference inspiration only — match the §5.4 target, not the upstream writers (per S174-F02; Lowe-imitation by Claude failed across four iterations).
 
 **Structured fields are always Claude-assembled** regardless of narrative path. Sub-domain rationales (including the Signature column derived from the byte-equal sub-domain score per [docs/SIGNATURES.md](../docs/SIGNATURES.md) §3–§4), domain one-lines, projection prose, and comp prose follow the §4-B and §5.3 rules whether Tyler authors the narrative or not. Signature derivation is mechanical, not editorial — reconciliation at JSON export is fail-loud.
 
@@ -369,68 +319,7 @@ Open items: [QC failures fixed in place, or "None"]
 
 ## TEMPLATE — `_public.md` output shape
 
-Skill 7 emits this exact shape. Headings are case-sensitive H2 form. The pipeline parser ([scripts/export_public_json.py](../scripts/export_public_json.py)) cross-checks this shape at Phase 4 stage 1; deviations fail loud. **This file is the canonical spec; the `PUBLIC_MD_TEMPLATE` constant in the pipeline is the implementation echo — keep them in sync.**
-
-````
-# [Player Name] — Public Profile
-
-## Identity
-[Vecenie paragraph 1 — Identity. Plain language: archetype, physical profile, headline credentials.]
-
-## Strength
-[Vecenie paragraph 2 — Strength evidence. Value drivers anchored to numbers and observed pattern.]
-
-## Weakness
-[Vecenie paragraph 3 — Weakness evidence. Gaps named directly.]
-
-## Projection-verdict
-[Vecenie paragraph 4 — Realistic floor, realistic ceiling, what they will and will not become.]
-
-## Sub-domain rationales
-
-| # | Sub-domain | Score | Signature | Public rationale |
-|---|---|---|---|---|
-| 1 | At-basket finishing | [score, byte-equal from profile §4] | [Signature Name] ([Tier]) when score ≥ 8.0; `—` otherwise. Athleticism Signature renders on row #21 only; #22 always `—`. Free throw row #7 always `—`. Per [docs/SIGNATURES.md](../docs/SIGNATURES.md) §3–§5. | [≤30 words, numbers in word form per PUBLIC-LANGUAGE-GUIDE §5.3] |
-| ... | ... (26 rows total — all sub-domains, including structural zeros) | ... | ... | ... |
-
-## Domain one-lines
-
-| # | Domain | One-line |
-|---|---|---|
-| 1 | Finishing | [≤25 words per PUBLIC-LANGUAGE-GUIDE §7] |
-| ... | ... (8 rows) | ... |
-
-## Projection (public)
-
-[≤2 sentences. POT/Min/Max preserved byte-equal, written in prose form. Confidence label included.]
-
-## NBA Comp(s)
-
-| Comp player | Comp tier | Similarity |
-|---|---|---|
-| [Player] | Full \| Partial \| None \| Lineage | [≤2 sentences per comp] |
-
-## Career stats
-
-### Regular Season
-
-| Season | Team | GP | GS | MIN | PTS | REB | AST | STL | BLK | TOV | FG% | 3P% | FT% |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [season_id] | [team] | [int] | [int] | [n.n] | [n.n] | [n.n] | [n.n] | [n.n] | [n.n] | [n.n] | .XXX | .XXX | .XXX |
-| ... | ... |
-| **Career** |  | **[int]** | **[int]** | **[n.n]** | **[n.n]** | **[n.n]** | **[n.n]** | **[n.n]** | **[n.n]** | **[n.n]** | **.XXX** | **.XXX** | **.XXX** |
-
-### Playoffs
-
-[Same shape as Regular Season. Omit this sub-section when CareerTotalsPostSeason is empty.]
-````
-
-NBA-vet profiles with a single `**LINEAGE COMP:` in §10 emit one row with `Lineage` in the Comp tier column (qualitative-only, no glyph). Prospect profiles emit 2–3 rows with Full/Partial/None.
-
-**Career stats appendix shape variants** (per PUBLIC-LANGUAGE-GUIDE §9):
-- **NBA vet:** `### Regular Season` always; `### Playoffs` only when present.
-- **College prospect:** `### College career` replaces both NBA sub-sections (single table; school name in Team column).
-- **HS / web-fallback failure:** Entire `## Career stats` section omitted — no heading, no empty placeholder.
+Canonical template + variant rules live at [docs/PUBLIC_MD_TEMPLATE.md](../docs/PUBLIC_MD_TEMPLATE.md). Skill 7 emits the exact shape documented there; the pipeline parser ([scripts/export_public_json.py](../scripts/export_public_json.py)) cross-checks the produced artifact at Phase 4 stage 1 and the `PUBLIC_MD_TEMPLATE` Python constant in that script is the implementation echo. Deviations fail loud.
 
 ---
 

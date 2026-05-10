@@ -94,8 +94,11 @@ ACCOLADE_PATTERNS = [
 # `_public.md` parser expects exactly these section headings (case-sensitive,
 # H2 form). Skill 7 must produce this shape.
 #
-# Canonical spec: skills/scout-publish.md (TEMPLATE section).
-# This constant is the implementation echo — keep in sync with that spec.
+# Canonical spec: docs/PUBLIC_MD_TEMPLATE.md.
+# This constant is the implementation echo — keep in sync with that doc.
+# (Pre-Phase-B.5 the canonical spec lived inline in skills/scout-publish.md
+# under a "## TEMPLATE" section; that section was extracted to its own doc
+# to bring the skill within the P3 200-line ceiling.)
 PUBLIC_MD_TEMPLATE = """\
 # [Player Name] — Public Profile
 
