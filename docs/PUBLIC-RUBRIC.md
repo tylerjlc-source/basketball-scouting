@@ -1,8 +1,21 @@
-# PUBLIC RUBRIC — Skill 7 fresh-context reviewer
+# PUBLIC RUBRIC — Subagent V (Voice)
 
-Binary checklist applied to every `_public.md` draft by the reviewer subagent (Skill 7 Step 3.5). Loaded only by that subagent invocation — not by the writer agent, not at session open.
+Binary checklist applied to every `_public.md` draft by **Subagent V** (voice / structure reviewer), the parallel partner to **Subagent F** (fact-checker / [FACT-CHECK-RUBRIC.md](FACT-CHECK-RUBRIC.md)) in [skills/scout-review.md](../skills/scout-review.md) Step 1. Loaded only by V's subagent invocation — not by the writer agent, not at session open.
 
-**Status.** Created S175 (2026-05-07) as part of the writer/reviewer split for Skill 7.
+**Status.** Created S175 (2026-05-07) as part of the writer/reviewer split for Skill 7. Phase B (2026-05-09) split the reviewer pass into V (this rubric) + F (FACT-CHECK-RUBRIC). Phase B.5 (2026-05-09) lifted Steps 3.5 + 3.6 into the dedicated [skills/scout-review.md](../skills/scout-review.md) skill. **V remains the PASS gate** in shadow-mode while F's signal-to-noise is evaluated over the first 3 publishes.
+
+---
+
+## Inputs handed to V
+
+The subagent receives **only**:
+- The `_public.md` draft text (Step 3-C output, or the structured-fields slice when Step 3-T is active).
+- Source profile **§1 Header**, **§2 Physical**, **§3 Scouting Narrative** — passed alongside to support §8 fact-check.
+- This file ([docs/PUBLIC-RUBRIC.md](PUBLIC-RUBRIC.md)).
+- [docs/validation/PUBLIC-VOICE-CALIBRATION.md](validation/PUBLIC-VOICE-CALIBRATION.md) (voice spec — reference inspiration only per S174-F02).
+- The Mitchell sample from [PUBLIC-LANGUAGE-GUIDE §5.4](PUBLIC-LANGUAGE-GUIDE.md) (system-output target).
+
+V does **not** receive: profile §§4–§11 (rubric scores not within review scope); PUBLIC-LANGUAGE-GUIDE outside §5.4; the writer's reasoning; F's inputs or outputs. Fresh-context review per the writer/reviewer pattern.
 
 ---
 

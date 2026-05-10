@@ -42,7 +42,7 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 | Phase | Steps | Turn shape |
 |---|---|---|
-| A | 1–3.6 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, lint pre-flight, reviewer subagents F+V, revise) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.4 (cheap lint pre-flight) → 3.5 (V + F subagents in parallel) → 3.6 (Claude-only path). Structured fields are always Claude-assembled regardless of narrative path. |
+| A | 1–3.5 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, lint pre-flight, scout-review handoff) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.4 (cheap lint pre-flight) → 3.5 (invoke `scout-review` sub-skill — V + F parallel + revise-against-V happen inside scout-review's context, not here). Structured fields are always Claude-assembled regardless of narrative path. |
 | B | 4 (Diff manifest preview) | One turn, no tools — present manifest to Tyler. |
 | — | (Approval gate) | Tyler confirms. |
 | C | 5–7 (Write, QC, confirmation) | One turn — single Write call + QC analysis + confirmation in same response. |
@@ -198,61 +198,25 @@ echo "$draft" | python scripts/lint_public.py --stdin --strict
 
 **P1 enforcement note.** No new doc loaded by Step 3.4. Script is a JIT mechanical check, not a loadable reference.
 
-### Step 3.5 — Reviewer subagent pass (Phase A continued)
+### Step 3.5 — Invoke scout-review (Phase A continued)
 
 **Runs only on the Claude-only path** (Step 3-C) and on Claude-assembled structured fields when Step 3-T is active. **Skipped for the Tyler-iterated narrative** per Step 3-T (Tyler's edit IS the canonical voice gate).
 
-Two subagents run **in parallel** from the same Phase A turn — Subagent V (Voice) and Subagent F (Fact-checker). Spawn both via the Task tool (subagent_type=general-purpose) in a single response so they execute concurrently. Each subagent has its own fresh context; they do not see each other's inputs or outputs. Step 3.6 revises against the union.
+Spawn the [scout-review](scout-review.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill spawns Subagent V (PUBLIC-RUBRIC, PASS gate) and Subagent F (FACT-CHECK-RUBRIC, shadow-mode) in parallel against the draft, applies V's critique to revise the draft, and returns the revised text plus both verdicts. Steps 3.5 and 3.6 of the pre-Phase-B.5 workflow now live entirely inside `scout-review`.
 
-#### Subagent V — Voice (existing PASS gate)
+**Handoff contract — what scout-publish hands to scout-review:**
+- The draft text from Step 3-C (full text), or the structured-fields slice when Step 3-T is active.
+- Absolute path to the source `_profile.md` (scout-review reads §§1, 2, 3 for V and §§1, 3, 4, 9 for F itself).
+- Path to `scripts/public_career_stats_output.json` (Step 1.7 payload, F input).
+- Path to `scripts/public_narrative_stats_output.json` (Step 1.8 payload, F input).
 
-The subagent receives ONLY:
-- The draft from Step 3-C (full text), or the structured-fields slice when Step 3-T is active.
-- `docs/PUBLIC-RUBRIC.md` (the binary rubric, §§1–13)
-- `docs/validation/PUBLIC-VOICE-CALIBRATION.md` (voice spec — reference inspiration only per S174-F02)
-- The Mitchell sample from PUBLIC-LANGUAGE-GUIDE §5.4 (system-output target)
-- **Source profile §1 (Header), §2 (Physical), §3 (Scouting Narrative)** — passed alongside to support PUBLIC-RUBRIC §8 fact-check.
+**Handoff contract — what scout-review returns:**
+- Revised draft text (post-V-critique application).
+- V verdict (PASS / FAIL) and verbatim critique per PUBLIC-RUBRIC output format.
+- F verdict and verbatim critique per FACT-CHECK-RUBRIC output format, labeled `[F shadow]`.
+- Un-revisable flags (if any) — V failures the writer could not fix without source-fidelity loss.
 
-The subagent does NOT receive: profile §4–§11 (rubric scores not within review scope), the writer's reasoning, or any other context. Fresh-context review per the writer/reviewer pattern.
-
-Return: structured critique per PUBLIC-RUBRIC output format §§1–13. **Necessary but not sufficient.** PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler approval at Phase B is the gate. **V remains the PASS gate during Phase B initial rollout.**
-
-#### Subagent F — Fact-checker (NEW, shadow-mode)
-
-The subagent receives ONLY:
-- The draft from Step 3-C (full text), or the structured-fields slice when Step 3-T is active.
-- **Source profile §1 (Header), §3 (Scouting narrative), §4 (Sub-domain scores), §9 (Projection Output Block including the `TENSE:` token).**
-- `scripts/public_career_stats_output.json` (Step 1.7 payload).
-- `scripts/public_narrative_stats_output.json` (Step 1.8 payload).
-- `docs/FACT-CHECK-RUBRIC.md` (the binary fact-check rubric, §§F1–F7).
-
-The subagent does NOT receive: profile §§2, 5, 6, 7, 8, 10, 11; PUBLIC-LANGUAGE-GUIDE; PUBLIC-RUBRIC; PUBLIC-VOICE-CALIBRATION; the writer's reasoning. Fresh-context fact-check per the writer/reviewer pattern.
-
-Return: structured critique per FACT-CHECK-RUBRIC output format §§F1–F7 + binary VERDICT.
-
-**Shadow-mode rollout (Phase B initial).** F's punch-list and verdict are surfaced in the Phase B diff manifest as **informational only** — they do not auto-trigger Step 3.6 revision and do not gate publish. V remains the PASS gate. After 3 publishes, evaluate F's signal-to-noise; if F catches real drift V missed without surfacing noise, promote to PASS-required (and optionally strip V §8 / §12 to remove redundancy at that point — see FACT-CHECK-RUBRIC.md). Promotion is a documented schema change in scout-publish-learnings.md, not a silent flip.
-
-### Step 3.6 — Revise against critique (Phase A continued)
-
-**Runs only on Claude-only output** (Step 3-C narrative or Step 3-T structured fields). **The Tyler-iterated narrative is not auto-revised** — Tyler's edit pass is the canonical voice gate; the reviewer rubric is defense-in-depth only and runs only on structured fields when Step 3-T is active.
-
-Apply V's critique (PASS gate during shadow-mode):
-- Cut every cosmetic stat (§3).
-- Rewrite every hedged line (§2).
-- Replace every AI-tell occurrence (§6).
-- Where §4 flags <1 specific moment in a paragraph, rewrite that paragraph against the source profile §3 narrative for concrete anchors.
-- Where §5 = N, rewrite the close as archetype-projection.
-- Where §7 flags em dashes, replace with commas / semicolons / periods.
-- Where §8 flags fact-check mismatches, fix the claim against the source profile or remove it.
-- Where §9 flags overclaiming, soften the team-state attribution to the individual claim.
-- Where §10 flags repetition, remove the repeated mention outside Identity.
-- Where §11 flags clichés, rewrite the construction.
-- Where §12 / §13 flag acronym or signature-format issues, fix in place.
-- Where §1 worst-line reason names a pattern not yet covered above, address it.
-
-**F's punch-list (shadow-mode)** is read but not auto-revised. Surface F's findings + verdict in the Phase B manifest under a clearly labeled `[F shadow]` block so Tyler can spot factual drift V missed; if Tyler edits in response at Phase B, those edits flow back into Step 3.6's revise pass. On promotion to PASS-required, F-flagged items merge into the auto-revise list above (one item per F-rubric §F1–§F7, with the same fix-or-remove default).
-
-If the reviewer FAILs and the writer cannot revise to PASS without losing source fidelity, surface in the Step 4 manifest preview as a flag for Tyler — do not silently ship a FAIL.
+The revised draft replaces the in-context draft for Step 4 manifest assembly. V and F verdicts plus any flags fold into the manifest under their labeled blocks per Step 4 below. Phase A turn-budget unchanged: scout-review is a single Task call inside the same turn that spawned Step 1's parallel reads.
 
 ### Step 4 — Diff manifest and approval gate (Phase B)
 
@@ -276,7 +240,7 @@ Composite + all scores: byte-equal preserved (see Step 6 QC).
 ```
 
 Then surface the actual content:
-- Full 4-paragraph Vecenie narrative draft. **Step 3-T (Tyler-iterated):** show post-integration final with Tyler's edit pass marked + any normalization fixes called out. **Step 3-C (Claude-only):** show prose plus V verdict (PASS gate) + revision summary from Step 3.5/3.6, AND a clearly labeled `[F shadow]` block with F's punch-list + verdict (informational only during shadow-mode rollout — Tyler reads to spot factual drift V missed and may edit in response).
+- Full 4-paragraph Vecenie narrative draft. **Step 3-T (Tyler-iterated):** show post-integration final with Tyler's edit pass marked + any normalization fixes called out. **Step 3-C (Claude-only):** show post-revise prose returned by `scout-review` plus the V verdict (PASS gate) and a clearly labeled `[F shadow]` block carrying F's punch-list + verdict (informational only during shadow-mode rollout — Tyler reads to spot factual drift V missed and may edit in response).
 - Sub-domain rationale before/after table (the editorial decision surface).
 - Domain one-line justifications (8 lines).
 - Projection rewrite + comp similarity rewrite.
