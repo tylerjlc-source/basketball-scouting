@@ -42,7 +42,7 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 | Phase | Steps | Turn shape |
 |---|---|---|
-| A | 1–3.6 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, reviewer subagents F+V, revise) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.5 (V + F subagents in parallel) → 3.6 (Claude-only path). Structured fields are always Claude-assembled regardless of narrative path. |
+| A | 1–3.6 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, lint pre-flight, reviewer subagents F+V, revise) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.4 (cheap lint pre-flight) → 3.5 (V + F subagents in parallel) → 3.6 (Claude-only path). Structured fields are always Claude-assembled regardless of narrative path. |
 | B | 4 (Diff manifest preview) | One turn, no tools — present manifest to Tyler. |
 | — | (Approval gate) | Tyler confirms. |
 | C | 5–7 (Write, QC, confirmation) | One turn — single Write call + QC analysis + confirmation in same response. |
@@ -224,6 +224,29 @@ When Tyler does not engage the edit loop, Claude produces the final draft alone.
 Calibration target: PUBLIC-LANGUAGE-GUIDE §5.4 Mitchell sample (Tyler-authored, S175). Upstream voice exemplars in PUBLIC-VOICE-CALIBRATION are reference inspiration only — match the §5.4 target, not the upstream writers (per S174-F02; Lowe-imitation by Claude failed across four iterations).
 
 **Structured fields are always Claude-assembled** regardless of narrative path. Sub-domain rationales (including the Signature column derived from the byte-equal sub-domain score per [docs/SIGNATURES.md](../docs/SIGNATURES.md) §3–§4), domain one-lines, projection prose, and comp prose follow the §4-B and §5.3 rules whether Tyler authors the narrative or not. Signature derivation is mechanical, not editorial — reconciliation at JSON export is fail-loud.
+
+### Step 3.4 — Lint pre-flight (Phase A continued)
+
+**Cheap mechanical check before reviewer fires.** The Step 3.5 V + F subagents are expensive; bare-percentage drift is mechanically detectable. Catch it here in O(milliseconds) instead of paying for a reviewer turn.
+
+Pipe the assembled draft text from Step 3 into `lint_public.py --stdin --strict`. Per [PUBLIC-LANGUAGE-GUIDE §5.3-P](../docs/PUBLIC-LANGUAGE-GUIDE.md), every percentage in narrative + sub-domain rationale must carry a season anchor (`20YY-YY` / `since 20YY` / `[season] season`), a paren-count anchor (`(N attempts` / `(N of`), an N-of-M aggregate (`N of M`), or a `career` qualifier within ~60 chars. Any bare percentage exits non-zero.
+
+**Invocation (PowerShell):**
+```
+$draft | python scripts/lint_public.py --stdin --strict
+```
+
+**Invocation (Bash):**
+```
+echo "$draft" | python scripts/lint_public.py --stdin --strict
+```
+
+**Exit handling:**
+- **Exit 0 (clean):** proceed to Step 3.5.
+- **Exit 1 (drift):** revise the draft in place against the linter's per-line findings (each finding names section + line + offending percentage). Re-run the pre-flight; only proceed to Step 3.5 once clean. The pre-flight is a writer-side discipline — Tyler does not see the loop unless the writer cannot resolve drift, in which case surface in the Phase B manifest as a flag.
+- **Exit 2 (fatal parse error):** stop and report; the draft is structurally malformed.
+
+**P1 enforcement note.** No new doc loaded by Step 3.4. Script is a JIT mechanical check, not a loadable reference.
 
 ### Step 3.5 — Reviewer subagent pass (Phase A continued)
 
