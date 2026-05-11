@@ -49,17 +49,46 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import os
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 from typing import Optional
 
 sys.stdout.reconfigure(encoding="utf-8")
 
 from eval_window import determine_evaluation_window, format_window  # noqa: E402
 from config import SCRIPTS_DIR  # noqa: E402
+
+
+def _cache_path(player_name: str) -> Path:
+    """Return the dated cache path for this player's narrative stats.
+
+    Cache (Phase C C4, 2026-05-10): on hit, skips the parallel-subprocess
+    orchestration of all 7 Domain_X_*.py scripts AND the per-domain
+    transform — wall-clock saving of 1-2 minutes for re-publishes
+    within the same day.
+    """
+    safe_name = "_".join(player_name.split())
+    date = datetime.date.today().isoformat()
+    cache_dir = Path(SCRIPTS_DIR) / ".cache"
+    cache_dir.mkdir(exist_ok=True)
+    return cache_dir / f"{safe_name}_{date}_narrative.json"
+
+
+def _emit_outputs(payload: dict) -> None:
+    """Render markdown to stdout + write the canonical JSON output file.
+    Shared by the fresh-fetch and cache-hit paths so both emit byte-
+    equivalent artifacts.
+    """
+    print(render_payload_markdown(payload))
+    save_path = Path(SCRIPTS_DIR) / "public_narrative_stats_output.json"
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, default=str)
+    print(f"\nStructured payload saved to {save_path}", file=sys.stderr)
 
 
 # ──────────────────────────────────────────────────────────────────────
@@ -348,7 +377,31 @@ def main() -> int:
     parser.add_argument("player", help="Player full name")
     parser.add_argument("--current-season", help="Override current season (e.g. '2024-25')")
     parser.add_argument("--season-override", help="Force a specific season at 100%% weight")
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="ignore the dated cache and force a fresh nba_api fetch (Phase C C4)",
+    )
     args = parser.parse_args()
+
+    # ── Cache check (Phase C C4) ──
+    # Only honored for the default invocation. --current-season and
+    # --season-override change the window and should not hit the cache.
+    cpath = _cache_path(args.player)
+    if (
+        not args.no_cache
+        and not args.current_season
+        and not args.season_override
+        and cpath.exists()
+    ):
+        try:
+            with open(cpath, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+            print(f"[cache hit: {cpath.name}]", file=sys.stderr)
+            _emit_outputs(payload)
+            return 0
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[cache read failed: {exc}; falling back to fetch]", file=sys.stderr)
 
     # Eval window
     try:
@@ -416,14 +469,7 @@ def main() -> int:
         "domains": domains_payload,
     }
 
-    # ── stdout: markdown handoff block ──
-    print(render_payload_markdown(payload))
-
-    # ── file: structured JSON ──
-    save_path = os.path.join(SCRIPTS_DIR, "public_narrative_stats_output.json")
-    with open(save_path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, default=str)
-    print(f"\nStructured payload saved to {save_path}", file=sys.stderr)
+    _emit_outputs(payload)
 
     # Surface failures explicitly
     failed = [s for s, (rc, _) in rc_map.items() if rc != 0]
@@ -433,7 +479,17 @@ def main() -> int:
             f"{', '.join(failed)}",
             file=sys.stderr,
         )
+        # Do not cache partial results — next run should retry the failed domains.
         return 2
+
+    # ── Cache write (Phase C C4) — only on full success ──
+    try:
+        with open(cpath, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2, default=str)
+        print(f"[cache written: {cpath.name}]", file=sys.stderr)
+    except OSError as exc:
+        print(f"[cache write failed: {exc}]", file=sys.stderr)
+
     return 0
 
 

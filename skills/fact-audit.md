@@ -47,6 +47,8 @@ If stale or absent, regenerate in parallel:
 1. `python scripts/Public_Career_Stats.py "[Player]"`.
 2. `python scripts/Public_Narrative_Stats.py "[Player]"`.
 
+**Cache (Phase C C4, 2026-05-10):** both scripts hit `scripts/.cache/[Player]_[YYYY-MM-DD]_*.json` when the player was last published or audited the same day, so the typical fact-audit run reuses scout-publish's cached payloads with zero nba_api wall-clock cost. Pass `--no-cache` to either script to force a fresh fetch.
+
 Routing fallthrough mirrors scout-publish Step 1.7 / 1.8: NBA path default; college fallback via the Skill 1 sub-agent on `ValueError: No player found`; HS / no-source omit the missing payload and surface in the final report.
 
 ### Step 3 — Spawn Subagent F

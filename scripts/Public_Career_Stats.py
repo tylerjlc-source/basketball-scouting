@@ -23,15 +23,26 @@ Trade handling: when a player was traded mid-season, PlayerCareerStats emits
 one row per team plus a TOT row. We use the TOT row for the season's numbers
 and join non-TOT team abbreviations with "/" for the team display.
 
+Cache (Phase C C4, 2026-05-10):
+  On invocation, check `scripts/.cache/[Player]_[YYYY-MM-DD]_career.json`.
+  If present, replay the cached payload (markdown stdout re-rendered from
+  JSON + JSON written to the canonical output path) and exit. Removes
+  the nba_api fetch + per-season build for re-publishes within the same
+  day. Pass --no-cache to force a fresh fetch.
+
 Usage:
   python Public_Career_Stats.py "Player Name"
+  python Public_Career_Stats.py "Player Name" --no-cache
 """
 
+import argparse
+import datetime
 import json
 import math
 import os
 import sys
 import time
+from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -41,6 +52,15 @@ from nba_api.stats.endpoints import playercareerstats
 from config import SCRIPTS_DIR
 
 DELAY = 1.0
+
+
+def _cache_path(player_name: str) -> Path:
+    """Return the dated cache path for this player's career stats."""
+    safe_name = "_".join(player_name.split())
+    date = datetime.date.today().isoformat()
+    cache_dir = Path(SCRIPTS_DIR) / ".cache"
+    cache_dir.mkdir(exist_ok=True)
+    return cache_dir / f"{safe_name}_{date}_career.json"
 
 
 def find_player(player_name: str) -> dict:
@@ -197,12 +217,52 @@ def render_markdown_table(rows):
 # Main
 # ──────────────────────────────────────────────────────────────────────
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python Public_Career_Stats.py 'Player Name'")
-        sys.exit(1)
+def _emit_outputs(payload: dict) -> None:
+    """Render markdown to stdout + write the canonical JSON output file.
+    Shared by the fresh-fetch and cache-hit paths so both emit byte-equivalent
+    artifacts.
+    """
+    rs_rows = payload["career_stats"]["regular_season"]
+    po_rows = payload["career_stats"]["playoffs"]
 
-    player_name = sys.argv[1]
+    print(f"## Career stats\n")
+    print(f"### Regular Season\n")
+    print(render_markdown_table(rs_rows))
+    if po_rows:
+        print(f"\n### Playoffs\n")
+        print(render_markdown_table(po_rows))
+
+    save_path = Path(SCRIPTS_DIR) / "public_career_stats_output.json"
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, default=str)
+    print(f"\nStructured payload saved to {save_path}", file=sys.stderr)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
+    parser.add_argument("player", help="Player full name")
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="ignore the dated cache and force a fresh nba_api fetch",
+    )
+    args = parser.parse_args()
+
+    player_name = args.player
+
+    # ── Cache check (Phase C C4) ──
+    cpath = _cache_path(player_name)
+    if not args.no_cache and cpath.exists():
+        try:
+            with open(cpath, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+            print(f"[cache hit: {cpath.name}]", file=sys.stderr)
+            _emit_outputs(payload)
+            return
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[cache read failed: {exc}; falling back to fetch]", file=sys.stderr)
+
+    # ── Fresh fetch ──
     player = find_player(player_name)
     pid = player["id"]
 
@@ -232,19 +292,15 @@ def main():
         },
     }
 
-    # ── stdout: markdown ready to paste into _public.md ──
-    print(f"## Career stats\n")
-    print(f"### Regular Season\n")
-    print(render_markdown_table(rs_rows))
-    if po_rows:
-        print(f"\n### Playoffs\n")
-        print(render_markdown_table(po_rows))
+    _emit_outputs(payload)
 
-    # ── file: structured JSON for export pipeline ──
-    save_path = SCRIPTS_DIR / "public_career_stats_output.json"
-    with open(save_path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, default=str)
-    print(f"\nStructured payload saved to {save_path}", file=sys.stderr)
+    # ── Cache write ──
+    try:
+        with open(cpath, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2, default=str)
+        print(f"[cache written: {cpath.name}]", file=sys.stderr)
+    except OSError as exc:
+        print(f"[cache write failed: {exc}]", file=sys.stderr)
 
 
 if __name__ == "__main__":
