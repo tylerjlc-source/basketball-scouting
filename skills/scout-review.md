@@ -45,18 +45,13 @@ Spawn V via the Task tool (`subagent_type=general-purpose`) — fresh context. V
 
 **Runs only on Claude-only output** (Step 3-C narrative or Step 3-T structured fields). **The Tyler-iterated narrative is not auto-revised** — Tyler's edit pass is the canonical voice gate; the reviewer rubric is defense-in-depth only and runs only on structured fields when Step 3-T is active.
 
-Apply V's critique (PASS gate during shadow-mode):
+Apply V's critique (PASS gate). Mechanical checks (§2 hedges, §6 AI-tells, §7 em-dashes, §10 height/weight/wingspan repetition, §12 acronym scan, §13 signature format) are caught upstream by the Step 3.4 lint pre-flight; V no longer reports them, so they are not in this revise list.
 - Cut every cosmetic stat (§3).
-- Rewrite every hedged line (§2).
-- Replace every AI-tell occurrence (§6).
 - Where §4 flags <1 specific moment in a paragraph, rewrite that paragraph against the source profile §3 narrative for concrete anchors.
 - Where §5 = N, rewrite the close as archetype-projection.
-- Where §7 flags em dashes, replace with commas / semicolons / periods.
 - Where §8 flags fact-check mismatches, fix the claim against the source profile or remove it.
 - Where §9 flags overclaiming, soften the team-state attribution to the individual claim.
-- Where §10 flags repetition, remove the repeated mention outside Identity.
 - Where §11 flags clichés, rewrite the construction.
-- Where §12 / §13 flag acronym or signature-format issues, fix in place.
 - Where §1 worst-line reason names a pattern not yet covered above, address it.
 
 If V FAILs and the writer cannot revise to PASS without losing source fidelity, do not silently ship a FAIL — surface the un-revisable failure in the return payload as a flag for `scout-publish` to forward into the Phase B manifest.
