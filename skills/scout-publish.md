@@ -42,7 +42,7 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 | Phase | Steps | Turn shape |
 |---|---|---|
-| A | 1–3.5 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, lint pre-flight, scout-review handoff) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.4 (cheap lint pre-flight) → 3.5 (invoke `scout-review` sub-skill — V + F parallel + revise-against-V happen inside scout-review's context, not here). Structured fields are always Claude-assembled regardless of narrative path. |
+| A | 1–3.5 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, assemble, lint pre-flight, scout-review handoff) | One turn — parallel reads (this file + PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3-T (Tyler-iterated path) OR Step 3-C → 3.4 (cheap lint pre-flight) → 3.5 (invoke `scout-review` sub-skill — V spawn + revise-against-V happen inside scout-review's context, not here). Structured fields are always Claude-assembled regardless of narrative path. |
 | B | 4 (Diff manifest preview) | One turn, no tools — present manifest to Tyler. |
 | — | (Approval gate) | Tyler confirms. |
 | C | 5–7 (Write, QC, confirmation) | One turn — single Write call + QC analysis + confirmation in same response. |
@@ -177,7 +177,7 @@ Calibration target: [PUBLIC-LANGUAGE-GUIDE §5.4](../docs/PUBLIC-LANGUAGE-GUIDE.
 
 ### Step 3.4 — Lint pre-flight (Phase A continued)
 
-**Cheap mechanical check before reviewer fires.** The Step 3.5 V + F subagents are expensive; bare-percentage drift is mechanically detectable. Catch it here in O(milliseconds) instead of paying for a reviewer turn.
+**Cheap mechanical check before reviewer fires.** The Step 3.5 V subagent is expensive; bare-percentage drift is mechanically detectable. Catch it here in O(milliseconds) instead of paying for a reviewer turn.
 
 Pipe the assembled draft text from Step 3 into `lint_public.py --stdin --strict`. Per [PUBLIC-LANGUAGE-GUIDE §5.3-P](../docs/PUBLIC-LANGUAGE-GUIDE.md), every percentage in narrative + sub-domain rationale must carry a season anchor (`20YY-YY` / `since 20YY` / `[season] season`), a paren-count anchor (`(N attempts` / `(N of`), an N-of-M aggregate (`N of M`), or a `career` qualifier within ~60 chars. Any bare percentage exits non-zero.
 
@@ -202,21 +202,18 @@ echo "$draft" | python scripts/lint_public.py --stdin --strict
 
 **Runs only on the Claude-only path** (Step 3-C) and on Claude-assembled structured fields when Step 3-T is active. **Skipped for the Tyler-iterated narrative** per Step 3-T (Tyler's edit IS the canonical voice gate).
 
-Spawn the [scout-review](scout-review.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill spawns Subagent V (PUBLIC-RUBRIC, PASS gate) and Subagent F (FACT-CHECK-RUBRIC, shadow-mode) in parallel against the draft, applies V's critique to revise the draft, and returns the revised text plus both verdicts. Steps 3.5 and 3.6 of the pre-Phase-B.5 workflow now live entirely inside `scout-review`.
+Spawn the [scout-review](scout-review.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill spawns Subagent V (PUBLIC-RUBRIC, PASS gate) against the draft, applies V's critique to revise the draft, and returns the revised text plus V's verdict. Steps 3.5 and 3.6 of the pre-Phase-B.5 workflow now live entirely inside `scout-review`. Fact-checking (F / FACT-CHECK-RUBRIC) is no longer part of this flow — Tyler runs the user-invoked [fact-audit](fact-audit.md) skill on demand against the final `_public.md` artifact (Phase C, 2026-05-10).
 
 **Handoff contract — what scout-publish hands to scout-review:**
 - The draft text from Step 3-C (full text), or the structured-fields slice when Step 3-T is active.
-- Absolute path to the source `_profile.md` (scout-review reads §§1, 2, 3 for V and §§1, 3, 4, 9 for F itself).
-- Path to `scripts/public_career_stats_output.json` (Step 1.7 payload, F input).
-- Path to `scripts/public_narrative_stats_output.json` (Step 1.8 payload, F input).
+- Absolute path to the source `_profile.md` (scout-review reads §§1, 2, 3 for V).
 
 **Handoff contract — what scout-review returns:**
 - Revised draft text (post-V-critique application).
 - V verdict (PASS / FAIL) and verbatim critique per PUBLIC-RUBRIC output format.
-- F verdict and verbatim critique per FACT-CHECK-RUBRIC output format, labeled `[F shadow]`.
 - Un-revisable flags (if any) — V failures the writer could not fix without source-fidelity loss.
 
-The revised draft replaces the in-context draft for Step 4 manifest assembly. V and F verdicts plus any flags fold into the manifest under their labeled blocks per Step 4 below. Phase A turn-budget unchanged: scout-review is a single Task call inside the same turn that spawned Step 1's parallel reads.
+The revised draft replaces the in-context draft for Step 4 manifest assembly. V's verdict and any flags fold into the manifest under labeled blocks per Step 4 below. Phase A turn-budget unchanged: scout-review is a single Task call inside the same turn that spawned Step 1's parallel reads.
 
 ### Step 4 — Diff manifest and approval gate (Phase B)
 
@@ -240,7 +237,7 @@ Composite + all scores: byte-equal preserved (see Step 6 QC).
 ```
 
 Then surface the actual content:
-- Full 4-paragraph Vecenie narrative draft. **Step 3-T (Tyler-iterated):** show post-integration final with Tyler's edit pass marked + any normalization fixes called out. **Step 3-C (Claude-only):** show post-revise prose returned by `scout-review` plus the V verdict (PASS gate) and a clearly labeled `[F shadow]` block carrying F's punch-list + verdict (informational only during shadow-mode rollout — Tyler reads to spot factual drift V missed and may edit in response).
+- Full 4-paragraph Vecenie narrative draft. **Step 3-T (Tyler-iterated):** show post-integration final with Tyler's edit pass marked + any normalization fixes called out. **Step 3-C (Claude-only):** show post-revise prose returned by `scout-review` plus the V verdict (PASS gate). For factual coverage on a published artifact, Tyler invokes [fact-audit](fact-audit.md) on demand post-publish (Phase C, 2026-05-10).
 - Sub-domain rationale before/after table (the editorial decision surface).
 - Domain one-line justifications (8 lines).
 - Projection rewrite + comp similarity rewrite.
@@ -305,9 +302,9 @@ Canonical template + variant rules live at [docs/PUBLIC_MD_TEMPLATE.md](../docs/
 
 **P8 — Phase-batched execution is mandatory.** 3 turns total: Phase A (parallel reads + draft assembly + lint pre-flight + scout-review handoff), Phase B (manifest preview, no tools), approval gate, Phase C (Write + QC + confirmation). Sequential single-tool turns within a phase trigger the same quadratic session-cost mechanic that scout-ingest I8 calls out.
 
-**P9 — Sub-skill: scout-review.** The reviewer pass is a distinct job — fresh-context review of an editorial draft against a binary rubric — and lives in [skills/scout-review.md](scout-review.md). scout-publish hands a draft + profile path + payload paths to scout-review at Step 3.5; scout-review returns a revised draft + V verdict + F shadow report. The split landed Phase B.5 (2026-05-09) after Phase B grew the prior monolithic skill past 460 lines (the pre-split P9 RULE explicitly named "revisit if the skill grows further" as the trigger). Post-split: scout-publish at 314 lines (1.6× the P3 200-line ceiling), scout-review at 111 lines (under the ceiling). The residual 114-line gap on scout-publish is the orchestration weight (Steps 1.5/1.7/1.8/2/3/3.4 plus the Phase B manifest format and the Phase C QC checklist) — recognized as an ongoing exception per ARCHITECTURAL_PRINCIPLES.md ENFORCEMENT clause; further reductions wait on whether reasoning-pattern repetition emerges that earns another extraction. See plan: `~/.claude/plans/we-need-to-examine-joyful-pearl.md`.
+**P9 — Sub-skill: scout-review.** The reviewer pass is a distinct job — fresh-context review of an editorial draft against a binary rubric — and lives in [skills/scout-review.md](scout-review.md). scout-publish hands a draft + profile path to scout-review at Step 3.5; scout-review returns a revised draft + V verdict. The split landed Phase B.5 (2026-05-09) after Phase B grew the prior monolithic skill past 460 lines. Phase C (2026-05-10) lifted Subagent F out of scout-review into the user-invoked [fact-audit](fact-audit.md) skill, dropping F's parallel subagent context from every publish. Post-Phase-C: scout-publish carries orchestration weight (Steps 1.5/1.7/1.8/2/3/3.4 plus the Phase B manifest format and the Phase C QC checklist) — recognized as an ongoing exception per ARCHITECTURAL_PRINCIPLES.md ENFORCEMENT clause; further reductions wait on the Phase C C5 scout-write split. See plan: `~/.claude/plans/we-need-to-examine-joyful-pearl.md`.
 
-**P10 — Narrative authorship is Tyler-iterated; rubric is defense-in-depth, not gate.** Per S174-F02 (with workflow correction 2026-05-09), the 4-paragraph narrative defaults to Step 3-T: Claude drafts → Tyler edits → Claude redrafts the final. Step 3-C (Claude-only, no Tyler edit) is the fallback when Tyler does not engage the edit loop. PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler's edit pass IS the canonical voice gate, and Tyler approval at Phase B is the final gate. Mitchell v4-rev2 PASSed §§1–6 of the rubric and was rejected by Tyler as grade-6-fail prose; §§7–11 were appended after that failure to widen rubric coverage but the necessary-but-not-sufficient relationship to Tyler approval is structural and permanent. Structured fields (sub-domain rationales, domain one-lines, projection prose, comp prose) are always Claude-assembled and always run through scout-review's V/F subagents regardless of narrative path.
+**P10 — Narrative authorship is Tyler-iterated; rubric is defense-in-depth, not gate.** Per S174-F02 (with workflow correction 2026-05-09), the 4-paragraph narrative defaults to Step 3-T: Claude drafts → Tyler edits → Claude redrafts the final. Step 3-C (Claude-only, no Tyler edit) is the fallback when Tyler does not engage the edit loop. PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler's edit pass IS the canonical voice gate, and Tyler approval at Phase B is the final gate. Mitchell v4-rev2 PASSed §§1–6 of the rubric and was rejected by Tyler as grade-6-fail prose; §§7–11 were appended after that failure to widen rubric coverage but the necessary-but-not-sufficient relationship to Tyler approval is structural and permanent. Structured fields (sub-domain rationales, domain one-lines, projection prose, comp prose) are always Claude-assembled and always run through scout-review's V subagent regardless of narrative path. Factual coverage on the published artifact comes from the user-invoked [fact-audit](fact-audit.md) skill (Phase C, 2026-05-10), not from scout-review.
 
 ---
 

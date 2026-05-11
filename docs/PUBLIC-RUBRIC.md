@@ -1,8 +1,8 @@
 # PUBLIC RUBRIC — Subagent V (Voice)
 
-Binary checklist applied to every `_public.md` draft by **Subagent V** (voice / structure reviewer), the parallel partner to **Subagent F** (fact-checker / [FACT-CHECK-RUBRIC.md](FACT-CHECK-RUBRIC.md)) in [skills/scout-review.md](../skills/scout-review.md) Step 1. Loaded only by V's subagent invocation — not by the writer agent, not at session open.
+Binary checklist applied to every `_public.md` draft by **Subagent V** (voice / structure reviewer) invoked from [skills/scout-review.md](../skills/scout-review.md) Step 1. Loaded only by V's subagent invocation — not by the writer agent, not at session open.
 
-**Status.** Created S175 (2026-05-07) as part of the writer/reviewer split for Skill 7. Phase B (2026-05-09) split the reviewer pass into V (this rubric) + F (FACT-CHECK-RUBRIC). Phase B.5 (2026-05-09) lifted Steps 3.5 + 3.6 into the dedicated [skills/scout-review.md](../skills/scout-review.md) skill. **V remains the PASS gate** in shadow-mode while F's signal-to-noise is evaluated over the first 3 publishes.
+**Status.** Created S175 (2026-05-07) as part of the writer/reviewer split for Skill 7. Phase B (2026-05-09) split the reviewer pass into V (this rubric) + F (FACT-CHECK-RUBRIC, shadow-mode). Phase B.5 (2026-05-09) lifted Steps 3.5 + 3.6 into the dedicated [skills/scout-review.md](../skills/scout-review.md) skill. Phase C (2026-05-10) lifted F out of scout-review into the user-invoked [skills/fact-audit.md](../skills/fact-audit.md) skill; scout-review is now V-only. **V remains the PASS gate** for scout-review's pre-publish pass.
 
 ---
 
@@ -15,7 +15,7 @@ The subagent receives **only**:
 - [docs/validation/PUBLIC-VOICE-CALIBRATION.md](validation/PUBLIC-VOICE-CALIBRATION.md) (voice spec — reference inspiration only per S174-F02).
 - The Mitchell sample from [PUBLIC-LANGUAGE-GUIDE §5.4](PUBLIC-LANGUAGE-GUIDE.md) (system-output target).
 
-V does **not** receive: profile §§4–§11 (rubric scores not within review scope); PUBLIC-LANGUAGE-GUIDE outside §5.4; the writer's reasoning; F's inputs or outputs. Fresh-context review per the writer/reviewer pattern.
+V does **not** receive: profile §§4–§11 (rubric scores not within review scope); PUBLIC-LANGUAGE-GUIDE outside §5.4; the writer's reasoning. Fresh-context review per the writer/reviewer pattern.
 
 ---
 

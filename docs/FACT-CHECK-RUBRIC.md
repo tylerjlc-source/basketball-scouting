@@ -1,20 +1,20 @@
-# FACT-CHECK RUBRIC — Skill 7 fresh-context fact reviewer
+# FACT-CHECK RUBRIC — fact-audit fresh-context fact reviewer
 
-Binary checklist applied to every `_public.md` draft by **Subagent F** (fact-checker), the parallel partner to **Subagent V** (voice / [PUBLIC-RUBRIC.md](PUBLIC-RUBRIC.md)) in Skill 7 Step 3.5. Loaded only by F's subagent invocation — not by the writer agent, not at session open, not by V.
+Binary checklist applied to a published `_public.md` artifact by **Subagent F** (fact-checker), invoked by the user-triggered [skills/fact-audit.md](../skills/fact-audit.md) skill. Loaded only by F's subagent invocation — not by the writer agent, not at session open, not by Subagent V (PUBLIC-RUBRIC).
 
-**Status.** Created Phase B (2026-05-09) of the basketball-scouting super-user-practices plan. **Shadow-mode** for the first three publishes — F's punch-list appears in the Phase B manifest as informational only; V remains the PASS gate. Promote F to PASS-required after 3 publishes if signal-to-noise holds.
+**Status.** Created Phase B (2026-05-09) as a parallel shadow-mode reviewer co-firing with V in scout-review. Phase C (2026-05-10) lifted F out of the auto-fire scout-review flow and into the user-invoked fact-audit skill to remove a fresh-context subagent cost from every publish. F now fires only when Tyler runs `fact-audit [Player]` against a finished `_public.md` artifact.
 
-**Scope.** F is the authority on **factual** claims and **authoring-discipline syntax** ([PUBLIC-LANGUAGE-GUIDE §5.3-P](PUBLIC-LANGUAGE-GUIDE.md) percentage syntax + [§5.3-G](PUBLIC-LANGUAGE-GUIDE.md) acronym glossary + dormant-vet tense rule). V's §8 fact-cross-reference and §12 acronym scan remain in place during shadow mode; redundancy is intentional. On promotion, V §8 / §12 may be stripped.
+**Scope.** F is the authority on **factual** claims and **authoring-discipline syntax** ([PUBLIC-LANGUAGE-GUIDE §5.3-P](PUBLIC-LANGUAGE-GUIDE.md) percentage syntax + [§5.3-G](PUBLIC-LANGUAGE-GUIDE.md) acronym glossary + dormant-vet tense rule). V (PUBLIC-RUBRIC) and F have overlapping coverage at V §8 (fact cross-reference) and V §12 (acronyms); the redundancy was acceptable when V + F co-fired in shadow-mode and is now optional with F decoupled. V §8 / §12 are still in PUBLIC-RUBRIC pending the Phase C C3 rubric strip.
 
 ---
 
 ## Inputs handed to F
 
 The subagent receives **only**:
-- The `_public.md` draft text (Step 3-C output, or the structured-fields slice when Step 3-T is active).
+- The published `_public.md` artifact text (full, as written to `output/[Player]/[YYYY-MM-DD]_public.md`).
 - Source profile **§1 Header**, **§3 Scouting narrative**, **§4 Sub-domain scores** (rationales + scores), **§9 Projection Output Block** (TENSE token + POT/Min/Max).
-- `scripts/public_career_stats_output.json` (Step 1.7 payload — career per-season + career-aggregate basics).
-- `scripts/public_narrative_stats_output.json` (Step 1.8 payload — `current_season` / `prior_season` / `two_season_aggregate` views per metric).
+- `scripts/public_career_stats_output.json` (career per-season + career-aggregate basics — same shape as scout-publish Step 1.7 payload).
+- `scripts/public_narrative_stats_output.json` (narrative stats payload — same shape as scout-publish Step 1.8 payload).
 - This file ([docs/FACT-CHECK-RUBRIC.md](FACT-CHECK-RUBRIC.md)).
 
 F does **not** receive: profile §§2, 5, 6, 7, 8, 10, 11; PUBLIC-LANGUAGE-GUIDE; PUBLIC-RUBRIC; PUBLIC-VOICE-CALIBRATION; the writer's reasoning. Fresh-context fact-check per the writer/reviewer pattern.
@@ -96,8 +96,8 @@ VERDICT: PASS / FAIL
 
 PASS = §F1=0 AND §F2=0 AND §F3=0 AND §F4=0 AND §F5=0 AND §F6=0 AND §F7=0. FAIL = anything else.
 
-**Shadow-mode note (Phase B initial rollout):** F's verdict is informational only in the Phase B manifest. V (PUBLIC-RUBRIC) remains the PASS gate. After 3 publishes, evaluate F's punch-list signal-to-noise — if F catches real drift V missed without surfacing noise, promote to PASS-required and (optionally) strip V §8 / §12 to remove redundancy.
+**Invocation note (Phase C, 2026-05-10).** F fires only on Tyler's explicit `fact-audit [Player]` trigger against a published `_public.md` artifact. F's verdict is informational — Tyler reads F's punch-list and decides whether to edit the published artifact or amend the source profile. V (PUBLIC-RUBRIC) remains the PASS gate during scout-review's pre-publish pass.
 
 ---
 
-*Created Phase B (2026-05-09) of the basketball-scouting super-user-practices plan. Shipped in shadow-mode; promotion criterion documented above. Loaded only by Subagent F invocation in scout-publish.md Step 3.5. See plan: `~/.claude/plans/we-re-working-on-the-warm-dream.md`.*
+*Created Phase B (2026-05-09) of the basketball-scouting super-user-practices plan. Phase C (2026-05-10) lifted F out of scout-review into the user-invoked [skills/fact-audit.md](../skills/fact-audit.md) skill. Loaded only by Subagent F invocation in fact-audit Step 3. See plan: `~/.claude/plans/we-need-to-examine-joyful-pearl.md`.*
