@@ -192,6 +192,12 @@ def transform_block(block: dict, current_season: str, prior_season: Optional[str
         }
 
         # Two-season aggregate: sum/sum from raw counts.
+        # NOTE (Phase C, 2026-05-10): emitted shape slimmed to the four
+        # consumer-facing fields. current_count, prior_count, and
+        # rounding_caveat were never cited by scout-publish writer or by
+        # fact-audit Subagent F; dropped to cut JSON-payload token cost.
+        # The ±1-per-season rounding caveat is documented in this script's
+        # module docstring + PUBLIC-LANGUAGE-GUIDE.md §9.5.
         if cur_vol is not None and pri_vol is not None and (cur_vol + pri_vol) > 0:
             cur_makes = round(cur_val * cur_vol) if cur_val is not None else 0
             pri_makes = round(pri_val * pri_vol)
@@ -201,10 +207,7 @@ def transform_block(block: dict, current_season: str, prior_season: Optional[str
             out["two_season_aggregate"] = {
                 "value": agg,
                 "raw_count": int(total_vol),
-                "current_count": int(cur_vol),
-                "prior_count": int(pri_vol),
                 "since": prior_season,
-                "rounding_caveat": "makes reverse-computed; ±1 per season",
             }
 
     return out
@@ -396,13 +399,19 @@ def main() -> int:
             sub_views[k] = walk_and_transform(v, current_season, prior_season)
         domains_payload[label] = sub_views
 
+    # NOTE (Phase C, 2026-05-10): payload shape slimmed for token-cost
+    # reduction. seasons_used drops the per-season scoring weight (the 60/40
+    # blend is the scoring substrate, not a public surface value per
+    # PUBLIC-LANGUAGE-GUIDE §5.3, §8 QC7). eval_window.flag_template was
+    # never cited by scout-publish writer or by fact-audit's Subagent F.
+    # seasons_label preserved because render_payload_markdown surfaces it
+    # in the markdown handoff header.
     payload = {
         "player": args.player,
         "eval_window": {
             "mode": window.mode,
-            "seasons_used": [{"season": s, "weight": w} for s, w in seasons_used],
+            "seasons_used": [{"season": s} for s, _ in seasons_used],
             "seasons_label": seasons_label,
-            "flag_template": window.flag_template,
         },
         "domains": domains_payload,
     }
