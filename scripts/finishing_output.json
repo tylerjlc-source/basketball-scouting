@@ -1,6 +1,6 @@
 [
   {
-    "player": "Donovan Mitchell",
+    "player": "Nikola Joki\u0107",
     "evaluation_window": {
       "mode": "DEFAULT",
       "seasons_used": [
@@ -18,147 +18,147 @@
     },
     "subdomain_1_at_basket_finishing": {
       "rim_fg_pct": {
-        "current": 0.656,
-        "prior": "N/A",
-        "weighted": 0.656,
-        "current_volume": 311,
-        "prior_volume": "N/A",
-        "total_volume": 311
+        "current": 0.735,
+        "prior": 0.719,
+        "weighted": 0.727,
+        "current_volume": 325,
+        "prior_volume": 431,
+        "total_volume": 756
       },
       "rim_volume": {
-        "current": 311,
-        "prior": "N/A",
-        "weighted": 311
+        "current": 325,
+        "prior": 431,
+        "weighted": 367.4
       },
       "pct_shots_at_rim": {
-        "current": 0.222,
-        "prior": "N/A",
-        "weighted": 0.222
+        "current": 0.287,
+        "prior": 0.316,
+        "weighted": 0.299
       },
       "dunk_rate": {
-        "current": 0.064,
-        "prior": "N/A",
-        "weighted": 0.064
+        "current": 0.068,
+        "prior": 0.049,
+        "weighted": 0.06
       },
       "non_dunk_rim_fg_pct": {
-        "current": 0.646,
-        "prior": "N/A",
-        "weighted": 0.646,
-        "current_volume": 291,
-        "prior_volume": "N/A",
-        "total_volume": 291
+        "current": 0.726,
+        "prior": 0.705,
+        "weighted": 0.716,
+        "current_volume": 303,
+        "prior_volume": 410,
+        "total_volume": 713
       },
       "ft_pct": {
-        "current": 0.865,
-        "prior": "N/A",
-        "weighted": 0.865,
-        "current_volume": 430,
-        "prior_volume": "N/A",
-        "total_volume": 430
+        "current": 0.831,
+        "prior": 0.8,
+        "weighted": 0.819,
+        "current_volume": 480,
+        "prior_volume": 451,
+        "total_volume": 931
       },
       "pct_assisted_overall": {
-        "current": 0.385,
-        "prior": 0.349,
-        "weighted": 0.371
+        "current": 0.606,
+        "prior": 0.69,
+        "weighted": 0.64
       },
       "vs_tight_defense": {
         "very_tight_0_2": {
-          "current": 0.476,
-          "prior": 0.296,
-          "weighted": 0.411,
-          "current_volume": 63,
-          "prior_volume": 54,
-          "total_volume": 117
+          "current": 0.451,
+          "prior": 0.581,
+          "weighted": 0.514,
+          "current_volume": 82,
+          "prior_volume": 117,
+          "total_volume": 199
         },
         "tight_2_4": {
-          "current": 0.552,
-          "prior": 0.458,
-          "weighted": 0.516,
-          "current_volume": 563,
-          "prior_volume": 515,
-          "total_volume": 1078
+          "current": 0.608,
+          "prior": 0.599,
+          "weighted": 0.604,
+          "current_volume": 630,
+          "prior_volume": 718,
+          "total_volume": 1348
         },
         "open_4_6": {
-          "current": 0.398,
-          "prior": 0.427,
-          "weighted": 0.409,
-          "current_volume": 568,
-          "prior_volume": 543,
-          "total_volume": 1111
+          "current": 0.537,
+          "prior": 0.557,
+          "weighted": 0.546,
+          "current_volume": 294,
+          "prior_volume": 341,
+          "total_volume": 635
         },
         "wide_open_6plus": {
-          "current": 0.531,
-          "prior": 0.486,
-          "weighted": 0.513,
-          "current_volume": 209,
-          "prior_volume": 208,
-          "total_volume": 417
+          "current": 0.521,
+          "prior": 0.524,
+          "weighted": 0.523,
+          "current_volume": 121,
+          "prior_volume": 187,
+          "total_volume": 308
         }
       }
     },
     "subdomain_2_contact_finishing": {
       "ftr": {
-        "current": 0.306,
-        "prior": "N/A",
-        "weighted": 0.306
+        "current": 0.424,
+        "prior": 0.331,
+        "weighted": 0.387
       },
       "ft_pct": {
-        "current": 0.865,
-        "prior": "N/A",
-        "weighted": 0.865,
-        "current_volume": 430,
-        "prior_volume": "N/A",
-        "total_volume": 430
+        "current": 0.831,
+        "prior": 0.8,
+        "weighted": 0.819,
+        "current_volume": 480,
+        "prior_volume": 451,
+        "total_volume": 931
       },
       "drives": {
         "drives_pg": {
-          "current": 14.1,
-          "prior": 12.1,
-          "weighted": 13.3
+          "current": 4.4,
+          "prior": 4.9,
+          "weighted": 4.6
         },
         "drive_fg_pct": {
-          "current": 0.588,
-          "prior": 0.528,
-          "weighted": 0.564
+          "current": 0.612,
+          "prior": 0.543,
+          "weighted": 0.584
         },
         "drive_ppp": {
-          "current": 0.716,
-          "prior": 0.661,
-          "weighted": 0.694
+          "current": 0.795,
+          "prior": 0.653,
+          "weighted": 0.738
         }
       },
       "paint_non_ra_fg_pct": {
-        "current": 0.542,
-        "prior": 0.485,
-        "weighted": 0.522,
-        "current_volume": 306,
-        "prior_volume": 239,
-        "total_volume": 545
+        "current": 0.576,
+        "prior": 0.572,
+        "weighted": 0.574,
+        "current_volume": 394,
+        "prior_volume": 486,
+        "total_volume": 880
       }
     },
     "subdomain_3_post_offense": {
       "post_ppp": {
-        "current": 0,
-        "prior": 1.091,
-        "weighted": 0.436
+        "current": 1.129,
+        "prior": 1.09,
+        "weighted": 1.113
       },
       "post_poss": {
-        "current": 0,
-        "prior": 11,
-        "weighted": 4.4
+        "current": 348,
+        "prior": 409,
+        "weighted": 372.4
       },
       "post_fg_pct": {
-        "current": 0,
-        "prior": 0.444,
-        "weighted": 0.444,
-        "current_volume": 0,
-        "prior_volume": 11,
-        "total_volume": 11
+        "current": 0.605,
+        "prior": 0.581,
+        "weighted": 0.594,
+        "current_volume": 348,
+        "prior_volume": 409,
+        "total_volume": 757
       },
       "post_percentile": {
-        "current": 0,
-        "prior": 0.78,
-        "weighted": 0.312
+        "current": 0.75,
+        "prior": 0.757,
+        "weighted": 0.753
       }
     }
   }

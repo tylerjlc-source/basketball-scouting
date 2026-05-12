@@ -47,7 +47,7 @@ If stale or absent, regenerate in parallel:
 1. `python scripts/Public_Career_Stats.py "[Player]"`.
 2. `python scripts/Public_Narrative_Stats.py "[Player]"`.
 
-**Cache (Phase C C4, 2026-05-10):** both scripts hit `scripts/.cache/[Player]_[YYYY-MM-DD]_*.json` when the player was last published or audited the same day, so the typical fact-audit run reuses scout-publish's cached payloads with zero nba_api wall-clock cost. Pass `--no-cache` to either script to force a fresh fetch.
+**Cache.** Both scripts hit `scripts/.cache/[Player]_[YYYY-MM-DD]_*.json` when the player was last published or audited the same day, so the typical fact-audit run reuses scout-publish's cached payloads with zero nba_api wall-clock cost. Pass `--no-cache` to either script to force a fresh fetch.
 
 Routing fallthrough mirrors scout-publish Step 1.7 / 1.8: NBA path default; college fallback via the Skill 1 sub-agent on `ValueError: No player found`; HS / no-source omit the missing payload and surface in the final report.
 
@@ -84,7 +84,7 @@ Tyler reads. If F flags items, Tyler decides whether to edit the published artif
 
 **R2 — Fresh F context.** F gets its own context via the Task tool. F does not see the writer's reasoning, V's critique (when applicable), or anything outside the rubric's documented input contract.
 
-**R3 — User-invoked only.** Fact-audit fires only on Tyler's explicit `fact-audit [Player]` trigger. Not auto-chained from scout-publish; not invoked by scout-review. Per Phase C (2026-05-10), F was lifted out of the scout-publish flow to remove a fresh-context subagent cost from every publish — fact-audit is the on-demand replacement.
+**R3 — User-invoked only.** Fact-audit fires only on Tyler's explicit `fact-audit [Player]` trigger. Not auto-chained from scout-publish; not invoked by scout-review.
 
 **R4 — Read-only.** Fact-audit does not write to `_public.md`, `_profile.md`, or any output file. It surfaces F's findings; Tyler chooses whether and how to amend the source artifacts.
 
@@ -92,4 +92,4 @@ Tyler reads. If F flags items, Tyler decides whether to edit the published artif
 
 ---
 
-*Created Phase C (2026-05-10) of the basketball-scouting super-user-practices plan as the user-invoked fact-checker. F was previously spawned in parallel with V at scout-review Step 1 (shadow-mode); per the Phase C cost-reduction plan, F's parallel firing was removed and replaced by this on-demand skill. See plan: `~/.claude/plans/we-need-to-examine-joyful-pearl.md`.*
+*User-invoked fact-checker. Out-of-chain (not part of the 7-skill scouting chain). Spawns Subagent F against a published `_public.md` artifact + source profile + stat payloads; returns F's verdict + punch-list.*

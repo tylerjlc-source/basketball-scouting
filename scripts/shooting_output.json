@@ -1,6 +1,6 @@
 [
   {
-    "player": "Donovan Mitchell",
+    "player": "Nikola Joki\u0107",
     "evaluation_window": {
       "mode": "DEFAULT",
       "seasons_used": [
@@ -18,17 +18,17 @@
     },
     "subdomain_4_cas_3pt": {
       "cas_3pt_pct": {
-        "current": 0.408,
-        "prior": 0.406,
-        "weighted": 0.407,
-        "current_volume": 238,
-        "prior_volume": 244,
-        "total_volume": 482
+        "current": 0.395,
+        "prior": 0.453,
+        "weighted": 0.42,
+        "current_volume": 200,
+        "prior_volume": 234,
+        "total_volume": 434
       },
       "cas_3pa": {
-        "current": 238,
-        "prior": 244,
-        "weighted": 240.4
+        "current": 200,
+        "prior": 234,
+        "weighted": 213.6
       },
       "corner_3_pct": {
         "current": 0,
@@ -48,94 +48,94 @@
       },
       "defender_distance_3pt": {
         "wide_open_6plus": {
-          "current": 0.494,
-          "prior": 0.491,
-          "weighted": 0.493,
-          "current_volume": 168,
-          "prior_volume": 165,
-          "total_volume": 333
+          "current": 0.484,
+          "prior": 0.468,
+          "weighted": 0.476,
+          "current_volume": 93,
+          "prior_volume": 154,
+          "total_volume": 247
         },
         "open_4_6": {
-          "current": 0.323,
-          "prior": 0.354,
-          "weighted": 0.335,
-          "current_volume": 356,
-          "prior_volume": 342,
-          "total_volume": 698
+          "current": 0.368,
+          "prior": 0.407,
+          "weighted": 0.383,
+          "current_volume": 152,
+          "prior_volume": 150,
+          "total_volume": 302
         },
         "tight_2_4": {
-          "current": 0.271,
-          "prior": 0.25,
-          "weighted": 0.261,
-          "current_volume": 85,
-          "prior_volume": 120,
-          "total_volume": 205
+          "current": 0.229,
+          "prior": 0.208,
+          "weighted": 0.224,
+          "current_volume": 48,
+          "prior_volume": 24,
+          "total_volume": 72
         },
         "very_tight_0_2": {
-          "current": 0.429,
-          "prior": 0.167,
-          "weighted": 0.334,
-          "current_volume": 7,
-          "prior_volume": 6,
-          "total_volume": 13
+          "current": 0.0,
+          "prior": 0.0,
+          "weighted": 0.0,
+          "current_volume": 1,
+          "prior_volume": 2,
+          "total_volume": 3
         }
       },
       "total_3pa": {
-        "current": 616,
-        "prior": 633,
-        "weighted": 622.8
+        "current": 295,
+        "prior": 331,
+        "weighted": 309.4
       }
     },
     "subdomain_5_off_dribble": {
       "pullup_3pt_pct": {
-        "current": 0.337,
-        "prior": 0.343,
-        "weighted": 0.339,
-        "current_volume": 377,
-        "prior_volume": 388,
-        "total_volume": 765
+        "current": 0.328,
+        "prior": 0.303,
+        "weighted": 0.318,
+        "current_volume": 61,
+        "prior_volume": 66,
+        "total_volume": 127
       },
       "pullup_3pa": {
-        "current": 377,
-        "prior": 388,
-        "weighted": 381.4
+        "current": 61,
+        "prior": 66,
+        "weighted": 63.0
       },
       "pullup_zone_3pt": {
-        "current": 0.337,
-        "prior": "N/A",
-        "weighted": 0.337,
-        "current_volume": 371,
-        "prior_volume": "N/A",
-        "total_volume": 371
+        "current": 0.321,
+        "prior": 0.422,
+        "weighted": 0.358,
+        "current_volume": 53,
+        "prior_volume": 45,
+        "total_volume": 98
       },
       "pullup_zone_midrange": {
-        "current": 0.471,
-        "prior": "N/A",
-        "weighted": 0.471,
-        "current_volume": 87,
-        "prior_volume": "N/A",
-        "total_volume": 87
+        "current": 0.429,
+        "prior": 0.364,
+        "weighted": 0.407,
+        "current_volume": 14,
+        "prior_volume": 11,
+        "total_volume": 25
       },
       "isolation": {
         "ppp": {
-          "current": 1.023,
-          "prior": 0.928,
-          "weighted": 0.985
+          "current": 1.077,
+          "prior": 0.989,
+          "weighted": 1.042
         },
         "poss": {
-          "current": 216,
-          "prior": 167,
-          "weighted": 196.4
+          "current": 104,
+          "prior": 88,
+          "weighted": 97.6
         },
         "fg_pct": {
-          "current": 0.431,
-          "prior": 0.394,
-          "weighted": 0.416
+          "current": 0.553,
+          "prior": 0.5,
+          "weighted": 0.532
         },
         "percentile": {
-          "current": 0.784,
-          "prior": 0.614,
-          "weighted": 0.716
+          "current": 0.876,
+          "prior": 0.721,
+          "weighted": 0.814
         }
       }
     },
@@ -154,83 +154,83 @@
         "weighted": 0
       },
       "pullup_midrange": {
-        "current": 0.471,
-        "prior": "N/A",
-        "weighted": 0.471,
-        "current_volume": 87,
-        "prior_volume": "N/A",
-        "total_volume": 87
+        "current": 0.429,
+        "prior": 0.364,
+        "weighted": 0.407,
+        "current_volume": 14,
+        "prior_volume": 11,
+        "total_volume": 25
       }
     },
     "subdomain_7_ft": {
       "ft_pct": {
-        "current": 0.865,
-        "prior": 0.823,
-        "weighted": 0.85,
-        "current_volume": 430,
-        "prior_volume": 362,
-        "total_volume": 792
+        "current": 0.831,
+        "prior": 0.8,
+        "weighted": 0.819,
+        "current_volume": 480,
+        "prior_volume": 451,
+        "total_volume": 931
       },
-      "ft_pct_career": 0.844,
+      "ft_pct_career": 0.825,
       "trend": [
         {
           "season": "2021-22",
-          "ft_pct": 0.853,
-          "fta": 313
+          "ft_pct": 0.81,
+          "fta": 468
         },
         {
           "season": "2022-23",
-          "ft_pct": 0.867,
-          "fta": 368
+          "ft_pct": 0.822,
+          "fta": 415
         },
         {
           "season": "2023-24",
-          "ft_pct": 0.865,
-          "fta": 318
+          "ft_pct": 0.817,
+          "fta": 438
         },
         {
           "season": "2024-25",
-          "ft_pct": 0.823,
-          "fta": 362
+          "ft_pct": 0.8,
+          "fta": 451
         },
         {
           "season": "2025-26",
-          "ft_pct": 0.865,
-          "fta": 430
+          "ft_pct": 0.831,
+          "fta": 480
         }
       ],
       "clutch_ft": {
-        "current": 0,
-        "prior": 0.786,
-        "weighted": 0.786,
-        "current_volume": 0,
-        "prior_volume": 42,
-        "total_volume": 42
+        "current": 0.819,
+        "prior": 0.723,
+        "weighted": 0.79,
+        "current_volume": 72,
+        "prior_volume": 47,
+        "total_volume": 119
       }
     },
     "overall_context": {
       "ts_pct": {
-        "current": 0.613,
-        "prior": 0.575,
-        "weighted": 0.598
+        "current": 0.67,
+        "prior": 0.663,
+        "weighted": 0.667
       },
       "efg_pct": {
-        "current": 0.563,
-        "prior": 0.531,
-        "weighted": 0.55
+        "current": 0.618,
+        "prior": 0.627,
+        "weighted": 0.622
       },
       "three_pt_pct": {
-        "current": 0.364,
-        "prior": 0.368,
-        "weighted": 0.366,
-        "current_volume": 616,
-        "prior_volume": 633,
-        "total_volume": 1249
+        "current": 0.38,
+        "prior": 0.417,
+        "weighted": 0.396,
+        "current_volume": 295,
+        "prior_volume": 331,
+        "total_volume": 626
       },
       "total_fga": {
-        "current": 1403,
-        "prior": 1320,
-        "weighted": 1369.8
+        "current": 1132,
+        "prior": 1364,
+        "weighted": 1224.8
       }
     }
   }

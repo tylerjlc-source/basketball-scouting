@@ -21,7 +21,7 @@ Always load:
 Inputs required (must already exist):
 2. **output/[Player_Name]/[YYYY-MM-DD]_profile.md** — the canonical Skill 5 deliverable. Locate the latest by listing the directory and taking the lexicographically last filename. Read fully.
 
-**NOT loaded by scout-publish** (Phase C C5, 2026-05-10 — moved into scout-write's fresh context):
+**NOT loaded by scout-publish** (loaded inside scout-write's fresh context):
 - `docs/PUBLIC-LANGUAGE-GUIDE.md` (full transform spec) — loaded by scout-write at Step 3.
 - `docs/validation/PUBLIC-VOICE-CALIBRATION.md` (voice exemplar samples + pitfalls) — loaded by scout-write at Step 3.
 - `docs/SIGNATURES.md` (Signature roster + tier rules) — loaded by scout-write at Step 3 for the Signature column derivation.
@@ -47,12 +47,12 @@ The workflow steps below cluster into **3 execution phases. Each phase runs in a
 
 | Phase | Steps | Turn shape |
 |---|---|---|
-| A | 1–3.5 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, scout-write draft, lint pre-flight, scout-review handoff) | One turn — parallel reads (this file + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each, with same-day cache hits per Phase C C4). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3 (invoke `scout-write` sub-skill — PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + PUBLIC_MD_TEMPLATE load inside scout-write's context, not here). Step 3-T (Tyler-iterated path) iterates on the scout-write draft OR Step 3-C accepts it as-is → 3.4 (cheap lint pre-flight) → 3.5 (invoke `scout-review` sub-skill — V spawn + revise-against-V happen inside scout-review's context). Structured fields are always scout-write-assembled regardless of narrative path. |
+| A | 1–3.5 (Locate, recompute gate, career-stats pull, narrative-stats pull, validate, scout-write draft, lint pre-flight, scout-review handoff) | One turn — parallel reads (this file + profile) plus the Step 1.7 career-stats Bash call AND the Step 1.8 narrative-stats Bash call (both parallelize with reads — player name is the only input on each; same-day cache hits skip the nba_api fetch). Step 1.5 marker pre-check runs in-line on the loaded profile; if the marker is absent, a recompute-gate sub-agent fires with its own context (DOMAIN-SCALE_v1 + DOMAIN-SCORE-ROLE-RELEVANCE never enter the main window). Validate, then Step 3 (invoke `scout-write` sub-skill — PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + PUBLIC_MD_TEMPLATE load inside scout-write's context, not here). Step 3-T (Tyler-iterated path) iterates on the scout-write draft OR Step 3-C accepts it as-is → 3.4 (cheap lint pre-flight) → 3.5 (invoke `scout-review` sub-skill — V spawn + revise-against-V happen inside scout-review's context). Structured fields are always scout-write-assembled regardless of narrative path. |
 | B | 4 (Diff manifest preview) | One turn, no tools — present manifest to Tyler. |
 | — | (Approval gate) | Tyler confirms. |
 | C | 5–7 (Write, QC, confirmation) | One turn — single Write call + QC analysis + confirmation in same response. |
 
-**Three turns total per publish is the budget.** Per S174-F02, narrative authorship defaults to Step 3-T (scout-write drafts → Tyler edits → scout-publish redrafts the final); Step 3-C (scout-write draft accepted as-is, no Tyler edit) is the fallback when Tyler does not engage the edit loop.
+**Three turns total per publish is the budget.** Narrative authorship defaults to Step 3-T (scout-write drafts → Tyler edits → scout-publish redrafts the final); Step 3-C (scout-write draft accepted as-is, no Tyler edit) is the fallback when Tyler does not engage the edit loop.
 
 ---
 
@@ -69,7 +69,7 @@ Confirm via Phase A reads:
 
 ### Step 1.5 — Domain-mechanic recompute gate (Phase A continued)
 
-**Universal — every publish invocation runs this gate.** The band-match mechanic (DOMAIN-SCALE_v1.md, shipped 2026-05-07) replaced arithmetic-mean domain derivation. Profiles built before that date use arithmetic means in §5; the public layer cannot ship arithmetic-mean domains alongside band-matched composites without breaking score-coherence.
+**Universal — every publish invocation runs this gate.** The band-match mechanic (DOMAIN-SCALE_v1.md) replaced arithmetic-mean domain derivation. Legacy profiles use arithmetic means in §5; the public layer cannot ship arithmetic-mean domains alongside band-matched composites without breaking score-coherence.
 
 **Marker pre-check (in-line, no extra load).** Skill 7 already loaded the profile in Step 1. Scan it for the line:
 `Domain-mechanic recompute: arithmetic mean → band-match per DOMAIN-SCALE_v1.md`
@@ -82,9 +82,9 @@ appearing in any dated footer entry.
 
 **After the sub-agent returns**, the main turn re-reads the profile (one cheap read of the now-corrected file) so subsequent steps operate on the post-recompute state. The sub-agent's summary is folded into the Phase B manifest preview as informational context.
 
-**Calibration-correction scope (per `feedback_branch_layout_scope`):** This is a calibration correction — same dated `_profile.md`, no new file spawned. Mirrors the §1/§8 composite-correction precedent already accepted by Step 2 carve-out below.
+**Calibration-correction scope.** The gate edits the same dated `_profile.md` in place; no new dated file is spawned. Mirrors the §1/§8 composite-correction precedent accepted by Step 2 carve-out below.
 
-**P1 enforcement note (post-decomposition):** DOMAIN-SCALE_v1.md and DOMAIN-SCORE-ROLE-RELEVANCE.md are explicitly **NOT** loaded in the main Skill 7 context. They live only inside the recompute-gate sub-agent's window, and only when the marker pre-check determines the gate must fire. On marker-present publishes (the steady-state case once a profile has been touched once), neither file loads at all. This is a deliberate inversion of the prior "always-loaded" policy: the per-publish savings (~3–5K tokens) materially relieve the Phase A budget without changing the gate's correctness guarantee.
+**P1 enforcement note.** DOMAIN-SCALE_v1.md and DOMAIN-SCORE-ROLE-RELEVANCE.md are explicitly **NOT** loaded in the main Skill 7 context. They live only inside the recompute-gate sub-agent's window, and only when the marker pre-check determines the gate must fire. On marker-present publishes (the steady-state case once a profile has been touched once), neither file loads at all.
 
 ---
 
@@ -92,9 +92,9 @@ appearing in any dated footer entry.
 
 **Universal — every publish invocation runs this step.** Pulls the player's career per-game stats for the `## Career stats` reference appendix at the end of `_public.md` (display spec: PUBLIC-LANGUAGE-GUIDE §9). Routing is fall-through on script error — the NBA path's `ValueError: No player found` is the route signal to drop into the college fallback.
 
-1. **NBA path (default attempt).** Run `python scripts/Public_Career_Stats.py "[Player]"`. Capture stdout (markdown tables ready to paste into `_public.md`) and read `scripts/public_career_stats_output.json` for the structured payload. The Bash call parallelizes with the Phase A read batch — player name is the only input. Both active and retired NBA players resolve here; `PlayerCareerStats` returns full history regardless of active status. **Cache (Phase C C4, 2026-05-10):** re-publishes within the same day hit `scripts/.cache/[Player]_[YYYY-MM-DD]_career.json` and skip the nba_api fetch. Pass `--no-cache` to force a fresh fetch.
+1. **NBA path (default attempt).** Run `python scripts/Public_Career_Stats.py "[Player]"`. Capture stdout (markdown tables ready to paste into `_public.md`) and read `scripts/public_career_stats_output.json` for the structured payload. The Bash call parallelizes with the Phase A read batch — player name is the only input. Both active and retired NBA players resolve here; `PlayerCareerStats` returns full history regardless of active status. **Cache.** Re-publishes within the same day hit `scripts/.cache/[Player]_[YYYY-MM-DD]_career.json` and skip the nba_api fetch. Pass `--no-cache` to force a fresh fetch.
 
-2. **College fallback** (NBA script raises `ValueError: No player found`). Spawn the Skill 1 sub-agent (Sonnet 4.6, per `project_skill1_subagent_active`) with a self-contained prompt asking for a Sports-Reference-style college career career-totals table. Sub-agent returns markdown table(s) + structured JSON matching the `career_stats_row` schema, keyed `college_career` instead of `regular_season`. Single-call; no Playoffs sub-section.
+2. **College fallback** (NBA script raises `ValueError: No player found`). Spawn the Skill 1 sub-agent (Sonnet 4.6) with a self-contained prompt asking for a Sports-Reference-style college career career-totals table. Sub-agent returns markdown table(s) + structured JSON matching the `career_stats_row` schema, keyed `college_career` instead of `regular_season`. Single-call; no Playoffs sub-section.
 
 3. **HS / web-fallback failure** (sub-agent returns nothing or no Sports-Reference page found). Omit the `## Career stats` section entirely. Log "career stats: omitted (no source)" in the Phase B manifest preview as informational. Do not block publish.
 
@@ -110,7 +110,7 @@ appearing in any dated footer entry.
 
 **Universal — every publish invocation runs this step.** Pulls per-season + two-season-aggregate granular splits for use in the 4-paragraph narrative and the sub-domain rationale table. The 60/40 weighted blend (the scoring substrate) is NOT surfaced; the public artifact anchors numbers to a temporal frame the reader can reconstruct (PUBLIC-LANGUAGE-GUIDE §5.3, §8 QC7). Routing mirrors Step 1.7: NBA path default, college fallback, HS / web-fallback omission.
 
-1. **NBA path (default attempt).** Run `python scripts/Public_Narrative_Stats.py "[Player]"`. The script orchestrates the 7 Skill-1 domain scripts in parallel as subprocesses (no scoring substrate edits — it consumes their existing JSON outputs), walks each `sb()`-shaped block, and emits three views per metric: `current_season`, `prior_season`, `two_season_aggregate` (sum/sum from raw counts, not the 60/40 blend). Captures stdout (markdown handoff block organized by sub-domain) and reads `scripts/public_narrative_stats_output.json` for the structured payload. The Bash call parallelizes with the Phase A read batch and with Step 1.7 — player name is the only input. Wall-clock ~1–2 minutes (longest single domain script) since the 7 subprocesses run concurrently. **Cache (Phase C C4, 2026-05-10):** re-publishes within the same day hit `scripts/.cache/[Player]_[YYYY-MM-DD]_narrative.json` and skip the subprocess orchestration entirely; wall-clock drops to <1 second. Partial-failure runs (some domain scripts failed) are not cached so the next invocation retries. Pass `--no-cache` to force a fresh fetch.
+1. **NBA path (default attempt).** Run `python scripts/Public_Narrative_Stats.py "[Player]"`. The script orchestrates the 7 Skill-1 domain scripts in parallel as subprocesses (no scoring substrate edits — it consumes their existing JSON outputs), walks each `sb()`-shaped block, and emits three views per metric: `current_season`, `prior_season`, `two_season_aggregate` (sum/sum from raw counts, not the 60/40 blend). Captures stdout (markdown handoff block organized by sub-domain) and reads `scripts/public_narrative_stats_output.json` for the structured payload. The Bash call parallelizes with the Phase A read batch and with Step 1.7 — player name is the only input. Wall-clock ~1–2 minutes (longest single domain script) since the 7 subprocesses run concurrently. **Cache.** Re-publishes within the same day hit `scripts/.cache/[Player]_[YYYY-MM-DD]_narrative.json` and skip the subprocess orchestration entirely; wall-clock drops to <1 second. Partial-failure runs (some domain scripts failed) are not cached so the next invocation retries. Pass `--no-cache` to force a fresh fetch.
 
 2. **R12 mode handling.** The script honors the eval-window classification surfaced in the source profile's flag template:
    - `DEFAULT` (60/40 two-season window) — emit all three views per metric.
@@ -118,7 +118,7 @@ appearing in any dated footer entry.
    - `R12_AGGREGATE` (two compromised seasons aggregated) — emit both seasons individually with GP context in the structured payload; narrative cites each season explicitly with GP framing per PUBLIC-LANGUAGE-GUIDE §10.
    - `ROOKIE` / `OVERRIDE` — single-season emit, same shape as R12_ANCHOR.
 
-3. **College fallback** (NBA script returns `ValueError: No player found`). Spawn the Skill 1 sub-agent (Sonnet 4.6, per `project_skill1_subagent_active`) with a self-contained prompt asking for per-season granular splits for the player's most-recent two college seasons. Sub-agent returns markdown + structured JSON matching the same three-view schema where data permits; per-domain coverage may be partial (Sports-Reference college tables don't expose all NBA-API metrics).
+3. **College fallback** (NBA script returns `ValueError: No player found`). Spawn the Skill 1 sub-agent (Sonnet 4.6) with a self-contained prompt asking for per-season granular splits for the player's most-recent two college seasons. Sub-agent returns markdown + structured JSON matching the same three-view schema where data permits; per-domain coverage may be partial (Sports-Reference college tables don't expose all NBA-API metrics).
 
 4. **HS / web-fallback failure** (no source available). Omit the granular-stats payload. Narrative falls back to qualitative-only claims (no specific percentages). Log "narrative stats: omitted (no source)" in the Phase B manifest preview as informational.
 
@@ -142,7 +142,7 @@ Additional post-linter checks (defense-in-depth, mostly already covered by linte
 - Section 1 contains: Player, Position, Group, Archetype, Composite, Tier (bold field names + bold Composite value per scout-output.md §1 template).
 - Section 8 composite matches Section 1 composite (cross-check) — see calibration-correction carve-out below.
 
-**Calibration-correction carve-out.** If §1 composite ≠ §8 composite AND the profile footer documents a dated in-place calibration correction (per the BRANCH-layout-scope pattern — calibration corrections edit `_profile.md` in place rather than spawning a new dated file) AND the latest `wiki/evaluations.jsonl` row for this player matches §1 composite — accept §1 as canonical, treat §8/§11 prose as internal-only, and do not block publish. The pull policy (§4-A) already SKIPS §8 and §11; §9 POT/Min/Max pull through byte-equal regardless of internal anchor staleness. Capture the encounter as a calibration finding in [docs/learnings/scout-publish-learnings.md](../docs/learnings/scout-publish-learnings.md). Linter must be configured to allow this divergence (or the operator approves the lint-1 exit on the basis of the carve-out documented above).
+**Calibration-correction carve-out.** If §1 composite ≠ §8 composite AND the profile footer documents a dated in-place calibration correction (calibration corrections edit `_profile.md` in place rather than spawning a new dated file) AND the latest `wiki/evaluations.jsonl` row for this player matches §1 composite — accept §1 as canonical, treat §8/§11 prose as internal-only, and do not block publish. The pull policy (§4-A) already SKIPS §8 and §11; §9 POT/Min/Max pull through byte-equal regardless of internal anchor staleness. Capture the encounter as a calibration finding in [docs/learnings/scout-publish-learnings.md](../docs/learnings/scout-publish-learnings.md). Linter must be configured to allow this divergence (or the operator approves the lint-1 exit on the basis of the carve-out documented above).
 
 If any check fails (and the carve-out does not apply): **stop**. Report the drift and recommend a Skill 5 format-fix before re-invoking publish. Do not proceed to draft with a malformed profile — `_public.md` is downstream of the JSON pipeline and contamination is hard to clean up.
 
@@ -160,18 +160,18 @@ Apply [PUBLIC-LANGUAGE-GUIDE §4-A](../docs/PUBLIC-LANGUAGE-GUIDE.md) pull polic
 | §9 Projection (narrow — POT/Min/Max/confidence + Bust/Avg/Boom for prospects) | |
 | §10 NBA Comp (player + tier + similarity prose ≤2 sentences) | |
 
-Spawn the [scout-write](scout-write.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill loads PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + PUBLIC_MD_TEMPLATE in fresh editorial context, applies the strip / rewrite / re-voice / anchor / one-line transforms, derives Signature column values, and returns a full `_public.md`-shape draft text. The pre-Phase-C-C5 inline Step 3 narrative drafting now lives entirely inside `scout-write`.
+Spawn the [scout-write](scout-write.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill loads PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + PUBLIC_MD_TEMPLATE in fresh editorial context, applies the strip / rewrite / re-voice / anchor / one-line transforms, derives Signature column values, and returns a full `_public.md`-shape draft text.
 
 **Handoff contract — what scout-publish hands to scout-write:**
 - Absolute path to the source `_profile.md` (scout-write reads §§1, 2, 3, 4, 5, 9, 10 per the pull policy above).
 - Step 1.7 career stats markdown block (text).
 - Step 1.8 narrative stats markdown handoff block (text).
-- Path to `scripts/public_narrative_stats_output.json` (slim JSON payload, post-Phase-C C2).
+- Path to `scripts/public_narrative_stats_output.json` (slim JSON payload).
 
 **Handoff contract — what scout-write returns:**
 - Full `_public.md`-shape draft text.
 
-#### Step 3-T — Tyler-iterated narrative path (DEFAULT per S174-F02)
+#### Step 3-T — Tyler-iterated narrative path (DEFAULT)
 
 Three-step iteration on the scout-write initial draft:
 
@@ -185,7 +185,7 @@ Phase B manifest shows the post-integration final draft with Tyler's edit pass m
 
 #### Step 3-C — Claude-only narrative path (FALLBACK)
 
-When Tyler does not engage the edit loop, the scout-write initial draft is the final draft. Lint pre-flight (Step 3.4) and scout-review (Step 3.5) run unchanged on this draft. The [PUBLIC-LANGUAGE-GUIDE §5.4](../docs/PUBLIC-LANGUAGE-GUIDE.md) Mitchell sample is scout-write's calibration target (per S174-F02; Lowe-imitation by Claude failed across four iterations).
+When Tyler does not engage the edit loop, the scout-write initial draft is the final draft. Lint pre-flight (Step 3.4) and scout-review (Step 3.5) run unchanged on this draft. The [PUBLIC-LANGUAGE-GUIDE §5.4](../docs/PUBLIC-LANGUAGE-GUIDE.md) Mitchell sample is scout-write's calibration target.
 
 **Structured fields are always scout-write-assembled** regardless of narrative path. Sub-domain rationales (including the Signature column derived from the byte-equal sub-domain score per [docs/SIGNATURES.md](../docs/SIGNATURES.md) §3–§4), domain one-lines, projection prose, and comp prose follow the §4-B and §5.3 rules whether Tyler authors the narrative or not. Signature derivation is mechanical, not editorial — reconciliation at JSON export is fail-loud.
 
@@ -216,7 +216,7 @@ echo "$draft" | python scripts/lint_public.py --stdin --strict
 
 **Runs only on the scout-write-only path** (Step 3-C) and on scout-write-assembled structured fields when Step 3-T is active. **Skipped for the Tyler-iterated narrative** per Step 3-T (Tyler's edit IS the canonical voice gate).
 
-Spawn the [scout-review](scout-review.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill spawns Subagent V (PUBLIC-RUBRIC, PASS gate) against the draft, applies V's critique to revise the draft, and returns the revised text plus V's verdict. Steps 3.5 and 3.6 of the pre-Phase-B.5 workflow now live entirely inside `scout-review`. Fact-checking (F / FACT-CHECK-RUBRIC) is no longer part of this flow — Tyler runs the user-invoked [fact-audit](fact-audit.md) skill on demand against the final `_public.md` artifact (Phase C, 2026-05-10).
+Spawn the [scout-review](scout-review.md) sub-skill via the Task tool (`subagent_type=general-purpose`). The sub-skill spawns Subagent V (PUBLIC-RUBRIC, PASS gate) against the draft, applies V's critique to revise the draft, and returns the revised text plus V's verdict. Fact-checking (F / FACT-CHECK-RUBRIC) is not part of this flow — Tyler runs the user-invoked [fact-audit](fact-audit.md) skill on demand against the final `_public.md` artifact.
 
 **Handoff contract — what scout-publish hands to scout-review:**
 - The draft text from Step 3-C (full text), or the structured-fields slice when Step 3-T is active.
@@ -251,7 +251,7 @@ Composite + all scores: byte-equal preserved (see Step 6 QC).
 ```
 
 Then surface the actual content:
-- Full 4-paragraph Vecenie narrative draft. **Step 3-T (Tyler-iterated):** show post-integration final with Tyler's edit pass marked + any normalization fixes called out. **Step 3-C (Claude-only):** show post-revise prose returned by `scout-review` plus the V verdict (PASS gate). For factual coverage on a published artifact, Tyler invokes [fact-audit](fact-audit.md) on demand post-publish (Phase C, 2026-05-10).
+- Full 4-paragraph Vecenie narrative draft. **Step 3-T (Tyler-iterated):** show post-integration final with Tyler's edit pass marked + any normalization fixes called out. **Step 3-C (Claude-only):** show post-revise prose returned by `scout-review` plus the V verdict (PASS gate). For factual coverage on a published artifact, Tyler invokes [fact-audit](fact-audit.md) on demand post-publish.
 - Sub-domain rationale before/after table (the editorial decision surface).
 - Domain one-line justifications (8 lines).
 - Projection rewrite + comp similarity rewrite.
@@ -288,6 +288,7 @@ Report back per the OUTPUT block.
 File written: output/[Player_Name]/[YYYY-MM-DD]_public.md
 QC: 1✓ 2✓ 3✓ 4✓ 5✓ 6✓ 7✓
 Open items: [QC failures fixed in place, or "None"]
+Next (recommended): run `fact-audit [Player Name]` before this artifact feeds the JSON export pipeline. F is not auto-fired per publish.
 ```
 
 ---
@@ -314,14 +315,14 @@ Canonical template + variant rules live at [docs/PUBLIC_MD_TEMPLATE.md](../docs/
 
 **P7 — Synthesis, not plagiarism.** Cross-ref `scout-output.md` O3. Take what scouts observed in §3, process through the Vecenie 4-paragraph structure, write in the system's own words. Never reproduce another scout's phrasing.
 
-**P8 — Phase-batched execution is mandatory.** 3 turns total: Phase A (parallel reads + scout-write draft + lint pre-flight + scout-review handoff), Phase B (manifest preview, no tools), approval gate, Phase C (Write + QC + confirmation). Sequential single-tool turns within a phase trigger the same quadratic session-cost mechanic that scout-ingest I8 calls out.
+**P8 — Phase-batched execution is mandatory.** 3 turns total: Phase A (parallel reads + scout-write draft + lint pre-flight + scout-review handoff), Phase B (manifest preview, no tools), approval gate, Phase C (Write + QC + confirmation). Sequential single-tool turns within a phase trigger quadratic session-cost.
 
-**P9 — Sub-skill: scout-review.** The reviewer pass is a distinct job — fresh-context review of an editorial draft against a binary rubric — and lives in [skills/scout-review.md](scout-review.md). scout-publish hands a draft + profile path to scout-review at Step 3.5; scout-review returns a revised draft + V verdict. The split landed Phase B.5 (2026-05-09) after Phase B grew the prior monolithic skill past 460 lines. Phase C (2026-05-10) lifted Subagent F out of scout-review into the user-invoked [fact-audit](fact-audit.md) skill, dropping F's parallel subagent context from every publish.
+**P9 — Sub-skill: scout-review.** The reviewer pass is a distinct job — fresh-context review of an editorial draft against a binary rubric — and lives in [skills/scout-review.md](scout-review.md). scout-publish hands a draft + profile path to scout-review at Step 3.5; scout-review returns a revised draft + V verdict.
 
-**P10 — Sub-skill: scout-write.** The initial-draft authoring pass is also a distinct job — voice-craft assembly of a `_public.md`-shape artifact from a `_profile.md` and stat payloads — and lives in [skills/scout-write.md](scout-write.md). scout-publish hands a profile path + Step 1.7 / 1.8 payloads to scout-write at Step 3; scout-write returns the full draft text. The split landed Phase C C5 (2026-05-10) and dropped PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + PUBLIC_MD_TEMPLATE out of scout-publish's LOADING INSTRUCTIONS into scout-write's fresh editorial context. Motivation: written reports had been struggling under the orchestrator's mixed context; a fresh writer subagent with focused craft references improves voice quality. Tyler's edit pass at Phase B remains the canonical voice gate per S174-F02; scout-write's job is a quality first draft that minimizes Tyler's edit burden. Post-Phase-C: scout-publish carries orchestration weight (Steps 1, 1.5, 1.7, 1.8, 2, Phase B manifest, Phase C Write + QC) — recognized as an ongoing exception per ARCHITECTURAL_PRINCIPLES.md ENFORCEMENT clause. See plan: `~/.claude/plans/we-need-to-examine-joyful-pearl.md`.
+**P10 — Sub-skill: scout-write.** The initial-draft authoring pass is also a distinct job — voice-craft assembly of a `_public.md`-shape artifact from a `_profile.md` and stat payloads — and lives in [skills/scout-write.md](scout-write.md). scout-publish hands a profile path + Step 1.7 / 1.8 payloads to scout-write at Step 3; scout-write returns the full draft text. PUBLIC-LANGUAGE-GUIDE + PUBLIC-VOICE-CALIBRATION + SIGNATURES + PUBLIC_MD_TEMPLATE load inside scout-write's fresh editorial context, not in scout-publish's LOADING INSTRUCTIONS. Tyler's edit pass at Phase B is the canonical voice gate; scout-write's job is a quality first draft that minimizes Tyler's edit burden.
 
-**P11 — Narrative authorship is Tyler-iterated; rubric is defense-in-depth, not gate.** Per S174-F02 (with workflow correction 2026-05-09), the 4-paragraph narrative defaults to Step 3-T: scout-write drafts → Tyler edits → scout-publish redrafts the final. Step 3-C (scout-write draft accepted as-is, no Tyler edit) is the fallback when Tyler does not engage the edit loop. PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler's edit pass IS the canonical voice gate, and Tyler approval at Phase B is the final gate. Mitchell v4-rev2 PASSed §§1–6 of the rubric and was rejected by Tyler as grade-6-fail prose; §§7–11 were appended after that failure to widen rubric coverage but the necessary-but-not-sufficient relationship to Tyler approval is structural and permanent. Structured fields (sub-domain rationales, domain one-lines, projection prose, comp prose) are always scout-write-assembled (Phase C C5) and always run through scout-review's V subagent regardless of narrative path. Factual coverage on the published artifact comes from the user-invoked [fact-audit](fact-audit.md) skill (Phase C C1), not from scout-review.
+**P11 — Narrative authorship is Tyler-iterated; rubric is defense-in-depth, not gate.** The 4-paragraph narrative defaults to Step 3-T: scout-write drafts → Tyler edits → scout-publish redrafts the final. Step 3-C (scout-write draft accepted as-is, no Tyler edit) is the fallback when Tyler does not engage the edit loop. PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler's edit pass IS the canonical voice gate, and Tyler approval at Phase B is the final gate. Structured fields (sub-domain rationales, domain one-lines, projection prose, comp prose) are always scout-write-assembled and always run through scout-review's V subagent regardless of narrative path. Factual coverage on the published artifact comes from the user-invoked [fact-audit](fact-audit.md) skill, not from scout-review.
 
 ---
 
-*Skill 7 of the scouting chain. Built S151 (2026-05-06) as Phase 3 of the publishable-layer track; writer/reviewer split added S175 (2026-05-07); narrative-authorship pivot to Tyler-default same session per S174-F02 after Mitchell v1–v4 voice failures; Step 3-T workflow corrected to three-step iteration and Step 1.8 narrative-stats pull added 2026-05-09 to anchor public stats to a reconcilable temporal frame. Phase C (2026-05-10) cost-reduction: lifted Subagent F into the user-invoked [fact-audit](fact-audit.md) skill (C1), slimmed the narrative-stats JSON shape (C2), moved 6 regex-pure V checks into `lint_public.py` (C3), added same-day stats-output caching (C4), and lifted Step 3 narrative+structured-field drafting into the [scout-write](scout-write.md) sub-skill (C5). Manual-trigger editorial step; no auto-chain. Phase 4 (JSON export pipeline) consumes the `_public.md` artifact this skill produces. See [docs/learnings/scout-publish-learnings.md](../docs/learnings/scout-publish-learnings.md) S174-F02 for the pivot context.*
+*Skill 7 of the scouting chain. Manual-trigger editorial step; no auto-chain. Phase 4 (JSON export pipeline) consumes the `_public.md` artifact this skill produces.*

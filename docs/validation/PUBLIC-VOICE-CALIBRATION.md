@@ -238,6 +238,7 @@ Skill 7 writer-side LOADING reads only §§8–§10 upfront. The writer-exemplar
 ## §9 — Pitfalls to Avoid
 
 - **Stat-rhyming.** Lining up parallel-structure stats in successive sentences ("He shoots 40%. He converts 56% on drives. His TS% is 59.8."). Reads robotic. Each stat needs to earn its sentence by being load-bearing for an argument.
+- **Snapshot-stat clustering.** Three or more single-season percentages in one narrative paragraph reads as a stat dump, not scouting prose. The reader cannot retain the cluster; the sentence-level argument disappears under the numbers. Per [PUBLIC-LANGUAGE-GUIDE §5.1](../PUBLIC-LANGUAGE-GUIDE.md) (post-pivot 2026-05-10), target 0–2 stats per narrative paragraph and relocate excess single-season percentages to the sub-domain rationale row that scores that skill. Different failure mode from stat-rhyming above: stat-rhyming = parallel structure with any stats; snapshot-stat clustering = single-season stat density per paragraph, regardless of structure. The four-profile audit (Curry / Kawhi / JJJ / Jokić-draft) surfaced this pattern at 9–12 stats per Strength paragraph with 60–91% sourced from a single recent season.
 - **Strict pros/cons silos.** "Strengths: A, B, C. Weaknesses: X, Y, Z." Real scouting prose interlaces.
 - **Pure rubric-register verdicts.** "Tier 4 franchise piece." "All-NBA caliber." Reader sees the system, not the player. Strip rubric vocabulary at publish.
 - **Series of context-context-attribute sentences.** Fine for big-board paragraphs (Givony register), flattens longform.

@@ -17,7 +17,7 @@ Loaded only when `scout-publish` invokes this skill.
 
 Always load:
 1. **This file (SKILL.md)** — review workflow, V invocation, revise-against-V protocol.
-2. **docs/PUBLIC-RUBRIC.md** — Subagent V's binary rubric (§§1–13). Self-describing — its head section documents V's input contract.
+2. **docs/PUBLIC-RUBRIC.md** — Subagent V's binary rubric (LLM-required §§: §1, §3, §4, §5, §8, §9, §11; mechanical §§ 2, 6, 7, 10, 12, 13 are caught by `lint_public.py` upstream). Self-describing — its head section documents V's input contract.
 3. **docs/validation/PUBLIC-VOICE-CALIBRATION.md** — voice spec; loaded inside Subagent V's context per V's input contract.
 4. **docs/PUBLIC-LANGUAGE-GUIDE.md** §5.4 calibration sample — system-output target; loaded inside Subagent V's context.
 
@@ -37,9 +37,9 @@ Inputs received from `scout-publish` (the handoff contract):
 
 Spawn V via the Task tool (`subagent_type=general-purpose`) — fresh context. V is the editorial PASS gate during the review pass; Tyler approval at scout-publish Phase B remains the canonical voice gate.
 
-**Subagent V — Voice (PASS gate).** Inputs are documented in [PUBLIC-RUBRIC.md](../docs/PUBLIC-RUBRIC.md) "Inputs handed to V" section. V returns: structured critique per the rubric's output format (§§1–13) plus a binary VERDICT (PASS / FAIL). PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler approval at scout-publish Phase B is the canonical gate.
+**Subagent V — Voice (PASS gate).** Inputs are documented in [PUBLIC-RUBRIC.md](../docs/PUBLIC-RUBRIC.md) "Inputs handed to V" section. V returns: structured critique per the rubric's output format (LLM-required §§ enumerated in PUBLIC-RUBRIC.md) plus a binary VERDICT (PASS / FAIL). PUBLIC-RUBRIC PASS does NOT guarantee Tyler approval — the rubric tests surface markers; Tyler approval at scout-publish Phase B is the canonical gate.
 
-**Fact-checking note.** Subagent F (FACT-CHECK-RUBRIC) was previously spawned in parallel with V during shadow-mode rollout (Phase B). Per Phase C (2026-05-10), F was lifted into the user-invoked [skills/fact-audit.md](fact-audit.md) skill to remove a fresh-context subagent cost from every publish. Tyler runs `fact-audit [Player]` on demand against the final `_public.md` artifact. Fact-checking is no longer part of the scout-review flow.
+**Fact-checking note.** Subagent F (FACT-CHECK-RUBRIC) is not part of this flow. Tyler runs the user-invoked [skills/fact-audit.md](fact-audit.md) skill on demand against the final `_public.md` artifact for factual coverage.
 
 ### Step 2 — Revise against V's critique
 
@@ -67,7 +67,7 @@ Revised draft:
 
 V verdict: PASS / FAIL
 V critique:
-[verbatim V output per PUBLIC-RUBRIC §§1–13 output format]
+[verbatim V output per PUBLIC-RUBRIC output format]
 
 Un-revisable flags (if any):
 [V failures the writer could not fix without source-fidelity loss]
@@ -85,10 +85,10 @@ Un-revisable flags (if any):
 
 **R3 — V is the PASS gate.** V's verdict gates Step 2 revision. Tyler approval at scout-publish Phase B is the canonical voice gate (R4). Fact-checking lives in the user-invoked [fact-audit](fact-audit.md) skill, not in scout-review.
 
-**R4 — Tyler approval supersedes V PASS.** Per S174-F02, V PASS does NOT guarantee Tyler approval. The rubric tests surface markers; Tyler's edit pass at scout-publish Phase B is the canonical voice gate.
+**R4 — Tyler approval supersedes V PASS.** V PASS does NOT guarantee Tyler approval. The rubric tests surface markers; Tyler's edit pass at scout-publish Phase B is the canonical voice gate.
 
 **R5 — Sub-skill, not user-invoked.** `scout-review` is invoked by `scout-publish` via the Task tool, not by Tyler directly. The `publish [Player]` trigger always enters at `scout-publish` Step 1; review is mid-Phase-A automation.
 
 ---
 
-*Skill 7.5 of the scouting chain. Created Phase B.5 (2026-05-09) by lifting Steps 3.5 + 3.6 out of `scout-publish.md` to bring the parent skill within ARCHITECTURAL_PRINCIPLES.md P3's 200-line ceiling. The writer/reviewer split that S175 introduced is an explicit two-skill handoff: scout-publish writes + orchestrates, scout-review reviews + revises. Phase C (2026-05-10) lifted Subagent F into the user-invoked [fact-audit](fact-audit.md) skill, leaving scout-review as V-only. See plan: `~/.claude/plans/we-need-to-examine-joyful-pearl.md`.*
+*Sub-skill of scout-publish. V-only fresh-context review pass; revises against V's critique and returns the revised draft + verdict.*

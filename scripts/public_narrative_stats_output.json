@@ -1,5 +1,5 @@
 {
-  "player": "Donovan Mitchell",
+  "player": "Nikola Jokic",
   "eval_window": {
     "mode": "DEFAULT",
     "seasons_used": [
@@ -18,54 +18,99 @@
         "rim_fg_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.656,
-            "volume": 311
+            "value": 0.735,
+            "volume": 325
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.719,
+            "volume": 431
+          },
+          "two_season_aggregate": {
+            "value": 0.726,
+            "raw_count": 756,
+            "since": "2024-25"
           }
         },
         "rim_volume": {
           "current_season": {
             "season": "2025-26",
-            "value": 311.0,
+            "value": 325.0,
+            "volume": null
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 431.0,
             "volume": null
           }
         },
         "pct_shots_at_rim": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.222,
+            "value": 0.287,
+            "volume": null
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.316,
             "volume": null
           }
         },
         "dunk_rate": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.064,
+            "value": 0.068,
+            "volume": null
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.049,
             "volume": null
           }
         },
         "non_dunk_rim_fg_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.646,
-            "volume": 291
+            "value": 0.726,
+            "volume": 303
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.705,
+            "volume": 410
+          },
+          "two_season_aggregate": {
+            "value": 0.714,
+            "raw_count": 713,
+            "since": "2024-25"
           }
         },
         "ft_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.865,
-            "volume": 430
+            "value": 0.831,
+            "volume": 480
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.8,
+            "volume": 451
+          },
+          "two_season_aggregate": {
+            "value": 0.816,
+            "raw_count": 931,
+            "since": "2024-25"
           }
         },
         "pct_assisted_overall": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.385,
+            "value": 0.606,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.349,
+            "value": 0.69,
             "volume": null
           }
         },
@@ -73,68 +118,68 @@
           "very_tight_0_2": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.476,
-              "volume": 63
+              "value": 0.451,
+              "volume": 82
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.296,
-              "volume": 54
+              "value": 0.581,
+              "volume": 117
             },
             "two_season_aggregate": {
-              "value": 0.393,
-              "raw_count": 117,
+              "value": 0.528,
+              "raw_count": 199,
               "since": "2024-25"
             }
           },
           "tight_2_4": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.552,
-              "volume": 563
+              "value": 0.608,
+              "volume": 630
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.458,
-              "volume": 515
+              "value": 0.599,
+              "volume": 718
             },
             "two_season_aggregate": {
-              "value": 0.507,
-              "raw_count": 1078,
+              "value": 0.603,
+              "raw_count": 1348,
               "since": "2024-25"
             }
           },
           "open_4_6": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.398,
-              "volume": 568
+              "value": 0.537,
+              "volume": 294
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.427,
-              "volume": 543
+              "value": 0.557,
+              "volume": 341
             },
             "two_season_aggregate": {
-              "value": 0.412,
-              "raw_count": 1111,
+              "value": 0.548,
+              "raw_count": 635,
               "since": "2024-25"
             }
           },
           "wide_open_6plus": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.531,
-              "volume": 209
+              "value": 0.521,
+              "volume": 121
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.486,
-              "volume": 208
+              "value": 0.524,
+              "volume": 187
             },
             "two_season_aggregate": {
-              "value": 0.508,
-              "raw_count": 417,
+              "value": 0.523,
+              "raw_count": 308,
               "since": "2024-25"
             }
           }
@@ -144,51 +189,66 @@
         "ftr": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.306,
+            "value": 0.424,
+            "volume": null
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.331,
             "volume": null
           }
         },
         "ft_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.865,
-            "volume": 430
+            "value": 0.831,
+            "volume": 480
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.8,
+            "volume": 451
+          },
+          "two_season_aggregate": {
+            "value": 0.816,
+            "raw_count": 931,
+            "since": "2024-25"
           }
         },
         "drives": {
           "drives_pg": {
             "current_season": {
               "season": "2025-26",
-              "value": 14.1,
+              "value": 4.4,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 12.1,
+              "value": 4.9,
               "volume": null
             }
           },
           "drive_fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.588,
+              "value": 0.612,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.528,
+              "value": 0.543,
               "volume": null
             }
           },
           "drive_ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.716,
+              "value": 0.795,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.661,
+              "value": 0.653,
               "volume": null
             }
           }
@@ -196,17 +256,17 @@
         "paint_non_ra_fg_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.542,
-            "volume": 306
+            "value": 0.576,
+            "volume": 394
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.485,
-            "volume": 239
+            "value": 0.572,
+            "volume": 486
           },
           "two_season_aggregate": {
-            "value": 0.517,
-            "raw_count": 545,
+            "value": 0.574,
+            "raw_count": 880,
             "since": "2024-25"
           }
         }
@@ -215,53 +275,53 @@
         "post_ppp": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.0,
+            "value": 1.129,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 1.091,
+            "value": 1.09,
             "volume": null
           }
         },
         "post_poss": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.0,
+            "value": 348.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 11.0,
+            "value": 409.0,
             "volume": null
           }
         },
         "post_fg_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.0,
-            "volume": 0
+            "value": 0.605,
+            "volume": 348
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.444,
-            "volume": 11
+            "value": 0.581,
+            "volume": 409
           },
           "two_season_aggregate": {
-            "value": 0.455,
-            "raw_count": 11,
+            "value": 0.593,
+            "raw_count": 757,
             "since": "2024-25"
           }
         },
         "post_percentile": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.0,
+            "value": 0.75,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.78,
+            "value": 0.757,
             "volume": null
           }
         }
@@ -272,29 +332,29 @@
         "cas_3pt_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.408,
-            "volume": 238
+            "value": 0.395,
+            "volume": 200
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.406,
-            "volume": 244
+            "value": 0.453,
+            "volume": 234
           },
           "two_season_aggregate": {
-            "value": 0.407,
-            "raw_count": 482,
+            "value": 0.426,
+            "raw_count": 434,
             "since": "2024-25"
           }
         },
         "cas_3pa": {
           "current_season": {
             "season": "2025-26",
-            "value": 238.0,
+            "value": 200.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 244.0,
+            "value": 234.0,
             "volume": null
           }
         },
@@ -316,68 +376,68 @@
           "wide_open_6plus": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.494,
-              "volume": 168
+              "value": 0.484,
+              "volume": 93
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.491,
-              "volume": 165
+              "value": 0.468,
+              "volume": 154
             },
             "two_season_aggregate": {
-              "value": 0.492,
-              "raw_count": 333,
+              "value": 0.474,
+              "raw_count": 247,
               "since": "2024-25"
             }
           },
           "open_4_6": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.323,
-              "volume": 356
+              "value": 0.368,
+              "volume": 152
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.354,
-              "volume": 342
+              "value": 0.407,
+              "volume": 150
             },
             "two_season_aggregate": {
-              "value": 0.338,
-              "raw_count": 698,
+              "value": 0.387,
+              "raw_count": 302,
               "since": "2024-25"
             }
           },
           "tight_2_4": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.271,
-              "volume": 85
+              "value": 0.229,
+              "volume": 48
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.25,
-              "volume": 120
+              "value": 0.208,
+              "volume": 24
             },
             "two_season_aggregate": {
-              "value": 0.259,
-              "raw_count": 205,
+              "value": 0.222,
+              "raw_count": 72,
               "since": "2024-25"
             }
           },
           "very_tight_0_2": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.429,
-              "volume": 7
+              "value": 0.0,
+              "volume": 1
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.167,
-              "volume": 6
+              "value": 0.0,
+              "volume": 2
             },
             "two_season_aggregate": {
-              "value": 0.308,
-              "raw_count": 13,
+              "value": 0.0,
+              "raw_count": 3,
               "since": "2024-25"
             }
           }
@@ -385,12 +445,12 @@
         "total_3pa": {
           "current_season": {
             "season": "2025-26",
-            "value": 616.0,
+            "value": 295.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 633.0,
+            "value": 331.0,
             "volume": null
           }
         }
@@ -399,92 +459,112 @@
         "pullup_3pt_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.337,
-            "volume": 377
+            "value": 0.328,
+            "volume": 61
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.343,
-            "volume": 388
+            "value": 0.303,
+            "volume": 66
           },
           "two_season_aggregate": {
-            "value": 0.34,
-            "raw_count": 765,
+            "value": 0.315,
+            "raw_count": 127,
             "since": "2024-25"
           }
         },
         "pullup_3pa": {
           "current_season": {
             "season": "2025-26",
-            "value": 377.0,
+            "value": 61.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 388.0,
+            "value": 66.0,
             "volume": null
           }
         },
         "pullup_zone_3pt": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.337,
-            "volume": 371
+            "value": 0.321,
+            "volume": 53
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.422,
+            "volume": 45
+          },
+          "two_season_aggregate": {
+            "value": 0.367,
+            "raw_count": 98,
+            "since": "2024-25"
           }
         },
         "pullup_zone_midrange": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.471,
-            "volume": 87
+            "value": 0.429,
+            "volume": 14
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.364,
+            "volume": 11
+          },
+          "two_season_aggregate": {
+            "value": 0.4,
+            "raw_count": 25,
+            "since": "2024-25"
           }
         },
         "isolation": {
           "ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.023,
+              "value": 1.077,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.928,
+              "value": 0.989,
               "volume": null
             }
           },
           "poss": {
             "current_season": {
               "season": "2025-26",
-              "value": 216.0,
+              "value": 104.0,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 167.0,
+              "value": 88.0,
               "volume": null
             }
           },
           "fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.431,
+              "value": 0.553,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.394,
+              "value": 0.5,
               "volume": null
             }
           },
           "percentile": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.784,
+              "value": 0.876,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.614,
+              "value": 0.721,
               "volume": null
             }
           }
@@ -508,8 +588,18 @@
         "pullup_midrange": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.471,
-            "volume": 87
+            "value": 0.429,
+            "volume": 14
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.364,
+            "volume": 11
+          },
+          "two_season_aggregate": {
+            "value": 0.4,
+            "raw_count": 25,
+            "since": "2024-25"
           }
         }
       },
@@ -517,62 +607,62 @@
         "ft_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.865,
-            "volume": 430
+            "value": 0.831,
+            "volume": 480
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.823,
-            "volume": 362
+            "value": 0.8,
+            "volume": 451
           },
           "two_season_aggregate": {
-            "value": 0.846,
-            "raw_count": 792,
+            "value": 0.816,
+            "raw_count": 931,
             "since": "2024-25"
           }
         },
-        "ft_pct_career": 0.844,
+        "ft_pct_career": 0.825,
         "trend": [
           {
             "season": "2021-22",
-            "ft_pct": 0.853,
-            "fta": 313
+            "ft_pct": 0.81,
+            "fta": 468
           },
           {
             "season": "2022-23",
-            "ft_pct": 0.867,
-            "fta": 368
+            "ft_pct": 0.822,
+            "fta": 415
           },
           {
             "season": "2023-24",
-            "ft_pct": 0.865,
-            "fta": 318
+            "ft_pct": 0.817,
+            "fta": 438
           },
           {
             "season": "2024-25",
-            "ft_pct": 0.823,
-            "fta": 362
+            "ft_pct": 0.8,
+            "fta": 451
           },
           {
             "season": "2025-26",
-            "ft_pct": 0.865,
-            "fta": 430
+            "ft_pct": 0.831,
+            "fta": 480
           }
         ],
         "clutch_ft": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.0,
-            "volume": 0
+            "value": 0.819,
+            "volume": 72
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.786,
-            "volume": 42
+            "value": 0.723,
+            "volume": 47
           },
           "two_season_aggregate": {
-            "value": 0.786,
-            "raw_count": 42,
+            "value": 0.782,
+            "raw_count": 119,
             "since": "2024-25"
           }
         }
@@ -585,60 +675,60 @@
             "ppp": {
               "current_season": {
                 "season": "2025-26",
-                "value": 1.023,
+                "value": 1.077,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.928,
+                "value": 0.989,
                 "volume": null
               }
             },
             "poss": {
               "current_season": {
                 "season": "2025-26",
-                "value": 216.0,
+                "value": 104.0,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 167.0,
+                "value": 88.0,
                 "volume": null
               }
             },
             "fg_pct": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.431,
+                "value": 0.553,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.394,
+                "value": 0.5,
                 "volume": null
               }
             },
             "tov_pct": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.074,
+                "value": 0.125,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.054,
+                "value": 0.102,
                 "volume": null
               }
             },
             "percentile": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.784,
+                "value": 0.876,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.614,
+                "value": 0.721,
                 "volume": null
               }
             }
@@ -647,60 +737,60 @@
             "ppp": {
               "current_season": {
                 "season": "2025-26",
-                "value": 1.018,
+                "value": 0.788,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 1.007,
+                "value": 0.992,
                 "volume": null
               }
             },
             "poss": {
               "current_season": {
                 "season": "2025-26",
-                "value": 568.0,
+                "value": 132.0,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 673.0,
+                "value": 121.0,
                 "volume": null
               }
             },
             "fg_pct": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.475,
+                "value": 0.376,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.446,
+                "value": 0.488,
                 "volume": null
               }
             },
             "tov_pct": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.129,
+                "value": 0.227,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.098,
+                "value": 0.198,
                 "volume": null
               }
             },
             "percentile": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.867,
+                "value": 0.379,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.837,
+                "value": 0.795,
                 "volume": null
               }
             }
@@ -709,48 +799,48 @@
             "ppp": {
               "current_season": {
                 "season": "2025-26",
-                "value": 1.009,
+                "value": 0.0,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 1.024,
+                "value": 1.235,
                 "volume": null
               }
             },
             "poss": {
               "current_season": {
                 "season": "2025-26",
-                "value": 108.0,
+                "value": 0.0,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 84.0,
+                "value": 17.0,
                 "volume": null
               }
             },
             "fg_pct": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.415,
+                "value": 0.0,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.408,
+                "value": 0.5,
                 "volume": null
               }
             },
             "tov_pct": {
               "current_season": {
                 "season": "2025-26",
-                "value": 0.12,
+                "value": 0.0,
                 "volume": null
               },
               "prior_season": {
                 "season": "2024-25",
-                "value": 0.071,
+                "value": 0.118,
                 "volume": null
               }
             }
@@ -760,48 +850,48 @@
           "touches_pg": {
             "current_season": {
               "season": "2025-26",
-              "value": 70.2,
+              "value": 100.2,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 60.3,
+              "value": 104.7,
               "volume": null
             }
           },
           "time_of_poss": {
             "current_season": {
               "season": "2025-26",
-              "value": 5.3,
+              "value": 4.6,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 4.9,
+              "value": 4.6,
               "volume": null
             }
           },
           "avg_drib_per_touch": {
             "current_season": {
               "season": "2025-26",
-              "value": 4.11,
+              "value": 1.32,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 4.43,
+              "value": 1.36,
               "volume": null
             }
           },
           "pts_per_touch": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.397,
+              "value": 0.276,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.397,
+              "value": 0.283,
               "volume": null
             }
           }
@@ -810,60 +900,60 @@
           "drives_pg": {
             "current_season": {
               "season": "2025-26",
-              "value": 14.1,
+              "value": 4.4,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 12.1,
+              "value": 4.9,
               "volume": null
             }
           },
           "drive_fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.588,
+              "value": 0.612,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.528,
+              "value": 0.543,
               "volume": null
             }
           },
           "drive_pts_pg": {
             "current_season": {
               "season": "2025-26",
-              "value": 10.1,
+              "value": 3.5,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 8.0,
+              "value": 3.2,
               "volume": null
             }
           },
           "drive_tov_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.064,
+              "value": 0.068,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.041,
+              "value": 0.061,
               "volume": null
             }
           },
           "drive_ast_pg": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.2,
+              "value": 0.4,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 1.2,
+              "value": 0.4,
               "volume": null
             }
           }
@@ -872,12 +962,12 @@
           "usg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.311,
+              "value": 0.289,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.298,
+              "value": 0.285,
               "volume": null
             }
           }
@@ -888,21 +978,41 @@
           "fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.559,
-              "volume": 365
+              "value": 0.566,
+              "volume": 445
+            },
+            "prior_season": {
+              "season": "2024-25",
+              "value": 0.564,
+              "volume": 532
+            },
+            "two_season_aggregate": {
+              "value": 0.565,
+              "raw_count": 977,
+              "since": "2024-25"
             }
           },
           "fga": {
             "current_season": {
               "season": "2025-26",
-              "value": 365.0,
+              "value": 445.0,
+              "volume": null
+            },
+            "prior_season": {
+              "season": "2024-25",
+              "value": 532.0,
               "volume": null
             }
           },
           "pct_of_total_fga": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.26,
+              "value": 0.393,
+              "volume": null
+            },
+            "prior_season": {
+              "season": "2024-25",
+              "value": 0.39,
               "volume": null
             }
           }
@@ -910,24 +1020,34 @@
         "non_dunk_rim_fg_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.646,
-            "volume": 291
+            "value": 0.726,
+            "volume": 303
+          },
+          "prior_season": {
+            "season": "2024-25",
+            "value": 0.705,
+            "volume": 410
+          },
+          "two_season_aggregate": {
+            "value": 0.714,
+            "raw_count": 713,
+            "since": "2024-25"
           }
         },
         "ft_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.865,
-            "volume": 430
+            "value": 0.831,
+            "volume": 480
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.823,
-            "volume": 362
+            "value": 0.8,
+            "volume": 451
           },
           "two_season_aggregate": {
-            "value": 0.846,
-            "raw_count": 792,
+            "value": 0.816,
+            "raw_count": 931,
             "since": "2024-25"
           }
         }
@@ -936,72 +1056,72 @@
         "tov_per_100_touches": {
           "current_season": {
             "season": "2025-26",
-            "value": 4.0,
+            "value": 3.7,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 3.5,
+            "value": 3.1,
             "volume": null
           }
         },
         "e_tov_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 9.0,
+            "value": 10.6,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 7.5,
+            "value": 9.2,
             "volume": null
           }
         },
         "ast_to_ratio": {
           "current_season": {
             "season": "2025-26",
-            "value": 2.01,
+            "value": 2.87,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 2.38,
+            "value": 3.11,
             "volume": null
           }
         },
         "touches_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 70.2,
+            "value": 100.2,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 60.3,
+            "value": 104.7,
             "volume": null
           }
         },
         "raw_ast": {
           "current_season": {
             "season": "2025-26",
-            "value": 398.0,
+            "value": 697.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 354.0,
+            "value": 716.0,
             "volume": null
           }
         },
         "raw_tov": {
           "current_season": {
             "season": "2025-26",
-            "value": 198.0,
+            "value": 243.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 149.0,
+            "value": 230.0,
             "volume": null
           }
         },
@@ -1009,36 +1129,36 @@
           "tov": {
             "current_season": {
               "season": "2025-26",
-              "value": 4.0,
+              "value": 8.0,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 8.0,
+              "value": 15.0,
               "volume": null
             }
           },
           "min": {
             "current_season": {
               "season": "2025-26",
-              "value": 95.7,
+              "value": 152.5,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 89.7,
+              "value": 139.8,
               "volume": null
             }
           },
           "ast": {
             "current_season": {
               "season": "2025-26",
-              "value": 11.0,
+              "value": 25.0,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 9.0,
+              "value": 36.0,
               "volume": null
             }
           }
@@ -1050,36 +1170,36 @@
         "potential_ast": {
           "current_season": {
             "season": "2025-26",
-            "value": 11.1,
+            "value": 17.6,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 9.2,
+            "value": 16.5,
             "volume": null
           }
         },
         "actual_ast": {
           "current_season": {
             "season": "2025-26",
-            "value": 5.7,
+            "value": 10.7,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 5.0,
+            "value": 10.2,
             "volume": null
           }
         },
         "ast_conversion_rate": {
           "current_season": {
             "season": "2025-26",
-            "value": 51.4,
+            "value": 60.8,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 54.3,
+            "value": 61.8,
             "volume": null
           }
         },
@@ -1091,31 +1211,31 @@
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.8,
+            "value": 1.1,
             "volume": null
           }
         },
         "passes_made": {
           "current_season": {
             "season": "2025-26",
-            "value": 41.7,
+            "value": 73.0,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 34.8,
+            "value": 76.6,
             "volume": null
           }
         },
         "ast_points_created": {
           "current_season": {
             "season": "2025-26",
-            "value": 15.0,
+            "value": 28.2,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 13.3,
+            "value": 26.4,
             "volume": null
           }
         }
@@ -1124,48 +1244,48 @@
         "a_to_ratio": {
           "current_season": {
             "season": "2025-26",
-            "value": 2.035714285714286,
+            "value": 2.8918918918918917,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 2.380952380952381,
+            "value": 3.090909090909091,
             "volume": null
           }
         },
         "tov_per_potential_ast": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.25,
+            "value": 0.21,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.23,
+            "value": 0.2,
             "volume": null
           }
         },
         "ast_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 5.7,
+            "value": 10.7,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 5.0,
+            "value": 10.2,
             "volume": null
           }
         },
         "tov_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 2.8,
+            "value": 3.7,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 2.1,
+            "value": 3.3,
             "volume": null
           }
         },
@@ -1173,72 +1293,72 @@
           "ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.173,
+              "value": 0.993,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 1.199,
+              "value": 1.234,
               "volume": null
             }
           },
           "poss": {
             "current_season": {
               "season": "2025-26",
-              "value": 365.0,
+              "value": 141.0,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 306.0,
+              "value": 175.0,
               "volume": null
             }
           },
           "fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.517,
+              "value": 0.653,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.51,
+              "value": 0.748,
               "volume": null
             }
           },
           "tov_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.079,
+              "value": 0.333,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.095,
+              "value": 0.234,
               "volume": null
             }
           },
           "percentile": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.598,
+              "value": 0.228,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.656,
+              "value": 0.72,
               "volume": null
             }
           },
           "poss_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.215,
+              "value": 0.091,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.189,
+              "value": 0.098,
               "volume": null
             }
           }
@@ -1248,48 +1368,48 @@
         "adjusted_ast": {
           "current_season": {
             "season": "2025-26",
-            "value": 7.4,
+            "value": 13.1,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 6.2,
+            "value": 12.7,
             "volume": null
           }
         },
         "adj_ast_pct": {
           "current_season": {
             "season": "2025-26",
-            "value": 17.7,
+            "value": 17.9,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 17.8,
+            "value": 16.6,
             "volume": null
           }
         },
         "ft_ast": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.7,
+            "value": 1.3,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.4,
+            "value": 1.4,
             "volume": null
           }
         },
         "passes_received": {
           "current_season": {
             "season": "2025-26",
-            "value": 55.3,
+            "value": 69.9,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 48.3,
+            "value": 70.6,
             "volume": null
           }
         }
@@ -1299,72 +1419,72 @@
           "ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.543,
+              "value": 1.387,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 1.281,
+              "value": 1.452,
               "volume": null
             }
           },
           "poss": {
             "current_season": {
               "season": "2025-26",
-              "value": 35.0,
+              "value": 137.0,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 32.0,
+              "value": 188.0,
               "volume": null
             }
           },
           "fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.774,
+              "value": 0.696,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.56,
+              "value": 0.75,
               "volume": null
             }
           },
           "tov_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.057,
+              "value": 0.066,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.031,
+              "value": 0.069,
               "volume": null
             }
           },
           "percentile": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.908,
+              "value": 0.66,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.458,
+              "value": 0.789,
               "volume": null
             }
           },
           "poss_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.021,
+              "value": 0.089,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.02,
+              "value": 0.105,
               "volume": null
             }
           }
@@ -1373,72 +1493,72 @@
           "ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.178,
+              "value": 1.453,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.935,
+              "value": 1.167,
               "volume": null
             }
           },
           "poss": {
             "current_season": {
               "season": "2025-26",
-              "value": 73.0,
+              "value": 75.0,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 31.0,
+              "value": 108.0,
               "volume": null
             }
           },
           "fg_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.5,
+              "value": 0.554,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.345,
+              "value": 0.5,
               "volume": null
             }
           },
           "tov_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.068,
+              "value": 0.04,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.032,
+              "value": 0.074,
               "volume": null
             }
           },
           "percentile": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.776,
+              "value": 0.949,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.441,
+              "value": 0.826,
               "volume": null
             }
           },
           "poss_pct": {
             "current_season": {
               "season": "2025-26",
-              "value": 0.043,
+              "value": 0.049,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.019,
+              "value": 0.061,
               "volume": null
             }
           }
@@ -1447,48 +1567,48 @@
           "dist_miles_off": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.3,
+              "value": 1.2,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 1.2,
+              "value": 1.3,
               "volume": null
             }
           },
           "avg_speed_off": {
             "current_season": {
               "season": "2025-26",
-              "value": 4.75,
+              "value": 4.04,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 4.58,
+              "value": 4.23,
               "volume": null
             }
           },
           "dist_miles_total": {
             "current_season": {
               "season": "2025-26",
-              "value": 2.4,
+              "value": 2.2,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 2.3,
+              "value": 2.5,
               "volume": null
             }
           },
           "avg_speed_total": {
             "current_season": {
               "season": "2025-26",
-              "value": 4.13,
+              "value": 3.75,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 4.02,
+              "value": 3.79,
               "volume": null
             }
           }
@@ -1498,21 +1618,21 @@
     "Defense": {
       "subdomain_15_on_ball_pressure": {
         "opp_fg_pct_overall": {
-          "current_fg_pct": 0.477,
-          "prior_fg_pct": 0.442,
-          "weighted_fg_pct": 0.464,
-          "current_fga": 9.71,
-          "prior_fga": 8.86
+          "current_fg_pct": 0.508,
+          "prior_fg_pct": 0.49,
+          "weighted_fg_pct": 0.501,
+          "current_fga": 18.65,
+          "prior_fga": 20.47
         },
         "dfgpoe_overall": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.01,
+            "value": 0.02,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": -0.019,
+            "value": -0.004,
             "volume": null
           }
         },
@@ -1547,72 +1667,72 @@
         "deflections_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 2.87,
+            "value": 2.75,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 2.41,
+            "value": 3.8,
             "volume": null
           }
         },
         "stl_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 1.5,
+            "value": 1.4,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 1.3,
+            "value": 1.8,
             "volume": null
           }
         },
         "contested_shots_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 3.07,
+            "value": 5.94,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 2.76,
+            "value": 5.51,
             "volume": null
           }
         },
         "contested_3pt_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 1.7,
+            "value": 2.06,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 1.61,
+            "value": 2.26,
             "volume": null
           }
         },
         "contested_2pt_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 1.38,
+            "value": 3.88,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 1.14,
+            "value": 3.26,
             "volume": null
           }
         },
         "pf_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 2.3,
+            "value": 2.7,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 2.0,
+            "value": 2.3,
             "volume": null
           }
         },
@@ -1620,80 +1740,80 @@
           "ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.049,
+              "value": 1.104,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.795,
+              "value": 0.789,
               "volume": null
             }
           },
-          "poss_total": 1.1,
-          "current_poss": 0.6,
-          "prior_poss": 0.5,
-          "current_percentile": 0.249,
-          "prior_percentile": 0.736
+          "poss_total": 1.7000000000000002,
+          "current_poss": 0.8,
+          "prior_poss": 0.9,
+          "current_percentile": 0.165,
+          "prior_percentile": 0.756
         }
       },
       "subdomain_16_help_defense": {
         "def_rating": {
           "current_season": {
             "season": "2025-26",
-            "value": 112.1,
+            "value": 115.3,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 109.1,
+            "value": 115.1,
             "volume": null
           }
         },
         "charges_drawn_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.0,
+            "value": 0.02,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.04,
+            "value": 0.0,
             "volume": null
           }
         },
         "def_loose_balls_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.35,
+            "value": 0.23,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.4,
+            "value": 0.26,
             "volume": null
           }
         },
         "def_boxouts_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.33,
+            "value": 1.68,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.43,
+            "value": 1.87,
             "volume": null
           }
         },
         "blk_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 0.3,
+            "value": 0.8,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 0.2,
+            "value": 0.6,
             "volume": null
           }
         }
@@ -1719,30 +1839,30 @@
           "ppp": {
             "current_season": {
               "season": "2025-26",
-              "value": 1.448,
+              "value": 1.182,
               "volume": null
             },
             "prior_season": {
               "season": "2024-25",
-              "value": 0.526,
+              "value": 0.739,
               "volume": null
             }
           },
-          "poss_total": 0.7,
-          "current_poss": 0.4,
-          "prior_poss": 0.3,
-          "current_percentile": 0.04,
-          "prior_percentile": 0.976
+          "poss_total": 0.6000000000000001,
+          "current_poss": 0.2,
+          "prior_poss": 0.4,
+          "current_percentile": 0.249,
+          "prior_percentile": 0.884
         },
         "dreb_pg": {
           "current_season": {
             "season": "2025-26",
-            "value": 3.8,
+            "value": 9.9,
             "volume": null
           },
           "prior_season": {
             "season": "2024-25",
-            "value": 3.7,
+            "value": 9.9,
             "volume": null
           }
         }
