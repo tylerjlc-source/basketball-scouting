@@ -20,10 +20,13 @@ Checks covered (all run on every invocation):
   - §13 — Signature column format (§13).
 
 V (PUBLIC-RUBRIC) keeps the LLM-required checks: §1 (worst line), §3
-(cosmetic stats), §4 (specific moments), §5 (archetype close), §8
-(fact-check), §9 (overclaiming), §11 (clichés). Moved out of V into
-this linter as of Phase C C3 (2026-05-10) to cut per-publish reviewer
-token cost.
+(cosmetic stats + density target), §4 (representative patterns), §5
+(archetype close), §8 (fact-check), §9 (overclaiming), §11 (clichés).
+Moved out of V into this linter as of Phase C C3 (2026-05-10) to cut
+per-publish reviewer token cost. §4 was rewritten from specific-moment
+counting to representative-pattern counting in the 2026-05-10
+narrative-essence pivot — no impact on this linter, but the docstring
+above tracks V's current scope.
 
 Invoked at:
   - Skill 7 Step 3.4 PRE-FLIGHT — runs against the draft text BEFORE

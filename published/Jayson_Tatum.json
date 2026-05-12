@@ -15,7 +15,7 @@
   "narrative": {
     "identity": "Jayson Tatum is one of the most distributed elite two-way wings in the league. A 4x All-NBA First Team selection (2022-2025, unanimous in 2025), a 6x All-Star, and the 2024 NBA Champion who led Boston in points, rebounds, and assists through the title run. At 6'8\" with a 6'11\" wingspan and a 210-pound filled-out frame, he carries the leverage to shoot over closeouts at any angle, switch onto bigs in the post, and stay in front of guards laterally. Not the most explosive wing in the league; instead, a player whose value is built through length, footwork, decision speed, and skill at every position on the floor.",
     "strength": "Offensively, Tatum lives at every level. The catch-and-shoot three is his foundation skill: an elite 40.0% on 377 weighted attempts over the last 2 seasons, a weapon from both corners and above the break. Where he has genuinely leveled up is the passing: a career-high 6.0 assists per game in 2024-25 and 7.2 per game leading the 2024 Finals, capped by a 31-point, 11-assist Game 5 closeout to clinch the title. He sees second-level reads and protects the ball on primary-handler volume with a 2.13 assist-to-turnover ratio at 29.4% usage. Defensively, Tatum is genuinely switchable: opponents shoot 4.3% worse than expected against him on the season, he posts a career-high +1.8 defensive box plus-minus on the 2025-26 return, and the defensive glass is a real asset at a 27% defensive rebound rate during 2025-26, approaching big-position anchor rates.",
-    "weakness": "Where Tatum is not elite is in the self-creation pull-up game and at the rim defensively. The pull-up three sits at league-average around 32.9%, and isolation efficiency at 0.806 points per possession lands at the 39th percentile, well short of the elite handler tier. Tatum is not a primary rim defender either: he posts 0.3 blocks per game, below the wing rim-protection bar, and his defensive value comes from pressure, switchability, and rotations within Boston's elite scheme rather than basket deterrence. The third gap is offensive rebounding at a 1.6% rate, but that reflects the demands of his primary-scorer role rather than a skill weakness.",
+    "weakness": "Where Tatum is not elite is in the self-creation pull-up game and at the rim defensively. The pull-up three sits at league-average around 32.9% in 2024-25, and isolation efficiency at 0.806 points per possession lands at the 39th percentile, well short of the elite handler tier. Tatum is not a primary rim defender either: he posts 0.3 blocks per game, below the wing rim-protection bar, and his defensive value comes from pressure, switchability, and rotations within Boston's elite scheme rather than basket deterrence. The third gap is offensive rebounding at a 1.6% rate since 2024-25, but that reflects the demands of his primary-scorer role rather than a skill weakness.",
     "projection_verdict": "Tatum sits at the threshold between perennial All-Star and the league's MVP candidates, with the next healthy season the likely tipping point. The realistic ceiling is a return to the pre-Achilles form that had him climbing toward the MVP / Finals MVP conversation, with another deep playoff run as Boston's roster regenerates around him. The realistic floor is a partial-recovery skill-vet path, where intact size, skill, and feel continue to produce All-Star regular seasons but the pre-injury peak does not return. What he is, year over year, is a star wing with the physical tools to keep producing into his 30s. What he is not, yet, is the player who has cleared the MVP threshold; a full healthy season is what stands between him and that line."
   },
   "domains": [
@@ -73,7 +73,7 @@
       "id": 1,
       "name": "At-basket finishing",
       "score": 8.0,
-      "rationale_public": "Strong rim conversion at 71.9% on healthy-anchor volume of 174 weighted attempts plus a 14.6% dunk rate; uses length and footwork rather than elite vertical explosion.",
+      "rationale_public": "Strong rim conversion at 71.9% in 2024-25 on healthy-anchor volume of 174 weighted attempts plus a 14.6% dunk rate; uses length and footwork rather than elite vertical explosion.",
       "signature": {
         "name": "Rim Finisher",
         "tier": "Proven",
@@ -98,7 +98,7 @@
       "id": 4,
       "name": "Catch-and-shoot 3PT",
       "score": 8.5,
-      "rationale_public": "Elite catch-and-shoot weapon at 40.0% on healthy-anchor volume of 377 weighted three-point attempts; a foundation skill from both corners and above the break.",
+      "rationale_public": "Elite catch-and-shoot weapon at 40.0% in 2024-25 on healthy-anchor volume of 377 weighted three-point attempts; a foundation skill from both corners and above the break.",
       "signature": {
         "name": "Sniper",
         "tier": "Elite",
@@ -109,14 +109,14 @@
       "id": 5,
       "name": "Off-dribble shooting",
       "score": 7.0,
-      "rationale_public": "League-average pull-up three-point shooting at 32.9% with isolation production at 0.806 points per possession (39th percentile); multiple zones, no elite zone.",
+      "rationale_public": "League-average pull-up three-point shooting at 32.9% in 2024-25 with isolation production at 0.806 points per possession (39th percentile); multiple zones, no elite zone.",
       "signature": null
     },
     {
       "id": 6,
       "name": "Mid-range",
       "score": 7.5,
-      "rationale_public": "Above-average mid-range conversion at 39.6% on healthy-anchor volume; recalibrated shot selection through Drew Hanlen's footwork work has compressed long-twos and improved shot quality.",
+      "rationale_public": "Above-average mid-range conversion at 39.6% in 2024-25 on healthy-anchor volume; recalibrated shot selection through Drew Hanlen's footwork work has compressed long-twos and improved shot quality.",
       "signature": null
     },
     {
@@ -144,7 +144,7 @@
       "id": 10,
       "name": "Ball security",
       "score": 8.0,
-      "rationale_public": "Clean security on primary-handler volume: a 2.13 assist-to-turnover ratio with roughly 3 turnovers per 100 touches at 29.4% usage.",
+      "rationale_public": "Clean security on primary-handler volume: a 2.13 assist-to-turnover ratio with roughly 3 turnovers per 100 touches at 29.4% usage since 2024-25.",
       "signature": {
         "name": "Sure-Handed",
         "tier": "Proven",
@@ -166,7 +166,7 @@
       "id": 12,
       "name": "Decision-making",
       "score": 8.0,
-      "rationale_public": "Reliable judgment on heavy primary-creator load; 2.15 assist-to-turnover ratio at 29.4% usage with championship leadership in the 2024 Finals run as the supporting signal.",
+      "rationale_public": "Reliable judgment on heavy primary-creator load; 2.15 assist-to-turnover ratio at 29.4% usage since 2024-25 with championship leadership in the 2024 Finals run as the supporting signal.",
       "signature": {
         "name": "High-IQ",
         "tier": "Proven",
@@ -177,7 +177,7 @@
       "id": 13,
       "name": "Passing execution",
       "score": 7.5,
-      "rationale_public": "Functional delivery at 54.4 passes per game and 52.1% potential-assist conversion; pinpoint passes over one or two defenders, with touch-driven accuracy rather than mechanical purity.",
+      "rationale_public": "Functional delivery at 54.4 passes per game and 52.1% potential-assist conversion since 2024-25; pinpoint passes over one or two defenders, with touch-driven accuracy rather than mechanical purity.",
       "signature": null
     },
     {
@@ -191,7 +191,7 @@
       "id": 15,
       "name": "On-ball pressure",
       "score": 8.0,
-      "rationale_public": "Strong on-ball defender holding opponents 4.3% below their expected field-goal percentage; 1.3 steals and 2.1 deflections per game with isolation defense at 0.746 points per possession.",
+      "rationale_public": "Strong on-ball defender holding opponents 4.3% below their expected field-goal percentage since 2024-25; 1.3 steals and 2.1 deflections per game with isolation defense at 0.746 points per possession.",
       "signature": {
         "name": "Lockdown",
         "tier": "Proven",
@@ -227,7 +227,7 @@
       "id": 19,
       "name": "Offensive rebounding",
       "score": 5.0,
-      "rationale_public": "Doesn't crash the glass: 0.58 offensive rebounds per game on a 1.6% offensive rebound rate; primary-scorer role keeps him out of crash positions.",
+      "rationale_public": "Doesn't crash the glass: 0.58 offensive rebounds per game on a 1.6% offensive rebound rate since 2024-25; primary-scorer role keeps him out of crash positions.",
       "signature": null
     },
     {
@@ -266,7 +266,7 @@
       "id": 24,
       "name": "Shot selection",
       "score": 7.0,
-      "rationale_public": "Solid universal shot selection at 51.9% contested rate on heavy primary-scorer load; recalibrated mid-range volume through Drew Hanlen's footwork work has improved shot quality.",
+      "rationale_public": "Solid universal shot selection at 51.9% contested rate on heavy primary-scorer load since 2024-25; recalibrated mid-range volume through Drew Hanlen's footwork work has improved shot quality.",
       "signature": null
     },
     {

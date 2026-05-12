@@ -1,0 +1,808 @@
+{
+  "schema_version": "1.1",
+  "rules_version": "R1-R15 / S151",
+  "player": "Stephen Curry",
+  "group": "Guard",
+  "position": "PG",
+  "career_status": "Active",
+  "draft_class": null,
+  "archetype": "Offensive Engine",
+  "evaluation_date": "2026-04-30",
+  "composite_label": "Composite",
+  "composite_score": 9.2,
+  "tier": 3,
+  "tier_label": "Perennial All-NBA First Team — elite franchise player",
+  "narrative": {
+    "identity": "Stephen Curry is the realized ceiling of the perimeter shot creator. A 4-time NBA champion, 2-time Most Valuable Player, 2022 Finals MVP, 12-time All-Star, and the NBA all-time leader in career 3-pointers made. The question is no longer ascension; it is how much longer the late-career window holds. At 6'2\"/185lbs with a 6'4\" wingspan, Curry is built slim for the position, with a meticulous training and recovery routine that has carried him through 17 NBA seasons at elite per-game efficiency.",
+    "strength": "Offensively, Curry is the historical reference point at his position. Catch-and-shoot 41.0% on 603 attempts since 2024-25, pull-up 3-point 38.0% on 660, and a career free-throw percentage of 91.2% all read as elite volume-plus-conversion. The off-ball gravity is the dimension no peer has matched: cut 1.476 points per possession in 2024-25 at the 82nd percentile, off-screen 1.219 at the 88th, off-ball speed 4.82 mph, and universal recognition as the best movement shooter of all time. The signature handle extends the creation tree to isolation, pick-and-roll, and dribble-handoff weaponry. At age 38 in 2025-26 he dropped 26.6 points per game in 30.9 minutes, the third-most ever for a player 37 or older.",
+    "weakness": "Defensively, Curry is the structural weakness in the profile. He is a 6'2\", 185-pound point guard with a 6'4\" wingspan, a career-long matchup target whom opposing teams isolate every playoff series. Opponents shot 3.0% above their expected field-goal percentage against him in 2025-26, a regression from slightly below expected in 2024-25; help defense reads better than on-ball at 1.1 steals and 2.4 deflections per game, but the team defensive rating of 114.8 reflects mediocre team-level support. The athleticism floor of balanced burst, middling lateral quickness, and slim-frame strength caps the defensive ceiling, compounded at age 38 by the patellofemoral pain syndrome that cost him over two months in 2025-26. He survives via team scheme and competitive effort, not lockdown ability.",
+    "projection_verdict": "At 38, Curry has already authored the verdict on his career: four championships, two MVPs including the only unanimous selection in NBA history, a 2022 Finals MVP earned without a co-superstar, and the NBA all-time record for career 3-pointers made, the first player past 4,000. The credentials still arrive: 2023-24 Clutch Player of the Year leading the NBA in total clutch points, 2024 Olympic gold, his 12th All-Star nod in February 2026. On full availability, the ceiling is a vintage swan-song with another deep playoff push and an All-NBA selection within reach; the floor is a sharper late-career decline. The question is whether he closes with one more championship or a quiet bow."
+  },
+  "domains": [
+    {
+      "id": 1,
+      "name": "Finishing",
+      "score": 6.9,
+      "one_line": "Solid rim conversion at 66.2% on 284 attempts since 2024-25 anchors the score, a modest free-throw rate constrains the contact-finishing dimension."
+    },
+    {
+      "id": 2,
+      "name": "Shooting",
+      "score": 9.9,
+      "one_line": "NBA all-time leader at 91.2% career on free throws, catch-and-shoot 41.0% on 603 attempts and pull-up 3-point 38.0% on 660 since 2024-25, the historical guard-shooting ceiling."
+    },
+    {
+      "id": 3,
+      "name": "Ball Skills",
+      "score": 8.9,
+      "one_line": "Elite touch and signature handle anchor an All-Star creator package, with an assist-to-turnover ratio of 1.85 keeping security below top tier."
+    },
+    {
+      "id": 4,
+      "name": "Playmaking",
+      "score": 8.4,
+      "one_line": "Iconic off-ball movement at 4.82 mph speed in 2024-25 drives the domain, secondary-creator vision and decision-making above baseline rather than at All-Star level."
+    },
+    {
+      "id": 5,
+      "name": "Defense",
+      "score": 5.5,
+      "one_line": "Career-long perimeter matchup target, opponents shooting 3.0% above expected in 2025-26, partially offset by 1.1 steals and 2.4 deflections per game."
+    },
+    {
+      "id": 6,
+      "name": "Rebounding",
+      "score": 6.9,
+      "one_line": "Defensive rebounds 3.9 per game in 2024-25 healthy at the guard position, securing boards when positioned anchors the functional band."
+    },
+    {
+      "id": 7,
+      "name": "Athleticism",
+      "score": 5.0,
+      "one_line": "Balanced burst rather than explosive, lateral quickness and 185-pound strength both liabilities at age 38 after the patellofemoral pain syndrome."
+    },
+    {
+      "id": 8,
+      "name": "IQ / Motor",
+      "score": 8.5,
+      "one_line": "Iconic competitive character with four rings and two MVPs paired with elite motor at age 38 anchors All-Star IQ above functional shot selection."
+    }
+  ],
+  "sub_domains": [
+    {
+      "id": 1,
+      "name": "At-basket finishing",
+      "score": 7.7,
+      "rationale_public": "Rim conversion 66.2% on 284 attempts since 2024-25; crafty rather than explosive, with 15.3% of 2025-26 shots at the rim and 61.5% assisted, reducing self-creation.",
+      "signature": null
+    },
+    {
+      "id": 2,
+      "name": "Contact finishing / foul draw",
+      "score": 5.8,
+      "rationale_public": "Free-throw rate of 27.7% in 2025-26 modest for a 30.8% usage primary creator; slim-frame structural cap, not a foul-draw archetype despite scoring volume.",
+      "signature": null
+    },
+    {
+      "id": 3,
+      "name": "Post offense",
+      "score": 2.5,
+      "rationale_public": "No documented post role; structural absence for the archetype, with slim-frame strength reinforcing the floor.",
+      "signature": null
+    },
+    {
+      "id": 4,
+      "name": "Catch-and-shoot 3PT",
+      "score": 9.6,
+      "rationale_public": "Catch-and-shoot 41.0% on 603 attempts since 2024-25; the historical reference point at the position with a career 3-point percentage of 42.2%.",
+      "signature": {
+        "name": "Sniper",
+        "tier": "Iconic",
+        "description": "Spot-up shooting off the catch from three. Footwork, release consistency, and range depth on attempts that arrive in rhythm."
+      }
+    },
+    {
+      "id": 5,
+      "name": "Off-dribble shooting",
+      "score": 9.4,
+      "rationale_public": "Pull-up 3-point 38.0% on 660 attempts since 2024-25; isolation 1.088 points per possession in 2025-26 on 91 possessions (88.7th percentile); the signature step-back redefined the modern pull-up three.",
+      "signature": {
+        "name": "Pull-Up Shooter",
+        "tier": "Superstar",
+        "description": "Creating own shot off the dribble. Pull-ups, step-backs, and self-generated separation moves with a clean release over a contest."
+      }
+    },
+    {
+      "id": 6,
+      "name": "Mid-range",
+      "score": 8.5,
+      "rationale_public": "Mid-range 50.4% on 226 attempts since 2024-25, excellent per-attempt conversion for the guard position.",
+      "signature": {
+        "name": "Mid-Range Threat",
+        "tier": "Elite",
+        "description": "Pull-up and catch-and-shoot scoring from the elbow and baseline mid-range zones. A diminished but real weapon at the NBA level."
+      }
+    },
+    {
+      "id": 7,
+      "name": "Free throw",
+      "score": 10.0,
+      "rationale_public": "Career free-throw percentage of 91.2%, the NBA all-time leader; 92.9% on 520 attempts since 2024-25, 94.9% in clutch during 2024-25.",
+      "signature": null
+    },
+    {
+      "id": 8,
+      "name": "Handling / creation",
+      "score": 8.6,
+      "rationale_public": "Signature dribble package: isolation 1.088 points per possession in 2025-26 on 91 possessions, 88.7th percentile; 7.8 drives per game with 52.0% conversion. The handle creates the shot.",
+      "signature": {
+        "name": "Shot Creator",
+        "tier": "Elite",
+        "description": "Dribble tightness, move variety, and live-dribble creation. Beats defenders with handle alone and generates scoring opportunities for self or teammates."
+      }
+    },
+    {
+      "id": 9,
+      "name": "Touch / feel",
+      "score": 9.4,
+      "rationale_public": "All-time leader in career free-throw percentage; floater 48.5% on 361 attempts since 2024-25, non-dunk rim 66.3% on 282; convergent touch signal across all proxies.",
+      "signature": {
+        "name": "Soft Touch",
+        "tier": "Superstar",
+        "description": "Fingertip control at the point of contact between hands and ball. Backboard finishes, fingerrolls, soft catches, and accurate pass delivery."
+      }
+    },
+    {
+      "id": 10,
+      "name": "Ball security",
+      "score": 6.9,
+      "rationale_public": "Assist-to-turnover ratio of 1.85 sits below the 2:1 standard for primary creators on 30.8% usage and 65.4 touches per game.",
+      "signature": null
+    },
+    {
+      "id": 11,
+      "name": "Court vision",
+      "score": 7.8,
+      "rationale_public": "Potential assists 10.3 per game in 2024-25 healthy (8.7 in 2025-26), assist points created 15.0; vision better than reputation but operates as secondary creator next to Draymond Green.",
+      "signature": null
+    },
+    {
+      "id": 12,
+      "name": "Decision-making",
+      "score": 7.6,
+      "rationale_public": "Clutch Player of the Year 2023-24, leading the NBA in total clutch points; routine-possession lapses pull the average.",
+      "signature": null
+    },
+    {
+      "id": 13,
+      "name": "Passing execution",
+      "score": 7.7,
+      "rationale_public": "42.9 passes per game in 2024-25 healthy (38.9 in 2025-26); delivery solid and on-target in most situations, occasional off-target under pressure. Not a threading-the-needle pure passer.",
+      "signature": null
+    },
+    {
+      "id": 14,
+      "name": "Off-ball movement",
+      "score": 9.9,
+      "rationale_public": "Off-ball speed 4.82 mph in 2024-25; cut 1.476 points per possession (82.2nd percentile), off-screen 1.219 (87.7th); universally the best movement shooter of all time.",
+      "signature": {
+        "name": "Off-Ball Threat",
+        "tier": "Iconic",
+        "description": "Reading and using screens, cutting decisively, and creating space without the ball. Combines IQ with sustained motion in the half-court."
+      }
+    },
+    {
+      "id": 15,
+      "name": "On-ball pressure",
+      "score": 4.8,
+      "rationale_public": "Opponents shoot 3.0% above their expected field-goal percentage in 2025-26 (slightly below expected in 2024-25); career-long matchup-hunting target on switches and isolation.",
+      "signature": null
+    },
+    {
+      "id": 16,
+      "name": "Help defense",
+      "score": 6.1,
+      "rationale_public": "Steals 1.1 per game and deflections 2.4 in 2025-26; active hands and positive help-IQ reads, with team defensive rating 114.8 capping the team-level signal.",
+      "signature": null
+    },
+    {
+      "id": 17,
+      "name": "Rim protection",
+      "score": 2.5,
+      "rationale_public": "Structural absence at 6'2\"; 0.4 blocks per game, not part of the defensive identity.",
+      "signature": null
+    },
+    {
+      "id": 18,
+      "name": "Post defense",
+      "score": 4.4,
+      "rationale_public": "Slim 185-pound frame creates a structural ceiling; opponents 1.273 points per possession in post-ups in 2025-26; career-long target on switches against physical wing scorers.",
+      "signature": null
+    },
+    {
+      "id": 19,
+      "name": "Offensive rebounding",
+      "score": 4.9,
+      "rationale_public": "Offensive rebound rate well below guard average; archetype-appropriate floor-spacer role with no offensive-glass crash.",
+      "signature": null
+    },
+    {
+      "id": 20,
+      "name": "Defensive rebounding",
+      "score": 6.9,
+      "rationale_public": "Defensive rebounds 3.9 per game in 2024-25 healthy (3.2 in 2025-26), above-average for the guard position; secures boards when positioned despite the slim frame.",
+      "signature": null
+    },
+    {
+      "id": 21,
+      "name": "Burst / explosion",
+      "score": 5.4,
+      "rationale_public": "Balanced rather than explosive; 35.5\" max vertical at the 2009 combine, career craft-over-burst profile recalibrated by patellofemoral pain syndrome at age 38.",
+      "signature": null
+    },
+    {
+      "id": 22,
+      "name": "Lateral quickness",
+      "score": 4.9,
+      "rationale_public": "Lane agility 11.07 seconds at the 2009 combine; slim frame and the recent knee inflection compound a career-long lateral target.",
+      "signature": null
+    },
+    {
+      "id": 23,
+      "name": "Strength",
+      "score": 4.7,
+      "rationale_public": "185-pound slim frame; physical wings expose the matchup in switch and post coverage despite documented strength-training discipline.",
+      "signature": null
+    },
+    {
+      "id": 24,
+      "name": "Shot selection",
+      "score": 6.6,
+      "rationale_public": "Heavy creation burden with 30.8% usage in 2025-26 and 65.4 touches per game; conversion holds at 49.0% on very-tight contests since 2024-25, with discipline below elite-creator tier.",
+      "signature": null
+    },
+    {
+      "id": 25,
+      "name": "Effort / motor",
+      "score": 9.3,
+      "rationale_public": "Off-ball speed 4.82 mph in 2025-26 at age 38 carrying 26.6 points per game on a full-volume off-ball workload; durable motor signal across 17 NBA seasons.",
+      "signature": {
+        "name": "Hustle",
+        "tier": "Superstar",
+        "description": "Relentless pursuit. Loose balls, transition sprints, deflections, and the second-effort plays that don't appear in the box score but change games."
+      }
+    },
+    {
+      "id": 26,
+      "name": "Competitive character",
+      "score": 9.6,
+      "rationale_public": "Four-time NBA champion, two-time Most Valuable Player, 2022 Finals MVP, 2023-24 Clutch Player of the Year, 12-time All-Star, 2024 Olympic gold; top-5 active competitive character.",
+      "signature": {
+        "name": "Competitor",
+        "tier": "Iconic",
+        "description": "Physicality and intensity when the game is hard. Performance holds in close games, rivalry matchups, and elimination scenarios. Withstands adversity without withdrawing."
+      }
+    }
+  ],
+  "projection": {
+    "pot": 9.2,
+    "min": 8.2,
+    "max": 9.25,
+    "confidence": "moderate",
+    "spread_note_public": "The projection settles at 9.20 with a floor of 8.20 and a swan-song ceiling of 9.25; the late-career window is narrowed by the patellofemoral pain syndrome and slim-frame age decline. Confidence: Moderate."
+  },
+  "comps": [
+    {
+      "comp_player": "Reggie Miller",
+      "comp_tier": "Lineage",
+      "similarity_public": "Reggie Miller is the lineage prototype: shooting gravity, off-ball maestry, and late-career guard longevity. Curry realizes the ceiling Miller foreshadowed, adding handle creation, four rings, two MVPs, and the deep range that redefined the modern offensive era."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-04-30",
+      "composite": 9.2,
+      "tier": 3,
+      "archetype": "Offensive Engine"
+    }
+  ],
+  "career_stats": {
+    "regular_season": [
+      {
+        "season_id": "2009-10",
+        "team": "GSW",
+        "gp": 80,
+        "gs": 77,
+        "min": 36.2,
+        "pts": 17.5,
+        "reb": 4.5,
+        "ast": 5.9,
+        "stl": 1.9,
+        "blk": 0.2,
+        "tov": 3.0,
+        "fg_pct": 0.462,
+        "fg3_pct": 0.437,
+        "ft_pct": 0.885,
+        "is_career": false
+      },
+      {
+        "season_id": "2010-11",
+        "team": "GSW",
+        "gp": 74,
+        "gs": 74,
+        "min": 33.6,
+        "pts": 18.6,
+        "reb": 3.9,
+        "ast": 5.8,
+        "stl": 1.5,
+        "blk": 0.3,
+        "tov": 3.1,
+        "fg_pct": 0.48,
+        "fg3_pct": 0.442,
+        "ft_pct": 0.934,
+        "is_career": false
+      },
+      {
+        "season_id": "2011-12",
+        "team": "GSW",
+        "gp": 26,
+        "gs": 23,
+        "min": 28.2,
+        "pts": 14.7,
+        "reb": 3.4,
+        "ast": 5.3,
+        "stl": 1.5,
+        "blk": 0.3,
+        "tov": 2.5,
+        "fg_pct": 0.49,
+        "fg3_pct": 0.455,
+        "ft_pct": 0.809,
+        "is_career": false
+      },
+      {
+        "season_id": "2012-13",
+        "team": "GSW",
+        "gp": 78,
+        "gs": 78,
+        "min": 38.2,
+        "pts": 22.9,
+        "reb": 4.0,
+        "ast": 6.9,
+        "stl": 1.6,
+        "blk": 0.2,
+        "tov": 3.1,
+        "fg_pct": 0.451,
+        "fg3_pct": 0.453,
+        "ft_pct": 0.9,
+        "is_career": false
+      },
+      {
+        "season_id": "2013-14",
+        "team": "GSW",
+        "gp": 78,
+        "gs": 78,
+        "min": 36.5,
+        "pts": 24.0,
+        "reb": 4.3,
+        "ast": 8.5,
+        "stl": 1.6,
+        "blk": 0.2,
+        "tov": 3.8,
+        "fg_pct": 0.471,
+        "fg3_pct": 0.424,
+        "ft_pct": 0.885,
+        "is_career": false
+      },
+      {
+        "season_id": "2014-15",
+        "team": "GSW",
+        "gp": 80,
+        "gs": 80,
+        "min": 32.7,
+        "pts": 23.8,
+        "reb": 4.3,
+        "ast": 7.7,
+        "stl": 2.0,
+        "blk": 0.2,
+        "tov": 3.1,
+        "fg_pct": 0.487,
+        "fg3_pct": 0.443,
+        "ft_pct": 0.914,
+        "is_career": false
+      },
+      {
+        "season_id": "2015-16",
+        "team": "GSW",
+        "gp": 79,
+        "gs": 79,
+        "min": 34.2,
+        "pts": 30.1,
+        "reb": 5.4,
+        "ast": 6.7,
+        "stl": 2.1,
+        "blk": 0.2,
+        "tov": 3.3,
+        "fg_pct": 0.504,
+        "fg3_pct": 0.454,
+        "ft_pct": 0.908,
+        "is_career": false
+      },
+      {
+        "season_id": "2016-17",
+        "team": "GSW",
+        "gp": 79,
+        "gs": 79,
+        "min": 33.4,
+        "pts": 25.3,
+        "reb": 4.5,
+        "ast": 6.6,
+        "stl": 1.8,
+        "blk": 0.2,
+        "tov": 3.0,
+        "fg_pct": 0.468,
+        "fg3_pct": 0.411,
+        "ft_pct": 0.898,
+        "is_career": false
+      },
+      {
+        "season_id": "2017-18",
+        "team": "GSW",
+        "gp": 51,
+        "gs": 51,
+        "min": 32.0,
+        "pts": 26.4,
+        "reb": 5.1,
+        "ast": 6.1,
+        "stl": 1.6,
+        "blk": 0.2,
+        "tov": 3.0,
+        "fg_pct": 0.495,
+        "fg3_pct": 0.423,
+        "ft_pct": 0.921,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "GSW",
+        "gp": 69,
+        "gs": 69,
+        "min": 33.8,
+        "pts": 27.3,
+        "reb": 5.3,
+        "ast": 5.2,
+        "stl": 1.3,
+        "blk": 0.4,
+        "tov": 2.8,
+        "fg_pct": 0.472,
+        "fg3_pct": 0.437,
+        "ft_pct": 0.916,
+        "is_career": false
+      },
+      {
+        "season_id": "2019-20",
+        "team": "GSW",
+        "gp": 5,
+        "gs": 5,
+        "min": 27.8,
+        "pts": 20.8,
+        "reb": 5.2,
+        "ast": 6.6,
+        "stl": 1.0,
+        "blk": 0.4,
+        "tov": 3.2,
+        "fg_pct": 0.402,
+        "fg3_pct": 0.245,
+        "ft_pct": 1.0,
+        "is_career": false
+      },
+      {
+        "season_id": "2020-21",
+        "team": "GSW",
+        "gp": 63,
+        "gs": 63,
+        "min": 34.2,
+        "pts": 32.0,
+        "reb": 5.5,
+        "ast": 5.8,
+        "stl": 1.2,
+        "blk": 0.1,
+        "tov": 3.4,
+        "fg_pct": 0.482,
+        "fg3_pct": 0.421,
+        "ft_pct": 0.916,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "GSW",
+        "gp": 64,
+        "gs": 64,
+        "min": 34.5,
+        "pts": 25.5,
+        "reb": 5.2,
+        "ast": 6.3,
+        "stl": 1.3,
+        "blk": 0.4,
+        "tov": 3.2,
+        "fg_pct": 0.437,
+        "fg3_pct": 0.38,
+        "ft_pct": 0.923,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "GSW",
+        "gp": 56,
+        "gs": 56,
+        "min": 34.7,
+        "pts": 29.4,
+        "reb": 6.1,
+        "ast": 6.3,
+        "stl": 0.9,
+        "blk": 0.4,
+        "tov": 3.2,
+        "fg_pct": 0.493,
+        "fg3_pct": 0.427,
+        "ft_pct": 0.915,
+        "is_career": false
+      },
+      {
+        "season_id": "2023-24",
+        "team": "GSW",
+        "gp": 74,
+        "gs": 74,
+        "min": 32.7,
+        "pts": 26.4,
+        "reb": 4.5,
+        "ast": 5.1,
+        "stl": 0.7,
+        "blk": 0.4,
+        "tov": 2.8,
+        "fg_pct": 0.45,
+        "fg3_pct": 0.408,
+        "ft_pct": 0.923,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "GSW",
+        "gp": 70,
+        "gs": 70,
+        "min": 32.2,
+        "pts": 24.5,
+        "reb": 4.4,
+        "ast": 6.0,
+        "stl": 1.1,
+        "blk": 0.4,
+        "tov": 2.9,
+        "fg_pct": 0.448,
+        "fg3_pct": 0.397,
+        "ft_pct": 0.933,
+        "is_career": false
+      },
+      {
+        "season_id": "2025-26",
+        "team": "GSW",
+        "gp": 43,
+        "gs": 41,
+        "min": 30.9,
+        "pts": 26.6,
+        "reb": 3.6,
+        "ast": 4.7,
+        "stl": 1.1,
+        "blk": 0.4,
+        "tov": 2.8,
+        "fg_pct": 0.468,
+        "fg3_pct": 0.393,
+        "ft_pct": 0.923,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 1069,
+        "gs": 1061,
+        "min": 34.0,
+        "pts": 24.8,
+        "reb": 4.7,
+        "ast": 6.3,
+        "stl": 1.5,
+        "blk": 0.3,
+        "tov": 3.1,
+        "fg_pct": 0.471,
+        "fg3_pct": 0.422,
+        "ft_pct": 0.912,
+        "is_career": true
+      }
+    ],
+    "playoffs": [
+      {
+        "season_id": "2012-13",
+        "team": "GSW",
+        "gp": 12,
+        "gs": 12,
+        "min": 41.4,
+        "pts": 23.4,
+        "reb": 3.8,
+        "ast": 8.1,
+        "stl": 1.7,
+        "blk": 0.2,
+        "tov": 3.3,
+        "fg_pct": 0.434,
+        "fg3_pct": 0.396,
+        "ft_pct": 0.921,
+        "is_career": false
+      },
+      {
+        "season_id": "2013-14",
+        "team": "GSW",
+        "gp": 7,
+        "gs": 7,
+        "min": 42.3,
+        "pts": 23.0,
+        "reb": 3.6,
+        "ast": 8.4,
+        "stl": 1.7,
+        "blk": 0.1,
+        "tov": 3.7,
+        "fg_pct": 0.44,
+        "fg3_pct": 0.386,
+        "ft_pct": 0.881,
+        "is_career": false
+      },
+      {
+        "season_id": "2014-15",
+        "team": "GSW",
+        "gp": 21,
+        "gs": 21,
+        "min": 39.3,
+        "pts": 28.3,
+        "reb": 5.0,
+        "ast": 6.4,
+        "stl": 1.9,
+        "blk": 0.1,
+        "tov": 3.9,
+        "fg_pct": 0.456,
+        "fg3_pct": 0.422,
+        "ft_pct": 0.835,
+        "is_career": false
+      },
+      {
+        "season_id": "2015-16",
+        "team": "GSW",
+        "gp": 18,
+        "gs": 17,
+        "min": 34.1,
+        "pts": 25.1,
+        "reb": 5.5,
+        "ast": 5.2,
+        "stl": 1.4,
+        "blk": 0.3,
+        "tov": 4.2,
+        "fg_pct": 0.438,
+        "fg3_pct": 0.404,
+        "ft_pct": 0.916,
+        "is_career": false
+      },
+      {
+        "season_id": "2016-17",
+        "team": "GSW",
+        "gp": 17,
+        "gs": 17,
+        "min": 35.4,
+        "pts": 28.1,
+        "reb": 6.2,
+        "ast": 6.7,
+        "stl": 2.0,
+        "blk": 0.2,
+        "tov": 3.4,
+        "fg_pct": 0.484,
+        "fg3_pct": 0.419,
+        "ft_pct": 0.904,
+        "is_career": false
+      },
+      {
+        "season_id": "2017-18",
+        "team": "GSW",
+        "gp": 15,
+        "gs": 14,
+        "min": 37.0,
+        "pts": 25.5,
+        "reb": 6.1,
+        "ast": 5.4,
+        "stl": 1.7,
+        "blk": 0.7,
+        "tov": 2.9,
+        "fg_pct": 0.451,
+        "fg3_pct": 0.395,
+        "ft_pct": 0.957,
+        "is_career": false
+      },
+      {
+        "season_id": "2018-19",
+        "team": "GSW",
+        "gp": 22,
+        "gs": 22,
+        "min": 38.5,
+        "pts": 28.2,
+        "reb": 6.0,
+        "ast": 5.7,
+        "stl": 1.1,
+        "blk": 0.2,
+        "tov": 3.0,
+        "fg_pct": 0.441,
+        "fg3_pct": 0.377,
+        "ft_pct": 0.943,
+        "is_career": false
+      },
+      {
+        "season_id": "2021-22",
+        "team": "GSW",
+        "gp": 22,
+        "gs": 18,
+        "min": 34.7,
+        "pts": 27.4,
+        "reb": 5.2,
+        "ast": 5.9,
+        "stl": 1.3,
+        "blk": 0.4,
+        "tov": 2.6,
+        "fg_pct": 0.459,
+        "fg3_pct": 0.397,
+        "ft_pct": 0.829,
+        "is_career": false
+      },
+      {
+        "season_id": "2022-23",
+        "team": "GSW",
+        "gp": 13,
+        "gs": 13,
+        "min": 37.9,
+        "pts": 30.5,
+        "reb": 5.2,
+        "ast": 6.1,
+        "stl": 1.0,
+        "blk": 0.5,
+        "tov": 3.2,
+        "fg_pct": 0.466,
+        "fg3_pct": 0.363,
+        "ft_pct": 0.845,
+        "is_career": false
+      },
+      {
+        "season_id": "2024-25",
+        "team": "GSW",
+        "gp": 8,
+        "gs": 8,
+        "min": 35.1,
+        "pts": 22.6,
+        "reb": 5.3,
+        "ast": 5.1,
+        "stl": 1.0,
+        "blk": 0.8,
+        "tov": 3.4,
+        "fg_pct": 0.477,
+        "fg3_pct": 0.4,
+        "ft_pct": 0.893,
+        "is_career": false
+      },
+      {
+        "season_id": "Career",
+        "team": "",
+        "gp": 155,
+        "gs": 149,
+        "min": 37.2,
+        "pts": 26.8,
+        "reb": 5.3,
+        "ast": 6.1,
+        "stl": 1.5,
+        "blk": 0.3,
+        "tov": 3.3,
+        "fg_pct": 0.454,
+        "fg3_pct": 0.397,
+        "ft_pct": 0.889,
+        "is_career": true
+      }
+    ]
+  }
+}

@@ -84,7 +84,7 @@
       "id": 2,
       "name": "Contact finishing / foul draw",
       "score": 7.8,
-      "rationale_public": "Draws 0.323 free throws per field-goal attempt and converts 78.6% from the line, with 0.657 points per drive possession.",
+      "rationale_public": "Draws 0.323 free throws per field-goal attempt and converts 78.6% from the line since 2024-25, with 0.657 points per drive possession.",
       "signature": null
     },
     {
@@ -105,7 +105,7 @@
       "id": 5,
       "name": "Off-dribble shooting",
       "score": 7.5,
-      "rationale_public": "Pull-up 3 at 32.9% and pull-up mid-range 43.5%, with isolation creation in the 69th percentile.",
+      "rationale_public": "Pull-up 3 at 32.9% and pull-up mid-range 43.5% since 2024-25, with isolation creation in the 69th percentile.",
       "signature": null
     },
     {
@@ -119,14 +119,14 @@
       "id": 7,
       "name": "Free throw",
       "score": 7.0,
-      "rationale_public": "78.6% from the line on the season; clutch free throws drop to 68.2%.",
+      "rationale_public": "78.6% from the line on the season since 2024-25; clutch free throws drop to 68.2%.",
       "signature": null
     },
     {
       "id": 8,
       "name": "Handling / creation",
       "score": 7.8,
-      "rationale_public": "Isolation 69th percentile, pick-and-roll handler 62.6th percentile, 16.5 drives per game at 52.8%.",
+      "rationale_public": "Isolation 69th percentile, pick-and-roll handler 62.6th percentile, 16.5 drives per game at 52.8% since 2024-25.",
       "signature": null
     },
     {
@@ -147,7 +147,7 @@
       "id": 11,
       "name": "Court vision",
       "score": 7.0,
-      "rationale_public": "17.3% adjusted assist rate and 8.9 potential assists per game; solid vision, not weapons-grade.",
+      "rationale_public": "17.3% adjusted assist rate since 2024-25 and 8.9 potential assists per game; solid vision, not weapons-grade.",
       "signature": null
     },
     {
@@ -161,7 +161,7 @@
       "id": 13,
       "name": "Passing execution",
       "score": 7.0,
-      "rationale_public": "Assists convert at 54.6%; adequate delivery for the role.",
+      "rationale_public": "Assists convert at 54.6% since 2024-25; adequate delivery for the role.",
       "signature": null
     },
     {
@@ -175,7 +175,7 @@
       "id": 15,
       "name": "On-ball pressure",
       "score": 7.5,
-      "rationale_public": "Suppresses opponent field-goal percentage by 2.6% versus expected, contesting 4.5 shots per game; functional wing stopper.",
+      "rationale_public": "Suppresses opponent field-goal percentage by 2.6% versus expected since 2024-25, contesting 4.5 shots per game; functional wing stopper.",
       "signature": null
     },
     {
@@ -203,21 +203,21 @@
       "id": 19,
       "name": "Offensive rebounding",
       "score": 6.5,
-      "rationale_public": "Offensive rebound rate 3.4% and 1.18 per game; above-average wing crashing.",
+      "rationale_public": "Offensive rebound rate 3.4% since 2024-25 and 1.18 per game; above-average wing crashing.",
       "signature": null
     },
     {
       "id": 20,
       "name": "Defensive rebounding",
       "score": 7.5,
-      "rationale_public": "Defensive rebound rate 14.3% and 5.28 per game; strong for a wing.",
+      "rationale_public": "Defensive rebound rate 14.3% since 2024-25 and 5.28 per game; strong for a wing.",
       "signature": null
     },
     {
       "id": 21,
       "name": "Burst / explosion",
       "score": 8.3,
-      "rationale_public": "16.5 drives per game at 52.8%, 13% dunk rate, 1.131 points per transition possession.",
+      "rationale_public": "16.5 drives per game at 52.8%, 13% dunk rate since 2024-25, 1.131 points per transition possession.",
       "signature": {
         "name": "Athlete",
         "tier": "Proven",
@@ -228,7 +228,7 @@
       "id": 22,
       "name": "Lateral quickness",
       "score": 7.8,
-      "rationale_public": "Stays with most wings on the perimeter, suppressing field-goal percentage by 2.6% versus expected.",
+      "rationale_public": "Stays with most wings on the perimeter, suppressing field-goal percentage by 2.6% versus expected since 2024-25.",
       "signature": null
     },
     {
@@ -246,7 +246,7 @@
       "id": 24,
       "name": "Shot selection",
       "score": 7.0,
-      "rationale_public": "True shooting 56.6% at 32% usage; functional for a scoring wing with a high late-clock share.",
+      "rationale_public": "True shooting 56.6% at 32% usage since 2024-25; functional for a scoring wing with a high late-clock share.",
       "signature": null
     },
     {

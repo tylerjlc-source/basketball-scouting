@@ -130,7 +130,7 @@
       "id": 8,
       "name": "Handling / creation",
       "score": 7.0,
-      "rationale_public": "Functional secondary handler: 9.1 drives per game, 52.7% drive conversion at 26.1% usage; not shifty in traffic, with iso and pick-and-roll ball-handler measures around the 40th percentile.",
+      "rationale_public": "Functional secondary handler: 9.1 drives per game, 52.7% drive conversion at 26.1% usage since 2024-25; not shifty in traffic, with iso and pick-and-roll ball-handler measures around the 40th percentile.",
       "signature": null
     },
     {
@@ -151,7 +151,7 @@
       "id": 11,
       "name": "Court vision",
       "score": 6.0,
-      "rationale_public": "Adequate for a catch-and-play role: 2.0 assists per game on an 8.6% assist rate and 49.8% conversion of potential assists; not a hub passer.",
+      "rationale_public": "Adequate for a catch-and-play role: 2.0 assists per game on an 8.6% assist rate in 2025-26 and 49.8% conversion of potential assists since 2024-25; not a hub passer.",
       "signature": null
     },
     {
@@ -165,7 +165,7 @@
       "id": 13,
       "name": "Passing execution",
       "score": 6.5,
-      "rationale_public": "Clean delivery, no documented execution concerns; 49.8% conversion of 4.0 potential assists per game is functional for the role.",
+      "rationale_public": "Clean delivery, no documented execution concerns; 49.8% conversion of 4.0 potential assists per game since 2024-25 is functional for the role.",
       "signature": null
     },
     {
@@ -179,7 +179,7 @@
       "id": 15,
       "name": "On-ball pressure",
       "score": 8.5,
-      "rationale_public": "Elite on-ball: holds opponents 5.8% below their expected field-goal percentage, allows 0.776 points per possession in isolation, with 2.5 deflections and 1.1 steals per game across schemes.",
+      "rationale_public": "Elite on-ball: holds opponents 5.8% below their expected field-goal percentage since 2024-25, allows 0.776 points per possession in isolation, with 2.5 deflections and 1.1 steals per game across schemes.",
       "signature": {
         "name": "Lockdown",
         "tier": "Elite",
@@ -201,7 +201,7 @@
       "id": 17,
       "name": "Rim protection",
       "score": 7.7,
-      "rationale_public": "Real rim deterrence: 1.4 blocks per game and 5.8% below opponents' expected field-goal percentage, anchored by 7'5.25\" wingspan and 9'2\" standing reach; block rate halved from his DPOY year.",
+      "rationale_public": "Real rim deterrence: 1.4 blocks per game and 5.8% below opponents' expected field-goal percentage since 2024-25, anchored by 7'5.25\" wingspan and 9'2\" standing reach; block rate halved from his DPOY year.",
       "signature": null
     },
     {
@@ -215,7 +215,7 @@
       "id": 19,
       "name": "Offensive rebounding",
       "score": 4.5,
-      "rationale_public": "Doesn't crash the glass: 1.02 offensive rebounds per game on a 3.1% rate and essentially zero offensive box-outs (0.06 per game); a persistent multi-year weakness.",
+      "rationale_public": "Doesn't crash the glass: 1.02 offensive rebounds per game on a 3.1% rate since 2024-25 and essentially zero offensive box-outs (0.06 per game); a persistent multi-year weakness.",
       "signature": null
     },
     {
@@ -254,7 +254,7 @@
       "id": 24,
       "name": "Shot selection",
       "score": 7.5,
-      "rationale_public": "Healthy shot diet: 58.2% true shooting at 26.1% usage, balanced contested-versus-open distribution, low mid-range volume, and shot-clock timing skewed to the natural flow of offense.",
+      "rationale_public": "Healthy shot diet: 58.2% true shooting at 26.1% usage since 2024-25, balanced contested-versus-open distribution, low mid-range volume, and shot-clock timing skewed to the natural flow of offense.",
       "signature": null
     },
     {

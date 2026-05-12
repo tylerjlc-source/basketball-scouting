@@ -1,6 +1,6 @@
 [
   {
-    "player": "Stephen Curry",
+    "player": "Donovan Mitchell",
     "evaluation_window": {
       "mode": "DEFAULT",
       "seasons_used": [
@@ -20,219 +20,219 @@
       "play_type_creation": {
         "isolation": {
           "ppp": {
-            "current": 1.088,
-            "prior": 0.87,
-            "weighted": 1.001
+            "current": 1.023,
+            "prior": 0.928,
+            "weighted": 0.985
           },
           "poss": {
-            "current": 91,
-            "prior": 131,
-            "weighted": 107.0
+            "current": 216,
+            "prior": 167,
+            "weighted": 196.4
           },
           "fg_pct": {
-            "current": 0.479,
-            "prior": 0.374,
-            "weighted": 0.437
+            "current": 0.431,
+            "prior": 0.394,
+            "weighted": 0.416
           },
           "tov_pct": {
-            "current": 0.088,
-            "prior": 0.076,
-            "weighted": 0.083
+            "current": 0.074,
+            "prior": 0.054,
+            "weighted": 0.066
           },
           "percentile": {
-            "current": 0.887,
-            "prior": 0.464,
-            "weighted": 0.718
+            "current": 0.784,
+            "prior": 0.614,
+            "weighted": 0.716
           }
         },
         "pnr_ball_handler": {
           "ppp": {
-            "current": 0.974,
-            "prior": 0.855,
-            "weighted": 0.926
+            "current": 1.018,
+            "prior": 1.007,
+            "weighted": 1.014
           },
           "poss": {
-            "current": 195,
-            "prior": 401,
-            "weighted": 277.4
+            "current": 568,
+            "prior": 673,
+            "weighted": 610.0
           },
           "fg_pct": {
-            "current": 0.407,
-            "prior": 0.371,
-            "weighted": 0.393
+            "current": 0.475,
+            "prior": 0.446,
+            "weighted": 0.463
           },
           "tov_pct": {
-            "current": 0.169,
-            "prior": 0.152,
-            "weighted": 0.162
+            "current": 0.129,
+            "prior": 0.098,
+            "weighted": 0.117
           },
           "percentile": {
-            "current": 0.789,
-            "prior": 0.499,
-            "weighted": 0.673
+            "current": 0.867,
+            "prior": 0.837,
+            "weighted": 0.855
           }
         },
         "handoff": {
           "ppp": {
-            "current": 1.607,
-            "prior": 1.1,
-            "weighted": 1.404
+            "current": 1.009,
+            "prior": 1.024,
+            "weighted": 1.015
           },
           "poss": {
-            "current": 112,
-            "prior": 140,
-            "weighted": 123.2
+            "current": 108,
+            "prior": 84,
+            "weighted": 98.4
           },
           "fg_pct": {
-            "current": 0.585,
-            "prior": 0.472,
-            "weighted": 0.54
+            "current": 0.415,
+            "prior": 0.408,
+            "weighted": 0.412
           },
           "tov_pct": {
-            "current": 0.063,
-            "prior": 0.164,
-            "weighted": 0.103
+            "current": 0.12,
+            "prior": 0.071,
+            "weighted": 0.1
           }
         }
       },
       "tracking_possessions": {
         "touches_pg": {
-          "current": 65.4,
-          "prior": 68.1,
-          "weighted": 66.48
+          "current": 70.2,
+          "prior": 60.3,
+          "weighted": 66.24
         },
         "time_of_poss": {
-          "current": 4.4,
-          "prior": 4.8,
-          "weighted": 4.56
+          "current": 5.3,
+          "prior": 4.9,
+          "weighted": 5.14
         },
         "avg_drib_per_touch": {
-          "current": 3.97,
-          "prior": 4.25,
-          "weighted": 4.082
+          "current": 4.11,
+          "prior": 4.43,
+          "weighted": 4.238
         },
         "pts_per_touch": {
-          "current": 0.406,
-          "prior": 0.361,
-          "weighted": 0.388
+          "current": 0.397,
+          "prior": 0.397,
+          "weighted": 0.397
         }
       },
       "drives": {
         "drives_pg": {
-          "current": 7.8,
-          "prior": 8.7,
-          "weighted": 8.16
+          "current": 14.1,
+          "prior": 12.1,
+          "weighted": 13.3
         },
         "drive_fg_pct": {
-          "current": 0.52,
-          "prior": 0.474,
-          "weighted": 0.502
+          "current": 0.588,
+          "prior": 0.528,
+          "weighted": 0.564
         },
         "drive_pts_pg": {
-          "current": 5.0,
-          "prior": 4.4,
-          "weighted": 4.76
+          "current": 10.1,
+          "prior": 8.0,
+          "weighted": 9.26
         },
         "drive_tov_pct": {
-          "current": 0.038,
-          "prior": 0.069,
-          "weighted": 0.05
+          "current": 0.064,
+          "prior": 0.041,
+          "weighted": 0.055
         },
         "drive_ast_pg": {
-          "current": 0.5,
-          "prior": 0.8,
-          "weighted": 0.62
+          "current": 1.2,
+          "prior": 1.2,
+          "weighted": 1.2
         }
       },
       "context": {
         "usg_pct": {
-          "current": 0.308,
-          "prior": 0.286,
-          "weighted": 0.299
+          "current": 0.311,
+          "prior": 0.298,
+          "weighted": 0.306
         }
       }
     },
     "subdomain_9_touch_feel": {
       "floater_range_4_14ft": {
         "fg_pct": {
-          "current": 0.527,
-          "prior": 0.461,
-          "weighted": 0.491,
-          "current_volume": 129,
-          "prior_volume": 232
+          "current": 0.559,
+          "prior": "N/A",
+          "weighted": 0.559,
+          "current_volume": 365,
+          "prior_volume": "N/A"
         },
         "fga": {
-          "current": 129,
-          "prior": 232,
-          "weighted": 170.2
+          "current": 365,
+          "prior": "N/A",
+          "weighted": 365
         },
         "pct_of_total_fga": {
-          "current": 0.161,
-          "prior": 0.184,
-          "weighted": 0.17
+          "current": 0.26,
+          "prior": "N/A",
+          "weighted": 0.26
         }
       },
       "non_dunk_rim_fg_pct": {
-        "current": 0.694,
-        "prior": 0.64,
-        "weighted": 0.669,
-        "current_volume": 121,
-        "prior_volume": 161
+        "current": 0.646,
+        "prior": "N/A",
+        "weighted": 0.646,
+        "current_volume": 291,
+        "prior_volume": "N/A"
       },
       "ft_pct": {
-        "current": 0.923,
-        "prior": 0.933,
-        "weighted": 0.928,
-        "current_volume": 221,
-        "prior_volume": 299
+        "current": 0.865,
+        "prior": 0.823,
+        "weighted": 0.85,
+        "current_volume": 430,
+        "prior_volume": 362
       }
     },
     "subdomain_10_ball_security": {
       "tov_per_100_touches": {
-        "current": 4.3,
-        "prior": 4.2,
-        "weighted": 4.26
+        "current": 4.0,
+        "prior": 3.5,
+        "weighted": 3.8
       },
       "e_tov_pct": {
-        "current": 9.9,
-        "prior": 9.9,
-        "weighted": 9.9
+        "current": 9.0,
+        "prior": 7.5,
+        "weighted": 8.4
       },
       "ast_to_ratio": {
-        "current": 1.68,
-        "prior": 2.1,
-        "weighted": 1.848
+        "current": 2.01,
+        "prior": 2.38,
+        "weighted": 2.158
       },
       "touches_pg": {
-        "current": 65.4,
-        "prior": 68.1,
-        "weighted": 66.48
+        "current": 70.2,
+        "prior": 60.3,
+        "weighted": 66.24
       },
       "raw_ast": {
-        "current": 203,
-        "prior": 421,
-        "weighted": 290.2
+        "current": 398,
+        "prior": 354,
+        "weighted": 380.4
       },
       "raw_tov": {
-        "current": 121,
-        "prior": 200,
-        "weighted": 152.6
+        "current": 198,
+        "prior": 149,
+        "weighted": 178.4
       },
       "clutch": {
         "tov": {
-          "current": 8,
-          "prior": 9,
-          "weighted": 8.4
+          "current": 4,
+          "prior": 8,
+          "weighted": 5.6
         },
         "min": {
-          "current": 61.0,
-          "prior": 110.5,
-          "weighted": 80.8
+          "current": 95.7,
+          "prior": 89.7,
+          "weighted": 93.3
         },
         "ast": {
-          "current": 5,
-          "prior": 11,
-          "weighted": 7.4
+          "current": 11,
+          "prior": 9,
+          "weighted": 10.2
         }
       }
     }

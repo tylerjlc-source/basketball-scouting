@@ -1,12 +1,26 @@
 {
-  "count": 4,
+  "count": 6,
   "players": [
+    {
+      "player": "Stephen Curry",
+      "composite": 9.2,
+      "tier": 3,
+      "archetype": "Offensive Engine",
+      "file": "Stephen_Curry.json"
+    },
     {
       "player": "Donovan Mitchell",
       "composite": 8.95,
       "tier": 4,
       "archetype": "Offensive Engine (no migration)",
       "file": "Donovan_Mitchell.json"
+    },
+    {
+      "player": "Kawhi Leonard",
+      "composite": 8.9,
+      "tier": 4,
+      "archetype": "Score-First Wing",
+      "file": "Kawhi_Leonard.json"
     },
     {
       "player": "Jayson Tatum",

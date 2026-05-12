@@ -1,6 +1,6 @@
 [
   {
-    "player": "Stephen Curry",
+    "player": "Donovan Mitchell",
     "evaluation_window": {
       "mode": "DEFAULT",
       "seasons_used": [
@@ -18,219 +18,219 @@
     },
     "subdomain_4_cas_3pt": {
       "cas_3pt_pct": {
-        "current": 0.377,
-        "prior": 0.433,
-        "weighted": 0.404,
-        "current_volume": 247,
-        "prior_volume": 356,
-        "total_volume": 603
+        "current": 0.408,
+        "prior": 0.406,
+        "weighted": 0.407,
+        "current_volume": 238,
+        "prior_volume": 244,
+        "total_volume": 482
       },
       "cas_3pa": {
-        "current": 247,
-        "prior": 356,
-        "weighted": 290.6
+        "current": 238,
+        "prior": 244,
+        "weighted": 240.4
       },
       "corner_3_pct": {
-        "current": 0.545,
-        "prior": 0.482,
-        "weighted": 0.505,
-        "current_volume": 33,
-        "prior_volume": 85,
-        "total_volume": 118
+        "current": 0,
+        "prior": "N/A",
+        "weighted": 0,
+        "current_volume": 0,
+        "prior_volume": "N/A",
+        "total_volume": 0
       },
       "atb_3_pct": {
-        "current": 0.381,
-        "prior": 0.388,
-        "weighted": 0.385,
-        "current_volume": 451,
-        "prior_volume": 693,
-        "total_volume": 1144
+        "current": 0,
+        "prior": "N/A",
+        "weighted": 0,
+        "current_volume": 0,
+        "prior_volume": "N/A",
+        "total_volume": 0
       },
       "defender_distance_3pt": {
         "wide_open_6plus": {
-          "current": 0.489,
-          "prior": 0.449,
-          "weighted": 0.469,
-          "current_volume": 131,
-          "prior_volume": 205,
-          "total_volume": 336
+          "current": 0.494,
+          "prior": 0.491,
+          "weighted": 0.493,
+          "current_volume": 168,
+          "prior_volume": 165,
+          "total_volume": 333
         },
         "open_4_6": {
-          "current": 0.368,
-          "prior": 0.386,
-          "weighted": 0.378,
-          "current_volume": 239,
-          "prior_volume": 420,
-          "total_volume": 659
+          "current": 0.323,
+          "prior": 0.354,
+          "weighted": 0.335,
+          "current_volume": 356,
+          "prior_volume": 342,
+          "total_volume": 698
         },
         "tight_2_4": {
-          "current": 0.337,
-          "prior": 0.355,
-          "weighted": 0.346,
-          "current_volume": 104,
-          "prior_volume": 152,
-          "total_volume": 256
+          "current": 0.271,
+          "prior": 0.25,
+          "weighted": 0.261,
+          "current_volume": 85,
+          "prior_volume": 120,
+          "total_volume": 205
         },
         "very_tight_0_2": {
-          "current": 0.3,
-          "prior": 0.5,
-          "weighted": 0.357,
-          "current_volume": 10,
+          "current": 0.429,
+          "prior": 0.167,
+          "weighted": 0.334,
+          "current_volume": 7,
           "prior_volume": 6,
-          "total_volume": 16
+          "total_volume": 13
         }
       },
       "total_3pa": {
-        "current": 484,
-        "prior": 784,
-        "weighted": 604.0
+        "current": 616,
+        "prior": 633,
+        "weighted": 622.8
       }
     },
     "subdomain_5_off_dribble": {
       "pullup_3pt_pct": {
-        "current": 0.407,
-        "prior": 0.366,
-        "weighted": 0.385,
-        "current_volume": 236,
-        "prior_volume": 424,
-        "total_volume": 660
+        "current": 0.337,
+        "prior": 0.343,
+        "weighted": 0.339,
+        "current_volume": 377,
+        "prior_volume": 388,
+        "total_volume": 765
       },
       "pullup_3pa": {
-        "current": 236,
-        "prior": 424,
-        "weighted": 311.2
+        "current": 377,
+        "prior": 388,
+        "weighted": 381.4
       },
       "pullup_zone_3pt": {
-        "current": 0.413,
-        "prior": 0.379,
-        "weighted": 0.395,
-        "current_volume": 230,
-        "prior_volume": 401,
-        "total_volume": 631
+        "current": 0.337,
+        "prior": "N/A",
+        "weighted": 0.337,
+        "current_volume": 371,
+        "prior_volume": "N/A",
+        "total_volume": 371
       },
       "pullup_zone_midrange": {
-        "current": 0.521,
-        "prior": 0.583,
-        "weighted": 0.552,
-        "current_volume": 48,
-        "prior_volume": 72,
-        "total_volume": 120
+        "current": 0.471,
+        "prior": "N/A",
+        "weighted": 0.471,
+        "current_volume": 87,
+        "prior_volume": "N/A",
+        "total_volume": 87
       },
       "isolation": {
         "ppp": {
-          "current": 1.088,
-          "prior": 0.87,
-          "weighted": 1.001
+          "current": 1.023,
+          "prior": 0.928,
+          "weighted": 0.985
         },
         "poss": {
-          "current": 91,
-          "prior": 131,
-          "weighted": 107.0
+          "current": 216,
+          "prior": 167,
+          "weighted": 196.4
         },
         "fg_pct": {
-          "current": 0.479,
-          "prior": 0.374,
-          "weighted": 0.437
+          "current": 0.431,
+          "prior": 0.394,
+          "weighted": 0.416
         },
         "percentile": {
-          "current": 0.887,
-          "prior": 0.464,
-          "weighted": 0.718
+          "current": 0.784,
+          "prior": 0.614,
+          "weighted": 0.716
         }
       }
     },
     "subdomain_6_midrange": {
       "midrange_fg_pct": {
-        "current": 0.51,
-        "prior": 0.5,
-        "weighted": 0.505,
-        "current_volume": 96,
-        "prior_volume": 130,
-        "total_volume": 226
+        "current": 0,
+        "prior": "N/A",
+        "weighted": 0,
+        "current_volume": 0,
+        "prior_volume": "N/A",
+        "total_volume": 0
       },
       "midrange_fga": {
-        "current": 96,
-        "prior": 130,
-        "weighted": 109.6
+        "current": 0,
+        "prior": "N/A",
+        "weighted": 0
       },
       "pullup_midrange": {
-        "current": 0.521,
-        "prior": 0.583,
-        "weighted": 0.552,
-        "current_volume": 48,
-        "prior_volume": 72,
-        "total_volume": 120
+        "current": 0.471,
+        "prior": "N/A",
+        "weighted": 0.471,
+        "current_volume": 87,
+        "prior_volume": "N/A",
+        "total_volume": 87
       }
     },
     "subdomain_7_ft": {
       "ft_pct": {
-        "current": 0.923,
-        "prior": 0.933,
-        "weighted": 0.928,
-        "current_volume": 221,
-        "prior_volume": 299,
-        "total_volume": 520
+        "current": 0.865,
+        "prior": 0.823,
+        "weighted": 0.85,
+        "current_volume": 430,
+        "prior_volume": 362,
+        "total_volume": 792
       },
-      "ft_pct_career": 0.912,
+      "ft_pct_career": 0.844,
       "trend": [
         {
           "season": "2021-22",
-          "ft_pct": 0.923,
-          "fta": 298
+          "ft_pct": 0.853,
+          "fta": 313
         },
         {
           "season": "2022-23",
-          "ft_pct": 0.915,
-          "fta": 281
+          "ft_pct": 0.867,
+          "fta": 368
         },
         {
           "season": "2023-24",
-          "ft_pct": 0.923,
-          "fta": 324
+          "ft_pct": 0.865,
+          "fta": 318
         },
         {
           "season": "2024-25",
-          "ft_pct": 0.933,
-          "fta": 299
+          "ft_pct": 0.823,
+          "fta": 362
         },
         {
           "season": "2025-26",
-          "ft_pct": 0.923,
-          "fta": 221
+          "ft_pct": 0.865,
+          "fta": 430
         }
       ],
       "clutch_ft": {
-        "current": 0.875,
-        "prior": 0.949,
-        "weighted": 0.921,
-        "current_volume": 16,
-        "prior_volume": 39,
-        "total_volume": 55
+        "current": 0,
+        "prior": 0.786,
+        "weighted": 0.786,
+        "current_volume": 0,
+        "prior_volume": 42,
+        "total_volume": 42
       }
     },
     "overall_context": {
       "ts_pct": {
-        "current": 0.637,
-        "prior": 0.618,
-        "weighted": 0.629
+        "current": 0.613,
+        "prior": 0.575,
+        "weighted": 0.598
       },
       "efg_pct": {
-        "current": 0.587,
-        "prior": 0.572,
-        "weighted": 0.581
+        "current": 0.563,
+        "prior": 0.531,
+        "weighted": 0.55
       },
       "three_pt_pct": {
-        "current": 0.393,
-        "prior": 0.397,
-        "weighted": 0.395,
-        "current_volume": 484,
-        "prior_volume": 784,
-        "total_volume": 1268
+        "current": 0.364,
+        "prior": 0.368,
+        "weighted": 0.366,
+        "current_volume": 616,
+        "prior_volume": 633,
+        "total_volume": 1249
       },
       "total_fga": {
-        "current": 799,
-        "prior": 1258,
-        "weighted": 982.6
+        "current": 1403,
+        "prior": 1320,
+        "weighted": 1369.8
       }
     }
   }

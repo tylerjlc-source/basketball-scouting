@@ -47,7 +47,7 @@ Spawn V via the Task tool (`subagent_type=general-purpose`) — fresh context. V
 
 Apply V's critique (PASS gate). Mechanical checks (§2 hedges, §6 AI-tells, §7 em-dashes, §10 height/weight/wingspan repetition, §12 acronym scan, §13 signature format) are caught upstream by the Step 3.4 lint pre-flight; V no longer reports them, so they are not in this revise list.
 - Cut every cosmetic stat (§3).
-- Where §4 flags <1 specific moment in a paragraph, rewrite that paragraph against the source profile §3 narrative for concrete anchors.
+- Where §4 flags <1 representative pattern in a paragraph, rewrite that paragraph against the source profile §3 narrative for career-spanning anchors (recurring matchup motif, multi-year trait, career-credential class, structural physical fact).
 - Where §5 = N, rewrite the close as archetype-projection.
 - Where §8 flags fact-check mismatches, fix the claim against the source profile or remove it.
 - Where §9 flags overclaiming, soften the team-state attribution to the individual claim.

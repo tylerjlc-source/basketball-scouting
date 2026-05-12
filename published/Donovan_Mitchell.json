@@ -84,7 +84,7 @@
       "id": 2,
       "name": "Contact finishing / foul draw",
       "score": 7.8,
-      "rationale_public": "FT rate 0.293 with 85.0% conversion; draws fouls and converts at a solid clip.",
+      "rationale_public": "FT rate 0.293 with 85.0% conversion since 2024-25; draws fouls and converts at a solid clip.",
       "signature": null
     },
     {
@@ -109,7 +109,7 @@
       "id": 5,
       "name": "Off-dribble shooting",
       "score": 8.3,
-      "rationale_public": "Pull-up 3PT 33.9%, ISO 71.6th percentile; above average off-dribble creator.",
+      "rationale_public": "Pull-up 3PT 33.9% since 2024-25, ISO 71.6th percentile; above average off-dribble creator.",
       "signature": {
         "name": "Pull-Up Shooter",
         "tier": "Proven",
@@ -138,7 +138,7 @@
       "id": 8,
       "name": "Handling / creation",
       "score": 8.5,
-      "rationale_public": "PnR ball-handler 85.5th percentile, 13.3 drives/g at 56.4% finishing; strong primary creator.",
+      "rationale_public": "PnR ball-handler 85.5th percentile, 13.3 drives/g at 56.4% finishing since 2024-25; strong primary creator.",
       "signature": {
         "name": "Shot Creator",
         "tier": "Elite",
@@ -160,14 +160,14 @@
       "id": 10,
       "name": "Ball security",
       "score": 7.5,
-      "rationale_public": "A:TO 2.15 at 30.6% usage; solid ball security for the load.",
+      "rationale_public": "A:TO 2.15 at 30.6% usage since 2024-25; solid ball security for the load.",
       "signature": null
     },
     {
       "id": 11,
       "name": "Court vision",
       "score": 7.8,
-      "rationale_public": "17.8% adjusted assist rate, 10.3 potential assists/g; above average vision, still expanding under Cleveland's offense.",
+      "rationale_public": "17.8% adjusted assist rate in 2024-25, 10.3 potential assists/g; above average vision, still expanding under Cleveland's offense.",
       "signature": null
     },
     {
@@ -185,7 +185,7 @@
       "id": 13,
       "name": "Passing execution",
       "score": 7.5,
-      "rationale_public": "52.4% assist conversion; adequate delivery for the usage.",
+      "rationale_public": "52.4% assist conversion since 2024-25; adequate delivery for the usage.",
       "signature": null
     },
     {
@@ -227,21 +227,21 @@
       "id": 19,
       "name": "Offensive rebounding",
       "score": 4.0,
-      "rationale_public": "2.3% OREB rate; not part of his game.",
+      "rationale_public": "2.3% OREB rate since 2024-25; not part of his game.",
       "signature": null
     },
     {
       "id": 20,
       "name": "Defensive rebounding",
       "score": 6.8,
-      "rationale_public": "11.0% DREB rate, 3.76/g; average for the position.",
+      "rationale_public": "11.0% DREB rate since 2024-25, 3.76/g; average for the position.",
       "signature": null
     },
     {
       "id": 21,
       "name": "Burst / explosion",
       "score": 8.3,
-      "rationale_public": "13.3 drives/g at 56.4% finishing; still explosive at 29.",
+      "rationale_public": "13.3 drives/g at 56.4% finishing since 2024-25; still explosive at 29.",
       "signature": null
     },
     {
@@ -266,7 +266,7 @@
       "id": 24,
       "name": "Shot selection",
       "score": 8.0,
-      "rationale_public": "TS% 59.8% at 30.6% usage; responsible shot quality at scale.",
+      "rationale_public": "TS% 59.8% at 30.6% usage since 2024-25; responsible shot quality at scale.",
       "signature": {
         "name": "Shot IQ",
         "tier": "Proven",

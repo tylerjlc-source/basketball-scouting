@@ -41,11 +41,13 @@ For every numeric value in the draft, declare load-bearing or cosmetic. Load-bea
 
 Target: 0 cosmetic stats. List each cosmetic stat with line context.
 
-## §4 — Specific moment count per paragraph
+Target stat density per narrative paragraph: 0–2 numbers, prose-first per [PUBLIC-LANGUAGE-GUIDE §5.1](PUBLIC-LANGUAGE-GUIDE.md) (post-pivot 2026-05-10). Paragraphs that carry more than 2 numbers — even if each is technically load-bearing in isolation — fail the density test; the sentence-level argument can be made in prose with one supporting stat. Excess numbers re-locate to the sub-domain rationale table. Flag any paragraph over 2 numbers with the line context.
 
-For each of the 4 paragraphs, count specific moments. A specific moment = named play type (drop coverage, isolation, pick-and-roll), named game state (clutch, end-of-quarter), named opponent matchup where the detail is load-bearing, or named possession.
+## §4 — Representative pattern count per paragraph
 
-Target: ≥1 per paragraph (≥4 total). Below this, the prose is reading from rubric attributes, not film.
+For each of the 4 paragraphs, count representative patterns. A representative pattern = a career-spanning tendency (recurring matchup motif, multi-year trait, career-defining role), a career-credential class (championships, MVP-tier accolades, structural physical fact), or a named play type / game state that illustrates the player's essence across seasons. Single-game references and single-season percentages **do not count** — those are snapshot-in-time evidence that belongs in the sub-domain rationale table, not the narrative. Per [PUBLIC-LANGUAGE-GUIDE §5.1](PUBLIC-LANGUAGE-GUIDE.md) (post-pivot 2026-05-10): narrative speaks to the player writ large.
+
+Target: ≥1 per paragraph (≥4 total). Below this, the prose is reading from a thin slice rather than the player's career.
 
 ## §5 — Archetype-projection close
 
@@ -87,7 +89,7 @@ Target: 0. Quote each occurrence.
 === REVIEWER CRITIQUE ===
 §1 Worst line: "[quoted]" — [reason]
 §3 Cosmetic stats (target 0): [N found] — [list]
-§4 Specific moments per ¶: [P1: N | P2: N | P3: N | P4: N] — flag any < 1
+§4 Representative patterns per ¶: [P1: N | P2: N | P3: N | P4: N] — flag any < 1
 §5 Archetype close: [Y/N — if N, quote final sentence]
 §8 Fact-check (target 0 mismatches): [N mismatches] — [list with profile-source quote]
 §9 Overclaiming (target 0): [N found] — [list]
